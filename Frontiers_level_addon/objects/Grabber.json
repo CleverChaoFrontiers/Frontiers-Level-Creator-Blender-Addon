@@ -1,0 +1,47 @@
+    {
+      "id": "{D3159F65-7A2A-AA27-F1C4-28D29DF3618D}",
+      "name": "Grabber0",
+      "type": "Grabber",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "placement": "FV_IN_AIR",
+        "movement": "FIXED",
+        "dst": [
+          0.0,
+          0.0,
+          10.0
+        ],
+        "eventDriven": false,
+        "doesRespawn": false,
+        "threadStartingYOffset": 2.0,
+        "respawnTime": 3.0,
+        "movementSpeed": 0.30000001192092896,
+        "rotDegPerSec": 120.0,
+        "searchDistance": 5.0,
+        "searchAngle": 90.0,
+        "svParam": {
+          "descentDistance": 2.0,
+          "descentSpeed": 2.0,
+          "ascentSpeed": 2.0,
+          "flickerSpeedOnAscent": 2.0,
+          "flickerSpeedAfterAscent": 4.0,
+          "selfDestructTime": 3.0,
+          "reqLStickInputTimeToBreakFree": 1.0
+        },
+        "fvParam": {
+          "hipsRotDegPerSec": 360.0,
+          "bulletVelocityY": 5.0,
+          "bulletVelocityMultiplier": 1.0,
+          "chargeTime": 1.0,
+          "bulletFlightTime": 1.0,
+          "attackInterval": 1.0
+        }
+      }
+    }

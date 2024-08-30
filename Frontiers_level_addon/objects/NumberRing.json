@@ -1,0 +1,17 @@
+    {
+      "id": "{B30D4AAC-5BFF-C80D-FB29-7F16FEC85FDF}",
+      "name": "NumberRing01",
+      "type": "NumberRing",
+      "position": [-14.399999618530273, 7.599999904632568, 85.30000305175781],
+      "rotation": [0.0, 0.0, 0.7070000171661377, 0.7072135210037231],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 1000.0,
+            "rangeOut": 10.0
+          }
+        },
+        "noType": "No1",
+        "EventType": "EVENT_NONE"
+      }
+    }

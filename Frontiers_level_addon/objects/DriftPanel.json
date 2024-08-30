@@ -1,0 +1,33 @@
+    {
+      "id": "{9912253B-94E9-256A-8231-28279AE6B6D0}",
+      "name": "DriftPanel0",
+      "type": "DriftPanel",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "speed": 50.0,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

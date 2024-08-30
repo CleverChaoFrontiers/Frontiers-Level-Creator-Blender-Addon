@@ -1,0 +1,20 @@
+{
+  "id": "{04C7E7A4-D60D-AB4E-953D-83E8E7D47F82}",
+  "name": "WolfManager4",
+  "type": "WolfManager",
+  "position": [
+    -527.7410278320312,
+    214.66400146484375,
+    -783.0800170898438
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 220,
+        "rangeOut": 20
+      }
+    },
+    "effectHeightOffset": 1,
+    "isTrial": false
+  }
+}

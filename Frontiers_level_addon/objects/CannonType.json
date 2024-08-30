@@ -1,0 +1,30 @@
+    {
+      "id": "{A43FE8FB-8A69-EB0E-B827-F8B300202BF8}",
+      "name": "CannonType0",
+      "type": "CannonType",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+          "tags": {
+              "RangeSpawning": {
+                  "rangeIn": 400.0,
+                  "rangeOut": 10.0
+              }
+            },
+          "aimingType": "Direction",
+          "aimingDirection": [
+              0.0,
+              3.0,
+              3.0
+          ],
+          "continuousShootingCount": 1,
+          "continuousShootingInterval": 1.0,
+          "shootingInterval": 2.5,
+          "cannonballSpeed": 20.0,
+          "cannonballSpeedReverse": 3.0,
+          "searchingRange": 80.0,
+          "cannonballLifeTime": 6.0,
+          "cannonballLifeRange": 100.0,
+          "canHomingAttack": true
+      }
+    }

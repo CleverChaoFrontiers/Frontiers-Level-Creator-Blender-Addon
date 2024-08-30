@@ -1,0 +1,19 @@
+    {
+      "id": "{1F099237-EA08-3690-73C0-77889A81DE24}",
+      "name": "PortalGate0",
+      "type": "PortalGate",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "eventDriven": false,
+        "saveFlag": 0,
+        "isGoal": true,
+        "scale": 1.3
+      }
+    }

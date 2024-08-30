@@ -1,0 +1,33 @@
+    {
+      "id": "{8CC4F667-46E4-34A4-3151-B9DCF2643E5D}",
+      "name": "DimensionVolume0",
+      "type": "DimensionVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 300.0,
+            "rangeOut": 20.0
+          }
+        },
+        "isSideview": true,
+        "priority": 1,
+        "pathName": "INSERT_OBJECT_PATH_NAME_HERE",
+        "state": "DEFAULTSTATE_ON",
+        "action": "ACTION_EACHTIME",
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 10.0,
+          "CollisionHeight": 10.0,
+          "CollisionDepth": 10.0,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }

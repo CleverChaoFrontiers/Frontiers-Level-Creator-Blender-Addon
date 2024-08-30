@@ -1,0 +1,38 @@
+{
+  "id": "{24C5D5D5-199D-A740-B27C-015A3A7E2CDE}",
+  "name": "Wolf24",
+  "type": "Wolf",
+  "position": [
+    -528.60302734375,
+    200.6909942626953,
+    -789.5399780273438
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 132,
+    "level": 1,
+    "distance": 0,
+    "tolerance": 0,
+    "territories": [],
+    "searchDistanceOffset": -25,
+    "managerId": "{00000000-0000-0000-0000-000000000000}",
+    "respawnableByMeteorShower": true,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 5,
+      "tipsNo": 44
+    },
+    "isTrial": false
+  }
+}

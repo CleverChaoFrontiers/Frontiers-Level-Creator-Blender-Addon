@@ -1,0 +1,53 @@
+{
+  "id": "{EF3F1F86-2358-9A45-9270-95A4D20C7349}",
+  "name": "AutorunVolume0",
+  "type": "AutorunVolume",
+  "position": [
+    149.61300659179688,
+    964.4329833984375,
+    384.35699462890625
+  ],
+  "rotation": [
+    0,
+    -1,
+    0,
+    -4.371138828673793e-8
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "pathName": "",
+    "speed": 60,
+    "speedMin": 60,
+    "boostSpeed": 60,
+    "boostSpeedMin": 60,
+    "boostLvMaxSpeed": 60,
+    "boostLvMaxSpeedMin": 60,
+    "initialSpeed": 60,
+    "outOfControlTime": 0,
+    "width": 0,
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_EACHTIME",
+    "jumpMode": "WorldSpace",
+    "moveMode": "MoveWorldSpace",
+    "forceFall": false,
+    "endByAir": false,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_Z_PLANE",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 20,
+      "CollisionHeight": 30,
+      "CollisionDepth": 40,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

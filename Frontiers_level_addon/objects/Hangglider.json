@@ -1,0 +1,42 @@
+    {
+      "id": "{2F48397B-C78A-F2B5-6E65-892335D7C275}",
+      "name": "Hangglider0",
+      "type": "Hangglider",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "moveType": "MOVE_POINT",
+        "moveVector": [
+          0.0,
+          20.0,
+          30.0
+        ],
+        "waitTime": 1.0,
+        "pathName": "",
+        "finishDist": 36.05,
+        "moveSpeed": 100.0,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

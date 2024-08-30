@@ -1,0 +1,51 @@
+{
+  "id": "{581356CE-0A73-244F-92E1-209B85963102}",
+  "name": "Sage_sb2090",
+  "type": "Sage",
+  "position": [
+    106.33399963378906,
+    178.5030059814453,
+    744.2630004882812
+  ],
+  "rotation": [
+    0,
+    0.5235115885734558,
+    0,
+    0.8520185351371765
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 2,
+    "purposeOfUse": "SubEvent",
+    "questType": "KodamaCollection01",
+    "eventDriven": true,
+    "luaName": "",
+    "eventName": "sb2090",
+    "isEndKill": true,
+    "useDefaultPath": true,
+    "hiddenList": [],
+    "isUseSequenceItem": true,
+    "requiredSequenceItem": 64,
+    "inputEventName": "",
+    "useCharacterType": "All",
+    "useAdditionalCollider": false,
+    "additionalColliderShape": "Cylinder",
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "extents": [
+      5,
+      5,
+      0.10000000149011612
+    ],
+    "radius": 3,
+    "height": 3
+  }
+}

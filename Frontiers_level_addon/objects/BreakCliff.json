@@ -1,0 +1,23 @@
+    {
+      "id": "{69275D4A-478E-8F86-2613-C5E9287B3DE4}",
+      "name": "BreakCliff0",
+      "type": "BreakCliff",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "shakeWaitTime": 0.0,
+        "shakeTime": 0.2,
+        "doesRespawn": false,
+        "respawnTime": 20.0,
+        "num": 1,
+        "terminus": "NONE",
+        "isFall": false,
+        "isLightVersion": false
+      }
+    }

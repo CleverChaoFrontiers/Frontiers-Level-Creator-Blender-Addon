@@ -1,0 +1,35 @@
+    {
+      "id": "{847E86BE-65C0-EC49-A6A2-63059ED8EDDD}",
+      "name": "GoalTrigger0",
+      "type": "GoalTrigger",
+      "position": [-609.208984375, 157.75900268554688, 183.32000732421875],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100.0,
+            "rangeOut": 20.0
+          }
+        },
+        "goalTime": 0.0,
+        "actionType": "GOALACTIONTYPE_STOP",
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 6.0,
+          "CollisionHeight": 6.099999904632568,
+          "CollisionDepth": 21.0,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }

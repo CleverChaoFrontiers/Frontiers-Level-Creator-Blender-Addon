@@ -1,0 +1,20 @@
+    {
+      "id": "{A5F28A4D-80E8-7307-9AC0-64FDEC846670}",
+      "name": "UpDownPole0",
+      "type": "UpDownPole",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "barLengthNum": 2,
+        "speed": 2.0,
+        "moveHeight": 1.350,
+        "phase": 0.0,
+        "eventDriven": false
+      }
+    }

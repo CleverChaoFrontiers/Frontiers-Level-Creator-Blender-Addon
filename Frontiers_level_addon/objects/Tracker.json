@@ -1,0 +1,68 @@
+{
+  "id": "{DA0B4F4C-136A-E748-B031-C79052B75E5D}",
+  "name": "Tracker3",
+  "type": "Tracker",
+  "position": [
+    830.635986328125,
+    200.55299377441406,
+    -599.1740112304688
+  ],
+  "rotation": [
+    0,
+    0.7071067690849304,
+    0,
+    0.7071067094802856
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 400,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "bases": [],
+    "attackTargets": [],
+    "attackTargets2": [],
+    "attackTargets3": [],
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "useTerritory": false,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        100,
+        40,
+        100
+      ],
+      "fightSize": [
+        200,
+        40,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "no": 8,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": true,
+      "practiceNo": 2,
+      "tipsNo": 66
+    },
+    "enable3rdParameter": false
+  }
+}

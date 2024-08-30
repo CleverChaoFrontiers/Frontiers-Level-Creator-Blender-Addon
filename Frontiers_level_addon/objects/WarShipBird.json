@@ -1,0 +1,25 @@
+{
+  "id": "{9C99EF69-EB30-B24E-BB3C-0F323ABA9355}",
+  "name": "WarShipBird0",
+  "type": "WarShipBird",
+  "position": [
+    -3.381580114364624,
+    864.52197265625,
+    741.8590087890625
+  ],
+  "rotation": [
+    0,
+    0.9441781640052795,
+    0,
+    0.329435259103775
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 300,
+        "rangeOut": 20
+      }
+    },
+    "dummy": 0
+  }
+}

@@ -1,0 +1,39 @@
+    {
+      "id": "{47587592-94B6-A28F-0AAA-782165BAAAD2}",
+      "name": "AutorunTrigger0",
+      "type": "AutorunTrigger",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "action": "ACT_START",
+        "pathName": "INSERT_OBJECT_PATH_NAME_HERE",
+        "speed": 60.0,
+        "speedMin": -1.0,
+        "boostSpeed": -1.0,
+        "boostSpeedMin": -1.0,
+        "boostLvMaxSpeed": -1.0,
+        "boostLvMaxSpeedMin": -1.0,
+        "initialSpeed": -1.0,
+        "outOfControlTime": 10.0,
+        "width": 0.0,
+        "limitTime": 0.0,
+        "jumpMode": "WorldSpace",
+        "forceFall": false,
+        "endByAir": false,
+        "passPlane": {
+          "width": 7.0,
+          "height": 15.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }

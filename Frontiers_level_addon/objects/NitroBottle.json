@@ -1,0 +1,17 @@
+    {
+      "id": "{C3B39627-3296-1E43-731C-29791FA0859D}",
+      "name": "NitroBottle0",
+      "type": "NitroBottle",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "respawnTime": 3.0,
+        "canAirBoost": false
+      }
+    }

@@ -1,0 +1,26 @@
+{
+  "id": "{15CEEF86-1526-9F4C-AD5C-9EDEC49A8177}",
+  "name": "KodamaElder0",
+  "type": "KodamaElder",
+  "position": [
+    1274.1500244140625,
+    210.8820037841797,
+    -327.95599365234375
+  ],
+  "rotation": [
+    0,
+    -0.9659258127212524,
+    0,
+    0.2588190734386444
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 0,
+    "fastTravelLocator": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

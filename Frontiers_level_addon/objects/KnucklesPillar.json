@@ -1,0 +1,44 @@
+{
+  "id": "{F3BC25B4-1A78-484B-8CCA-FBBD24BF0E6C}",
+  "name": "KnucklesPillar23",
+  "type": "KnucklesPillar",
+  "position": [
+    558.93798828125,
+    419.7340087890625,
+    -1786.8800048828125
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 300,
+        "rangeOut": 20
+      }
+    },
+    "no": 30,
+    "size": "LARGE",
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "eventDriven": "EVENT_NONE",
+    "isSyncRot": false,
+    "isSmoothMove": false,
+    "isReverse": false,
+    "isPressDead": false,
+    "moveVector": [
+      0,
+      0,
+      0
+    ],
+    "pathName": "",
+    "locaterList": [],
+    "waitTime": 0,
+    "phase": 0,
+    "speed": 10
+  }
+}

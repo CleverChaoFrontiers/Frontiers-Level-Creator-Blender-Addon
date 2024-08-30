@@ -1,0 +1,37 @@
+    {
+      "id": "{1438AB86-297D-1AC8-7D2C-7E2E58AA4875}",
+      "name": "DivingVolume0",
+      "type": "DivingVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 300.0,
+            "rangeOut": 20.0
+          }
+        },
+        "limit": true,
+        "easeTimeEnter": 0.5,
+        "easeTimeLeave": 0.5,
+        "outOfControlTime": 1.0,
+        "waitTime": 1.0,
+        "velocityReset": true,
+        "state": "DEFAULTSTATE_ON",
+        "action": "ACTION_EACHTIME",
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 10.0,
+          "CollisionHeight": 10.0,
+          "CollisionDepth": 10.0,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "isEnableHomingAttack": false
+      }
+    }

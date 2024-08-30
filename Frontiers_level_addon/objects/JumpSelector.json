@@ -1,0 +1,30 @@
+    {
+      "id": "{6B7F76A9-6040-B89A-FC14-0E5BE86EE09A}",
+      "name": "JumpSelector0",
+      "type": "JumpSelector",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "type": "JUMP",
+        "inputTime": 2.0,
+        "launchJump": {
+          "firstSpeed": 15.0,
+          "outOfControl": 0.25,
+          "keepVelocityDistance": 5.0
+        },
+        "launchAttack": {
+          "firstSpeed": 20.0,
+          "outOfControl": 0.25,
+          "keepVelocityDistance": 5.0
+        },
+        "outOfControlMiss": 0.5,
+        "collisionRadius": 0.75,
+        "reusable": true
+      }
+    }

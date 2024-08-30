@@ -1,0 +1,40 @@
+{
+  "id": "{C17BFB9D-1121-E247-B69C-7721159B72E4}",
+  "name": "SpiderAuraTrain7",
+  "type": "SpiderAuraTrain",
+  "position": [
+    0.5959782004356384,
+    213.71499633789062,
+    -2.349980115890503
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "setType": "Distance",
+    "value": 3,
+    "startNum": 3,
+    "cameraColliderUuids": [],
+    "root": {
+      "pathName": "",
+      "cameraUuid": "{00000000-0000-0000-0000-000000000000}",
+      "cameraEaseInTime": 0,
+      "cameraEaseOutTime": 0
+    },
+    "speed": 40,
+    "collisionScale": [
+      1.5,
+      1,
+      1.5
+    ]
+  }
+}

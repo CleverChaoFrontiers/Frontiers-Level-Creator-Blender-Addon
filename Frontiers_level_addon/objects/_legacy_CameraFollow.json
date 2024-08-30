@@ -1,0 +1,69 @@
+    {
+      "id": "{393D300E-31BA-7FA6-8AB2-12CAC66BDD65}",
+      "name": "Volume0",
+      "type": "CameraVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0,0.0,0.0,0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "target": "{90D3DFF9-EB14-0165-DE64-CD8990C61D94}",
+        "priority": 2,
+        "useHighPriority": true,
+        "easeTimeEnter": 1.5,
+        "easeTimeLeave": 1.5,
+        "interpolateTypeEnter": "INTERPOLATE_RELATIVE",
+        "interpolateTypeLeave": "INTERPOLATE_RELATIVE",
+        "state": "DEFAULTSTATE_ON",
+        "action": "ACTION_EACHTIME",
+        "disableFreeMode": false,
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 56.869998931884766,
+          "CollisionHeight": 41.80999755859375,
+          "CollisionDepth": 61.969993591308594,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    };
+    {
+      "id": "{90D3DFF9-EB14-0165-DE64-CD8990C61D94}",
+      "name": "CameraFollow0",
+      "type": "CameraFollow",
+      "position": [0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "IsCameraView": true,
+        "Fovy": 45.0,
+        "ZRot": -0.0,
+        "Distance": 10.0,
+        "Yaw": 20.0,
+        "Pitch": 10.0,
+        "targetOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "gravityOffset": 0.0,
+        "playerOffset": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }

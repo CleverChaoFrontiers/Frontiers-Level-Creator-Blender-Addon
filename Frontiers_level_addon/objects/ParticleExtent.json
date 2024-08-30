@@ -1,0 +1,40 @@
+{
+    "id": "{A3C2FA13-5834-6841-96A2-FEE305735362}",
+    "name": "ParticleExtent0",
+    "type": "ParticleExtent",
+    "position": [864.9169921875, 126.06700134277344, 1480.010009765625],
+    "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+    "parameters": {
+    "tags": {
+        "RangeSpawning": {
+        "rangeIn": 140.0,
+        "rangeOut": 20.0
+        }
+    },
+    "effectName": "ef_w1_waterfall_btm",
+    "scale": 1.0,
+    "colorR": 255,
+    "colorG": 255,
+    "colorB": 255,
+    "colorA": 255,
+    "shapeType": "SHAPE_SPHERE",
+    "extents": [
+        1.0,
+        1.0,
+        1.0
+    ],
+    "emitPointType": "EMIT_VOLUME",
+    "directionType": "DIRECTION_Y_UP",
+    "interval": 1.0,
+    "loopTime": 0.0,
+    "bottomExclusion": false,
+    "upperHalfOnly": false,
+    "active": "TYPE_ACTIVE",
+    "sectorId": 0
+    }
+}

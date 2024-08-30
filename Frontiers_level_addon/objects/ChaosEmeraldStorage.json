@@ -1,0 +1,27 @@
+{
+  "id": "{77622BD1-12E9-2943-9F9A-8E52E821CD58}",
+  "name": "ChaosEmeraldStorage3",
+  "type": "ChaosEmeraldStorage",
+  "position": [
+    124.22599792480469,
+    178.76100158691406,
+    -1051.9000244140625
+  ],
+  "rotation": [
+    0,
+    -0.4948309063911438,
+    0,
+    0.8689892888069153
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 400,
+        "rangeOut": 20
+      }
+    },
+    "no": 3,
+    "color": "White",
+    "unlockOrder": 3
+  }
+}

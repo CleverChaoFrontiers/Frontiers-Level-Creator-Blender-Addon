@@ -1,0 +1,34 @@
+{
+  "id": "{1866F3F8-1120-0D42-84F8-DB95A72E277C}",
+  "name": "Dove26",
+  "type": "Dove",
+  "position": [
+    -122.75,
+    144.53900146484375,
+    620.2659912109375
+  ],
+  "rotation": [
+    0,
+    -0.04361938685178757,
+    0,
+    0.9990482330322266
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 250,
+        "rangeOut": 20
+      }
+    },
+    "no": 26,
+    "enableEscape": true,
+    "searchDistance": 2,
+    "destroyTime": 7,
+    "flySpeed": 8,
+    "flyForceOffset": [
+      0,
+      1,
+      0
+    ]
+  }
+}

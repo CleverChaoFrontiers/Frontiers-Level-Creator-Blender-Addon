@@ -1,0 +1,366 @@
+{
+  "id": "{C30346BB-1C03-C442-A77D-BFFDC735BA86}",
+  "name": "Warship01",
+  "type": "Warship",
+  "position": [
+    -160.46600341796875,
+    762.1810302734375,
+    885.614990234375
+  ],
+  "rotation": [
+    -0.0027224100194871426,
+    0.4226163625717163,
+    0.001269480213522911,
+    0.9063036441802979
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1500,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "useTerritory": true,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        100,
+        40,
+        100
+      ],
+      "fightSize": [
+        400,
+        40,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "wanderPathName": "",
+    "locatorInfo": [
+      {
+        "attackPathName": "",
+        "locaterList": [],
+        "changeStateDistance": 400,
+        "stopAttackDistance": 250,
+        "grindPathNames": [
+          "SetPath_1910",
+          "SetPath_1911",
+          "SetPath_1913",
+          "SetPath_1914"
+        ]
+      },
+      {
+        "attackPathName": "",
+        "locaterList": [],
+        "changeStateDistance": 50,
+        "stopAttackDistance": 150,
+        "grindPathNames": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "attackPathName": "",
+        "locaterList": [],
+        "changeStateDistance": 50,
+        "stopAttackDistance": 150,
+        "grindPathNames": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      }
+    ],
+    "eacapePathNo": 1,
+    "winWarpList": [],
+    "eventLocatorList": [],
+    "cameraParam": [
+      {
+        "start": 2650,
+        "end": 2880,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 3463,
+        "end": 3722,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      }
+    ],
+    "rotateInfo": [
+      {
+        "enable": false,
+        "start": 550,
+        "end": 770
+      },
+      {
+        "enable": false,
+        "start": 3660,
+        "end": 3720
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      }
+    ],
+    "wanderPathInfo": {
+      "enable": true,
+      "start": 300,
+      "end": 830
+    },
+    "noBombPathInfo": [
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1
+      }
+    ],
+    "practiceConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 72
+    },
+    "no": 10
+  }
+}

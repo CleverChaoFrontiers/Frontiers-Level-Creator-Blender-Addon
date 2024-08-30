@@ -1,0 +1,27 @@
+{
+  "id": "{3F2B567F-E3C3-FA44-8996-111E3E6DB100}",
+  "name": "BreakWall6",
+  "type": "BreakWall",
+  "position": [
+    -810.2849731445312,
+    133.23500061035156,
+    -1141.2900390625
+  ],
+  "rotation": [
+    -0.7044159173965454,
+    -0.06162841618061066,
+    0.06162841618061066,
+    -0.7044159770011902
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 300,
+        "rangeOut": 20
+      }
+    },
+    "size": "SIZE_M",
+    "isHATarget": true,
+    "maxHits": 1
+  }
+}

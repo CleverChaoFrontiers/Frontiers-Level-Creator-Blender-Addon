@@ -1,0 +1,29 @@
+    {
+      "id": "{8B192545-7717-11D0-3A72-332DC73DD245}",
+      "name": "Batabata0",
+      "type": "Batabata",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "viewType": "FV",
+        "velocity": 10.0,
+        "searchDistance": 20.0,
+        "targetPos": [
+          -5.0,
+          0.0,
+          3.0
+        ],
+        "isEventDriven": false,
+        "isRespawn": false,
+        "isHomingAttack": false,
+        "respawnTime": 1.0,
+        "waitTime": 0.0,
+        "moveHeight": 8.0
+      }
+    }

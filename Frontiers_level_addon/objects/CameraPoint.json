@@ -1,0 +1,32 @@
+{
+  "id": "{A8340B2A-0175-5E4E-B8FF-2FA8CDC3366A}",
+  "name": "CameraPoint0",
+  "type": "CameraPoint",
+  "position": [
+    10.822699546813965,
+    697.281005859375,
+    -884.7789916992188
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "IsCameraView": false,
+    "fovy": 45,
+    "distance": 10,
+    "gravityOffset": 0,
+    "playerOffset": [
+      0,
+      0,
+      0
+    ],
+    "worldOffset": [
+      0,
+      0,
+      0
+    ]
+  }
+}

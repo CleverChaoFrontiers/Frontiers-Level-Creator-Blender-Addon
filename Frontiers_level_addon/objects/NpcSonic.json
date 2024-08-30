@@ -1,0 +1,33 @@
+{
+  "id": "{9DF3B217-EDAF-B643-BD10-8AD9B3917934}",
+  "name": "NpcSonic3",
+  "type": "NpcSonic",
+  "position": [
+    -70.78089904785156,
+    173.70599365234375,
+    -1094.030029296875
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 3,
+    "purposeOfUse": "SubEvent",
+    "eventDriven": true,
+    "luaName": "",
+    "eventName": "sb5400",
+    "isEndKill": true,
+    "useDefaultPath": true,
+    "hiddenList": [],
+    "useCharacterType": "Amy"
+  }
+}

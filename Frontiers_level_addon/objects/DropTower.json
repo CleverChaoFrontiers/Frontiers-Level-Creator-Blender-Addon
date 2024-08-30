@@ -1,0 +1,48 @@
+    {
+      "id": "{2D058A2F-8B84-2A0B-AEB2-C7C648547631}",
+      "name": "DropTower0",
+      "type": "DropTower",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "piecesNum": 17,
+        "dropTime": 0.1,
+        "piecesType": [
+          "TYPE_C",
+          "TYPE_A",
+          "TYPE_B",
+          "TYPE_D",
+          "TYPE_D",
+          "TYPE_A",
+          "TYPE_A",
+          "TYPE_C",
+          "TYPE_D",
+          "TYPE_D",
+          "TYPE_D",
+          "TYPE_B",
+          "TYPE_A",
+          "TYPE_C",
+          "TYPE_D",
+          "TYPE_C",
+          "TYPE_B",
+          "TYPE_C",
+          "TYPE_A",
+          "TYPE_B",
+          "TYPE_D",
+          "TYPE_D",
+          "TYPE_A",
+          "TYPE_A",
+          "TYPE_C",
+          "TYPE_D",
+          "TYPE_D",
+          "TYPE_B",
+          "TYPE_A"
+        ]
+      }
+    }

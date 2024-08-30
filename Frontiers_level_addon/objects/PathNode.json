@@ -1,0 +1,20 @@
+{
+  "id": "{55A29ABF-20C7-2442-BD95-891E4850CCFB}",
+  "name": "PathNode376",
+  "type": "PathNode",
+  "position": [
+    618.8939819335938,
+    147.23500061035156,
+    477.82598876953125
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "nodeId": 1,
+    "lineType": "LINETYPE_STRAIGHT"
+  }
+}

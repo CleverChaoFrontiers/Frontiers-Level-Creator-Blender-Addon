@@ -1,0 +1,69 @@
+{
+  "id": "{F3F36A89-2FC9-5947-9FF9-1930D05BF25B}",
+  "name": "Blade1",
+  "type": "Blade",
+  "position": [
+    337.58599853515625,
+    145.65699768066406,
+    868.9240112304688
+  ],
+  "rotation": [
+    0.0026655159890651703,
+    0.521738588809967,
+    0.004358361475169659,
+    0.8530901074409485
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "useNonBattleRange": false,
+    "respawnableByMeteorShower": true,
+    "nonBattleRange": 0,
+    "useTerritory": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        70,
+        80,
+        30
+      ],
+      "fightSize": [
+        130,
+        90,
+        60
+      ],
+      "patrolOffset": [
+        0,
+        10,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "no": 2,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": true,
+      "practiceNo": 5,
+      "tipsNo": 56
+    },
+    "enableAttackOutsideArea": true,
+    "enable3rdParameter": false,
+    "enableHightSpeedMoveing": false,
+    "speedUpScale": 1
+  }
+}

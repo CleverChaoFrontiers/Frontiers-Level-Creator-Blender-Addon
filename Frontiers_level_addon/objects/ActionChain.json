@@ -1,0 +1,26 @@
+{
+  "id": "{91CC512E-18C4-AF4E-BE89-115E462EEBFE}",
+  "name": "ActionChain7",
+  "type": "ActionChain",
+  "position": [
+    -152.8179931640625,
+    146.56100463867188,
+    778.7650146484375
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 7,
+    "cameraUUID": "{00000000-0000-0000-0000-000000000000}",
+    "cameraEaseIn": 0,
+    "cameraEaseOut": 0,
+    "clearWaitTime": 1,
+    "cameraTime": 5,
+    "objectNumber": 7,
+    "viewNo": 8
+  }
+}

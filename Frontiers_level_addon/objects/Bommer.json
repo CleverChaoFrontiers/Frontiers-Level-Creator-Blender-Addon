@@ -1,0 +1,42 @@
+{
+  "id": "{7909E1FF-DC65-D341-B9B7-3A85621F8C16}",
+  "name": "Bommer0",
+  "type": "Bommer",
+  "position": [
+    665.697021484375,
+    97.5521011352539,
+    1244.81005859375
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 0,
+    "level": 1,
+    "territoryId": "{00000000-0000-0000-0000-000000000000}",
+    "respawnableByMeteorShower": true,
+    "appearEffectEnabled": false,
+    "sonicSetParam": {
+      "isSonicSet": false,
+      "searchRadiusOffset": 0,
+      "attackMoveSpeedOffset": 0,
+      "chaseMoveSpeedOffset": 0,
+      "moveDistanceFront": 10,
+      "moveDistanceBack": 0
+    },
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 48
+    }
+  }
+}

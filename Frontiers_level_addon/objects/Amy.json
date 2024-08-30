@@ -1,0 +1,52 @@
+{
+  "id": "{F86BC06F-46C3-2942-AE62-FFFF796DF977}",
+  "name": "Amy_ep02",
+  "type": "Amy",
+  "position": [
+    417.2090148925781,
+    158.73699951171875,
+    510.7449951171875
+  ],
+  "rotation": [
+    -5.701283889436581e-9,
+    -0.0063181109726428986,
+    1.6849109840677556e-7,
+    0.9999800324440002
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 1,
+    "purposeOfUse": "Normal",
+    "questType": "KodamaCollection01",
+    "eventDriven": true,
+    "luaName": "",
+    "eventName": "ev1060",
+    "isEndKill": true,
+    "useDefaultPath": true,
+    "hiddenList": [],
+    "isUseSequenceItem": true,
+    "requiredSequenceItem": 24,
+    "lackLuaName": "",
+    "inputEventName": "",
+    "useCharacterType": "All",
+    "useAdditionalCollider": false,
+    "additionalColliderShape": "Cylinder",
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "extents": [
+      5,
+      5,
+      0.10000000149011612
+    ],
+    "radius": 3,
+    "height": 3
+  }
+}

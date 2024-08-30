@@ -1,0 +1,27 @@
+{
+  "id": "{D36AD419-C953-6D48-930E-2B03266CDDAC}",
+  "name": "TrackerBase9",
+  "type": "TrackerBase",
+  "position": [
+    830.6300048828125,
+    190.3040008544922,
+    -599.1740112304688
+  ],
+  "rotation": [
+    0,
+    0.7071067690849304,
+    0,
+    0.7071067094802856
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 500,
+        "rangeOut": 20
+      }
+    },
+    "gimmicks": [],
+    "returnRadius": 0,
+    "visibleDistance": 500
+  }
+}

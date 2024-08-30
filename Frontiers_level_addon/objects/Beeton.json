@@ -1,0 +1,35 @@
+    {
+      "id": "{36702D08-EA8A-540A-46AD-B7FD762E2543}",
+      "name": "Beeton0",
+      "type": "Beeton",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "isFV": true,
+        "doesRespawn": false,
+        "respawnTime": 1.0,
+        "moveParam": {
+          "moveType": "FIXED",
+          "destOffset": [
+          0.0,
+          0.0,
+          10.0
+          ],
+          "pathName": "",
+          "moveSpeed": 2.0
+        },
+        "attackParam": {
+          "isAttack": false,
+          "bulletSpeed": 2.0,
+          "prepareTime": 1.0,
+          "searchDistance": 5.0,
+          "searchAngle": 90.0
+        }
+      }
+    }

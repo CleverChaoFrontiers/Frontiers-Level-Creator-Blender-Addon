@@ -1,0 +1,20 @@
+    {
+      "id": "{9B8EF388-E0F7-6668-8138-E32A7C734E67}",
+      "name": "CloudFloor0",
+      "type": "CloudFloor",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visual": "Cloud5m",
+        "eventDriven": false,
+        "actionOnEvent": "Appear",
+        "timeTilDisappear": 5.0,
+        "upwardSpeed": 17.0
+      }
+    }

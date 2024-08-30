@@ -1,0 +1,41 @@
+{
+  "id": "{9F550F3C-2CE6-FA46-95B9-06DFE9AADA46}",
+  "name": "PathCircle6",
+  "type": "PathCircle",
+  "position": [
+    851.5709838867188,
+    129.2729949951172,
+    1275.800048828125
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "setParameter": {
+      "pathUID": 7902,
+      "pathType": "GR_PATH",
+      "capVisible": "Both",
+      "grindUnitLength": 1,
+      "paramType": "PARAM_CIRCLE",
+      "isMovable": false,
+      "normalType": "NOR_DEFAULT",
+      "radius": 15,
+      "divideRate": 1,
+      "isReverse": false,
+      "connectParam": {
+        "isConnect": false,
+        "connectType": "CONNECT_STRAIGHT",
+        "splineTangentLength": 50
+      }
+    }
+  }
+}

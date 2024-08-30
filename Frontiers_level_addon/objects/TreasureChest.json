@@ -1,0 +1,39 @@
+{
+  "id": "{76B3A6BB-8874-1C4E-8420-77B15D66E3BC}",
+  "name": "TreasureChest2",
+  "type": "TreasureChest",
+  "position": [
+    246.79600524902344,
+    212.06100463867188,
+    -166.73800659179688
+  ],
+  "rotation": [
+    0,
+    0.9848077297210693,
+    0,
+    0.17364822328090668
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 50,
+        "rangeOut": 20
+      }
+    },
+    "no": 2,
+    "eventDriven": "EVENT_NONE",
+    "num": 10,
+    "useSubCamera": false,
+    "subCameraPos": [
+      0,
+      2,
+      2
+    ],
+    "subCameraTarget": [
+      0,
+      0.5,
+      0
+    ],
+    "subCameraDuration": 2
+  }
+}

@@ -1,0 +1,19 @@
+    {
+      "id": "{9B194CBE-17D8-540E-45E2-B9FC2A6B9842}",
+      "name": "StartPosition0",
+      "type": "StartPosition",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "m_startType": "FALL",
+        "m_speed": 60.0,
+        "m_time": 0.0,
+        "m_outOfControlTime": 0.0
+      }
+    }

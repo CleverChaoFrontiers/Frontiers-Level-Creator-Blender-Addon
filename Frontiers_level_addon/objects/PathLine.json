@@ -1,0 +1,39 @@
+{
+  "id": "{32E5D48B-26E8-6C46-8503-F574D1F5381B}",
+  "name": "PathLine102",
+  "type": "PathLine",
+  "position": [
+    546.4530029296875,
+    140.9669952392578,
+    471.1610107421875
+  ],
+  "rotation": [
+    0,
+    0.6427875757217407,
+    0,
+    0.7660444974899292
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "setParameter": {
+      "pathUID": 7322,
+      "pathType": "GR_PATH",
+      "capVisible": "Both",
+      "grindUnitLength": 1,
+      "paramType": "PARAM_LINE",
+      "isMovable": false,
+      "distance": 40,
+      "twistAngle": 0,
+      "connectParam": {
+        "isConnect": false,
+        "connectType": "CONNECT_STRAIGHT",
+        "splineTangentLength": 50
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "{C92962A5-0D8B-724A-A0B9-5CA4C605D3AF}",
+  "name": "FishCoin147",
+  "type": "FishCoin",
+  "position": [
+    661.8109741210938,
+    141.90199279785156,
+    522.14501953125
+  ],
+  "rotation": [
+    -0.000012301764400035609,
+    3.552713678800501e-13,
+    0.007374193519353867,
+    0.9999728202819824
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 50,
+        "rangeOut": 30
+      }
+    },
+    "no": 63,
+    "eventDriven": false,
+    "spawnByGrowFlower": false
+  }
+}

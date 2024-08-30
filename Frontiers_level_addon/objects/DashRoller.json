@@ -1,0 +1,46 @@
+    {
+      "id": "{A724764C-4D47-15F0-41C6-33E068B9F803}",
+      "name": "DashRoller0",
+      "type": "DashRoller",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "ocTime": 2.0,
+        "speed": 60.0,
+        "isVisible": true,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ],
+        "adjustPath": {
+          "pathname": "",
+          "adjustSpeed": 3.0,
+          "adjustTime": 1.0
+        },
+        "isCyloopOn": false,
+        "cyloopSignDistance": 100.0,
+        "cyloopSignTolerance": 20.0,
+        "isCyKnuckleOn": false,
+        "changeType": "CHANGE_NONE",
+        "visual": "NORMAL"
+      }
+    }

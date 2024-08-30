@@ -1,0 +1,101 @@
+{
+  "id": "{4DD39D3A-26D1-8B4B-AE1E-662E49A214A5}",
+  "name": "Dragon0",
+  "type": "Dragon",
+  "position": [
+    1152.1300048828125,
+    500.010009765625,
+    -107.2300033569336
+  ],
+  "rotation": [
+    0,
+    0.9063077569007874,
+    0,
+    0.4226182699203491
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100000,
+        "rangeOut": 20
+      }
+    },
+    "cruisePathName": "SetPath_4001",
+    "patrolPathName": "SetPath_4000",
+    "approachPathName": "SetPath_4002",
+    "climbPathName": "SetPath_4003",
+    "climbEndPathName": "SetPath_4005",
+    "roadPathName": "SetPath_4004",
+    "battlePathName": "SetPath_4110",
+    "bossPathName": "",
+    "playerPathName": "",
+    "eventDriven": true,
+    "releaseMapPos": [],
+    "chasePathInfos": [
+      {
+        "bossPathName": "SetPath_4150",
+        "playerPathName": "SetPath_4151"
+      },
+      {
+        "bossPathName": "SetPath_4200",
+        "playerPathName": "SetPath_4201"
+      },
+      {
+        "bossPathName": "SetPath_4250",
+        "playerPathName": "SetPath_4251"
+      },
+      {
+        "bossPathName": "SetPath_4300",
+        "playerPathName": "SetPath_4301"
+      },
+      {
+        "bossPathName": "SetPath_4350",
+        "playerPathName": "SetPath_4351"
+      },
+      {
+        "bossPathName": "SetPath_4400",
+        "playerPathName": "SetPath_4401"
+      },
+      {
+        "bossPathName": "SetPath_4450",
+        "playerPathName": "SetPath_4451"
+      },
+      {
+        "bossPathName": "SetPath_4500",
+        "playerPathName": "SetPath_4501"
+      },
+      {
+        "bossPathName": "",
+        "playerPathName": ""
+      },
+      {
+        "bossPathName": "",
+        "playerPathName": ""
+      },
+      {
+        "bossPathName": "",
+        "playerPathName": ""
+      },
+      {
+        "bossPathName": "",
+        "playerPathName": ""
+      },
+      {
+        "bossPathName": "",
+        "playerPathName": ""
+      },
+      {
+        "bossPathName": "",
+        "playerPathName": ""
+      },
+      {
+        "bossPathName": "",
+        "playerPathName": ""
+      },
+      {
+        "bossPathName": "",
+        "playerPathName": ""
+      }
+    ]
+  }
+}

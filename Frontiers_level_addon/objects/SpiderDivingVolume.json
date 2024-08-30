@@ -1,0 +1,45 @@
+{
+  "id": "{E2DFC086-244A-0449-9C88-498877103531}",
+  "name": "SpiderDivingVolume2",
+  "type": "SpiderDivingVolume",
+  "position": [
+    -0.003997799940407276,
+    4.947999954223633,
+    0
+  ],
+  "rotation": [
+    -2.6776469394554637e-24,
+    1,
+    -6.1257422745431e-17,
+    -4.371138828673793e-8
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 600,
+        "rangeOut": 20
+      }
+    },
+    "limit": true,
+    "easeTimeEnter": 0,
+    "easeTimeLeave": 0.5,
+    "outOfControlTime": 0.5,
+    "waitTime": 0.20000000298023224,
+    "velocityReset": true,
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_EACHTIME",
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_Y_PLANE",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 22,
+      "CollisionHeight": 600,
+      "CollisionDepth": 22,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

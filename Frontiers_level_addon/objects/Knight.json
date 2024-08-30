@@ -1,0 +1,113 @@
+{
+  "id": "{B44FB0A7-33BB-CE44-989E-A5BCA8A52E38}",
+  "name": "Knight0",
+  "type": "Knight",
+  "position": [
+    607,
+    440,
+    885
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100000,
+        "rangeOut": 20
+      }
+    },
+    "pathNameClimb": "",
+    "locatorClimb": "{00000000-0000-0000-0000-000000000000}",
+    "traps": [
+      {
+        "enable": true,
+        "lane": "LaneA",
+        "distance": 150
+      },
+      {
+        "enable": true,
+        "lane": "LaneA",
+        "distance": 150
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      },
+      {
+        "enable": false,
+        "lane": "LaneA",
+        "distance": 0
+      }
+    ],
+    "pathNameBattle2": "",
+    "locatorBattle2Start": "{00000000-0000-0000-0000-000000000000}",
+    "locatorBattle2CyFloatWarp": [],
+    "releaseMapPos": [],
+    "slamBySwitch": false
+  }
+}

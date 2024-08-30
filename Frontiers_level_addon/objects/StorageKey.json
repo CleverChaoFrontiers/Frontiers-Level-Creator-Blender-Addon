@@ -1,0 +1,29 @@
+{
+  "id": "{2E840372-8DC1-194C-A7D9-FA67B0015923}",
+  "name": "StorageKey7",
+  "type": "StorageKey",
+  "position": [
+    -306.1910095214844,
+    214.36099243164062,
+    565.4089965820312
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 7,
+    "eventDriven": false,
+    "cyloopDriven": true,
+    "cyloopSignDistance": 50,
+    "cyloopSignTolerance": 20
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "{945ECE33-DCBD-C348-9C6C-502CE67426F9}",
+  "name": "RifleBeast0",
+  "type": "RifleBeast",
+  "position": [
+    -125.3010025024414,
+    120.27999877929688,
+    -1470.739990234375
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 3000,
+        "rangeOut": 20
+      }
+    },
+    "guidePathName": "",
+    "barrier": "{00000000-0000-0000-0000-000000000000}",
+    "releaseMapPos": [],
+    "isEvent": false,
+    "isDebugMotionTest": false
+  }
+}

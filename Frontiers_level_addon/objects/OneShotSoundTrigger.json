@@ -1,0 +1,34 @@
+    {
+      "id": "{A3BB8734-F9CE-2A4C-A58B-35251DB72772}",
+      "name": "OneShotSoundTrigger0",
+      "type": "OneShotSoundTrigger",
+      "position": [-2735.60009765625, 4.300000190734863, 344.29998779296875],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "cueName": "obj_cyber_countdown",
+        "volume": 0.0,
+        "isPlay3D": false,
+        "soundPositionType": "SOUND_POS_CENTER",
+        "soundPosition": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "shape": "SHAPE_BOX",
+        "basePoint": "BASE_CENTER",
+        "width": 0.0,
+        "height": 0.0,
+        "depth": 0.0
+      }
+    }

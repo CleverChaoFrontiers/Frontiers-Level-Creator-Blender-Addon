@@ -1,0 +1,37 @@
+    {
+      "id": "{1450F317-8F84-4968-0627-81E2AA354F40}",
+      "name": "GrindBooster0",
+      "type": "GrindBooster",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "ocTime": 1.5,
+        "speed": 300.0,
+        "keepVelocityTime": 0.0,
+        "isVisible": true,
+        "reverse": false,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

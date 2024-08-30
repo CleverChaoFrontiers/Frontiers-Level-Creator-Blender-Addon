@@ -1,0 +1,65 @@
+    {
+      "id": "{76FBAB60-9983-73A3-D338-12105E51CD8F}",
+      "name": "EventCondition0",
+      "type": "EventCondition",
+      "position": [0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100.0,
+            "rangeOut": 20.0
+          }
+        },
+        "no": 0,
+        "puzzleID": "",
+        "TargetList": [
+          "INSERT TARGETS HERE (ENEMIES OR SWITCHES)"
+        ],
+        "Trigger": "TRIGERTYPE_DEAD",
+        "Condition": "CONDITION_ALL",
+        "TimesType": "TIMESTYPE_SEVERAL",
+        "luaName": "",
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

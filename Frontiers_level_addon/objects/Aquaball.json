@@ -1,0 +1,37 @@
+{
+  "id": "{7037FE21-5D2E-5B4F-9CA8-1A5B6B0C33CE}",
+  "name": "Aquaball0",
+  "type": "Aquaball",
+  "position": [
+    253.2429962158203,
+    419.2879943847656,
+    -134.7689971923828
+  ],
+  "rotation": [
+    0,
+    -0.9659258127212524,
+    0,
+    0.2588190734386444
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 4,
+    "level": 1,
+    "territories": [],
+    "respawnableByMeteorShower": true,
+    "isSonicSet": true,
+    "movePathName": "",
+    "captureLimitTimeOffset": 10,
+    "moveSpeedOffset": 5,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 0,
+      "tipsNo": 0
+    }
+  }
+}

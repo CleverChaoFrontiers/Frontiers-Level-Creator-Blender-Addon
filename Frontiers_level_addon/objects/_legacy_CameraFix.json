@@ -1,0 +1,68 @@
+    {
+      "id": "{4233C5FD-BDD9-88B4-47DB-BAA3EC77DF36}",
+      "name": "Volume0",
+      "type": "CameraVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0,0.0,0.0,0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "target": "{C717D59A-716B-CAED-F7C2-1B7D9C0784B4}",
+        "priority": 4,
+        "useHighPriority": true,
+        "easeTimeEnter": 1.0,
+        "easeTimeLeave": 0.5,
+        "interpolateTypeEnter": "INTERPOLATE_RELATIVE",
+        "interpolateTypeLeave": "INTERPOLATE_RELATIVE",
+        "state": "DEFAULTSTATE_ON",
+        "action": "ACTION_EACHTIME",
+        "disableFreeMode": false,
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 85.36000061035156,
+          "CollisionHeight": 80.41999816894531,
+          "CollisionDepth": 104.83999633789063,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    };
+    {
+      "id": "{C717D59A-716B-CAED-F7C2-1B7D9C0784B4}",
+      "name": "CameraFix0",
+      "type": "CameraFix",
+      "position": [0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "IsCameraView": true,
+        "Fovy": 45.0,
+        "ZRot": 0.0,
+        "targetType": "TARGETTYPE_ABS_COORD",
+        "TargetPosition": [
+          -2170.300048828125,
+          35.160003662109375,
+          -1200.0999755859375
+        ],
+        "targetID": "{00000000-0000-0000-0000-000000000000}",
+        "targetDistance": 3.0,
+        "offsetFromObject": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }

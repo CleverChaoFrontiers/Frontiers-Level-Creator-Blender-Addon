@@ -1,0 +1,34 @@
+{
+  "id": "{824F4593-447E-9E4D-9DB9-AE47DBB1F756}",
+  "name": "Bird0",
+  "type": "Bird",
+  "position": [
+    687.2039794921875,
+    663.47802734375,
+    426.95001220703125
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 113,
+    "level": 1,
+    "pathName": "",
+    "territories": [],
+    "respawnableByMeteorShower": true,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 5,
+      "tipsNo": 45
+    }
+  }
+}

@@ -1,0 +1,18 @@
+    {
+      "id": "{658AF574-8419-104A-80D6-954122E83E7D}",
+      "name": "Note1",
+      "type": "Note",
+      "position": [1938.739990234375, 62.608001708984375, 1316.22998046875],
+      "rotation": [-0.02965528331696987, 2.0023435354232788e-8, -0.1334521770477295, 0.9906114339828491],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 5100.0,
+            "rangeOut": 20.0
+          }
+        },
+        "memoText": "Challenge01",
+        "colorType": "TYPE_RED",
+        "radius": 2.0
+      }
+    }

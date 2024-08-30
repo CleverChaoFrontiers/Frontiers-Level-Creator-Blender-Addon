@@ -1,0 +1,96 @@
+    {
+      "id": "{827E0EA2-0DB5-A8D3-3DA9-FE399C9B7403}",
+      "name": "EggRobo0",
+      "type": "EggRobo",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "viewType": "FV",
+        "appearParam": {
+          "appearType": "Fix",
+          "eventDriven": false,
+          "pathName": "",
+          "offsetTwoPoint": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "time": 1.0,
+          "easingTypePath": "QUADRATIC_EASEINOUT",
+          "isLand": true,
+          "isAppearEff": false
+        },
+        "searchParam": {
+          "moveType": "Fixed",
+          "moveOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed": 1.0,
+          "searchDistance": 20.0,
+          "searchAngle": 30.0,
+          "isTakeOffLandAfterFound": false,
+          "landOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "landTime": 1.0,
+          "landEasingType": "QUADRATIC_EASEINOUT",
+          "eyesightOffsetDirection": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "eyesightRotateAxis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "eyesightRotateAngle": 90.0
+        },
+        "attackParam": {
+          "weaponType": "Laser",
+          "isLookTarget": true,
+          "trackAngleSpeed": 180.0,
+          "targetLostTime": 10.0,
+          "laserParam": {
+            "colliderDistance": 20.0,
+            "colliderThickness": 1.5,
+            "colliderAngle": 30.0,
+            "speed": 5.0,
+            "lifeTime": 5.0,
+            "chargeTime": 0.800000011920929,
+            "countContinuous": 1,
+            "intervalContinuous": 0.800000011920929,
+            "coolTime": 1.0,
+            "shotArcAngleFv": 30.0,
+            "shotArcBulletCountFv": 3,
+            "isGraviry": true
+          },
+          "missileParam": {
+            "colliderDistance": 5.0,
+            "colliderAngle": 30.0,
+            "speed": 2.0,
+            "lifeTime": 5.0,
+            "explodeTime": 0.0,
+            "trackRate": 0.10000000149011612,
+            "traceStartTime": 0.5,
+            "chargeTime": 0.800000011920929,
+            "coolTime": 1.0
+          }
+        },
+        "reviveParam": {
+          "reviveType": "None",
+          "time": 5.0,
+          "locatorId": "{00000000-0000-0000-0000-000000000000}"
+        }
+      }
+    }

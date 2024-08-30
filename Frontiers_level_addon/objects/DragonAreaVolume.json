@@ -1,0 +1,39 @@
+{
+  "id": "{EAAE451A-15B9-F64D-A864-242A75EB1B48}",
+  "name": "DragonAreaVolume0",
+  "type": "DragonAreaVolume",
+  "position": [
+    932.2659912109375,
+    428.864013671875,
+    80.19550323486328
+  ],
+  "rotation": [
+    0,
+    0.5,
+    0,
+    0.8660253882408142
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 16,
+      "CollisionHeight": 11,
+      "CollisionDepth": 25,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "closeRadius": 25,
+    "dragon": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

@@ -1,0 +1,20 @@
+    {
+      "id": "{7C7876E4-0A3A-379F-8100-35BE8B8570B2}",
+      "name": "WoodBridgeBreak0",
+      "type": "WoodBridgeBreak",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100.0,
+            "rangeOut": 20.0
+          }
+        },
+        "viewType": "FV",
+        "flexValue": 0.0,
+        "logNum": 30,
+        "shakeWaitTime": 100.0,
+        "shakeTime": 3.0
+      }
+    }

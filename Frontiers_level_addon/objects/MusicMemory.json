@@ -1,0 +1,25 @@
+{
+  "id": "{DE93A188-BA0A-4649-9318-2883150ED3D3}",
+  "name": "MusicMemory6",
+  "type": "MusicMemory",
+  "position": [
+    1434.2099609375,
+    85.29900360107422,
+    1691.4100341796875
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 27
+  }
+}

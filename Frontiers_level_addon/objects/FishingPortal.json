@@ -1,0 +1,27 @@
+{
+  "id": "{2985FB9D-66A9-0845-811F-17CB95116BB6}",
+  "name": "FishingPortal0",
+  "type": "FishingPortal",
+  "position": [
+    -404.76300048828125,
+    131.8159942626953,
+    1074.02001953125
+  ],
+  "rotation": [
+    0,
+    -0.8874778151512146,
+    0,
+    0.46085041761398315
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 500,
+        "rangeOut": 20
+      }
+    },
+    "no": 0,
+    "spotId": 0,
+    "fastTravelLocator": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

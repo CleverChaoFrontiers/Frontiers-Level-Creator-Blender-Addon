@@ -1,0 +1,16 @@
+    {
+      "id": "{2DAF29F2-2789-A371-528A-7070822A72CA}",
+      "name": "GrindThorn0",
+      "type": "GrindThorn",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "reverse": false
+      }
+    }

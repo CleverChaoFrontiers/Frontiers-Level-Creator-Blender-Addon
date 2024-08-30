@@ -1,0 +1,31 @@
+    {
+      "id": "{90D3DFF9-EB14-0165-DE64-CD8990C61D94}",
+      "name": "CameraFollow0",
+      "type": "CameraFollow",
+      "position": [0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "IsCameraView": true,
+        "Fovy": 45.0,
+        "ZRot": -0.0,
+        "Distance": 10.0,
+        "Yaw": 20.0,
+        "Pitch": 10.0,
+        "targetOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "gravityOffset": 0.0,
+        "playerOffset": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }

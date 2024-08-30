@@ -1,0 +1,41 @@
+{
+  "id": "{6571BA42-1AC3-5046-9063-C24421C06551}",
+  "name": "Path64",
+  "type": "Path",
+  "position": [
+    628.176025390625,
+    147.11900329589844,
+    483.9580078125
+  ],
+  "rotation": [
+    0.23066434264183044,
+    1.862645149230957e-8,
+    0.13568748533725739,
+    0.9635263681411743
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "setParameter": {
+      "pathUID": 654231,
+      "pathType": "GR_PATH",
+      "capVisible": "Both",
+      "grindUnitLength": 1,
+      "paramType": "PARAM_SET_PATH",
+      "isMovable": false,
+      "nodeList": [],
+      "isLoopPath": false,
+      "startLineType": "LINETYPE_SNS",
+      "divideLength": 1,
+      "connectParam": {
+        "isConnect": false,
+        "connectType": "CONNECT_STRAIGHT",
+        "splineTangentLength": 50
+      }
+    }
+  }
+}

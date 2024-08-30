@@ -1,0 +1,25 @@
+{
+  "id": "{E43BE1D4-C6CF-A745-9300-7A1961FACF9F}",
+  "name": "BossGiantDoll0",
+  "type": "BossGiantDoll",
+  "position": [
+    368.62298583984375,
+    213.5189971923828,
+    79.63680267333984
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000,
+        "rangeOut": 20
+      }
+    },
+    "dummy": 0
+  }
+}

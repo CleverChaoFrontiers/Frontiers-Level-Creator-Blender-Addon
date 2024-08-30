@@ -1,0 +1,31 @@
+{
+  "id": "{0784A22D-C0EB-AB43-8429-96480D95ECDC}",
+  "name": "SpiderNeedle48",
+  "type": "SpiderNeedle",
+  "position": [
+    4.100009918212891,
+    220,
+    -4
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "pathName": "",
+    "collisionSize": [
+      50,
+      5,
+      50
+    ],
+    "speed": 30
+  }
+}

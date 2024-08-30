@@ -1,0 +1,38 @@
+{
+  "id": "{ADE01E76-2324-F949-BD81-1B92B511608F}",
+  "name": "DragonActionVolume69",
+  "type": "DragonActionVolume",
+  "position": [
+    -886.97998046875,
+    254.63699340820312,
+    -689.0399780273438
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1100,
+        "rangeOut": 20
+      }
+    },
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 10,
+      "CollisionHeight": 200,
+      "CollisionDepth": 10,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "actionType": "MISSILE"
+  }
+}

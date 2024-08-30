@@ -1,0 +1,29 @@
+{
+  "id": "{0E28ECF8-8446-E040-9894-EB4893213CC2}",
+  "name": "KodamaHermit0",
+  "type": "KodamaHermit",
+  "position": [
+    -455.7279968261719,
+    155.85400390625,
+    -603.7410278320312
+  ],
+  "rotation": [
+    0,
+    -0.1736481785774231,
+    0,
+    0.9848077297210693
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 0,
+    "fastTravelLocator": "{00000000-0000-0000-0000-000000000000}",
+    "eventNamePower": "",
+    "eventNameGuard": "",
+    "eventNamePowerAndGuard": ""
+  }
+}

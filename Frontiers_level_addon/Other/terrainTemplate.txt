@@ -1,0 +1,20 @@
+  {
+    "UnknownUInt32_1": 1,
+    "InstanceName": "DATA_NAME_model",
+    "AssetName": "DATA_NAME",
+    "Position": {
+      "X": DATA_POSITIONX,
+      "Y": DATA_POSITIONY,
+      "Z": DATA_POSITIONZ
+    },
+    "Rotation": {
+      "X": DATA_ROTATIONX,
+      "Y": DATA_ROTATIONY,
+      "Z": DATA_ROTATIONZ
+    },
+    "Scale": {
+      "X": 1.0,
+      "Y": 1.0,
+      "Z": 1.0
+    }
+  },

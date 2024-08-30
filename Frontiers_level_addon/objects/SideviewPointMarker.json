@@ -1,0 +1,29 @@
+    {
+      "id": "{7968BBEB-39DD-1515-40E0-D9EDA788F79E}",
+      "name": "SideviewPointMarker",
+      "type": "PointMarker",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "Width": 24.0,
+        "StageType": "SIDEVIEW",
+        "passPlane": {
+          "width": 15.0,
+          "height": 20.0,
+          "offset": [
+            0.0,
+            10.0,
+            0.0
+          ]
+        },
+        "restartType": "Standard",
+        "camera": "{00000000-0000-0000-0000-000000000000}",
+        "cameraLimit": 1.0
+      }
+    }

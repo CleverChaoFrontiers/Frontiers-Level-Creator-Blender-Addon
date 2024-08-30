@@ -1,0 +1,39 @@
+{
+  "id": "{E34A2B58-EE66-214B-ABED-2DA06DC02BC9}",
+  "name": "Jumper8",
+  "type": "Jumper",
+  "position": [
+    -241.39700317382812,
+    179.32699584960938,
+    416.07598876953125
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 150,
+        "rangeOut": 20
+      }
+    },
+    "no": 17,
+    "level": 1,
+    "territories": [],
+    "subs": [],
+    "onTarget": [],
+    "subsLifeTime": 10,
+    "isSonicSet": false,
+    "eyesightDistance": 10,
+    "respawnableByMeteorShower": true,
+    "onlyHeightField": false,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 22,
+      "tipsNo": 54
+    }
+  }
+}

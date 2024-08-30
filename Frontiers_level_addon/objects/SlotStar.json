@@ -1,0 +1,19 @@
+{
+  "id": "{C220C299-3B85-0648-8C7D-01102E6B3F24}",
+  "name": "SlotStar485",
+  "type": "SlotStar",
+  "position": [
+    440.27398681640625,
+    153.8090057373047,
+    -675.2160034179688
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 10
+      }
+    },
+    "visual": "Normal"
+  }
+}

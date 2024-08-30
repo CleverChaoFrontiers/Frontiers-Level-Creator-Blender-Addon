@@ -1,0 +1,28 @@
+    {
+      "id": "{C0D7112B-98A5-68F5-E268-76BED0B343A7}",
+      "name": "DriftEndVolume",
+      "type": "DriftEndVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100.0,
+            "rangeOut": 20.0
+          }
+        },
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 10.0,
+          "CollisionHeight": 10.0,
+          "CollisionDepth": 10.0,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }

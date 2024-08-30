@@ -1,0 +1,16 @@
+    {
+      "id": "{2CBB0899-55AD-98D5-3A85-3C5290372E73}",
+      "name": "DropFloor",
+      "type": "DropFloor",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "blockNum": 4
+      }
+    }

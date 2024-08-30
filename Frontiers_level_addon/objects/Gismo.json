@@ -1,0 +1,29 @@
+    {
+      "id": "{28DDA80C-4A9F-7CF8-AA36-C2B875AB652C}",
+      "name": "Gismo0",
+      "type": "Gismo",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 250.0,
+            "rangeOut": 20.0
+          }
+        },
+        "no": 1,
+        "name": "cmncyb_obj_ironbox",
+        "scale": 1.0,
+        "enableInstance": true,
+        "giTextureName": "",
+        "giOcclusionTextureName": "",
+        "dropItemParam": {
+          "dropItem": "NONE",
+          "dropNum": 1,
+          "dropSuperRingNum": 0,
+          "velocity": 0.800000011920929
+        },
+        "isMovable": false,
+        "respawnableByMeteorShower": true
+      }
+    }

@@ -1,0 +1,37 @@
+    {
+      "id": "{C8762B33-A5F2-6527-50F0-EF0EC56B2821}",
+      "name": "ThornBall0",
+      "type": "ThornBall",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "type": "TYPE_NORMAL",
+        "modelType": "MODEL_NORMAL",
+        "hitEnemy": false,
+        "moveParam": {
+          "time": 4.0,
+          "distance": 4.0,
+          "phase": 0.0,
+          "direction": "DIR_HORIZONTAL",
+          "timeType": "TIME_GLOBAL"
+        },
+        "rollingParam": {
+          "time": 4.0,
+          "radius": 4.0,
+          "phase": 0.0,
+          "direction": "DIR_HORIZONTAL"
+        },
+        "eventDriven": false,
+        "collisionRate": 1.399999976158142,
+        "isEnableTimeStop": false,
+        "stopTime": 5.0,
+        "timeStopGroupID": -1,
+        "offsetY": 0.0
+      }
+    }

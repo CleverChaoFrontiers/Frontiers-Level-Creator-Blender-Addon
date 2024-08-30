@@ -1,0 +1,70 @@
+{
+  "id": "{9D381AE2-4A5B-F349-8474-513899FF6F17}",
+  "name": "DragonRoadSpring0",
+  "type": "DragonRoadSpring",
+  "position": [
+    826.2429809570312,
+    388.5660095214844,
+    17.780000686645508
+  ],
+  "rotation": [
+    0.6830793023109436,
+    0.3165780305862427,
+    0.45212027430534363,
+    -0.47829732298851013
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "visual": "Normal",
+    "firstSpeed": 25,
+    "outOfControl": 1.399999976158142,
+    "keepVelocityDistance": 23,
+    "isHorming": false,
+    "isEventOn": false,
+    "isCyloopOn": false,
+    "cyloopSignDistance": 100,
+    "cyloopSignTolerance": 20,
+    "isCyKnuckleOn": false,
+    "isHorizon": false,
+    "airtrick": true,
+    "isVisible": false,
+    "isSmooth": false,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0.3499999940395355
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      }
+    ],
+    "rollingParam": {
+      "speed": 15,
+      "phase": 0
+    },
+    "offsetCollision": [
+      0,
+      0,
+      0
+    ],
+    "scaleCollision": [
+      1,
+      1,
+      1
+    ],
+    "isConstrain": false
+  }
+}

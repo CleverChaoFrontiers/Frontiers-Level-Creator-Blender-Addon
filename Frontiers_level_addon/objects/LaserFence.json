@@ -1,0 +1,23 @@
+    {
+      "id": "{61562A31-D364-C9AC-6C27-9722D309CECA}",
+      "name": "LaserFence0",
+      "type": "LaserFence",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "actionType": "ACT_KEEP",
+        "timeType": "TIME_GLOBAL",
+        "laserLength": 3.0,
+        "waitTime": 2.0,
+        "activeTime": 2.0,
+        "phase": 0.0,
+        "isEventDriven": false,
+        "isSE": false
+      }
+    }

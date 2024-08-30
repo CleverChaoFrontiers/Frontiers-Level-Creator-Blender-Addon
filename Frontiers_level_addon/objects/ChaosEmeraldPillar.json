@@ -1,0 +1,27 @@
+{
+  "id": "{D90A8804-C7FC-2048-81F2-AD75E99D09B9}",
+  "name": "ChaosEmeraldPillar3",
+  "type": "ChaosEmeraldPillar",
+  "position": [
+    124.22599792480469,
+    178.86099243164062,
+    -1051.9000244140625
+  ],
+  "rotation": [
+    0,
+    -0.4981866180896759,
+    0,
+    0.8670698404312134
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100000,
+        "rangeOut": 20
+      }
+    },
+    "no": 3,
+    "color": "Green",
+    "overrideEffectType": "NONE"
+  }
+}

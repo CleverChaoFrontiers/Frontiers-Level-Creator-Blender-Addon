@@ -1,0 +1,24 @@
+    {
+      "id": "{894E66EB-0F02-E639-D4CA-384DF944DCED}",
+      "name": "Fan0",
+      "type": "Fan",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "type": "TYPE_ON",
+        "place": "ON_GROUND",
+        "length": 10.0,
+        "velocity": 20.0,
+        "durOn": 2.0,
+        "durOff": 2.0,
+        "phase": 0.0,
+        "eventDriven": false,
+        "isConstrain": false
+      }
+    }

@@ -1,0 +1,38 @@
+    {
+      "id": "{888AF7CB-6FB8-8CDA-8ABC-4D9E92C0D71A}",
+      "name": "UpReel0",
+      "type": "UpReel",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "length": 8.0,
+        "upSpeedMax": 20.0,
+        "firstSpeed": 16.0,
+        "outOfControl": 0.30000001192092896,
+        "isOneTimeUp": false,
+        "eventDriven": false,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

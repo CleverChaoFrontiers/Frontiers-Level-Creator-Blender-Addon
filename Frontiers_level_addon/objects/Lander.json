@@ -1,0 +1,39 @@
+    {
+      "id": "{E3ED9DC9-DCFC-84EC-F4C1-B975898DFF70}",
+      "name": "Lander0",
+      "type": "Lander",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "moveType": "Fixed",
+        "twoPt": {
+          "pos": [
+            10.0,
+            0.0,
+            0.0
+          ],
+          "startPosRatio": 0.0,
+          "moveSpeed": 1.0,
+          "stopTime": 5.0,
+          "escapeDist": 3.0
+        },
+        "shot": {
+          "shotType": "Ground",
+          "searchType": "FV",
+          "searchRadius": 20.0,
+          "searchAngleAdd": 0.0,
+          "interval": 0.10000000149011612,
+          "shotNum": "Three",
+          "range": 90.0,
+          "distance": 6.0,
+          "height": 3.5,
+          "speed": 2.5
+        }
+      }
+    }

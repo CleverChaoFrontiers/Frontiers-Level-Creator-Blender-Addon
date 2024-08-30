@@ -1,0 +1,40 @@
+    {
+      "id": "{019EF4C7-1201-7C52-CB73-84B92D024044}",
+      "name": "Motora0",
+      "type": "Motora",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "placement": "WhereItsSet",
+        "movement": "TwoPoint",
+        "destination": [
+          0.0,
+          0.0,
+          5.0
+        ],
+        "movementSpeed": 2.0,
+        "rushSpeed": 2.0,
+        "knockbackSpeed": 2.0,
+        "tireRotAnglePerSecWhenMoving": 120.0,
+        "tireRotAnglePerSecWhenChargingup": 480.0,
+        "tireRotAnglePerSecWhenRushing": 240.0,
+        "searchDistance": 5.0,
+        "searchAngle": 90.0,
+        "respawnTime": 3.0,
+        "chargeupTime": 1.0,
+        "timeTilLoseSight": 0.5,
+        "heightToRecognizeAsCliff": 1.0,
+        "distanceToRecognizeObstable": 1.0,
+        "degreeToRotatePerSec": 90.0,
+        "eventDriven": false,
+        "doesRespawn": false,
+        "doesAttack": true,
+        "useFindMotion": true
+      }
+    }

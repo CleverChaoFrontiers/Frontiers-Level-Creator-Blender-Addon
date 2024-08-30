@@ -1,0 +1,20 @@
+    {
+      "id": "{B30D4AAC-5BFF-C80D-FB29-7F16FEC85FDF}",
+      "name": "SilverMoonRing01",
+      "type": "SilverMoonRing",
+      "position": [-14.399999618530273, 7.599999904632568, 85.30000305175781],
+      "rotation": [0.0, 0.0, 0.7069999575614929, 0.7072136402130127],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 1000.0,
+            "rangeOut": 10.0
+          }
+        },
+        "modelType": "NORMAL",
+        "ItemId": 0,
+        "RotateType": "OBJ_Y_UP",
+        "collisionRadius": 1.5,
+        "removeTime": 7.0
+      }
+    }

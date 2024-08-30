@@ -1,0 +1,27 @@
+{
+  "id": "{75803724-8F7D-3E41-89DD-C31278A8F297}",
+  "name": "PowerupSeed0",
+  "type": "PowerupSeed",
+  "position": [
+    1943.510009765625,
+    55.38750076293945,
+    1379.56005859375
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 0,
+    "type": "POWER",
+    "eventDriven": true
+  }
+}

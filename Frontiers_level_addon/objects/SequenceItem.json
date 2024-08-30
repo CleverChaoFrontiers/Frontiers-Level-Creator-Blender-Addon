@@ -1,0 +1,28 @@
+{
+  "id": "{E72193AE-F663-D248-898D-38C430FAAED2}",
+  "name": "SequenceItem46",
+  "type": "SequenceItem",
+  "position": [
+    660.406982421875,
+    160.31900024414062,
+    513.7540283203125
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 46,
+    "cyloopDriven": false,
+    "cyloopSignDistance": 100,
+    "cyloopSignTolerance": 20
+  }
+}

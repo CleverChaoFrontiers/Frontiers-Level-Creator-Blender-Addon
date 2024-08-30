@@ -1,0 +1,51 @@
+# This is an Asset Catalog Definition file for Blender.
+#
+# Empty lines and lines starting with `#` will be ignored.
+# The first non-ignored line should be the version indicator.
+# Other lines are of the format "UUID:catalog/path/for/assets:simple catalog name"
+
+VERSION 1
+
+83870958-dd7f-464f-b4ce-2f5c72a6d1b2:2D objects:2D objects
+3bf2342b-658d-44a3-91cf-dea1c2f51c19:Cameras:Cameras
+eb20cdea-d466-40d3-a7d6-843e4a940339:Chemical plant exclusive:Chemical plant exclusive
+a29d2434-efd0-415d-8a66-8a9a5dad4379:Dash panels and jump boards:Dash panels and jump boards
+3c3fe09e-4ee7-47cb-9cd7-0477af999fea:Enemies:Enemies
+978b4315-e993-41ac-bd10-e7afeae71c21:Essential objects:Essential objects
+e547e5e5-85a4-4926-bfac-df6c442c995c:Green Hill exclusive:Green Hill exclusive
+e6f2923c-cce5-4df3-a163-452f7f7e3778:Grindrail objects:Grindrail objects
+cd55dcf8-2da0-4b35-8cec-d2c586c378eb:Hazards:Hazards
+7586a3ce-34c7-4ca3-916c-07905d55c32f:Highway exclusive:Highway exclusive
+15fe42ba-b015-452d-9d01-bebd21b589d3:Legacy Cameras (As in outdated):Legacy Cameras (As in outdated)
+b03b646b-34f4-4b88-8ca5-29e21f1d875c:OpenZone:OpenZone
+1a665a37-743b-4594-92b0-56d9ca0ac704:OpenZone/Action Chain:OpenZone-Action Chain
+61491284-85e3-4539-845c-bb9c5d58732d:OpenZone/NPCS:OpenZone-NPCS
+2786bdf8-a991-43dd-9147-8e0cc5413f6f:OpenZone/OpenZone Collectables:OpenZone-OpenZone Collectables
+de8e848f-8216-4097-937d-c1704b738f39:OpenZone/OpenZone Enemies:OpenZone-OpenZone Enemies
+8af615dc-8177-4da2-810c-ec3414bd07d7:OpenZone/OpenZone Enemies/Complex enemies:OpenZone-OpenZone Enemies-Complex enemies
+a66dc4e9-7ab1-46b7-b9c6-cceec9284ded:OpenZone/OpenZone Enemies/Simple enemies:OpenZone-OpenZone Enemies-Simple enemies
+7cc3b626-238b-40c7-a803-db06cc83aae9:OpenZone/OpenZone Interactables:OpenZone-OpenZone Interactables
+1cdefd67-57a2-4a47-ac29-2cfea246dbac:OpenZone/OpenZone Minibosses:OpenZone-OpenZone Minibosses
+c86220be-c95c-4ddd-acf6-0e1fcb7d1c49:OpenZone/OpenZone Minibosses/Fortress:OpenZone-OpenZone Minibosses-Fortress
+2e3ba0a3-a530-40ff-8364-dcff6235218d:OpenZone/OpenZone Minibosses/Ghost:OpenZone-OpenZone Minibosses-Ghost
+a98b1da4-f31b-4c49-9472-ec046e5c06c7:OpenZone/OpenZone Minibosses/Shark:OpenZone-OpenZone Minibosses-Shark
+25099235-09bc-4734-a07b-5e30881aace3:OpenZone/OpenZone Minibosses/Simple minibosses:OpenZone-OpenZone Minibosses-Simple minibosses
+5b82ac45-5af5-44f0-8160-665938daee01:OpenZone/OpenZone Minibosses/Spider:OpenZone-OpenZone Minibosses-Spider
+e59d8082-7764-44b9-86f0-4fc5dd4743fb:OpenZone/OpenZone Minibosses/Sumo:OpenZone-OpenZone Minibosses-Sumo
+77c1f336-84a6-4660-b0fe-d020ab8d5979:OpenZone/OpenZone puzzles:OpenZone-OpenZone puzzles
+7e226556-8486-4c42-b4f8-c02f738f638c:OpenZone/Openzone Essentials:OpenZone-Openzone Essentials
+8010f66f-371d-4da5-af69-5095d526c1fc:OpenZone/Titans:OpenZone-Titans
+e6fc2509-882d-40e3-854c-fe3fa8830f20:OpenZone/Titans/Giganto:OpenZone-Titans-Giganto
+93e02939-fc5d-48f4-85ef-82b02500a083:OpenZone/Titans/Knight:OpenZone-Titans-Knight
+ec59d264-63d4-4ad0-8397-53352c026adb:OpenZone/Titans/Supreme:OpenZone-Titans-Supreme
+0378cc43-e146-41b3-9b57-0a6c18f78153:OpenZone/Titans/Wyvern:OpenZone-Titans-Wyvern
+e4de197c-8d96-45fa-8123-239886cb1180:Other objects & Gimmicks:Other objects & Gimmicks
+89b884d7-7b47-4f7e-8360-1a54125eec87:Platforms:Platforms
+6c516dd5-c42e-4e9f-a2c1-4b24354c941e:Pulleys:Pulleys
+4b0cf1e5-ec8e-4bae-8b0a-b7c12756cdbc:Rings:Rings
+f8bec591-85cd-465d-bd87-13d55c75e407:Sky Sanctuary exclusive:Sky Sanctuary exclusive
+e86716b0-738c-4d6e-9d28-71eb97141ded:Sounds and effects(require manual gedit editing):Sounds and effects(require manual gedit editing)
+f8397939-4f3c-442f-8a65-af39bd9e5ca9:Springs and homing objects:Springs and homing objects
+18f9ef18-1121-4f24-a18f-e4f175ab0e1c:Switches(require manual gedit editing):Switches(require manual gedit editing)
+24ae69ff-92dc-4577-96ec-d78a19d66f9b:Technical (require manual gedit editing):Technical (require manual gedit editing)
+f194c029-7d24-4d90-92bc-1429d091268b:Template assets (for asset creation):Template assets (for asset creation)

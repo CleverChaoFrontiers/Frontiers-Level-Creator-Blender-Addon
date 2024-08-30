@@ -1,0 +1,40 @@
+{
+  "id": "{DE05F21B-DAFA-B941-9B7B-2568580323D0}",
+  "name": "DragonStatusVolume4",
+  "type": "DragonStatusVolume",
+  "position": [
+    342.75799560546875,
+    234.9250030517578,
+    -1012.9199829101562
+  ],
+  "rotation": [
+    6.760826920526597e-8,
+    -0.866025447845459,
+    9.861759764362432e-8,
+    0.4999999701976776
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1100,
+        "rangeOut": 20
+      }
+    },
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 30,
+      "CollisionHeight": 41,
+      "CollisionDepth": 230,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "disableMissile": false,
+    "keepChase": true,
+    "changeMotion": false
+  }
+}

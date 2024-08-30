@@ -1,0 +1,38 @@
+    {
+      "id": "{393D300E-31BA-7FA6-8AB2-12CAC66BDD65}",
+      "name": "Volume0",
+      "type": "CameraVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0,0.0,0.0,0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "target": "INSERT CAMERA TARGET HERE",
+        "priority": 2,
+        "useHighPriority": true,
+        "easeTimeEnter": 1.5,
+        "easeTimeLeave": 1.5,
+        "interpolateTypeEnter": "INTERPOLATE_RELATIVE",
+        "interpolateTypeLeave": "INTERPOLATE_RELATIVE",
+        "state": "DEFAULTSTATE_ON",
+        "action": "ACTION_EACHTIME",
+        "disableFreeMode": false,
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 56.869998931884766,
+          "CollisionHeight": 41.80999755859375,
+          "CollisionDepth": 61.969993591308594,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }

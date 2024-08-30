@@ -1,0 +1,49 @@
+{
+  "id": "{53F2AAAD-EA7F-7847-99BE-7A0D0D3CFB13}",
+  "name": "WarshipLandVolume0",
+  "type": "WarshipLandVolume",
+  "position": [
+    -166.4499969482422,
+    633.35302734375,
+    1142.199951171875
+  ],
+  "rotation": [
+    0,
+    0.5299192667007446,
+    0,
+    0.8480480909347534
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 300,
+        "rangeOut": 20
+      }
+    },
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_EACHTIME",
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 50,
+      "CollisionHeight": 8,
+      "CollisionDepth": 28,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "launchParam": {
+      "outStrength": 2,
+      "inStrength": 2,
+      "outElev": 30,
+      "inElev": 30,
+      "speedMin": 20,
+      "speedMax": 40,
+      "speedMinLength": 20,
+      "speedMaxLength": 40
+    }
+  }
+}

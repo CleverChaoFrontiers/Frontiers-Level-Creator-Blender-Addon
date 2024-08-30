@@ -1,0 +1,15 @@
+{
+     "id": "{7B40B92E-5487-8B48-A8DD-E54939C8A4E3}",
+     "name": "Mine3",
+     "type": "Mine",
+     "position": [764.5, 784.9, -1568.5],
+     "parameters": {
+       "tags": {
+         "RangeSpawning": {
+           "rangeIn": 9999.0,
+           "rangeOut": 9999.0
+         }
+       },
+       "scale": 4.699999809265137
+     }
+   }

@@ -1,0 +1,30 @@
+{
+  "id": "{297EE9CC-68C1-9843-BBBE-A9DDAD373DD0}",
+  "name": "AirCube174",
+  "type": "AirCube",
+  "position": [
+    870.8939819335938,
+    208.61599731445312,
+    -1895.449951171875
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "type": "CubeA",
+    "scale": 1,
+    "movable": false,
+    "numX": 1,
+    "numY": 1,
+    "numZ": 1
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "{50529E50-2BE0-5B4E-9BEA-E6537DC9D1BB}",
+  "name": "Waterfall_btm_02",
+  "type": "Particle",
+  "position": [
+    -102.44499969482422,
+    116.38500213623047,
+    402.322998046875
+  ],
+  "rotation": [
+    0,
+    -0.6626200675964355,
+    0,
+    0.7489557266235352
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800,
+        "rangeOut": 20
+      }
+    },
+    "effectName": "ef_w1_waterfall_btm",
+    "scale": 1.0,
+    "colorR": 255,
+    "colorG": 255,
+    "colorB": 255,
+    "colorA": 255,
+    "sound": {
+      "name": "",
+      "is3D": false,
+      "volume": 1
+    },
+    "rumble": {
+      "name": ""
+    },
+    "trigger": "RANGE",
+    "sectorId": 0
+  }
+}

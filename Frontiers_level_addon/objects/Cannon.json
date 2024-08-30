@@ -1,0 +1,45 @@
+    {
+      "id": "{7A4B8205-A645-FC4F-E302-CBE9A7294041}",
+      "name": "Cannon0",
+      "type": "Cannon",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "modelType": "FV_BASELESS",
+        "targetType": "COORDINATE",
+        "target": "{00000000-0000-0000-0000-000000000000}",
+        "targetPos": [
+          0,
+          8.0,
+          -8.0
+        ],
+        "speed": 93.0,
+        "velocityRatio": 90.0,
+        "keepVelocity": 1.0,
+        "isAutoShot": false,
+        "isMovableBarrel": true,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

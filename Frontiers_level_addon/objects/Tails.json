@@ -1,0 +1,38 @@
+{
+  "id": "{3DCB2C39-4C0E-FF43-94FB-1899F5090751}",
+  "name": "Tails_qu3500_3",
+  "type": "Tails",
+  "position": [
+    -416.20599365234375,
+    717.1400146484375,
+    -1044.75
+  ],
+  "rotation": [
+    0,
+    0.7290235757827759,
+    0,
+    0.6844885945320129
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 3,
+    "purposeOfUse": "Normal",
+    "questType": "CollectItem",
+    "eventDriven": true,
+    "luaName": "",
+    "eventName": "qu3500",
+    "isEndKill": true,
+    "useDefaultPath": true,
+    "hiddenList": [],
+    "isUseSequenceItem": true,
+    "requiredSequenceItem": 47,
+    "lackLuaName": "",
+    "inputEventName": "",
+    "useCharacterType": "All"
+  }
+}

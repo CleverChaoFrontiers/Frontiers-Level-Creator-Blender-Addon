@@ -1,0 +1,16 @@
+    {
+      "id": "{B86E6DA7-B2CB-FF9F-3D6B-8608E48C48EA}",
+      "name": "PurpleRock0",
+      "type": "PurpleRock",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "viewType": "SV"
+      }
+    }

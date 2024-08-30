@@ -1,0 +1,47 @@
+{
+  "id": "{D01D482D-7E0B-1544-81FA-2C49AFD0741B}",
+  "name": "AirWall5",
+  "type": "AirWall",
+  "position": [
+    290.93701171875,
+    230.58099365234375,
+    660.9639892578125
+  ],
+  "rotation": [
+    0,
+    0.9961947202682495,
+    0,
+    0.0871557965874672
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 100
+      }
+    },
+    "no": 5,
+    "size": "MIDDLE",
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "wallType": "NORMAL_WALL",
+    "eventDriven": "EVENT_NONE",
+    "isSyncRot": false,
+    "isSmoothMove": false,
+    "isReverse": false,
+    "isPressDead": false,
+    "moveVector": [
+      0,
+      0,
+      0
+    ],
+    "pathName": "",
+    "locaterList": [],
+    "waitTime": 0,
+    "phase": 0,
+    "speed": 10,
+    "useConvex": false,
+    "useShadowCast": true
+  }
+}

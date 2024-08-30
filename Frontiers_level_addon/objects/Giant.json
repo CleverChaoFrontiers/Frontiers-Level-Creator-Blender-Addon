@@ -1,0 +1,30 @@
+{
+  "id": "{4C83C2C4-A9F6-0C4F-9466-789823662CF0}",
+  "name": "Giant0",
+  "type": "Giant",
+  "position": [
+    280.6679992675781,
+    199.50399780273438,
+    -60.4901008605957
+  ],
+  "rotation": [
+    0,
+    -0.7071067690849304,
+    0,
+    0.7071067094802856
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100000,
+        "rangeOut": 20
+      }
+    },
+    "guidePathName": "",
+    "objectIds": [],
+    "ringSupplyPos": [],
+    "releaseMapPos": [],
+    "isEvent": true,
+    "isDebugMotionTest": false
+  }
+}

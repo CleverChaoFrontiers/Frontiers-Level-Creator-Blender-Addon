@@ -1,0 +1,33 @@
+    {
+      "id": "{DATA_ID}",
+      "name": "DATA_NAME",
+      "type": "Path",
+      "position": [DATA_POSITION],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "setParameter": {
+          "pathUID": DATA_UID,
+          "pathType": "DATA_TYPE",
+          "capVisible": "Both",
+          "grindUnitLength": 1.0,
+          "paramType": "PARAM_SET_PATH",
+          "isMovable": false,
+          "nodeList": [
+            DATA_NODES
+          ],
+          "isLoopPath": DATA_LOOP,
+          "startLineType": "LINETYPE_SNS",
+          "divideLength": 1.0,
+          "connectParam": {
+            "isConnect": false,
+            "connectType": "CONNECT_STRAIGHT",
+            "splineTangentLength": 50.0
+          }
+        }
+      }
+    },

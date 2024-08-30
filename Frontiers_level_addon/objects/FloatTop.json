@@ -1,0 +1,46 @@
+{
+  "id": "{7851BEA4-92ED-A54B-B674-74C9488E84EA}",
+  "name": "FloatTop0",
+  "type": "FloatTop",
+  "position": [
+    894.5700073242188,
+    735.1220092773438,
+    1239.6199951171875
+  ],
+  "rotation": [
+    0,
+    -0.258819043636322,
+    0,
+    0.9659258127212524
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "moveSpeed": 15.0,
+    "driveTime": 8.0,
+    "widthLimit": 6.0,
+    "depthLimit": 15.0,
+    "cameraActivator": "{00000000-0000-0000-0000-000000000000}",
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      }
+    ]
+  }
+}

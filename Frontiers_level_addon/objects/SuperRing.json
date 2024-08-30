@@ -1,0 +1,35 @@
+    {
+      "id": "{E6B1AD14-D500-A058-BE53-82CAFA0616E5}",
+      "name": "SuperRing0",
+      "type": "SuperRing",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visibility": "Visible",
+        "respawnTime": 0.0,
+        "pathMovement": {
+          "moveType": "FIXED",
+          "pathName": "",
+          "locaterList": [],
+          "twoPointOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "patrolType": "PATROL_RETURN",
+          "timeType": "TIME_GLOBAL",
+          "eventDriven": false,
+          "isReverse": false,
+          "waitTime": 0.0,
+          "phase": 0.0,
+          "speed": 10.0,
+          "killWaitTSecOneway": 0.0
+        }
+      }
+    }

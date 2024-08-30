@@ -1,0 +1,70 @@
+{
+  "id": "{7828F9CD-25C3-3742-9EC0-528FADF91FDD}",
+  "name": "SpiderSpring8",
+  "type": "SpiderSpring",
+  "position": [
+    -7.443997859954834,
+    374.7699890136719,
+    9.640009880065918
+  ],
+  "rotation": [
+    -0.37984681129455566,
+    -0.3972991406917572,
+    0.8145840167999268,
+    -0.18526369333267212
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "visual": "Sky",
+    "firstSpeed": 40,
+    "outOfControl": 0.6499999761581421,
+    "keepVelocityDistance": 5,
+    "isHorming": true,
+    "isEventOn": false,
+    "isCyloopOn": false,
+    "cyloopSignDistance": 100,
+    "cyloopSignTolerance": 20,
+    "isCyKnuckleOn": false,
+    "isHorizon": false,
+    "airtrick": false,
+    "isVisible": true,
+    "isSmooth": false,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      }
+    ],
+    "rollingParam": {
+      "speed": 15,
+      "phase": 0
+    },
+    "offsetCollision": [
+      0,
+      0,
+      0
+    ],
+    "scaleCollision": [
+      1,
+      1,
+      1
+    ],
+    "isConstrain": false
+  }
+}

@@ -1,0 +1,70 @@
+    {
+      "id": "{9808DB25-F64C-20B8-7352-DAC850AA0EBA}",
+      "name": "Volume.0",
+      "type": "CameraVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0,0.0,0.0,0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "target": "{0172AA3A-AC9B-9D01-AFCF-65F0B0CDAA03}",
+        "priority": 4,
+        "useHighPriority": true,
+        "easeTimeEnter": 0.0,
+        "easeTimeLeave": 0.5,
+        "interpolateTypeEnter": "INTERPOLATE_RELATIVE",
+        "interpolateTypeLeave": "INTERPOLATE_RELATIVE",
+        "state": "DEFAULTSTATE_ON",
+        "action": "ACTION_EACHTIME",
+        "disableFreeMode": false,
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 19.510000228881836,
+          "CollisionHeight": 15.239999771118164,
+          "CollisionDepth": 19.579999923706055,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    };
+    {
+      "id": "{0172AA3A-AC9B-9D01-AFCF-65F0B0CDAA03}",
+      "name": "CameraPan0",
+      "type": "CameraPan",
+      "position": [0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "IsCameraView": true,
+        "fovy": 45.0,
+        "enableLimitAngle": false,
+        "azimuthLimitAngle": 0.0,
+        "elevationLimitAngle": 0.0,
+        "gravityOffset": 0.0,
+        "playerOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "worldOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "positionMode": "POS_MODE_FIX",
+        "distance": 0.0
+      }
+    }

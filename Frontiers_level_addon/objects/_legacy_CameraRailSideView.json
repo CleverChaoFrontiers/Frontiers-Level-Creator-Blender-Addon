@@ -1,0 +1,69 @@
+    {
+      "id": "{393D300E-31BA-7FA6-8AB3-12CAC66BDD65}",
+      "name": "Volume0",
+      "type": "CameraVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0,0.0,0.0,0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 10000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "target": "{90D3DFF9-EB14-0164-DE64-CD8990C61D94}",
+        "priority": 2,
+        "useHighPriority": true,
+        "easeTimeEnter": 1.5,
+        "easeTimeLeave": 1.5,
+        "interpolateTypeEnter": "INTERPOLATE_RELATIVE",
+        "interpolateTypeLeave": "INTERPOLATE_RELATIVE",
+        "state": "DEFAULTSTATE_ON",
+        "action": "ACTION_EACHTIME",
+        "disableFreeMode": false,
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 56.869998931884766,
+          "CollisionHeight": 41.80999755859375,
+          "CollisionDepth": 61.969993591308594,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    };
+    {
+      "id": "{90D3DFF9-EB14-0164-DE64-CD8990C61D94}",
+      "name": "CameraRailSideView0",
+      "type": "CameraRailSideView",
+      "position": [0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "IsCameraView": true,
+        "fovy": 45.0,
+        "distance": 17.0,
+        "pathName": "INSERT_OBJECT_PATH_NAME_HERE",
+        "elevation": 0.0,
+        "azimuth": 0.0,
+        "limitLeftRatio": -0.30000001192092896,
+        "limitRightRatio": 0.30000001192092896,
+        "upScrollRatio": 0.20000000298023224,
+        "limitUpScrollDistance": 1.0,
+        "downScrollRatio": 0.10000000149011612,
+        "limitDownScrollDistance": 0.0,
+        "isLimitPathDistance": false,
+        "limitPathDistanceMin": 0.0,
+        "limitPathDistanceMax": 0.0,
+        "orientationMode": "GRAVITY",
+        "isSmoothPath": true
+      }
+    }

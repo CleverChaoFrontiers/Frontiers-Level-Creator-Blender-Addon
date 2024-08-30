@@ -1,0 +1,30 @@
+    {
+      "id": "{C0F97E0C-1978-876E-830E-2B278D8820D4}",
+      "name": "HintRing0",
+      "type": "HintRing",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visual": "HintRing",
+        "headerLabel": "tu5000_010",
+        "bodyLabel": "tu5000_015",
+        "animSpeed": 1.0,
+        "respawnTime": 5.0,
+        "box": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "offset": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }

@@ -1,0 +1,42 @@
+    {
+      "id": "{66BA6DD5-4859-A9A3-05B5-27D51E85275C}",
+      "name": "ParticleVolume_0",
+      "type": "ParticleVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100,
+            "rangeOut": 50.0
+          }
+        },
+        "effectName": "",
+        "scale": 1.0,
+        "colorR": 255,
+        "colorG": 255,
+        "colorB": 255,
+        "colorA": 255,
+        "sound": {
+          "name": "",
+          "is3D": false,
+          "volume": 1.0
+        },
+        "rumble": {
+          "name": ""
+        },
+        "shapeType": "SHAPE_BOX",
+        "width": 10.0,
+        "height": 10.0,
+        "depth": 10.0,
+        "zOffset": 10.0,
+        "isStay": true,
+        "emitPointType": "EMIT_OBJECT",
+        "gravityPointType": "GRAVITY_OBJECT"
+      }
+    }

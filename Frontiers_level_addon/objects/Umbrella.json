@@ -1,0 +1,193 @@
+{
+  "id": "{711DD573-A650-9A4F-A3F0-66D99624AB1A}",
+  "name": "Umbrella3",
+  "type": "Umbrella",
+  "position": [
+    -96.80000305175781,
+    176.9219970703125,
+    296.99798583984375
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 94,
+    "level": 0,
+    "distance": 0,
+    "tolerance": 0,
+    "territories": [],
+    "parachute": {
+      "steps": 4,
+      "lineNum": 4,
+      "distance": 5,
+      "range": 0,
+      "isOrder": false,
+      "lineLists": [
+        {
+          "objType": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "offSet": [
+            0,
+            -1,
+            0
+          ]
+        },
+        {
+          "objType": [
+            1,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "offSet": [
+            0,
+            2,
+            -0.5
+          ]
+        },
+        {
+          "objType": [
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "offSet": [
+            0,
+            3,
+            -3
+          ]
+        },
+        {
+          "objType": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "offSet": [
+            0,
+            2,
+            -3
+          ]
+        },
+        {
+          "objType": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "offSet": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "objType": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "offSet": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "objType": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "offSet": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "objType": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "offSet": [
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "respawnableByMeteorShower": true,
+    "sonicset": {
+      "isSonicSet": false,
+      "jumpHeight": 10,
+      "closeDistance": 20,
+      "shotDistance": 20,
+      "blowoffSpeed": 20,
+      "blowoffOffSet": [
+        0,
+        0,
+        0
+      ]
+    },
+    "onlyHeightField": false,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 52
+    }
+  }
+}

@@ -1,0 +1,35 @@
+    {
+      "id": "{69C3A89A-A332-4542-A5D8-1F773593C77D}",
+      "name": "SpinnerI",
+      "type": "SpinnerI",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+            "RangeSpawning": {
+              "rangeIn": 400.0,
+              "rangeOut": 10.0
+              }
+            },
+            "no": -1,
+            "level": 1,
+            "moveType": "Fix",
+            "pathName": "",
+            "twoPointOffset": [
+                5.0,
+                0.0,
+                0.0
+            ],
+            "offsetPhase": 0.0,
+            "moveSpeed": 5.0,
+            "changeStartTime": 5.0,
+            "changeEndTime": 5.0,
+            "rotatePhase": 0.0,
+            "rigidbody": false,
+            "rotateType": "OnlyNormal",
+            "rigidColliderRadius": 1.600000023841858,
+            "damageColliderRadius": 1.600000023841858,
+            "battleDistance": 40.0,
+            "rotateSpeed": 90.0
+        }
+    }

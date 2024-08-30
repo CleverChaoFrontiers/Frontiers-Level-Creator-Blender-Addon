@@ -1,0 +1,30 @@
+    {
+      "id": "{C717D59A-716B-CAED-F7C2-1B7D9C0784B4}",
+      "name": "CameraFix0",
+      "type": "CameraFix",
+      "position": [0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100000.0,
+            "rangeOut": 100.0
+          }
+        },
+        "IsCameraView": true,
+        "Fovy": 45.0,
+        "ZRot": 0.0,
+        "targetType": "TARGETTYPE_ABS_COORD",
+        "TargetPosition": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "targetID": "{00000000-0000-0000-0000-000000000000}",
+        "targetDistance": 3.0,
+        "offsetFromObject": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    }

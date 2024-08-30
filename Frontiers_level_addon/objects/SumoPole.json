@@ -1,0 +1,26 @@
+{
+  "id": "{1502E336-5705-A946-8924-AE928F834773}",
+  "name": "SumoPole16",
+  "type": "SumoPole",
+  "position": [
+    -630.1389770507812,
+    150.11700439453125,
+    -82.14199829101562
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "connectToPole": "{00000000-0000-0000-0000-000000000000}",
+    "normalDirection": "Front"
+  }
+}

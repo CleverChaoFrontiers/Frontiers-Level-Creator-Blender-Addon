@@ -1,0 +1,64 @@
+    {
+      "id": "{7280DA44-307D-932E-0C18-E214ECA95AE6}",
+      "name": "CarMINIVAN",
+      "type": "Car",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "actionType": "RUN",
+        "addSpeed": 10.0,
+        "distance": 20.0,
+        "height": 0.0,
+        "outStrength": 1.0,
+        "inStrength": 3.0,
+        "inAngle": 60.0,
+        "impulseSpeedOn": 35.0,
+        "outOfControl": 0.25,
+        "motionTime": 2.5,
+        "carType": "MINIVAN",
+        "color": 1,
+        "addTime": 1.0,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ],
+        "moveType": "MOVE_NONE",
+        "patrolType": "PATROL_RETURN",
+        "timeType": "TIME_GLOBAL",
+        "eventDriven": false,
+        "isFall": false,
+        "isSyncRot": false,
+        "isSmoothMove": false,
+        "isReverse": false,
+        "moveVector": [
+          0.0,
+          0.0,
+          5.0
+        ],
+        "pathName": "",
+        "locaterList": [],
+        "waitTime": 0.0,
+        "phase": 0.0,
+        "speed": 10.0,
+        "optimized": false
+      }
+    }

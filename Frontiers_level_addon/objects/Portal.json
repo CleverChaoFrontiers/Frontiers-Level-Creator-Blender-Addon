@@ -1,0 +1,29 @@
+{
+  "id": "{414E46D0-F20B-D449-A22A-628CBB344316}",
+  "name": "Portal5",
+  "type": "Portal",
+  "position": [
+    1938.6400146484375,
+    52.48680114746094,
+    1224.77001953125
+  ],
+  "rotation": [
+    0,
+    0.03379867225885391,
+    0,
+    0.9994286894798279
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "no": 16,
+    "eventDriven": false,
+    "stageCode": "w6d01",
+    "portalBitActivateCount": 0,
+    "fastTravelLocator": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "{4860AA7D-9B10-6E4A-AA06-62FA9ADC4A5B}",
+  "name": "Knuckles_qu2510",
+  "type": "Knuckles",
+  "position": [
+    -331.9530029296875,
+    153.4250030517578,
+    -197.3780059814453
+  ],
+  "rotation": [
+    0,
+    -0.9863359928131104,
+    0,
+    0.16474634408950806
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 3,
+    "purposeOfUse": "Normal",
+    "questType": "KodamaEscort",
+    "eventDriven": true,
+    "luaName": "",
+    "eventName": "qu2510",
+    "isEndKill": true,
+    "useDefaultPath": true,
+    "hiddenList": [],
+    "isUseSequenceItem": true,
+    "requiredSequenceItem": 80,
+    "lackLuaName": "",
+    "inputEventName": "",
+    "useCharacterType": "All",
+    "useAdditionalCollider": false,
+    "additionalColliderShape": "Cylinder",
+    "offset": [
+      0,
+      0,
+      0
+    ],
+    "extents": [
+      5,
+      5,
+      0.10000000149011612
+    ],
+    "radius": 3,
+    "height": 3
+  }
+}

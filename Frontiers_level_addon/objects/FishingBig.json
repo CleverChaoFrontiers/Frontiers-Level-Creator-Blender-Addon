@@ -1,0 +1,21 @@
+{
+    "id": "{AE2B2AC7-3BC7-C1FC-E177-5B69B3E7C7EE}",
+    "name": "FishingBig_2",
+    "type": "FishingBig",
+    "position": [ 82.42906951904297, 146.99969482421875, -3589.339111328125 ],
+    "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+    "parameters": {
+        "tags": {
+            "RangeSpawning": {
+                "rangeIn": 50.0,
+                "rangeOut": 20.0
+            }
+        },
+        "dummy": 0
+    }
+}

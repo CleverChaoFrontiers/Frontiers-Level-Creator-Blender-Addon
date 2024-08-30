@@ -1,0 +1,28 @@
+        {
+            "id": "{A3BB8734-F9CE-2A4C-A58B-35251DB72772}",
+            "name": "ChangeBGMTrigger0",
+            "type": "ChangeBGMTrigger",
+            "position": [ -2735.6, 4.3, 344.3 ],
+            "rotation": [0.0,0.0,0.0,0.0],
+            "parameters": {
+                "tags": {
+                    "RangeSpawning": {
+                        "rangeIn": 10000.0,
+                        "rangeOut": 100.0
+                    }
+                },
+                "cueName": "bgm_w6d08",
+                "fadeOutTime": 1.0,
+                "fadeInTime": 1.0,
+                "playDelayTime": 0.0,
+                "passPlane": {
+                    "width": 20.0,
+                    "height": 20.0,
+                    "offset": [
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                }
+            }
+        }

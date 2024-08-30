@@ -1,0 +1,30 @@
+{
+  "id": "{A4EB79B2-BE31-9D43-B238-B85AEF1D5F1A}",
+  "name": "BarrierNPC0",
+  "type": "BarrierNPC",
+  "position": [
+    -106.677001953125,
+    260.1600036621094,
+    -1016.97998046875
+  ],
+  "rotation": [
+    0,
+    -0.9994699954986572,
+    0,
+    0.03255335986614227
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "type": "Amy",
+    "riflePos": [
+      0,
+      0,
+      0
+    ]
+  }
+}

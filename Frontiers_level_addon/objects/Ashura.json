@@ -1,0 +1,67 @@
+{
+  "id": "{A761DEE5-1853-824E-8874-E8AA95078C90}",
+  "name": "Ashura0",
+  "type": "Ashura",
+  "position": [
+    744.6389770507812,
+    89.38330078125,
+    1355.949951171875
+  ],
+  "rotation": [
+    0,
+    -0.43132534623146057,
+    0,
+    0.90219646692276
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 360,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "deadPoints": [],
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "useTerritory": true,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        120,
+        40,
+        100
+      ],
+      "fightSize": [
+        170,
+        60,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        10,
+        -10
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "portalBitsLegL": [],
+    "portalBitsLegR": [],
+    "searchDistanceOffset": -40,
+    "no": 3,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 29,
+      "tipsNo": 67
+    }
+  }
+}

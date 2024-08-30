@@ -1,0 +1,59 @@
+{
+  "id": "{270EA1F8-AE6F-1A43-A1E8-7B9E5DCCB8A5}",
+  "name": "ExDashRing97",
+  "type": "ExDashRing",
+  "position": [
+    79.27429962158203,
+    797.468994140625,
+    -503.1809997558594
+  ],
+  "rotation": [
+    -2.2959721235338293e-8,
+    -0.20193268358707428,
+    2.4744405635601652e-8,
+    0.9793993830680847
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 300,
+        "rangeOut": 20
+      }
+    },
+    "OutOfControl": 0.5,
+    "KeepVelocity": 0.25,
+    "Speed": 50,
+    "VeloConst": true,
+    "collisionScale": [
+      1,
+      1,
+      1
+    ],
+    "eventDriven": false,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      }
+    ],
+    "passPlane": {
+      "radius": 5,
+      "offset": [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

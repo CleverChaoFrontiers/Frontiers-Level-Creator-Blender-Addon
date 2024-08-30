@@ -1,0 +1,38 @@
+{
+  "id": "{834AF652-DCD4-954D-9855-52E649B5C354}",
+  "name": "PuzzleBarrier0",
+  "type": "PuzzleBarrier",
+  "position": [
+    1935.43994140625,
+    65.15299987792969,
+    1433.25
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 0,
+    "initialState": "STATE_OFF",
+    "radius": 36,
+    "aspectRatio": 1,
+    "height": 60,
+    "numSides": 16,
+    "isEnableCollision": true,
+    "isEnableCeil": true,
+    "useSubCameraAppear": false,
+    "cameraAppear": "{00000000-0000-0000-0000-000000000000}",
+    "appearWaitTime": 0,
+    "useSubCameraDisappear": false,
+    "cameraDisappear": "{00000000-0000-0000-0000-000000000000}",
+    "disappearWaitTime": 0
+  }
+}

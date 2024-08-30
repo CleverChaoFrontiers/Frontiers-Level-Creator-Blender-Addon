@@ -1,0 +1,30 @@
+{
+  "id": "{55A2C2A6-8951-4347-B2C4-D7DDD7A4BC16}",
+  "name": "SkierMissile36",
+  "type": "SkierMissile",
+  "position": [
+    -35.97669982910156,
+    194.2010040283203,
+    -463.2279968261719
+  ],
+  "rotation": [
+    -0.981060266494751,
+    -0.1729874461889267,
+    0.015134396031498909,
+    -0.0858316496014595
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "speed": 55,
+    "launchDirCorrectionAngle": [
+      0,
+      0,
+      0
+    ]
+  }
+}

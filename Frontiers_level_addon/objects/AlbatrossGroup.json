@@ -1,0 +1,51 @@
+{
+  "id": "{F6D42B42-A436-F844-888A-35700640C059}",
+  "name": "AlbatrossGroup25",
+  "type": "AlbatrossGroup",
+  "position": [
+    145.41299438476562,
+    191.2729949951172,
+    839.031982421875
+  ],
+  "rotation": [
+    0,
+    0.5877852439880371,
+    0,
+    0.8090169429779053
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 40,
+        "rangeOut": 40
+      }
+    },
+    "groupNum": 2,
+    "spawmAreaSize": [
+      30,
+      20,
+      40
+    ],
+    "territorySize": [
+      10,
+      10,
+      12
+    ],
+    "offsetPos": [
+      40,
+      40,
+      0
+    ],
+    "baseMoveSpeed": [
+      0,
+      0,
+      0
+    ],
+    "baseRotAngleSpeed": -5,
+    "baseRotAnglePhase": 0,
+    "baseRotAxis": "ROT_AXIS_Y",
+    "isGroupRotLock": false,
+    "baseMoveLimitDistance": 5,
+    "randomParam": 4
+  }
+}

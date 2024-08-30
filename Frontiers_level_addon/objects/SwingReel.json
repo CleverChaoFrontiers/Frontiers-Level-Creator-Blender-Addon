@@ -1,0 +1,66 @@
+    {
+      "id": "{243965B7-1D0A-C049-B84E-D9CEB0FE3FF7}",
+      "name": "SwingReel0",
+      "type": "SwingReel",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "type": "TypeVertical",
+        "ropeLength": 15.0,
+        "eventDriven": false,
+        "handleDownTime": 0.30000001192092896,
+        "impulseParam": {
+          "addSpeed": -10.0,
+          "outOfControl": 4.5,
+          "motionTime": 4.5
+        },
+        "pathParam": {
+          "targetObj": "INSERT_OBJECT_PATH_NAME_HERE",
+          "targetOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "outStrength": 1.0,
+          "inStrength": 1.0,
+          "outUpPower": 1.0,
+          "inElev": 30.0,
+          "pathRoll": 0.0
+        },
+        "vertParam": {
+          "moveRange": 120.0,
+          "launchAngleSum": 270.0,
+          "period": 2.0
+        },
+        "horzParam": {
+          "rotateDirection": "Left",
+          "ropeTiltMax": 60.0,
+          "ropeTiltTime": 0.5,
+          "launchAngleSum": 360.0,
+          "period": 4.0
+        },
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

@@ -1,0 +1,35 @@
+    {
+      "id": "{264721F7-A94C-3B2A-DD10-7CD34FCC3CBB}",
+      "name": "Ring0",
+      "type": "Ring",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 200.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visibility": "Visible",
+        "respawnTime": 0.0,
+        "pathMovement": {
+          "moveType": "FIXED",
+          "pathName": "",
+          "locaterList": [],
+          "twoPointOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "patrolType": "PATROL_RETURN",
+          "timeType": "TIME_GLOBAL",
+          "eventDriven": false,
+          "isReverse": false,
+          "waitTime": 0.0,
+          "phase": 0.0,
+          "speed": 10.0,
+          "killWaitTSecOneway": 0.0
+        }
+      }
+    }

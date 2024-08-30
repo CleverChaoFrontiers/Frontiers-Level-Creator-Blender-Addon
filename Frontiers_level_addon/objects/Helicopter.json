@@ -1,0 +1,48 @@
+    {
+      "id": "{6A3DB795-FA85-BB73-C0F9-3AB335F4DDD9}",
+      "name": "Helicopter0",
+      "type": "Helicopter",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "moveType": "FIXED",
+        "twoPointParam": {
+          "localDest": [
+            10.0,
+            0.0,
+            0.0
+          ],
+          "speed": 10,
+          "startWaitTime": 0.0,
+          "endWaitTime": 0.0
+        },
+        "onPathParam": {
+          "pathName": "",
+          "moveDir": "ONE_WAY",
+          "speed": 0.0,
+          "distance": 0.0
+        },
+        "eyesightParam": {
+          "distance": 30.0,
+          "angle": 90.0
+        },
+        "appearParam": {
+          "appearPosLocal": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "speed": 1.0,
+          "useSwitch": false,
+          "revive": false,
+          "retireTime": 0.0
+        },
+        "isAttackChain": false
+      }
+    }

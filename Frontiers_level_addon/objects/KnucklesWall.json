@@ -1,0 +1,40 @@
+{
+  "id": "{A952197C-AE3E-514A-A068-580A5C171DC6}",
+  "name": "KnucklesWall21",
+  "type": "KnucklesWall",
+  "position": [
+    -206.43499755859375,
+    394.75799560546875,
+    -656.0789794921875
+  ],
+  "rotation": [0.0,0.0,0.0,0.0],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 21,
+    "size": "SMALL",
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "eventDriven": "EVENT_NONE",
+    "isSyncRot": false,
+    "isSmoothMove": false,
+    "isReverse": false,
+    "isPressDead": false,
+    "moveVector": [
+      0,
+      0,
+      0
+    ],
+    "pathName": "",
+    "locaterList": [],
+    "waitTime": 0,
+    "phase": 0,
+    "speed": 10,
+    "useConvex": false
+  }
+}

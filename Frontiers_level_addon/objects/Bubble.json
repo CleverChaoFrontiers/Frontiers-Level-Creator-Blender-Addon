@@ -1,0 +1,37 @@
+{
+  "id": "{962D86FE-9F35-E846-A973-054509C90C4C}",
+  "name": "Bubble11",
+  "type": "Bubble",
+  "position": [
+    -61.00040054321289,
+    168.197998046875,
+    852.1519775390625
+  ],
+  "rotation": [
+    0.01492536161094904,
+    -8.731149137020111e-9,
+    0.11941026151180267,
+    0.9927327632904053
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 21,
+    "level": 1,
+    "territories": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "isSonicSet": false,
+    "eyesightDistance": 10,
+    "respawnableByMeteorShower": true,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 0,
+      "tipsNo": 0
+    }
+  }
+}

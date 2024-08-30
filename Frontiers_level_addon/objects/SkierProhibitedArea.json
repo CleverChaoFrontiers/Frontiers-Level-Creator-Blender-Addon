@@ -1,0 +1,19 @@
+{
+  "id": "{BFB63158-9E7B-5744-8CCB-F946A6D50008}",
+  "name": "SkierProhibitedArea5",
+  "type": "SkierProhibitedArea",
+  "position": [
+    -124.4010009765625,
+    181.77699279785156,
+    -307.12200927734375
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "radius": 15
+  }
+}

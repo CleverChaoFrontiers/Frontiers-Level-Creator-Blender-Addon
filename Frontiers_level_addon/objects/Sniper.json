@@ -1,0 +1,44 @@
+{
+  "id": "{8D69D166-9D00-0249-9579-9A47F98B4102}",
+  "name": "Sniper3",
+  "type": "Sniper",
+  "position": [
+    -210.34100341796875,
+    184.94200134277344,
+    229.47799682617188
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 32,
+    "level": 0,
+    "distance": 0,
+    "tolerance": 0,
+    "territories": [],
+    "searchDistanceOffset": 0,
+    "battleDistanceOffset": -37,
+    "isParrySlowDisabled": false,
+    "isSonicSet": false,
+    "respawnableByMeteorShower": true,
+    "sonicSetHpOffset": 0,
+    "sonicSetGpOffset": 0,
+    "sonicSetShotSpeedOffset": 0,
+    "sonicSetHideCoreDist": 15,
+    "sonicSetShowCoreDist": 20,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 46
+    }
+  }
+}

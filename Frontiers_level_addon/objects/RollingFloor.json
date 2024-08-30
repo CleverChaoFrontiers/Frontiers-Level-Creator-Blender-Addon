@@ -1,0 +1,25 @@
+    {
+      "id": "{74FB1FAB-8662-C7A5-7983-FAE1589A88CE}",
+      "name": "RollingFloor0",
+      "type": "RollingFloor",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "viewType": "FV",
+        "floorVisual": "FloorA",
+        "poleVisual": "PoleA",
+        "floorOffsetY": 0.0,
+        "rotateAnglePerSec": 57.3,
+        "initialAngle": 0.0,
+        "rotateRange": 100.0,
+        "isClockwise": false,
+        "eventDriven": false,
+        "doesPlaySE": true
+      }
+    }

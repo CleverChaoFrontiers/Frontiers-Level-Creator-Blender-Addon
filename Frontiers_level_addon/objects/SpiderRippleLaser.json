@@ -1,0 +1,32 @@
+{
+  "id": "{3617512A-FE27-A74E-82FC-2F60052FE092}",
+  "name": "SpiderRippleLaser27",
+  "type": "SpiderRippleLaser",
+  "position": [
+    -3.1840476989746094,
+    186.43600463867188,
+    -2.410029888153076
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "minScale": 1,
+    "maxScale": 1,
+    "scalePeriod": 1,
+    "pathName": "",
+    "movePeriod": 1,
+    "isWrapBack": false,
+    "moveDelay": 0,
+    "depthFix": 1000
+  }
+}

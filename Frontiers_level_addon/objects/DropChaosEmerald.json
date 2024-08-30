@@ -1,0 +1,28 @@
+{
+  "id": "{98283892-2753-DD44-B2C5-CE49F9045793}",
+  "name": "DropChaosEmerald1",
+  "type": "DropChaosEmerald",
+  "position": [
+    -513.7230224609375,
+    178.80499267578125,
+    335.24700927734375
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "no": 1,
+    "chaosEmeraldType": 0,
+    "velocity": [
+      0,
+      0,
+      0
+    ],
+    "horzDamp": 0.800000011920929,
+    "reflection": 0.75,
+    "geditSet": true
+  }
+}

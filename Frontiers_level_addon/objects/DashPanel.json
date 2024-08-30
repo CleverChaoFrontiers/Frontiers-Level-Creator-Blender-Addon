@@ -1,0 +1,45 @@
+    {
+      "id": "{3480D541-77CE-5A94-32EF-F7C15009EB3E}",
+      "name": "DashPanel0",
+      "type": "DashPanel",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "ocTime": 0.25,
+        "speed": 80.0,
+        "isVisible": true,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ],
+        "adjustPath": {
+          "pathname": "",
+          "adjustSpeed": 3.0,
+          "adjustTime": 1.0
+        },
+        "isCyloopOn": false,
+        "cyloopSignDistance": 100.0,
+        "cyloopSignTolerance": 20.0,
+        "isCyKnuckleOn": false,
+        "changeType": "CHANGE_NONE"
+      }
+    }

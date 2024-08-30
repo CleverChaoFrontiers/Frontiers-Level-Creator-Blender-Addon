@@ -1,0 +1,16 @@
+{
+    "id": "{EDFF91C4-C0B6-8647-9A87-67F7516043E5}",
+    "name": "spider01_lv19_01",
+    "type": "BossRingSupplyGroup",
+    "position": [1122.0, 646.0, 1298.0],
+    "parameters": {
+    "tags": {
+        "RangeSpawning": {
+        "rangeIn": 200.0,
+        "rangeOut": 20.0
+        }
+    },
+    "children": [],
+    "isUpdateTransform": false
+    }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "{9FC3FB0E-8BC9-C94F-9691-4BE58EB5D3D6}",
+  "name": "Territory31",
+  "type": "Territory",
+  "position": [
+    735.7739868164062,
+    100.21099853515625,
+    931.2940063476562
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "shape": "SHAPE_CYLINDER",
+    "basePoint": "BASE_CENTER",
+    "pathName": "",
+    "patrolSize": [
+      30,
+      40,
+      100
+    ],
+    "fightSize": [
+      50,
+      40,
+      200
+    ],
+    "patrolOffset": [
+      0,
+      0,
+      0
+    ],
+    "fightOffset": [
+      0,
+      0,
+      0
+    ],
+    "isFallReturnArea": true
+  }
+}

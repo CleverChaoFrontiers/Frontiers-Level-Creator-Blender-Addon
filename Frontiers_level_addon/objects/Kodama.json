@@ -1,0 +1,27 @@
+{
+  "id": "{C55C204E-CF88-2840-96DA-0AD16D9146CE}",
+  "name": "Kodama12",
+  "type": "Kodama",
+  "position": [
+    412.0320129394531,
+    143.85699462890625,
+    630.3679809570312
+  ],
+  "rotation": [
+    -0.012626772746443748,
+    -0.9847275018692017,
+    -0.00064674555324018,
+    0.1736428290605545
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 50,
+        "rangeOut": 20
+      }
+    },
+    "no": 77,
+    "eventDriven": false,
+    "restrictMotion": false
+  }
+}

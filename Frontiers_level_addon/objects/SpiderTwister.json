@@ -1,0 +1,40 @@
+{
+  "id": "{25D48314-4711-A547-90F6-616AA0C505F4}",
+  "name": "SpiderTwister21",
+  "type": "SpiderTwister",
+  "position": [
+    7.665982246398926,
+    403.3800048828125,
+    -5.119999885559082
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "type": "TYPE_NORMAL",
+    "moveParam": {
+      "time": 2,
+      "distance": 5,
+      "phase": 0,
+      "direction": "DIR_HORIZONTAL",
+      "timeType": "TIME_GLOBAL"
+    },
+    "rollingParam": {
+      "time": 2,
+      "radius": 3,
+      "phase": 0,
+      "direction": "DIR_HORIZONTAL"
+    },
+    "rigidColliderRadius": 1.600000023841858,
+    "damageColliderRadius": 2.0999999046325684
+  }
+}

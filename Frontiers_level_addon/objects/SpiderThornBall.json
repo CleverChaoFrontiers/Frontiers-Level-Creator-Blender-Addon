@@ -1,0 +1,52 @@
+{
+  "id": "{4469EA91-5D1E-6E42-B36E-2CE3418E38AE}",
+  "name": "SpiderThornBall716",
+  "type": "SpiderThornBall",
+  "position": [
+    6.756011962890625,
+    387.3399963378906,
+    6.480010032653809
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "type": "TYPE_NORMAL",
+    "moveParam": {
+      "time": 2,
+      "distance": 5,
+      "phase": 0,
+      "direction": "DIR_HORIZONTAL",
+      "timeType": "TIME_GLOBAL"
+    },
+    "rollingParam": {
+      "time": 2,
+      "radius": 3,
+      "phase": 0,
+      "direction": "DIR_HORIZONTAL"
+    },
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 1,
+      "CollisionHeight": 1,
+      "CollisionDepth": 1,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    },
+    "eventDriven": false
+  }
+}

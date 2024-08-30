@@ -1,0 +1,44 @@
+    {
+      "id": "{2E8C76BA-B940-01A5-CC45-985AD9915D14}",
+      "name": "Ganigani0",
+      "type": "Ganigani",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "isFV": true,
+        "isFindMotion": true,
+        "moveType": "TypeTwoPoints",
+        "twoPt": {
+          "pos": [
+            8.0,
+            0.0,
+            0.0
+          ],
+          "startPosRatio": 0.0,
+          "moveSpeed": 2.0,
+          "stopTime": 1.0,
+          "approachDist": 3.0
+        },
+        "fixed": {
+          "searchInterval": 5.0
+        },
+        "shot": {
+          "searchRadius": 20.0,
+          "searchAngle": 90.0,
+          "searchHeight": 1.5,
+          "searchOffset": 0.0,
+          "chargeTime": 1.0,
+          "interval": 2.0,
+          "distance": 10.0,
+          "height": 2.0,
+          "speed": 5.0,
+          "expRadius": 2.0
+        }
+      }
+    }

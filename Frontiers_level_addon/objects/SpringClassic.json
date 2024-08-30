@@ -1,0 +1,40 @@
+    {
+      "id": "{DDF34194-AA7B-1FC3-F30C-A41B82A7E0F9}",
+      "name": "SpringClassic0",
+      "type": "SpringClassic",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 50.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visual": "Red",
+        "firstSpeed": 30.0,
+        "outOfControl": 0.25,
+        "keepVelocityDistance": 5.0,
+        "usedYaw": false,
+        "isEventOn": false,
+        "isHorizon": false,
+        "isVisible": true,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

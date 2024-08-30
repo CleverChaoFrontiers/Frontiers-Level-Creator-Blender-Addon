@@ -1,0 +1,36 @@
+{
+  "id": "{71BB7CB6-D438-284E-B53C-AAD0EE8CEDD0}",
+  "name": "JumperSub45",
+  "type": "JumperSub",
+  "position": [
+    -220.23800659179688,
+    213.66299438476562,
+    396.3940124511719
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "main": false,
+    "air": true,
+    "shotDirection": [
+      54,
+      190,
+      0
+    ],
+    "firstSpeed": 43,
+    "outOfControl": 0.8999999761581421,
+    "keepVelocityDistance": 5
+  }
+}

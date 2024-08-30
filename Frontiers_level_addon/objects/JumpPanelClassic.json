@@ -1,0 +1,53 @@
+    {
+      "id": "{B6059A10-9C32-E084-1ABC-2BEC906E8E27}",
+      "name": "JumpPanelClassic0",
+      "type": "JumpPanelClassic",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "lowShot": {
+          "distance": 70.0,
+          "height": -1.0,
+          "outStrength": 1.0,
+          "inStrength": 3.0,
+          "inAngle": 60.0,
+          "impulseSpeedOn": 50.0,
+          "outOfControl": 0.25,
+          "motionTime": 2.5
+        },
+        "highShot": {
+          "distance": 20.0,
+          "height": 0.0,
+          "outStrength": 1.0,
+          "inStrength": 3.0,
+          "inAngle": 60.0,
+          "impulseSpeedOn": 35.0,
+          "outOfControl": 0.25,
+          "motionTime": 2.5
+        },
+        "directionMoveSpeed": 120.0,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

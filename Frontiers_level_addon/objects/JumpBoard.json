@@ -1,0 +1,47 @@
+    {
+      "id": "{AAA232FD-9449-7755-F609-703587A2EA26}",
+      "name": "JumpBoard0",
+      "type": "JumpBoard",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "distance": 110.0,
+        "distanceX": 0.0,
+        "height": 10.0,
+        "outStrength": 1.0,
+        "inStrength": 3.0,
+        "inAngle": 20.0,
+        "impulseSpeedOn": 60.0,
+        "outOfControl": 0.0,
+        "motionTime": 2.5,
+        "airtrick": true,
+        "size": "SIZE_L",
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ],
+        "isCyloopOn": false,
+        "cyloopSignDistance": 100.0,
+        "cyloopSignTolerance": 20.0,
+        "isCyKnuckleOn": false
+      }
+    }

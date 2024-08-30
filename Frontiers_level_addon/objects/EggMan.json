@@ -1,0 +1,33 @@
+{
+  "id": "{BD948584-0BA5-D34B-97E4-0AB972A6CF68}",
+  "name": "EggMan3",
+  "type": "EggMan",
+  "position": [
+    122.1709976196289,
+    171.18699645996094,
+    -1090.5
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 3,
+    "purposeOfUse": "SubEvent",
+    "eventDriven": true,
+    "luaName": "",
+    "eventName": "sb5102",
+    "isEndKill": true,
+    "useDefaultPath": true,
+    "hiddenList": [],
+    "useCharacterType": "Knuckles"
+  }
+}

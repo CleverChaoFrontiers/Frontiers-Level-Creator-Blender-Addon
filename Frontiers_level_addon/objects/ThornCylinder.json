@@ -1,0 +1,18 @@
+    {
+      "id": "{31EDB8EE-FB12-5ACB-FFC2-33B06D6695F8}",
+      "name": "ThornCylinder0",
+      "type": "ThornCylinder",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "type": "TYPE_SHORT",
+        "rigidbody": false,
+        "isMoveFloorEntry": false
+      }
+    }

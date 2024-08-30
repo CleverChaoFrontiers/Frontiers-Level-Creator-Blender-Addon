@@ -1,0 +1,46 @@
+{
+  "id": "{7097FACC-EE72-1B4E-B748-B7B208C31A53}",
+  "name": "Twister0",
+  "type": "Twister",
+  "position": [
+    790.9769897460938,
+    249.28900146484375,
+    750.198974609375
+  ],
+  "rotation": [
+    0,
+    -0.08715573698282242,
+    0,
+    0.9961947202682495
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 42,
+    "level": 1,
+    "moveType": "TwoPoint",
+    "pathName": "",
+    "twoPointOffset": [
+      0,
+      1,
+      0
+    ],
+    "offsetPhase": 0,
+    "moveSpeed": 1,
+    "rotateType": "ChangeByTime",
+    "changeTime": 5,
+    "respawnableByMeteorShower": true,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 47
+    },
+    "rigidbody": true,
+    "isQuest": false,
+    "isSonicSet": true
+  }
+}

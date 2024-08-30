@@ -1,0 +1,19 @@
+{
+  "id": "{924DE0E7-D577-E94B-AF99-030F3746EBEA}",
+  "name": "ChainBooster243",
+  "type": "ChainBooster",
+  "position": [
+    -73.37570190429688,
+    151.8090057373047,
+    671.0189819335938
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "dummy": 0
+  }
+}

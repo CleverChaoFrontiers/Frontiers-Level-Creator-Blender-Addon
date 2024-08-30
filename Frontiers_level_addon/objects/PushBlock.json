@@ -1,0 +1,20 @@
+    {
+      "id": "{B488796D-1376-0575-21F0-CAB7552F5B7E}",
+      "name": "PushBlock0",
+      "type": "PushBlock",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "size": [
+          2.0,
+          2.0,
+          2.0
+        ]
+      }
+    }

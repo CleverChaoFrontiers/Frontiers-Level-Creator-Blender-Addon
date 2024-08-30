@@ -1,0 +1,35 @@
+    {
+      "id": "{D3152EC3-DBD1-DDE6-62A2-B369BBCE5EA6}",
+      "name": "WideSpring0",
+      "type": "WideSpring",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "firstSpeed": 17.0,
+        "outOfControl": 0.0,
+        "keepVelocityDistance": 5.0,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

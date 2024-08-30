@@ -1,0 +1,53 @@
+{
+  "id": "{17571C2A-2659-8E4E-9E2E-C4EBBD2AD313}",
+  "name": "WarshipVolume0",
+  "type": "WarshipVolume",
+  "position": [
+    -148.1719970703125,
+    862.97900390625,
+    798.0980224609375
+  ],
+  "rotation": [
+    0,
+    -0.5224985480308533,
+    0,
+    0.8526401519775391
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 500,
+        "rangeOut": 20
+      }
+    },
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_EACHTIME",
+    "speedParam": {
+      "useType": "SET",
+      "highSpeed": 55.0,
+      "lowSpeed": 20.0,
+      "changeLowSpeedDistance": 100.0,
+      "disableDistanceMaxSpeed": 100.0,
+      "relativeSpeedDisableDistance": 20.0,
+      "speedOnJump": 40.0,
+      "speedDownOnJumpDistance": 20.0
+    },
+    "motionParam": {
+      "motionType": "MOTION_NONE",
+      "motionPattern": "START"
+    },
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_HITENEMY",
+      "CollisionWidth": 20,
+      "CollisionHeight": 20,
+      "CollisionDepth": 5,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

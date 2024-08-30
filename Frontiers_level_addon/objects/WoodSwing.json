@@ -1,0 +1,23 @@
+    {
+      "id": "{9174DD33-0C46-8305-94E0-8DDF36248743}",
+      "name": "WoodSwing0",
+      "type": "WoodSwing",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 50.0,
+            "rangeOut": 20.0
+          }
+        },
+        "speed": 5.0,
+        "width": 30,
+        "waitTime": 0.1,
+        "phase": 0.0,
+        "eventDriven": false,
+        "sizeType": "SIZE_3m",
+        "display": true,
+        "stAngle": "CENTER"
+      }
+    }

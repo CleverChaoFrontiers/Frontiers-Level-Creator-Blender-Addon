@@ -1,0 +1,67 @@
+{
+  "id": "{89D71142-3960-744E-AA5F-DF8A6741E25D}",
+  "name": "Charger2",
+  "type": "Charger",
+  "position": [
+    -171.53199768066406,
+    192.01800537109375,
+    -676.3820190429688
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 220
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "isWaitSpawn": false,
+    "useTerritory": false,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        100,
+        40,
+        100
+      ],
+      "fightSize": [
+        200,
+        40,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "no": 2,
+    "cggLayerId": 1,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 62
+    },
+    "isCutRail": false,
+    "enable3rdParameter": false,
+    "enableHightSpeedMoveing": false,
+    "speedUpScale": 1
+  }
+}

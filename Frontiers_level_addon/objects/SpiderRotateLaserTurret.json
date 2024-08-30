@@ -1,0 +1,32 @@
+{
+  "id": "{84A7FF71-7609-8440-997A-E410F2E968E5}",
+  "name": "SpiderRotateLaserTurret7",
+  "type": "SpiderRotateLaserTurret",
+  "position": [
+    20.110000610351562,
+    253.5019989013672,
+    -4.329959869384766
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 500,
+        "rangeOut": 20
+      }
+    },
+    "param": {
+      "timeType": "TIME_GLOBAL",
+      "time": 10,
+      "radius": 1.2000000476837158,
+      "phase": 0.5
+    },
+    "edgeNum": 4,
+    "eventDriven": false
+  }
+}

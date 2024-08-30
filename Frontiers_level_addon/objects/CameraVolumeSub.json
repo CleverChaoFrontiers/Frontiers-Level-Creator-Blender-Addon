@@ -1,0 +1,29 @@
+    {
+      "id": "{F151D9EA-AFCD-77F7-2DCB-7BFD89567AA2}",
+      "name": "CameraVolumeSub0",
+      "type": "CameraVolumeSub",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0,0.0,0.0,0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100000.0,
+            "rangeOut": 20.0
+          }
+        },
+        "target": "{INSERT TARGET VOLUME ID HERE}",
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 55.36000061035156,
+          "CollisionHeight": 78.30000305175781,
+          "CollisionDepth": 200.0,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }

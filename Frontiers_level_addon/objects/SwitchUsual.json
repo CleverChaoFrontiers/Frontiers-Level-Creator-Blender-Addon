@@ -1,0 +1,47 @@
+    {
+      "id": "{45F1A8E6-7DA8-574B-5F2E-CF9A28AFDCB1}",
+      "name": "SwitchUsual0",
+      "type": "SwitchUsual",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "condition": "COND_ON_TRIGGER",
+        "lifetime": 0.0,
+        "usedRigidCol": true,
+        "eventDriven": false,
+        "isConstrain": false,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

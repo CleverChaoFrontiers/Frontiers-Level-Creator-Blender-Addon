@@ -1,0 +1,49 @@
+    {
+      "id": "{A2DCD6EB-D5A8-3969-903C-37A014FCEA75}",
+      "name": "Tank0",
+      "type": "Tank",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "attackBySwitch": false,
+        "appearance": {
+          "respawn": false,
+          "respawnTime": 0.0
+        },
+        "mainGun": {
+          "interval": 5.0,
+          "noBlast": true,
+          "pos": [
+            0.0,
+            0.0,
+            20.0
+          ],
+          "radius": 3.0,
+          "delay": 0.10000000149011612
+        },
+        "hp": 1,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

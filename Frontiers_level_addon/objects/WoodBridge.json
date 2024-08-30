@@ -1,0 +1,18 @@
+    {
+      "id": "{699BB62E-2A4D-3DD0-27D6-078558F41DDB}",
+      "name": "WoodBridge0",
+      "type": "WoodBridge",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "viewType": "SV",
+        "flexValue": 0.5,
+        "logNum": 20
+      }
+    }

@@ -1,0 +1,16 @@
+{
+    "id": "{18815777-978E-3520-D5C0-96C9D11B47A9}",
+    "name": "ClimbingPoint.001",
+    "type": "ClimbingPoint",
+    "position": [-136.60000610351563, 10.899999618530273, 282.79998779296875],
+    "parameters": {
+    "tags": {
+        "RangeSpawning": {
+        "rangeIn": 100.0,
+        "rangeOut": 20.0
+        }
+    },
+    "radius": 1.0,
+    "terminal": false
+    }
+}

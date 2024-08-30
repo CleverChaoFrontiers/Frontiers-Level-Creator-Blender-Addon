@@ -1,0 +1,22 @@
+{
+    "id": "{A3C2FA13-5834-6841-96A2-FEE305735362}",
+    "name": "AlbatrossChase0",
+    "type": "AlbatrossChase",
+    "position": [864.9169921875, 126.06700134277344, 1480.010009765625],
+    "parameters": {
+    "tags": {
+        "RangeSpawning": {
+        "rangeIn": 140.0,
+        "rangeOut": 20.0
+        }
+    },
+    "relative": [
+        3.0,
+        12.0,
+        10.0
+    ],
+    "thresholdTime": 1.0,
+    "timeMin": 8.0,
+    "timeMax": 10.0
+    }
+}

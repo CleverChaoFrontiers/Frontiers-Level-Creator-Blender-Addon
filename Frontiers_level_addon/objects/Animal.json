@@ -1,0 +1,20 @@
+{
+    "id": "{A3C2FA13-5834-6841-96A2-FEE305735362}",
+    "name": "Animal0",
+    "type": "Animal",
+    "position": [864.9169921875, 126.06700134277344, 1480.010009765625],
+    "parameters": {
+    "tags": {
+        "RangeSpawning": {
+        "rangeIn": 140.0,
+        "rangeOut": 20.0
+        }
+    },
+    "type": "Pocky",
+    "target": "{00000000-0000-0000-0000-000000000000}",
+    "range": 0.0,
+    "jumpHeight": 0.0,
+    "jumpTime": 0.0,
+    "displayOrder": 0
+    }
+}

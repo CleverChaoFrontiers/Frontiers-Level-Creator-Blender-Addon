@@ -1,0 +1,45 @@
+    {
+      "id": "{14772549-8EC7-DE8D-CF63-EEBF0AF64115}",
+      "name": "Balloon0",
+      "type": "Balloon",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "balloonColor": "COLOR_BLUE",
+        "dimension": "DIM_FV",
+        "upSpeed": 15.0,
+        "speedMin": 0.0,
+        "speedMax": 5.0,
+        "respawnTime": 5.0,
+        "outOfControlTime": 0.0,
+        "keepVelocityTime": 0.10000000149011612,
+        "ignoreSwingingTime": 1.0,
+        "isDefaultPositionRespawn": false,
+        "isGroupSet": false,
+        "eventDriven": false,
+        "isHorming": true,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

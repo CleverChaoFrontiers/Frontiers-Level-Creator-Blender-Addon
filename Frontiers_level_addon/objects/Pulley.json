@@ -1,0 +1,44 @@
+    {
+      "id": "{8812253B-94E9-256A-8231-28279AE6B6D0}",
+      "name": "Pulley0",
+      "type": "Pulley",
+      "position": [0.0, 0.0, 0.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 160.0,
+            "rangeOut": 20.0
+          }
+        },
+        "pathName": "INSERT_OBJECT_PATH_NAME_HERE",
+        "startPosition1D": 0.0,
+        "endPosition1D": 5.0,
+        "isJumpCancel": true,
+        "offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "minSpeed": 45.0,
+        "maxSpeed": 60.0,
+        "waitToReturnSec": 1.0,
+        "returnSpeed": 15.0,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

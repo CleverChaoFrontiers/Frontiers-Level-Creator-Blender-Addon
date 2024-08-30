@@ -1,0 +1,27 @@
+{
+  "id": "{935440A1-3B17-454C-AABA-F0C2AC85D98F}",
+  "name": "BreakBox94",
+  "type": "BreakBox",
+  "position": [
+    -21.365100860595703,
+    216.76600646972656,
+    -872.8460083007812
+  ],
+  "rotation": [
+    0,
+    0.1736481785774231,
+    0,
+    0.9848077297210693
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "size": "SIZE_M",
+    "isHATarget": true,
+    "maxHits": 1
+  }
+}

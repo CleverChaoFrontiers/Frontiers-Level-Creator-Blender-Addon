@@ -1,0 +1,81 @@
+{
+  "id": "{15163012-B991-934D-9899-20AEAFEDBA29}",
+  "name": "Daruma3",
+  "type": "Daruma",
+  "position": [
+    -697.8880004882812,
+    167.89100646972656,
+    -819.8090209960938
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "mode": "Battle",
+    "bodyCount": 9,
+    "ringPositions": [
+      8,
+      -1,
+      -1,
+      -1
+    ],
+    "territories": [],
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "isAppear": false,
+    "useTerritory": true,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        100,
+        40,
+        100
+      ],
+      "fightSize": [
+        200,
+        40,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "no": 11,
+    "stompWaitTimeFirst": 0,
+    "stompWaitTime": 0,
+    "scoutDistanceOffset": 0,
+    "scoutDistanceOutsideOffset": 0,
+    "isThorn": false,
+    "enabledEyeSightMask": false,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 59
+    },
+    "enable3rdParameter": false,
+    "enableHightSpeedMoveing": false,
+    "speedUpScale": 1
+  }
+}

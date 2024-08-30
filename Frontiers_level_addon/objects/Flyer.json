@@ -1,0 +1,68 @@
+{
+  "id": "{D08C5F6B-3F6B-8946-A84B-22C1F9CE961D}",
+  "name": "Flyer0",
+  "type": "Flyer",
+  "position": [
+    576.1519775390625,
+    105.66600036621094,
+    802.2119750976562
+  ],
+  "rotation": [
+    0,
+    -0.8141155242919922,
+    0,
+    0.5807029604911804
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 620,
+        "rangeOut": 450
+      }
+    },
+    "level": 0,
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "respawnableByMeteorShower": true,
+    "portalBits": [],
+    "pathName": "",
+    "loopInfo": [
+      {
+        "enable": false,
+        "start": 640,
+        "end": 835,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "enable": false,
+        "start": 1750,
+        "end": 2175,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "enable": false,
+        "start": 0,
+        "end": 1,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      }
+    ],
+    "no": 6,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 25,
+      "tipsNo": 63
+    }
+  }
+}

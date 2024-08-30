@@ -1,0 +1,37 @@
+{
+  "id": "{67FD06D0-CF03-1443-A3B7-2138CCEAA1A6}",
+  "name": "Defender1",
+  "type": "Defender",
+  "position": [
+    227.3260040283203,
+    168.14100646972656,
+    783.468994140625
+  ],
+  "rotation": [
+    0,
+    0,
+    0.045633234083652496,
+    0.9989582896232605
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 200
+      }
+    },
+    "no": 23,
+    "level": 1,
+    "territoryId": "{00000000-0000-0000-0000-000000000000}",
+    "isSonicSet": false,
+    "guardDistance": 10.0,
+    "boomerangDistance": 30.0,
+    "respawnableByMeteorShower": true,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 51
+    },
+    "isTrial": false
+  }
+}

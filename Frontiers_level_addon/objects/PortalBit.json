@@ -1,0 +1,42 @@
+{
+  "id": "{52CEF0E2-0A33-A44D-B88E-0322C8F01178}",
+  "name": "PortalBit0",
+  "type": "PortalBit",
+  "position": [
+    394.4259948730469,
+    144.05499267578125,
+    839.1840209960938
+  ],
+  "rotation": [
+    -0.016078894957900047,
+    0.8769722580909729,
+    0.07388360053300858,
+    0.47455477714538574
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 300,
+        "rangeOut": 20
+      }
+    },
+    "no": 22,
+    "portalBitPrameter": {
+      "suckedTime": 0.800000011920929,
+      "portalbitType": "ObjItem"
+    },
+    "bounceTime": 0,
+    "velocity": [
+      0,
+      0,
+      0
+    ],
+    "horzDamp": 1,
+    "reflection": 0.6499999761581421,
+    "geditSet": true,
+    "alwaysCheckGround": false,
+    "cyloopDriven": false,
+    "cyloopSignDistance": 100,
+    "cyloopSignTolerance": 20
+  }
+}

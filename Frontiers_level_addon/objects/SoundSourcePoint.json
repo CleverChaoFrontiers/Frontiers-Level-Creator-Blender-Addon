@@ -1,0 +1,25 @@
+{
+  "id": "{38846B20-5078-2049-8084-B0C8A9B85D30}",
+  "name": "SoundSourcePoint0",
+  "type": "SoundSourcePoint",
+  "position": [
+    -135.66900634765625,
+    149.35400390625,
+    393.85198974609375
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 600,
+        "rangeOut": 20
+      }
+    },
+    "cueName": "obj_w1_waterfall",
+    "playMode": "PLAYMODE_LOOP",
+    "timeOffset": 0.0,
+    "playInterval": 3.0,
+    "volume": 1.0,
+    "hearingRange": 400,
+    "undampedRange": 200
+  }
+}

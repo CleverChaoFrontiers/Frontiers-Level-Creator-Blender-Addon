@@ -1,0 +1,42 @@
+{
+  "id": "{01F5FA22-9129-2844-8624-63A451393A9D}",
+  "name": "Robber0",
+  "type": "Robber",
+  "position": [
+    -181.1959991455078,
+    171.22900390625,
+    477.5539855957031
+  ],
+  "rotation": [
+    0,
+    0.9396926164627075,
+    0,
+    0.3420201539993286
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 0,
+    "level": 1,
+    "territories": [],
+    "emeraldDropObjID": "{00000000-0000-0000-0000-000000000000}",
+    "movePaths": {
+      "path1": "",
+      "path2": "",
+      "path3": "",
+      "path4": "",
+      "path5": ""
+    },
+    "searchDistanceOffset": 0,
+    "respawnableByMeteorShower": true,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 55
+    }
+  }
+}

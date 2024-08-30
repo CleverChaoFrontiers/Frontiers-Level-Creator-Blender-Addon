@@ -1,0 +1,61 @@
+{
+  "id": "{233BA8D6-99DB-EB44-AE2B-D2CA0CFABD51}",
+  "name": "Jellyman32",
+  "type": "Jellyman",
+  "position": [
+    782.18701171875,
+    89.08300018310547,
+    1220.0400390625
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "no": 78,
+    "level": 1,
+    "distance": 0,
+    "tolerance": 0,
+    "mode": "Human",
+    "territories": [
+      
+    ],
+    "disableChangeMode": false,
+    "enableEffect": false,
+    "isEgg": true,
+    "respawnableByMeteorShower": true,
+    "searchDistanceOffset": 0,
+    "isSonicSet": false,
+    "actionRate": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "actionCoolTime": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 6,
+      "tipsNo": 40
+    },
+    "eventDriven": false,
+    "onlyHeightField": false,
+    "noWaveAttack": false,
+    "isTrial": false
+  }
+}

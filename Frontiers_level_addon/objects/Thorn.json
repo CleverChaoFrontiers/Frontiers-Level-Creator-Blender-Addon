@@ -1,0 +1,29 @@
+    {
+      "id": "{86A8FF13-BED2-4E68-4A8E-C4122D421D12}",
+      "name": "Thorn0",
+      "type": "Thorn",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "size": [
+          1.899999976158142,
+          1.0
+        ],
+        "interval": [
+          1.0,
+          0.5
+        ],
+        "offTime": 1.0,
+        "onTime": 1.0,
+        "phase": 0.0,
+        "type": "TYPE_APPEAR",
+        "eventDriven": false,
+        "hasRigidbody": false
+      }
+    }

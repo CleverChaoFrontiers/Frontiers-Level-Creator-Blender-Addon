@@ -1,0 +1,63 @@
+    {
+      "id": "{3F8E570E-347C-3C2C-4879-11FC75A3E880}",
+      "name": "DashRing0",
+      "type": "DashRing",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visual": "DashRing",
+        "OutOfControl": 0.0,
+        "KeepVelocity": 0.25,
+        "Speed": 100.0,
+        "PosConst": true,
+        "VeloConst": true,
+        "Spin": false,
+        "AirTrick": false,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ],
+        "pathMovement": {
+          "moveType": "FIXED",
+          "pathName": "",
+          "locaterList": [],
+          "twoPointOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "patrolType": "PATROL_RETURN",
+          "timeType": "TIME_GLOBAL",
+          "eventDriven": false,
+          "isReverse": false,
+          "waitTime": 0.0,
+          "phase": 0.0,
+          "speed": 10.0,
+          "killWaitTSecOneway": 0.0
+        },
+        "collisionScale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    }

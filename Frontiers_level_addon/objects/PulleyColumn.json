@@ -1,0 +1,16 @@
+    {
+      "id": "{2C975A8C-0126-4B81-4E82-61EDB639A4F7}",
+      "name": "PulleyColumn0",
+      "type": "PulleyColumn",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 55.0,
+            "rangeOut": 20.0
+          }
+        },
+        "height": 0
+      }
+    }

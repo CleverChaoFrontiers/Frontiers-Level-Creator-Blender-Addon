@@ -1,0 +1,792 @@
+{
+  "id": "{1A313C27-003B-3343-BB56-F6B98EE86609}",
+  "name": "Skier2",
+  "type": "Skier",
+  "position": [
+    -98.05460357666016,
+    179.31399536132812,
+    -280.39300537109375
+  ],
+  "rotation": [
+    0,
+    -0.005364348646253347,
+    0,
+    0.9999856352806091
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 250,
+        "rangeOut": 40
+      }
+    },
+    "no": 17,
+    "level": 1,
+    "territories": [],
+    "useTerritory": false,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        100,
+        40,
+        100
+      ],
+      "fightSize": [
+        200,
+        40,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "respawnableByMeteorShower": true,
+    "portalBits": [],
+    "pathName": "",
+    "pathPNTInterpolateSpeed": 25,
+    "pathInfo": [
+      {
+        "debugDraw": false,
+        "attribute": "JUMP_ENABLE",
+        "start": 650,
+        "end": 815,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "JUMP_ENABLE",
+        "start": 1440,
+        "end": 1605,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "JUMP_ENABLE",
+        "start": 2240,
+        "end": 2405,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "JUMP_ENABLE",
+        "start": 2820,
+        "end": 2985,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "TAIL_ATTACK_ENABLE",
+        "start": 570,
+        "end": 870,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "TAIL_ATTACK_ENABLE",
+        "start": 1255,
+        "end": 1605,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "TAIL_ATTACK_ENABLE",
+        "start": 2055,
+        "end": 2405,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "TAIL_ATTACK_ENABLE",
+        "start": 2670,
+        "end": 3070,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0.4000000059604645
+      },
+      {
+        "debugDraw": false,
+        "attribute": "NONE",
+        "start": 0,
+        "end": 0,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "NONE",
+        "start": 0,
+        "end": 0,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "NONE",
+        "start": 0,
+        "end": 0,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "NONE",
+        "start": 0,
+        "end": 0,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "NONE",
+        "start": 0,
+        "end": 0,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "COL_CONFLICT",
+        "start": 2535,
+        "end": 2565,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "COL_CONFLICT",
+        "start": 1410,
+        "end": 1445,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "POSTURELR_ENABLE",
+        "start": 3050,
+        "end": 3350,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "POSTURELR_ENABLE",
+        "start": 2430,
+        "end": 2690,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "POSTURELR_ENABLE",
+        "start": 1760,
+        "end": 2150,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "POSTURELR_ENABLE",
+        "start": 950,
+        "end": 1220,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      },
+      {
+        "debugDraw": false,
+        "attribute": "POSTURELR_ENABLE",
+        "start": 220,
+        "end": 620,
+        "pylons": [],
+        "missiles": [],
+        "avoidObjCalMargePylonOffset": 0,
+        "avoidObjCalMargeMissileOffset": 0
+      }
+    ],
+    "pathAction": [
+      {
+        "debugDraw": false,
+        "type": "PHASE1",
+        "pathDist": 600,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 1,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE1",
+        "pathDist": 1390,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 1,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE1",
+        "pathDist": 2190,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 1,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE1",
+        "pathDist": 2770,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 1,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE2",
+        "pathDist": 520,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0.30000001192092896,
+          "PylonRate": 1,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE2",
+        "pathDist": 1205,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0.30000001192092896,
+          "JumpLowRate": 0,
+          "PylonRate": 1,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE2",
+        "pathDist": 2005,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0.30000001192092896,
+          "JumpLowRate": 0,
+          "PylonRate": 1,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE2",
+        "pathDist": 2670,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0.30000001192092896,
+          "PylonRate": 1,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE3",
+        "pathDist": 520,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0.30000001192092896,
+          "PylonRate": 0,
+          "MissileRate": 1
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE3",
+        "pathDist": 1205,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0.30000001192092896,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 1
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE3",
+        "pathDist": 2005,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0.30000001192092896,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 1
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "PHASE3",
+        "pathDist": 2670,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0.30000001192092896,
+          "PylonRate": 0,
+          "MissileRate": 1
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "NONE",
+        "pathDist": 0,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "NONE",
+        "pathDist": 0,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "NONE",
+        "pathDist": 0,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "NONE",
+        "pathDist": 0,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "NONE",
+        "pathDist": 0,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "NONE",
+        "pathDist": 0,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "NONE",
+        "pathDist": 0,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      },
+      {
+        "debugDraw": false,
+        "type": "NONE",
+        "pathDist": 0,
+        "rate": {
+          "SnakeMoveRate": 0,
+          "JumpHighRate": 0,
+          "JumpLowRate": 0,
+          "PylonRate": 0,
+          "MissileRate": 0
+        }
+      }
+    ],
+    "cameraInfo": [
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 230,
+        "end": 650,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "JUMP_LOW",
+        "start": 650,
+        "end": 785,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 870,
+        "end": 1010,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 1010,
+        "end": 1310,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "JUMP_HIGH",
+        "start": 1360,
+        "end": 1500,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "JUMP_HIGH",
+        "start": 1500,
+        "end": 1630,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 1630,
+        "end": 1710,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 1710,
+        "end": 2150,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "JUMP_HIGH",
+        "start": 2310,
+        "end": 2420,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 2420,
+        "end": 2550,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 2550,
+        "end": 2800,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "JUMP_LOW",
+        "start": 2800,
+        "end": 3000,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "MISSILE",
+        "start": 570,
+        "end": 690,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "MISSILE",
+        "start": 690,
+        "end": 870,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "MISSILE",
+        "start": 1225,
+        "end": 1375,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "MISSILE",
+        "start": 1375,
+        "end": 1605,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "MISSILE",
+        "start": 2055,
+        "end": 2175,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "MISSILE",
+        "start": 2175,
+        "end": 2405,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "MISSILE",
+        "start": 2720,
+        "end": 2860,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "MISSILE",
+        "start": 2860,
+        "end": 3070,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "PYLON",
+        "start": 570,
+        "end": 690,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "PYLON",
+        "start": 690,
+        "end": 870,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "PYLON",
+        "start": 1225,
+        "end": 1375,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "PYLON",
+        "start": 1375,
+        "end": 1605,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "PYLON",
+        "start": 2055,
+        "end": 2175,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "PYLON",
+        "start": 2175,
+        "end": 2405,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "PYLON",
+        "start": 2720,
+        "end": 2810,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "PYLON",
+        "start": 2810,
+        "end": 3070,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      },
+      {
+        "debugDraw": false,
+        "condition": "ALL",
+        "start": 0,
+        "end": 0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      }
+    ],
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": true,
+      "practiceNo": -1,
+      "tipsNo": 68
+    },
+    "prohibitedArea": []
+  }
+}

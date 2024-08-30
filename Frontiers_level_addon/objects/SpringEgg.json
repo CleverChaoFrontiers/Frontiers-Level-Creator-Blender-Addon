@@ -1,0 +1,61 @@
+    {
+      "id": "{F3E0B099-C7BE-BFB1-69B3-C9507AFBED23}",
+      "name": "SpringEgg0",
+      "type": "SpringEgg",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visual": "Normal",
+        "firstSpeed": 5.0,
+        "outOfControl": 0.5,
+        "keepVelocityDistance": 20.0,
+        "isHorming": true,
+        "isEventOn": false,
+        "isCyloopOn": false,
+        "cyloopSignDistance": 100.0,
+        "cyloopSignTolerance": 20.0,
+        "isCyKnuckleOn": false,
+        "isHorizon": false,
+        "airtrick": false,
+        "isVisible": true,
+        "isSmooth": false,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ],
+        "rollingParam": {
+          "speed": 15.0,
+          "phase": 0.0
+        },
+        "offsetCollision": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scaleCollision": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "isConstrain": false
+      }
+    }

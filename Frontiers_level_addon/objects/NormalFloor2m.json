@@ -1,0 +1,36 @@
+    {
+      "id": "{D56AC64C-7559-06DE-BB21-2EC28CC567F1}",
+      "name": "NormalFloor2m",
+      "type": "NormalFloor",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "sizeType": "SIZE_E",
+        "moveType": "MOVE_NONE",
+        "patrolType": "PATROL_RETURN",
+        "timeType": "TIME_GLOBAL",
+        "eventDriven": false,
+        "isFall": false,
+        "waitFallTime": 3.0,
+        "isSyncRot": false,
+        "isSmoothMove": false,
+        "isReverse": false,
+        "isPressDead": false,
+        "moveVector": [
+          0,
+          0,
+          0
+        ],
+        "pathName": "",
+        "locaterList": [],
+        "waitTime": 0.0,
+        "phase": 0.0,
+        "speed": 10.0
+      }
+    }

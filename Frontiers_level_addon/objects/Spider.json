@@ -1,0 +1,74 @@
+{
+  "id": "{D31AE2C0-3862-C746-AF47-AB7429EECE0F}",
+  "name": "Spider0",
+  "type": "Spider",
+  "position": [
+    369.62799072265625,
+    771.39501953125,
+    -388.3970031738281
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 260,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "useTerritory": true,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        70,
+        40,
+        100
+      ],
+      "fightSize": [
+        100,
+        40,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "locatorDiving": "{00000000-0000-0000-0000-000000000000}",
+    "shieldHpNormal": 14,
+    "divingBeginHeightNormal": 600,
+    "divingSetNameNormal": "spider02_lv19_01",
+    "divingActiveLayerNormal": "w3r01_disable_spider_diving_gimmick03",
+    "shieldHpAngry": 12,
+    "divingBeginHeightAngry": 500,
+    "divingSetNameAngry": "spider02_lv19_02",
+    "divingActiveLayerAngry": "w3r01_disable_spider_diving_gimmick04",
+    "no": 1,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": 2,
+      "tipsNo": 60
+    },
+    "isCutUpper": false,
+    "enable3rdParameter": false
+  }
+}

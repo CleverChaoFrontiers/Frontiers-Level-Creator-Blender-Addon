@@ -1,0 +1,63 @@
+{
+  "id": "{78121108-5012-3D4F-848C-B4B12A37573A}",
+  "name": "Strider0",
+  "type": "Strider",
+  "position": [
+    170.0850067138672,
+    176.68899536132812,
+    562.2570190429688
+  ],
+  "rotation": [
+    0,
+    0.7071067690849304,
+    0,
+    0.7071067094802856
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 830,
+        "rangeOut": 70.01000213623047
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "useTerritory": false,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        100,
+        40,
+        100
+      ],
+      "fightSize": [
+        200,
+        40,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "no": 23,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 71
+    }
+  }
+}

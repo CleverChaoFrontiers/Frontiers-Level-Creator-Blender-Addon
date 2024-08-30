@@ -1,0 +1,67 @@
+{
+  "id": "{E08723D7-1CC1-B445-9F57-F4C244F62632}",
+  "name": "Tyrant2",
+  "type": "Tyrant",
+  "position": [
+    -591.906005859375,
+    184.94200134277344,
+    -306.1239929199219
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 200,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "territories": [],
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "useTerritory": false,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        20,
+        40,
+        100
+      ],
+      "fightSize": [
+        110,
+        40,
+        200
+      ],
+      "patrolOffset": [
+        0,
+        0,
+        0
+      ],
+      "fightOffset": [
+        0,
+        0,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "no": 16,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 69
+    },
+    "isCutUpper": false,
+    "enable3rdParameter": false,
+    "enableHightSpeedMoveing": false,
+    "speedUpScale": 1
+  }
+}

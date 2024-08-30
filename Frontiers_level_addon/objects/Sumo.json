@@ -1,0 +1,63 @@
+{
+  "id": "{99AEEB84-05E7-7643-851A-BDAAE020FC49}",
+  "name": "Sumo1",
+  "type": "Sumo",
+  "position": [
+    -630.1389770507812,
+    150.0290069580078,
+    -52.14500045776367
+  ],
+  "rotation": [
+    0,
+    0.7660444974899292,
+    0,
+    0.6427875757217407
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 140,
+        "rangeOut": 20
+      }
+    },
+    "level": 1,
+    "isWaitSpawn": false,
+    "isTutorial": false,
+    "respawnableByMeteorShower": true,
+    "territoryInfo": {
+      "shape": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "pathName": "",
+      "patrolSize": [
+        70,
+        20,
+        60
+      ],
+      "fightSize": [
+        50,
+        20,
+        60
+      ],
+      "patrolOffset": [
+        0,
+        10,
+        0
+      ],
+      "fightOffset": [
+        0,
+        10,
+        0
+      ],
+      "isFallReturnArea": true
+    },
+    "portalBits": [],
+    "no": 19,
+    "poles": [],
+    "onlyHeightField": false,
+    "practiceNotifierConfig": {
+      "usePracticeNotifier": false,
+      "practiceNo": -1,
+      "tipsNo": 70
+    }
+  }
+}

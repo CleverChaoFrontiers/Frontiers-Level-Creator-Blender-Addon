@@ -1,0 +1,59 @@
+    {
+      "id": "{EB434EBF-2CA9-E0DB-5770-1EF9DC3B63EC}",
+      "name": "Pole0",
+      "type": "Pole",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "type": "FV",
+        "isHorming": true,
+        "usedPillar": true,
+        "sideBarNum": 5,
+        "pillarNum": 0,
+        "distanceOffset": 0.0,
+        "colloffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "collisionSize": [
+          1.0,
+          0.6000000238418579,
+          0.4000000059604645
+        ],
+        "successShotVelocity": [
+          0.0,
+          17.0,
+          17.0
+        ],
+        "failShotVelocity": [
+          0.0,
+          -2.0,
+          0.0
+        ],
+        "outOfControlTime": 0.5,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

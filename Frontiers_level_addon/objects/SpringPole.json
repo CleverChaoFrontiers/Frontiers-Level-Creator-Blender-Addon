@@ -1,0 +1,17 @@
+    {
+      "id": "{E608B81C-0571-515D-D36F-D2A7FBA47D65}",
+      "name": "SpringPole0",
+      "type": "SpringPole",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "speedMin": 0.0,
+        "speedMax": 0.0
+      }
+    }

@@ -1,0 +1,20 @@
+{
+  "id": "{BD907379-852B-5549-8AFB-E22FD5DCCB5E}",
+  "name": "SkierPylon39",
+  "type": "SkierPylon",
+  "position": [
+    -123.70600128173828,
+    178.35000610351562,
+    -445.8219909667969
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "appearTime": 0.5,
+    "hideOffsetY": -10
+  }
+}

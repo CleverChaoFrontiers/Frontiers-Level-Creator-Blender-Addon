@@ -1,0 +1,58 @@
+    {
+      "id": "{A5F9E9B7-F14C-A18D-6C2B-B76372A56D4E}",
+      "name": "SwitchVolume0",
+      "type": "SwitchVolume",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 100.0,
+            "rangeOut": 20.0
+          }
+        },
+        "condition": "COND_PULSE",
+        "lifetime": 1.0,
+        "eventDriven": false,
+        "volume": {
+          "ShapeType": "SHAPE_BOX",
+          "basePoint": "BASE_CENTER",
+          "CollisionFilter": "FILTER_DEFAULT",
+          "CollisionWidth": 10.0,
+          "CollisionHeight": 10.0,
+          "CollisionDepth": 10.0,
+          "CollisionOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ]
+      }
+    }

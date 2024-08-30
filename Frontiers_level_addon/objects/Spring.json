@@ -1,0 +1,61 @@
+    {
+      "id": "{3844FD83-E427-5ECA-2B23-CB3034B0976F}",
+      "name": "Spring0",
+      "type": "Spring",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visual": "Normal",
+        "firstSpeed": 5.0,
+        "outOfControl": 0.00,
+        "keepVelocityDistance": 30.0,
+        "isHorming": true,
+        "isEventOn": false,
+        "isCyloopOn": false,
+        "cyloopSignDistance": 100.0,
+        "cyloopSignTolerance": 20.0,
+        "isCyKnuckleOn": false,
+        "isHorizon": false,
+        "airtrick": true,
+        "isVisible": true,
+        "isSmooth": false,
+        "actions": [
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          },
+          {
+            "action": "On",
+            "objectIds": [],
+            "delayTime": 0.0
+          }
+        ],
+        "rollingParam": {
+          "speed": 15.0,
+          "phase": 0.0
+        },
+        "offsetCollision": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scaleCollision": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "isConstrain": false
+      }
+    }

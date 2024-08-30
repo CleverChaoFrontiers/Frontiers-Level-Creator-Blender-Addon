@@ -1,0 +1,28 @@
+    {
+      "id": "{E49B751B-A433-FEBF-F62E-C65E67782E20}",
+      "name": "Bomb0",
+      "type": "Bomb",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "visual": "ContactBomb",
+        "timeTilExplode": 1.5,
+        "timeFlickerGetFasterAt": 0.750,
+        "flickerInterval": 0.30000001192092896,
+        "explosionColliderDuration": 1.0,
+        "detectionRadius": 3.0,
+        "explosionRadius": 3.0,
+        "flickerSpeed1": 1.0,
+        "flickerSpeed2": 2.0,
+        "damageVelocityMultiplier": 3.0,
+        "velocityYOnStumble": 1.0,
+        "velocityYOnBlowup": 100.0,
+        "blowupSonicSpeedThreshold": 20.0
+      }
+    }

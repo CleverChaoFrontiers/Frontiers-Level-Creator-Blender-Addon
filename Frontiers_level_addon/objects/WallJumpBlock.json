@@ -1,0 +1,17 @@
+    {
+      "id": "{4F9DC785-D228-7B9F-3454-8A21B6344D21}",
+      "name": "WallJumpBlock0",
+      "type": "WallJumpBlock",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "width": 1.0,
+        "height": 1.0
+      }
+    }

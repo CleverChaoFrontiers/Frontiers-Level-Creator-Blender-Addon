@@ -1,0 +1,41 @@
+    {
+      "id": "{76FB8860-9983-73A3-D338-12105E51CD8F}",
+      "name": "ThroughFloor0",
+      "type": "ThroughFloor",
+      "position": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0, 1.0],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "sizeType": "SIZE_A",
+        "moveType": "MOVE_NONE",
+        "patrolType": "PATROL_RETURN",
+        "timeType": "TIME_GLOBAL",
+        "eventDriven": false,
+        "isFall": false,
+        "waitFallTime": 3.0,
+        "isSyncRot": false,
+        "isSmoothMove": false,
+        "isReverse": false,
+        "isPressDead": false,
+        "moveVector": [
+          0.0,
+          0.0,
+          0.0
+        ], 
+        "pathName": "",
+        "locaterList": [],
+        "waitTime": 1.0,
+        "phase": 0.0,
+        "speed": 5.0,
+        "visual": "Floor3m",
+        "canGoThrough": true,
+        "doesRespawn": true,
+        "respawnTime": 5.0,
+        "height": 1.0
+      }
+    }

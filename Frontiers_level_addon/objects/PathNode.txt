@@ -1,0 +1,17 @@
+    {
+      "id": "{DATA_ID}",
+      "name": "DATA_NAME",
+      "type": "PathNode",
+      "position": [DATA_POSITION],
+      "rotation": [DATA_ROTATION],
+      "parameters": {
+        "tags": {
+          "RangeSpawning": {
+            "rangeIn": 400.0,
+            "rangeOut": 20.0
+          }
+        },
+        "nodeId": DATA_INDEX,
+        "lineType": "LINETYPE_SNS"
+      }
+    },

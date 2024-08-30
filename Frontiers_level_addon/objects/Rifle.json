@@ -1,0 +1,33 @@
+{
+  "id": "{2C087D75-81EB-B548-8CEA-558FD2A67B30}",
+  "name": "Rifle0",
+  "type": "Rifle",
+  "position": [
+    -125.82599639892578,
+    120.27999877929688,
+    -1470.93994140625
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1100,
+        "rangeOut": 1020
+      }
+    },
+    "guidePathName": "",
+    "objectIds": [],
+    "ringSupplyPos": [],
+    "releaseMapPos": [],
+    "normalModeBitWaveIds": [],
+    "alwaysBitWaveIds": [],
+    "isEvent": true,
+    "isDebugMotionTest": false,
+    "beastId": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

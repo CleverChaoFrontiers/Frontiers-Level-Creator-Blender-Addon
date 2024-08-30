@@ -1,0 +1,38 @@
+{
+  "id": "{2A388359-9D52-E04F-BD6A-8E61535F9D43}",
+  "name": "FallReturnVolume1",
+  "type": "FallReturnVolume",
+  "position": [
+    618.5969848632812,
+    122.19000244140625,
+    617.0989990234375
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 100,
+        "rangeOut": 20
+      }
+    },
+    "returnPoint": "{00000000-0000-0000-0000-000000000000}",
+    "volume": {
+      "ShapeType": "SHAPE_CYLINDER",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 45,
+      "CollisionHeight": 40,
+      "CollisionDepth": 1,
+      "CollisionOffset": [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

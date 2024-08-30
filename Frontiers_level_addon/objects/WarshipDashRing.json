@@ -1,0 +1,67 @@
+{
+  "id": "{E0A464B8-17DE-0342-A310-F174C8BB3282}",
+  "name": "WarshipDashRing1",
+  "type": "WarshipDashRing",
+  "position": [
+    1642.81005859375,
+    728.9959716796875,
+    -1106.3399658203125
+  ],
+  "rotation": [
+    0,
+    -0.5446390509605408,
+    0,
+    0.838670551776886
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 300,
+        "rangeOut": 20
+      }
+    },
+    "visual": "RainbowRing",
+    "OutOfControl": 0.44999998807907104,
+    "KeepVelocity": 0.44999998807907104,
+    "Speed": 100,
+    "PosConst": true,
+    "VeloConst": true,
+    "Spin": false,
+    "AirTrick": false,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      },
+      {
+        "action": "On",
+        "objectIds": [],
+        "delayTime": 0
+      }
+    ],
+    "pathMovement": {
+      "moveType": "FIXED",
+      "pathName": "",
+      "locaterList": [],
+      "twoPointOffset": [
+        0,
+        0,
+        0
+      ],
+      "patrolType": "PATROL_RETURN",
+      "timeType": "TIME_GLOBAL",
+      "eventDriven": false,
+      "isReverse": false,
+      "waitTime": 0,
+      "phase": 0,
+      "speed": 10,
+      "killWaitTSecOneway": 0
+    }
+  }
+}

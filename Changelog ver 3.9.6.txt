@@ -1,0 +1,91 @@
+3.9.6
+Improved Quick import with mathematically correct rotations
+You can now have individual nodes be straight or curved for paths when using Bezier curves.
+Heightmapper export and import added
+Heightmapper tool improved
+Spaltmil tool added (for painting heightmaps with different materials)
+Improved Instancing with new INST() command
+
+3.9.0
+Bare-bones Quick Import tool
+Density editing tools added
+Object preview features support for manual parameters
+Revamped camera system with CameraVolumes and Cameras as seperate objects
+Parenting objects in Blender now parents them in-game
+Blender 4.1 support
+Some objects have movement animation options
+All parameters connect to geometry nodes
+
+3.8.2
+CameraRailForwardView has new properties
+PointMarker now has options to change the passplane
+Cameras all have fovy options now
+Dashpanels have the manual parameter menu off as default now
+Rail fixes
+Various UI label fixes
+
+3.8.1
+Automatic unpacking of .pac during Quick export
+Fixed incorrect world IDs in the world list
+Fixed a bug with Quick export not deleting the temporary folder after use
+
+3.8.0
+Minor feature: Quick export
+Added settings in the addon menu to put filepaths to all the tools required for Quick export
+Enumerators now work with manual parameters
+
+3.7.3
+Added "BossRingSupplyGroup" object. Important for Spider diving section
+Fixed CameraVolumeSub not exporting Rotation
+Fixed Spider linking to a non-existant locator
+Fixed Parameter menu not exporting Object Ids with the eyedropper if the object is an empty.
+Moved Locator to Openzone essentials.
+
+3.7.2
+Fixed Spider linking to a non-existant gear
+
+3.7.1
+Added 109 new objects (see full list below), Addition
+New open zone category in the asset pack, Addition
+You can now rotate all camera volumes through the geometry nodes menu, Improvement
+You can now parent CameraVolumeSub to the other cameras, Improvement
+Changed EventTrigger name to EventCondition to reflect ingame name. Old name will still work., Tweak
+Various Open zone oriented tweaks. Example: Spring now has a cyloop option., Adjustment
+
+Added objects:
+'Aquaball', 'Bird', 'Bommer', 'Bubble', 'Defender', 'DropChaosEmerald', 'Jellyman', 'Jumper', 'JumperSub', 'Locator', 'PuzzleBarrier', 'Robber', 'Sniper', 'Twister', 
+'Umbrella', 'Wolf', 'WolfManager','ActionChain', 'AirCube', 'AirFloor', 'AirWall', 'AlbatrossChase', 'AlbatrossGroup', 'Amy', 'Animal', 'AnimalRescueArea', 'BreakBox', 
+'BreakWall', 'ChainBooster', 'ChaosEmeraldPillar', 'ChaosEmeraldStorage', 'ClimbingPoint', 'Dove', 'ExDashRing', 'FallReturnVolume', 'FishCoin', 'FishingBig', 'FishingPortal','FloatTop', 'Knuckles', 'KnucklesWall', 'Kodama', 'KodamaElder', 'KodamaHermit', 'MusicMemory', 'NpcSonic', 'NumberRing', 'Particle', 'ParticleExtent', 'Portal', 'PortalBit','PowerupSeed', 'Sage', 'SequenceItem', 'SilverMoonRing', 'SlotStar', 'SoundSourcePoint', 'StorageKey', 'Tails', 'TreasureChest','Ashura', 'Blade', 'Charger', 'Daruma', 'Flyer','Skier', 'SkierMissile', 'SkierProhibitedArea', 'SkierPylon', 'Spider', 'SpiderAuraTrain', 'SpiderDivingVolume', 'SpiderNeedle', 'SpiderRippleLaser', 'SpiderRotateLaserTurret','SpiderSpring', 'SpiderThornBall', 'SpiderTwister', 'Strider', 'Sumo', 'SumoPole', 'Territory', 'Tracker', 'TrackerBase', 'Tyrant', 'Warship', 'WarShipBird', 'WarShipBullet','WarshipDashRing', 'WarshipLandVolume','WarshipVolume',"ChangeBGMTrigger","OneShotSoundTrigger","Note", 'Barrier', 'BarrierNPC', 'BossGiantDoll', 'Dragon', 'DragonActionVolume', 
+'DragonAreaVolume', 'DragonRoadSpring', 'DragonStatusVolume', 'EggMan', 'Giant', 'Knight', 'Rifle', 'RifleBeast', 'ParticleVolume',"GoalTrigger"
+
+3.7.0
+The level creator now has it's own tab and is no longer under Tools, Overhaul
+With the new tab, menu labels have been rewritten for clarity, Adjustment
+Manual Menu now fully works for all parameters and have an eyedropper tool which adds the ID if it is an object and the setpath code if it is a curve, Improvement
+Added a object along curve tool which duplicates objects along a curve
+
+3.6.2
+Added ability to export blender pointlights as pointlight in frontiers, Addition
+Fixed problem with manual HSON parameter menu, giving incorrect code for objects with incompatible values. , Bugfix
+3.6
+Added Rail rotation to be able to create loops and such. , Improvement
+3.5:
+The Gedit/HSON code generation has been completely overhauled., Overhaul
+All assets have been changed to work with the new code., Overhaul
+Added a custom directory to add your own Gedit/HSON templates into., Feature
+Added a menu to edit HSON parameters directly in blender., Feature
+
+Parenting an object to a path will always add "SetPath_UID" code to the pathName attribute,regardless of path type., Improvement
+Parenting an object to another object will add its ID to the actions menu of the parent. This is to make switches easier to deal with., Improvement
+
+An Object's ID is saved inside the object properties as a custom property., Improvement
+A paths UID is saved inside the object properties as a custom property., Improvement
+
+EggRobo has a land/flying checkbox now., Tweak
+Ganigani,Beeton,Lander and eggrobo has a 3d/2D checkbox now., Tweak
+Lander has some added Geometry node functions., Tweak
+All switch types has an on/off button now, Tweak
+
+Removed RollingFloor Type D due to Blender limitations, Removal
+Removed Object/sidepaths changing the paths name. Parenting is the way to go,otherwise insert code "SetPath_" followed by the UID in the curve's object properties., Removal
+Removed On trigger option for Switch volume. Use Pulse instead., Removal

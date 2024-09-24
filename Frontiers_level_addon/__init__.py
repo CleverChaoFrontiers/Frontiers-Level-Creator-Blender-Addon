@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Frontiers Level Creator",
     "author": "CleverChao, LightningWyvern, Piranha Mayhem",
-    "version": (3, 9, 0),#REMEMBER TO CHANGE THIS
+    "version": (3, 9, 6),#REMEMBER TO CHANGE THIS
     "blender": (3, 0, 0),
     "category": "Object",
     "location": "View3D > toolbar > Tool > Frontiers Level Creator",
@@ -28,20 +28,17 @@ from .operators.Frontiers_rail_script import SetBevelOperator
 from .operators.Frontiers_Import_script import HSONImportOperator
 from .operators.Frontiers_Import_script import FrontiersImportProperties
 
-from .operators.Frontiers_heightmapper_script import HeightmapperOperator
-from .operators.Frontiers_heightmapper_script import HeightmapperRender
-from .operators.Frontiers_heightmapper_script import HeightmapperImport
-from .operators.Frontiers_heightmapper_script import HeightmapperProps
+from .operators.Frontiers_heightmapper_script import HeightmapperOperator, HeightmapperExport, HeightmapperImport, HeightmapperProps, SplatmapOperator, SplatmapExport, SplatmapImport, SplatmapSettingImport, SplatmapFavourite, SplatmapSet
 
 from .operators.Frontiers_parameter_script import OBJECT_PT_JsonParameters,JsonParametersPropertyGroup,JsonParameterListItem, parametersListvalues,OBJECT_OT_AddListItem,OBJECT_OT_RemoveListItem
 from .operators.Frontiers_displaceCurve_script import FrontiersDisplaceGroup, OBJECT_OT_DisplaceOnCurve
 
 from .operators.Frontiers_toolpaths import DownloadHedgearcpack, DownloadHedgeset, DownloadHedgeneedle, DownloadBtmesh, DownloadKnuxtools, DownloadModelconverter, DownloadModelfbx, DownloadTexconv
-from .operators.Frontiers_quick_export import QexportSettings, CompleteExport, ExportTerrain, ExportObjects, ExportHeightmap, RepackAll, Settings
+from .operators.Frontiers_quick_export import QexportSettings, CompleteExport, ExportTerrain, ExportObjects, ExportHeightmap, ExportSplatmap, ExportDensity, RepackAll, Settings
 
 from .operators.Frontiers_density_script import OBJECT_OT_duplicate_link_with_nodes,OBJECT_OT_FrontiersPointCloudExport,FrontiersDensityProperties,DensityPanel,remove_densityscatter,DensityPaintPanel,DensityAddOperator,DensitySubtractOperator,DensityForwardGroupOperator,DensityBackwardsGroupOperator,DensityAssignIndex
 
-from .operators.Frontiers_quick_import import QimportSettings, CompleteImport, ImportTerrain, ImportObjects, ImportHeightmap, SettingsImp
+from .operators.Frontiers_quick_import import QimportSettings, CompleteImport, ImportTerrain, ImportObjects, ImportHeightmap, ImportSplatmap, ImportDensity, SettingsImp
 
 from .operators.Frontiers_camera_script import OBJECT_OT_FrontiersCamConnect
 class LevelCreatorPreferences(AddonPreferences):
@@ -175,7 +172,7 @@ class FrontiersAddonPanel(bpy.types.Panel):
     
     def draw(self, context):
         layout = self.layout
-        layout.label(text="version 3.9.5 PLAYTEST")#REMEMBER TO CHANGE THIS
+        layout.label(text="version 3.9.6 PLAYTEST")#REMEMBER TO CHANGE THIS
 
 class QuickExport(bpy.types.Panel):
     bl_label = "Quick Export"
@@ -193,7 +190,9 @@ class QuickExport(bpy.types.Panel):
         layout.operator("qexport.exportobjects", text="Objects", icon="PIVOT_INDIVIDUAL")
         layout.prop(context.scene, "objCollection", text="Objects")
         layout.operator("qexport.exportheightmap", text="Heightmap", icon="FCURVE")
-        layout.operator("qexport.repackall", text="Repack All", icon="FOLDER_REDIRECT")
+        layout.operator("qexport.exportsplatmap", text="Splatmap", icon="BRUSHES_ALL")
+        layout.operator("qexport.exportdensity", text="Density", icon="SHADERFX")
+        #layout.operator("qexport.repackall", text="Repack All", icon="FOLDER_REDIRECT")
         layout.operator("qexport.settings", text="Settings", icon="PREFERENCES")
         layout.label(text="Mod Settings")
         row = layout.row()
@@ -215,6 +214,8 @@ class QuickImport(bpy.types.Panel):
         layout.operator("qimport.importterrain", text="Terrain", icon="CUBE")
         layout.operator("qimport.importobjects", text="Objects", icon="PIVOT_INDIVIDUAL")
         layout.operator("qimport.importheightmap", text="Heightmap", icon="FCURVE")
+        layout.operator("qimport.importsplatmap", text="Splatmap", icon="BRUSHES_ALL")
+        layout.operator("qimport.importdensity", text="Density", icon="SHADERFX")
         layout.operator("qimport.settings", text="Settings", icon="PREFERENCES")
         layout.label(text="Import Settings")
         row = layout.row()
@@ -356,7 +357,7 @@ class HSONImporterPanel(bpy.types.Panel):
         row = layout.row()
         row.operator("object.hson_import", text="Import Objects")     
 
-class HeightmapperPanel(bpy.types.Panel):
+class HeightmapperPanel2(bpy.types.Panel):
     bl_label = "Heightmapper"
     bl_idname = "OBJECT_PT_heightmapper"
     bl_parent_id = "PT_EXPPanel"
@@ -367,78 +368,89 @@ class HeightmapperPanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        layout.label(text="v1.1.0") # VERSION INFO
+        layout.label(text="v2.0.0") # VERSION INFO
 
         # Add open heightmapper button
+        split = layout.split(factor=0.25)
+        col = split.column()
+        col.scale_x = 2.0
+        col.scale_y = 2.0
+        col2 = split.column()
+        row = col.row()
+        row.operator("heightmapper.heightmapper", text="", icon="FCURVE") 
+        row = col2.row()
+        row.operator("heightmapper.export", text="Export", icon="EXPORT") 
+        row = col2.row()
+        row.operator("heightmapper.import", text="Import", icon="IMPORT") 
+        # Add directory path field
         row = layout.row()
-        row.operator("heightmapper.heightmapper", text="Open Heightmapper", icon="FCURVE") 
+        row.prop(context.scene, "importDirectory", text="trr_height")
+        row = layout.row()
+        heightmapprogress = row.progress(text=context.scene.heightmapprogresstext, factor = context.scene.heightmapprogress, type = 'BAR')
 
-
-class HeightmapperRenderPanel(bpy.types.Panel):
-    bl_label = "Render"
-    bl_idname = "OBJECT_PT_heightmapperrender"
+class HeightmapperSplatmapPanel(bpy.types.Panel):
+    bl_label = "Splatmap"
+    bl_idname = "OBJECT_PT_heightmappersplatmap"
     bl_parent_id = "OBJECT_PT_heightmapper"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
+    bl_category = "Frontiers Level Creator"
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
-        
-        # Add "Rendering" section label
         layout = self.layout
-        layout.label(text="Rendering")
-
-        # Add render heightmap button
-        row = layout.row()
-        row.operator("heightmapper.render", text="Render Heightmap", icon="OUTLINER_DATA_CAMERA") 
-
-        # Add tiles checkbox
-        row = layout.row()
-        row.prop(context.scene, "isTiles", text="Create Tiles")
-
+        
+        # Add open splatmap button
+        split = layout.split(factor=0.25)
+        col = split.column()
+        col.scale_x = 2.0
+        col.scale_y = 2.0
+        col2 = split.column()
+        row = col.row()
+        row.operator("heightmapper.splatmap", text="", icon="BRUSHES_ALL") 
+        row = col2.row()
+        row.operator("heightmapper.splatmapexport", text="Export", icon="EXPORT") 
+        row = col2.row()
+        row.operator("heightmapper.splatmapimport", text="Splatmap Import", icon="IMPORT") 
+        row = col2.row()
+        row.operator("heightmapper.splatmapsettingimport", text="Settings Import", icon="IMPORT")
         # Add directory path field
         row = layout.row()
-        row.prop(context.scene, "texconvDirectory", text="Texconv file path")
-
-class HeightmapperImportPanel(bpy.types.Panel):
-    bl_label = "Import"
-    bl_idname = "OBJECT_PT_heightmapperimport"
-    bl_parent_id = "OBJECT_PT_heightmapper"
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'UI'
-    bl_options = {'DEFAULT_CLOSED'}
-
-    def draw(self, context):
-        
-        # Add "Import" section label
-        layout = self.layout
-        layout.label(text="Import")
-
-        # Add directory path field
+        row.prop(context.scene, "splatmapheightDirectory", text="trr_height")
         row = layout.row()
-        row.prop(context.scene, "importDirectory", text="Heightmap")
+        row.prop(context.scene, "splatmapcmnDirectory", text="trr_cmn")
+        box = layout.box()
+        box.label(text=context.scene.loadedsplatmap["name"])
+        row = box.row()
+        row.operator("heightmapper.splatmapset", text="Set Material", icon="BRUSH_DATA")
+        row = box.row()
+        row.prop(context.scene, "splatmapid", text="ID")
+        row.operator("heightmapper.splatmapfavourite", text="", icon="HEART")
+        row = box.row()
+        row.label(text=context.scene.splatmapfavouritetext)
 
-        # Add import heightmap button
-        row = layout.row()
-        row.operator("heightmapper.import", text="Import Heightmap", icon="IMPORT") 
-
-class HeightmapperAdvancedPanel(bpy.types.Panel):
+class HeightmapperSettingsPanel(bpy.types.Panel):
     bl_label = "Advanced"
-    bl_idname = "OBJECT_PT_heightmapperadvanced"
+    bl_idname = "OBJECT_PT_heightmappersettings"
     bl_parent_id = "OBJECT_PT_heightmapper"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
+    bl_category = "Frontiers Level Creator"
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
-        
-        # Add "Import" section label
         layout = self.layout
-        layout.label(text="Advanced")
-
-        # Add tiles checkbox
+        
+        layout.label(text="Level of Detail", icon="ERROR")
         row = layout.row()
-        row.prop(context.scene, "fullRes", text="Full Resolution ⚠")
+        row.prop(context.scene, "lodnormal", text="Non-sculpting", slider=True)
+        row = layout.row()
+        row.prop(context.scene, "lodsculpt", text="Sculpting", slider=True)
+        layout.label(text="Other")
+        row = layout.row()
+        row.prop(context.scene, "mapsize", text="Map Size")
+        row = layout.row()
+        row.prop(context.scene, "mapheight", text="Map Height")
 
 class DisplaceOnCurvePanel(bpy.types.Panel):
     bl_label = "Place objects along curve"
@@ -569,14 +581,26 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(FrontiersImportProperties)
     bpy.types.Scene.FrontiersImportProperties = bpy.props.PointerProperty(type=FrontiersImportProperties)
     #register Heightmapper Script
-    bpy.utils.register_class(HeightmapperPanel)
+    #bpy.utils.register_class(HeightmapperPanel)
+    bpy.utils.register_class(HeightmapperPanel2)
     bpy.utils.register_class(HeightmapperOperator)
-    bpy.utils.register_class(HeightmapperRender)
-    bpy.utils.register_class(HeightmapperRenderPanel)
+    bpy.utils.register_class(HeightmapperExport)
     bpy.utils.register_class(HeightmapperImport)
-    bpy.utils.register_class(HeightmapperImportPanel)
-    bpy.utils.register_class(HeightmapperAdvancedPanel)
-    bpy.utils.register_class(HeightmapperProps)
+    bpy.utils.register_class(HeightmapperSplatmapPanel)
+    bpy.utils.register_class(SplatmapOperator)
+    bpy.utils.register_class(SplatmapExport)
+    bpy.utils.register_class(SplatmapImport)
+    bpy.utils.register_class(SplatmapSettingImport)
+    bpy.utils.register_class(SplatmapFavourite)
+    bpy.utils.register_class(SplatmapSet)
+    bpy.utils.register_class(HeightmapperSettingsPanel)
+    #bpy.utils.register_class(HeightmapperOperator)
+    #bpy.utils.register_class(HeightmapperRender)
+    #bpy.utils.register_class(HeightmapperRenderPanel)
+    #bpy.utils.register_class(HeightmapperImport)
+    #bpy.utils.register_class(HeightmapperImportPanel)
+    #bpy.utils.register_class(HeightmapperAdvancedPanel)
+    #bpy.utils.register_class(HeightmapperProps)
     #register Parameter Script
     bpy.utils.register_class(OBJECT_PT_JsonParameters)
     bpy.utils.register_class(parametersListvalues)
@@ -607,6 +631,8 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(ExportTerrain)
     bpy.utils.register_class(ExportObjects)
     bpy.utils.register_class(ExportHeightmap)
+    bpy.utils.register_class(ExportSplatmap)
+    bpy.utils.register_class(ExportDensity)
     bpy.utils.register_class(RepackAll)
     bpy.utils.register_class(Settings)
     bpy.utils.register_class(QexportSettings)
@@ -641,6 +667,8 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(ImportTerrain)
     bpy.utils.register_class(ImportObjects)
     bpy.utils.register_class(ImportHeightmap)
+    bpy.utils.register_class(ImportSplatmap)
+    bpy.utils.register_class(ImportDensity)
     bpy.utils.register_class(SettingsImp)
     bpy.utils.register_class(QimportSettings)
 
@@ -684,14 +712,26 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(FrontiersImportProperties)
     del bpy.types.Scene.FrontiersImportProperties
     #unregister Heightmapper Script
-    bpy.utils.unregister_class(HeightmapperPanel)
+    #bpy.utils.unregister_class(HeightmapperPanel)
+    bpy.utils.unregister_class(HeightmapperPanel2)
     bpy.utils.unregister_class(HeightmapperOperator)
-    bpy.utils.unregister_class(HeightmapperRender)
-    bpy.utils.unregister_class(HeightmapperRenderPanel)
+    bpy.utils.unregister_class(HeightmapperExport)
     bpy.utils.unregister_class(HeightmapperImport)
-    bpy.utils.unregister_class(HeightmapperImportPanel)
-    bpy.utils.unregister_class(HeightmapperAdvancedPanel)
-    bpy.utils.unregister_class(HeightmapperProps)
+    bpy.utils.unregister_class(HeightmapperSplatmapPanel)
+    bpy.utils.unregister_class(SplatmapOperator)
+    bpy.utils.unregister_class(SplatmapExport)
+    bpy.utils.unregister_class(SplatmapImport)
+    bpy.utils.unregister_class(SplatmapSettingImport)
+    bpy.utils.unregister_class(SplatmapFavourite)
+    bpy.utils.unregister_class(SplatmapSet)
+    bpy.utils.unregister_class(HeightmapperSettingsPanel)
+    #bpy.utils.unregister_class(HeightmapperOperator)
+    #bpy.utils.unregister_class(HeightmapperRender)
+    #bpy.utils.unregister_class(HeightmapperRenderPanel)
+    #bpy.utils.unregister_class(HeightmapperImport)
+    #bpy.utils.unregister_class(HeightmapperImportPanel)
+    #bpy.utils.unregister_class(HeightmapperAdvancedPanel)
+    #bpy.utils.unregister_class(HeightmapperProps)
     #unregister Parameter Script
     bpy.utils.unregister_class(JsonParameterListItem)#added
     bpy.utils.unregister_class(OBJECT_PT_JsonParameters)
@@ -720,6 +760,8 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(ExportTerrain)
     bpy.utils.unregister_class(ExportObjects)
     bpy.utils.unregister_class(ExportHeightmap)
+    bpy.utils.unregister_class(ExportSplatmap)
+    bpy.utils.unregister_class(ExportDensity)
     bpy.utils.unregister_class(RepackAll)
     bpy.utils.unregister_class(Settings)
     bpy.utils.unregister_class(QexportSettings)
@@ -751,6 +793,8 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(ImportTerrain)
     bpy.utils.unregister_class(ImportObjects)
     bpy.utils.unregister_class(ImportHeightmap)
+    bpy.utils.unregister_class(ImportSplatmap)
+    bpy.utils.unregister_class(ImportDensity)
     bpy.utils.unregister_class(SettingsImp)
     bpy.utils.unregister_class(QimportSettings)
     

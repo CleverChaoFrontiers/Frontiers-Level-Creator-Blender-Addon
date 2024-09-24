@@ -214,8 +214,10 @@ class PrintRailsOperator(bpy.types.Operator):
                         # Iterate through each Bezier point if not a straight path
                         for point in curve_data.splines.active.bezier_points:
                             # Set the handle types to 'AUTO'
-                            point.handle_left_type = 'AUTO'
-                            point.handle_right_type = 'AUTO'
+                            if point.handle_left_type != 'AUTO' and point.handle_left_type != 'VECTOR':  
+                                point.handle_left_type = 'AUTO'
+                            if point.handle_right_type != 'AUTO' and point.handle_right_type != 'VECTOR':
+                                point.handle_right_type = 'AUTO'
                     loop_bool = curve_data.splines.active.use_cyclic_u
                     
                     # Print the curve name
@@ -225,21 +227,12 @@ class PrintRailsOperator(bpy.types.Operator):
                     for i, point in enumerate(points_in_curve):
                         print(i)
                         if i == 0:
-                            print("Found first node")
+                            originStr = False
+                            if curve_data.splines.active.type == "BEZIER":
+                                if point.handle_right_type == 'VECTOR' and point.handle_left_type == 'VECTOR':
+                                    originStr = True
                             origincoord = f'{point.co.x + obj.location.x}, {point.co.z + obj.location.z}, {-(point.co.y+obj.location.y)}'
                             if rot_check == True:
-                                # try:
-
-                                #     next_point = points_in_curve[i + 1]
-                                #     # Call the function to spawn cube, set up constraint, print rotation, and delete cube
-                                #     RotPoint,lastLength = Find_node_rot(obj, point,next_point,lastLength)
-                                #     RotPoint = RotPoint.to_quaternion()
-                                #     #Rotation
-                                #     rotation = f'{round(RotPoint.x,3)}, {round(RotPoint.z,3)}, {-round(RotPoint.y,3)}, {round(RotPoint.w,3)}'
-                                #     lastRotation = rotation
-                                # except:
-                                #     rotation = '0.0, 0.0, 0.0, 1.0'
-                                #     pass
                                 try:
                                     RotPoint,rot_checker = Find_node_rot(obj, i, path_dir)
                                     if rot_checker == False:
@@ -311,7 +304,7 @@ class PrintRailsOperator(bpy.types.Operator):
                             node_temp = node_temp.replace('DATA_POSITION', nodecoord)
                             node_temp = node_temp.replace('DATA_ROTATION', rotation)
                             node_temp = node_temp.replace('DATA_INDEX', nodeindex)
-                            if Straight_Path:
+                            if Straight_Path or (point.handle_right_type == 'VECTOR' and point.handle_left_type == 'VECTOR'):
                                 node_temp = node_temp.replace('LINETYPE_SNS', 'LINETYPE_STRAIGHT')
                             node_text += node_temp
                             
@@ -350,7 +343,7 @@ class PrintRailsOperator(bpy.types.Operator):
                     path_temp = path_temp.replace('DATA_NODES', node_ID_list)
                     path_temp = path_temp.replace('DATA_LOOP', str(loop_bool).lower())
                     path_temp = path_temp.replace('DATA_UID', UID_Random)
-                    if Straight_Path:
+                    if Straight_Path or originStr:
                         path_temp = path_temp.replace('LINETYPE_SNS', 'LINETYPE_STRAIGHT')
                     path_text += path_temp
                     node_ID_list =""

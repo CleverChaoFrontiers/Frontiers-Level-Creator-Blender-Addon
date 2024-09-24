@@ -218,6 +218,11 @@ def readMaterial(path):
 
         return materialData
 
+def updateprogress(advance):
+    bpy.types.Scene.heightmapprogress =  bpy.types.Scene.heightmapprogress + advance
+    bpy.types.Scene.heightmapprogresstext = f"LOADING ({round(bpy.types.Scene.heightmapprogress * 100)}%)"
+    bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+    return
 
 class CompleteImport(bpy.types.Operator):
     bl_idname = "qimport.completeimport"
@@ -380,22 +385,31 @@ class ImportTerrain(bpy.types.Operator):
                     pass
                 else:
                     with contextlib.redirect_stdout(io.StringIO()): # Stops FBX import from clogging up the console
+                        old_objs = set(context.scene.objects)
                         bpy.ops.import_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{loggedPcmodelInstances[0][instance]}.fbx")
-                    alreadyImported.append(bpy.context.view_layer.objects.active.name)
+                        alreadyImported.append(list(set(context.scene.objects) - old_objs)[0].name)
 
                 trrObj = bpy.data.objects.new(loggedPcmodelInstances[0][instance], bpy.data.objects[loggedPcmodelInstances[0][instance]].data)
                 bpy.context.collection.objects.link(trrObj)
-                trrObj.location = (loggedPcmodelInstances[1][instance]["X"], loggedPcmodelInstances[1][instance]["Y"], loggedPcmodelInstances[1][instance]["Z"])
-                trrObj.rotation_euler = (loggedPcmodelInstances[2][instance]["X"], loggedPcmodelInstances[2][instance]["Y"], loggedPcmodelInstances[2][instance]["Z"])
+                trrObj.rotation_mode = "XYZ"
+                trrObj.rotation_euler = (math.radians(90), 0, 0)
+                bpy.ops.object.select_all(action='DESELECT')
+                trrObj.select_set(True)
+                bpy.ops.object.make_single_user(object=True, obdata=True, material=False, animation=False, obdata_animation=False)
+                bpy.ops.object.transform_apply(location=False, rotation=True, scale=False, properties=False)
+                trrObj.location = (loggedPcmodelInstances[1][instance]["X"], -loggedPcmodelInstances[1][instance]["Z"], loggedPcmodelInstances[1][instance]["Y"])
                 trrObj.scale = (loggedPcmodelInstances[3][instance]["X"], loggedPcmodelInstances[3][instance]["Z"], loggedPcmodelInstances[3][instance]["Y"])
+                trrObj.rotation_mode = "QUATERNION"
+                trrObj.rotation_mode = "XZY"
+                trrObj.rotation_euler = (loggedPcmodelInstances[2][instance]["X"], -loggedPcmodelInstances[2][instance]["Z"], loggedPcmodelInstances[2][instance]["Y"])
                 importedObjects.append(trrObj)
             except Exception as e:
-                print(e)
+                print(f"Line 393:{e}")
 
         bpy.ops.object.select_all(action='DESELECT')
         for o in importedObjects:
             o.select_set(True)
-        bpy.ops.transform.rotate(value=math.radians(-90), orient_axis='X', orient_type='GLOBAL', center_override=(0.0, 0.0, 0.0))
+        #bpy.ops.transform.rotate(value=math.radians(-90), orient_axis='X', orient_type='GLOBAL', center_override=(0.0, 0.0, 0.0))
 
         bpy.ops.object.select_all(action='DESELECT')
         for obj in alreadyImported:
@@ -416,7 +430,10 @@ class ImportTerrain(bpy.types.Operator):
                 print(exception)
         
         for m in removeMats:
-            bpy.data.materials.remove(bpy.data.materials[m])
+            try:
+                bpy.data.materials.remove(bpy.data.materials[m])
+            except KeyError:
+                pass
 
         print(f"\n\nMODEL CLEANING UP COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
         previousTime = time.time()
@@ -762,7 +779,339 @@ class ImportHeightmap(bpy.types.Operator):
     bl_description = "Imports heightmap"
 
     def execute(self, context):
+        startTime = time.time()
+        bpy.types.Scene.heightmapprogress = 0.0
+        updateprogress(0.0)
+
+        previoustime = time.time()
+
+        preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
+        directoryTexconv = os.path.abspath(bpy.path.abspath(preferences.directoryTexconv)) # Gets texconv path from preferences
+        directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
+        if preferences.directoryTexconv == "" or preferences.directoryHedgearcpack == "": # Gives an error if a program is missing
+            def missingProgramError(self, context):
+                missingPrograms = [] # List of missing programs
+                if preferences.directoryTexconv == "":
+                    missingPrograms.append("texconv.exe")
+                if preferences.directoryHedgearcpack == "":
+                    missingPrograms.append("HedgeArcPack.exe")
+                self.layout.label(text=f"The filepath(s) for: {', '.join(missingPrograms)} are not set. \nPlease set the path(s) in Settings.") # Tells the user about the missing prorgrams
+
+            bpy.context.window_manager.popup_menu(missingProgramError, title = "Program missing", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+
+        if bpy.context.scene.worldDir == "": # Gives an error if no world directory is sent
+            def missingProgramError(self, context):
+                self.layout.label(text="No World folder is set") # Sets the popup label
+
+            bpy.context.window_manager.popup_menu(missingProgramError, title = "World folder not set", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+        mapsize = 4
+
+        worldFolder = os.path.abspath(bpy.path.abspath(bpy.context.scene.worldDir)) # Gets the chosen world folder
+        worldId = worldFolder.split("\\")[-1]
+        heightfolder = f"{worldFolder}\\{worldId}_trr_height"
+        tempfolder = f"{worldFolder}\\levelcreator-temp\\"
+        if os.path.exists(tempfolder):
+            shutil.rmtree(tempfolder)
+        os.mkdir(tempfolder)
+
+        previoustime = time.time()
+
+        tileimgs = []
+        os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
+        for f in os.listdir(heightfolder):
+            if f.lower().endswith(".dds") and "heightmap" in f.lower() and not "nrm" in f.lower():
+                os.popen(f'texconv -ft png -y "{heightfolder}\\{f}" -o "{tempfolder[:-1]}"').read() # Converts the image via command line
+                tileimgs.append(bpy.data.images.load(f"{tempfolder}{f[:-4]}.png", check_existing=True))
+                previoustime = time.time()
+
+        with bpy.data.libraries.load(f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/heightmapper_resources.blend') as (data_from, data_to):
+            if not "[FLC] Composite" in bpy.data.node_groups:
+                data_to.node_groups = data_from.node_groups
+        
+        bpy.context.scene.use_nodes = True
+        nodes = bpy.context.scene.node_tree.nodes
+        links = bpy.context.scene.node_tree.links
+
+        compositenode = nodes.new('CompositorNodeComposite')
+        groupNode = nodes.new(type='CompositorNodeGroup')
+        groupNode.node_tree = bpy.data.node_groups["[FLC] Composite"]
+        links.new(groupNode.outputs[0], compositenode.inputs[0])
+        
+        imagenodes = []
+        for i in range(16):
+            imagenodes.append(nodes.new(type='CompositorNodeImage'))
+            imagenodes[-1].image = tileimgs[i]
+            links.new(imagenodes[-1].outputs[0], groupNode.inputs[i])
+        nodes.active = compositenode
+        
+        tempcam = bpy.data.objects.new("tempcamobj", bpy.data.cameras.new(name="tempcam"))
+        activecam = bpy.context.scene.camera
+        bpy.context.scene.camera = tempcam
+        bpy.context.scene.collection.objects.link(tempcam)
+
+        color_depth = bpy.context.scene.render.image_settings.color_depth
+        bpy.context.scene.render.image_settings.color_depth = '16'
+        resolution_x = bpy.context.scene.render.resolution_x
+        bpy.context.scene.render.resolution_x = 4096
+        resolution_y = bpy.context.scene.render.resolution_y
+        bpy.context.scene.render.resolution_y = 4096
+        view_transform = bpy.context.scene.view_settings.view_transform
+        bpy.context.scene.view_settings.view_transform = 'Standard'
+
+        updateprogress(0.02)
+
+        bpy.ops.render.render(write_still=False)
+
+        updateprogress(0.02)
+
+        bpy.context.scene.camera = activecam
+        bpy.data.cameras.remove(bpy.data.cameras[tempcam.data.name])
+
+        for i in imagenodes:
+            nodes.remove(i)
+        nodes.remove(compositenode)
+        nodes.remove(groupNode)
+        for i in tileimgs:
+            bpy.data.images.remove(i)
+        bpy.data.node_groups.remove(bpy.data.node_groups["[FLC] Composite"])
+
+        bpy.data.images["Render Result"].save_render(filepath=f"{tempfolder}Heightmap.png")
+        heightmapimg = bpy.data.images.load(f"{tempfolder}Heightmap.png", check_existing=True)
+        heightmapimg.colorspace_settings.name = 'Non-Color'
+
+        bpy.context.scene.render.image_settings.color_depth = color_depth
+        bpy.context.scene.render.resolution_x = resolution_x
+        bpy.context.scene.render.resolution_y = resolution_y
+        bpy.context.scene.view_settings.view_transform = view_transform
+
+        updateprogress(0.04)
+
+        bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection # Deselects all collections
+        try:
+            bpy.context.view_layer.objects[0].select_set(True)
+            bpy.context.view_layer.objects.active = bpy.context.view_layer.objects[0] # Selects a random object so that object mode can be switched to
+            bpy.ops.object.mode_set(mode="OBJECT", toggle=False) # Changes to object mode
+        except Exception as e:
+            print(e)
+
+        bpy.ops.mesh.primitive_plane_add(location=(0, 0, 0), scale=(1, 1, 1), enter_editmode=True) # Create plane
+        plane = bpy.context.selected_objects[0] # Get plane
+        plane.name = "[FLC] Heightmap-base" # Rename plane
+        bpy.ops.mesh.subdivide(number_cuts=63) # Subdivide plane
+        bpy.ops.mesh.subdivide(number_cuts=63)
+        bpy.ops.object.mode_set(mode="OBJECT", toggle=False) # Change back to object mode
+        bpy.ops.transform.resize(value=(2048, 2048, 2048))
+
+        updateprogress(0.44)
+
+        heighttex = bpy.data.textures.new("[FLC] Heightmap-Tex", type='IMAGE')
+        heighttex.image = heightmapimg
+
+        displacemod = plane.modifiers.new("Displace", "DISPLACE") # Adds multires modifier
+        displacemod.texture = heighttex
+        displacemod.strength = 0.4887025
+        displacemod.mid_level = 0.0
+
+        bpy.ops.object.modifier_apply(modifier=displacemod.name)
+        bpy.data.textures.remove(heighttex)
+        bpy.data.images.remove(heightmapimg)
+
+        updateprogress(0.06)
+
+        bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection # Deselects all collections
+        try:
+            bpy.context.view_layer.objects[0].select_set(True)
+            bpy.context.view_layer.objects.active = bpy.context.view_layer.objects[0] # Selects a random object so that object mode can be switched to
+            bpy.ops.object.mode_set(mode="OBJECT", toggle=False) # Changes to object mode
+        except Exception as e:
+            print(e)
+
+        bpy.ops.mesh.primitive_plane_add(location=(0, 0, 0), scale=(mapsize * 1024, mapsize * 1024, mapsize * 1024), enter_editmode=True) # Create plane
+        finalheightmap = bpy.context.selected_objects[0] # Get plane
+        finalheightmap.name = "[FLC] Heightmap" # Rename plane
+        bpy.ops.transform.resize(value=(2048, 2048, 2048))
+        bpy.ops.mesh.subdivide(number_cuts=15) # Subdivide plane
+        bpy.ops.object.mode_set(mode="OBJECT", toggle=False) # Change back to object mode
+        bpy.ops.object.modifier_add(type='MULTIRES') # Adds multires modifier
+        for i in range(8):
+            bpy.ops.object.multires_subdivide(modifier="Multires", mode='LINEAR') # Subdivides the plane further with multires
+        bpy.context.object.modifiers["Multires"].levels = 5 # Sets the LOD for Object mode
+        bpy.context.object.modifiers["Multires"].sculpt_levels = 7 # Sets the LOD for Sculpt mode
+
+        updateprogress(0.2)
+
+        shrinkmod = finalheightmap.modifiers.new("Shrinkwrap", "SHRINKWRAP") # Adds multires modifier
+        shrinkmod.target = plane
+        shrinkmod.use_project_z = True
+        shrinkmod.use_negative_direction = True
+        shrinkmod.wrap_method = "PROJECT"
+
+        bpy.ops.object.modifier_apply(modifier=shrinkmod.name)
+
+        bpy.data.objects.remove(plane)
+
+        shutil.rmtree(tempfolder)
+
+        updateprogress(0.22)
+
+        bpy.types.Scene.heightmapprogress = 1.0
+        bpy.types.Scene.heightmapprogresstext = "DONE"
+
+        print(f"\n\nHEIGHTMAP IMPORT COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
+
         return{"FINISHED"}
+
+class ImportSplatmap(bpy.types.Operator):
+    bl_idname = "qimport.importsplatmap"
+    bl_label = "Splatmap"
+    bl_description = "Imports splatmap"
+
+    def execute(self, context):
+        splatmapdata = bpy.types.Scene.loadedsplatmap
+        preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
+        directoryKnuxtools = os.path.abspath(bpy.path.abspath(preferences.directoryKnuxtools)) # Gets KnuxTools path from preferences
+        directoryTexconv = os.path.abspath(bpy.path.abspath(preferences.directoryTexconv)) # Gets texconv path from preferences
+        directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
+        if not "[FLC] Heightmap" in bpy.data.objects:
+            return {'FINISHED'}
+        if preferences.directoryTexconv == "" or preferences.directoryHedgearcpack == "" or preferences.directoryKnuxtools == "": # Gives an error if a program is missing
+            def missingProgramError(self, context):
+                missingPrograms = [] # List of missing programs
+                if preferences.directoryTexconv == "":
+                    missingPrograms.append("texconv.exe")
+                if preferences.directoryHedgearcpack == "":
+                    missingPrograms.append("HedgeArcPack.exe")
+                if preferences.directoryKnuxtools == "":
+                    missingPrograms.append("KnuxTools.exe")
+                self.layout.label(text=f"The filepath(s) for: {', '.join(missingPrograms)} are not set. \nPlease set the path(s) in Settings.") # Tells the user about the missing prorgrams
+
+            bpy.context.window_manager.popup_menu(missingProgramError, title = "Program missing", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+
+        worldFolder = os.path.abspath(bpy.path.abspath(bpy.context.scene.worldDir)) # Gets the chosen world folder
+        worldId = worldFolder.split("\\")[-1]
+        splatmapheightDirectory = f"{worldFolder}\\{worldId}_trr_height"
+        splatmapcmnDirectory = f"{worldFolder}\\{worldId}_trr_cmn"
+        tempfolder = f"{worldFolder}\\levelcreator-temp\\"
+        if os.path.exists(tempfolder):
+            shutil.rmtree(tempfolder)
+        os.mkdir(tempfolder)
+
+        for f in os.listdir(splatmapheightDirectory):
+            if f.lower().endswith(".terrain-material"):
+                trrmat = f"{splatmapheightDirectory}\\{f}"
+                trrmatjsonfile = f"{trrmat[:-17]}.hedgehog.terrain-material.json"
+                break
+        
+        os.chdir(os.path.dirname(directoryKnuxtools))
+        os.popen(f"KnuxTools {trrmat}")
+
+        with open(trrmatjsonfile, "r") as file:
+            trrmatjson = json.load(file)
+            file.close()
+        
+        splatmapdata["name"] = trrmat.split("\\")[-1]
+        splatmapdata["filepath"] = trrmat
+
+        for t in range(len(trrmatjson)):
+            splatmapdata["data"].append({"index": 0, "type": "", "image": ""})
+            splatmapdata["data"][-1]["index"] = trrmatjson[t]["Index"]
+            splatmapdata["data"][-1]["type"] = trrmatjson[t]["Type"]
+            splatmapdata["data"][-1]["image"] = trrmatjson[t]["BaseDiffuse"]
+
+        with bpy.data.libraries.load(f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/heightmapper_resources.blend') as (data_from, data_to):
+            if not "[FLC] Splatmap" in bpy.data.node_groups:
+                data_to.node_groups = data_from.node_groups
+        
+        material = bpy.data.materials.new("[FLC] Splatmap")
+        material.use_nodes = True
+        nodes = material.node_tree.nodes
+        links = material.node_tree.links
+        for i in nodes:
+            nodes.remove(i)
+        
+        outputnode = nodes.new('ShaderNodeOutputMaterial')
+
+        splatmapnode = nodes.new('ShaderNodeTexImage')
+        splatmapnode.image = None
+        splatmapnode.interpolation = "Closest"
+        splatmapnode.name = "SplatNode"
+        missingnode = nodes.new('ShaderNodeTexImage')
+        missingnode.image = bpy.data.images.load(f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/missing.png', check_existing=True)
+        missingnode.interpolation = "Closest"
+
+        baseinput = missingnode.outputs[0]
+        for d in splatmapdata["data"]:
+            groupNode = nodes.new(type='ShaderNodeGroup')
+            groupNode.node_tree = bpy.data.node_groups["[FLC] Splatmap"]
+            groupNode.inputs[3].default_value = d["index"]
+            links.new(baseinput, groupNode.inputs[2])
+            baseinput = groupNode.outputs[0]
+            trrtexnode = nodes.new('ShaderNodeTexImage')
+            trrtexnode.image = bpy.data.images.load(f'{splatmapheightDirectory}\\{d["image"]}.dds', check_existing=True)
+            mappingNode = nodes.new(type='ShaderNodeMapping')
+            mappingNode.inputs[3].default_value[0] = 512
+            mappingNode.inputs[3].default_value[1] = 512
+            mappingNode.inputs[3].default_value[2] = 512
+            coordNode = nodes.new(type='ShaderNodeTexCoord')
+            links.new(splatmapnode.outputs[0], groupNode.inputs[0])
+            links.new(trrtexnode.outputs[0], groupNode.inputs[1])
+            links.new(coordNode.outputs[2], mappingNode.inputs[0])
+            links.new(mappingNode.outputs[0], trrtexnode.inputs[0])
+        links.new(baseinput, outputnode.inputs[0])
+
+        scalemat = bpy.data.materials.new("[FLC] Scale")
+        scalemat.use_nodes = True
+        nodes = scalemat.node_tree.nodes
+        for i in nodes:
+            nodes.remove(i)
+        outputnode = nodes.new('ShaderNodeOutputMaterial')
+        imgnode = nodes.new('ShaderNodeTexImage')
+        imgnode.image = None
+        imgnode.name = "scale"
+        scalemat.node_tree.links.new(imgnode.outputs[0], outputnode.inputs[0])
+
+        areamat = bpy.data.materials.new("[FLC] Area")
+        areamat.use_nodes = True
+        nodes = areamat.node_tree.nodes
+        for i in nodes:
+            nodes.remove(i)
+        outputnode = nodes.new('ShaderNodeOutputMaterial')
+        imgnode = nodes.new('ShaderNodeTexImage')
+        imgnode.image = None
+        imgnode.name = "area"
+        areamat.node_tree.links.new(imgnode.outputs[0], outputnode.inputs[0])
+
+
+        bpy.context.view_layer.objects.active.data.materials.append(bpy.data.materials["[FLC] Splatmap"])
+        bpy.context.view_layer.objects.active.data.materials[0] = bpy.data.materials["[FLC] Splatmap"]
+        for f in os.listdir(os.path.abspath(bpy.path.abspath(splatmapcmnDirectory))):
+            if f.endswith("splatmap.dds"):
+                splatmapimg = bpy.data.images.load(f"{splatmapcmnDirectory}\\{f}", check_existing = True)
+                splatmapimg.name = "[FLC] Splatmap"
+            if f.endswith("scale.dds"):
+                scaleimg = bpy.data.images.load(f"{splatmapcmnDirectory}\\{f}", check_existing = True)
+                scaleimg.name = "[FLC] Scale"
+            if f.endswith("area.dds"):
+                areaimg = bpy.data.images.load(f"{splatmapcmnDirectory}\\{f}", check_existing = True)
+                areaimg.name = "[FLC] Area"
+
+        bpy.data.materials["[FLC] Splatmap"].node_tree.nodes["SplatNode"].image = splatmapimg
+        bpy.data.materials["[FLC] Splatmap"].node_tree.nodes["SplatNode"].image.colorspace_settings.name = "Non-Color"
+        bpy.data.materials["[FLC] Scale"].node_tree.nodes["scale"].image = scaleimg
+        bpy.data.materials["[FLC] Area"].node_tree.nodes["area"].image = areaimg
+
+        return {'FINISHED'}
+    
+class ImportDensity(bpy.types.Operator):
+    bl_idname = "qimport.importdensity"
+    bl_label = "Density"
+    bl_description = "Imports density"
+
+    def execute(self, context):
+        return {'FINISHED'}
     
 class SettingsImp(bpy.types.Operator):
     bl_idname = "qimport.settings"

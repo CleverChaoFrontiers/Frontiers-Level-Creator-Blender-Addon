@@ -7,6 +7,7 @@ import textwrap
 import mathutils # type: ignore
 import math
 import bmesh # type: ignore
+import time
 
 def pack(files, directoryHedgearcpack):
     for f in range(len(files)): # For every file that needs to be packed
@@ -40,6 +41,12 @@ def ID_generator(self):
     for i in range(32):
         Id = Id.replace("X", hexValues[random.randrange(len(hexValues))], 1) # generates a random ID
     return Id
+
+def updateprogress(advance):
+    bpy.types.Scene.heightmapprogress =  bpy.types.Scene.heightmapprogress + advance
+    bpy.types.Scene.heightmapprogresstext = f"LOADING ({round(bpy.types.Scene.heightmapprogress * 100)}%)"
+    bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+    return
 
 # def Find_node_rot(curve_obj, current_point, next_point, LastLength = 0, Final_curve_point = False,First_curve_point = False):
 #     # Get the location of the curve object
@@ -161,6 +168,13 @@ def Find_node_rot(curve_obj,index,path_dir):#New fixed rotation whooo! Based hea
         curve_obj.data.bevel_depth = original_bevel_size
     bpy.data.objects.remove(appended_rotobject, do_unlink=True)
     return objectRotation,True
+def Instantiate(pcmodelname,pccolname,object):
+    pcmodel = [pcmodelname.split(".")[0], (object.location.x, object.location.y, object.location.z), (object.rotation_euler.x, object.rotation_euler.y, object.rotation_euler.z), (object.scale.x, object.scale.y,object.scale.z)]
+    if pccolname != "":
+        pccol = [pcmodelname.split(".")[0]+"_"+ pccolname.split(".")[0], (object.location.x, object.location.y, object.location.z), (object.rotation_euler.x, object.rotation_euler.y, object.rotation_euler.z),(object.scale.x, object.scale.y,object.scale.z)]
+    else:
+        pccol = ""
+    return pcmodel, pccol
 class CompleteExport(bpy.types.Operator):
     bl_idname = "qexport.completeexport"
     bl_label = "Complete Export"
@@ -248,11 +262,45 @@ class ExportTerrain(bpy.types.Operator):
         print(f"Exporting from Collection \"{collection.name}\".")
 
         pcmodelInstances = [] # Secret feature mainly for placing multiple animated .models (I needed it for a project)
+        pccolInstances = []
         for c in collection.children:
             bpy.ops.object.select_all(action='DESELECT') # Deselects all
             for o in c.all_objects:
+                original_rotate_mode = o.rotation_mode
                 if o.name[:6].upper() == "_INST_":
-                    pcmodelInstances.append([o.name[6:].split(".")[0], (o.location.x, o.location.y, o.location.z), (o.rotation_euler.x - math.radians(90), -o.rotation_euler.y, o.rotation_euler.z)])
+                    if original_rotate_mode != "XZY":
+                        o.rotation_mode = "QUATERNION"
+                        o.rotation_mode = "XZY"
+
+                    pcmodelInstances.append([o.name[6:].split(".")[0], (o.location.x, o.location.y, o.location.z), (o.rotation_euler.x, o.rotation_euler.y, o.rotation_euler.z), (o.scale.x, o.scale.y,o.scale.z)])
+                    if original_rotate_mode != "XZY":
+                        o.rotation_mode = "QUATERNION"
+                        o.rotation_mode = original_rotate_mode
+                elif o.name[:9].upper() == "_INSTCOL_":
+                    if original_rotate_mode != "XZY":
+                        o.rotation_mode = "QUATERNION"
+                        o.rotation_mode = "XZY"
+
+                    pccolInstances.append([o.name[9:].split(".")[0]+"_col", (o.location.x, o.location.y, o.location.z), (o.rotation_euler.x, o.rotation_euler.y, o.rotation_euler.z), (o.scale.x, o.scale.y,o.scale.z)])
+                    if original_rotate_mode != "XZY":
+                        o.rotation_mode = "QUATERNION"
+                        o.rotation_mode = original_rotate_mode
+                elif "INST(" in o.name:
+                    if original_rotate_mode != "XZY":
+                        o.rotation_mode = "QUATERNION"
+                        o.rotation_mode = "XZY"
+                    splitInst = o.name.split("(")
+                    
+                    inst_names = splitInst[1].replace(")","").split(",")
+                    
+                    inst_names.append("")
+                    pcmodelInst, pccolInst = Instantiate(inst_names[0],inst_names[1],o)
+                    pcmodelInstances.append(pcmodelInst)
+                    if pccolInst != "":
+                        pccolInstances.append(pccolInst)
+                    if original_rotate_mode != "XZY":
+                        o.rotation_mode = "QUATERNION"
+                        o.rotation_mode = original_rotate_mode
                 else:
                     if not "FrontiersAsset" in o:
                         o.select_set(True)
@@ -271,7 +319,7 @@ class ExportTerrain(bpy.types.Operator):
             keepFiles = ["level", "txt", "rfl"]
             if bpy.context.scene.keepPcm == True:
                 keepFiles.append("pcmodel")
-            if bpy.context.scene.keepPcl == False:
+            if bpy.context.scene.keepPcl == True:
                 keepFiles.append("pccol")
             if bpy.context.scene.keepTex == True:
                 keepFiles.append("dds")
@@ -284,6 +332,7 @@ class ExportTerrain(bpy.types.Operator):
 
         os.chdir(os.path.dirname(directoryModelconverter))
         pcmodel = []
+        instanced_pccol = []
         for f in range(len(fbxModels)):
             fbxName = fbxModels[f].split("\\")[-1]
             print(f"Terrain - {fbxName}")
@@ -296,9 +345,9 @@ class ExportTerrain(bpy.types.Operator):
                 pcmodelObj["InstanceName"] = fbxModels[f].split('\\')[-1] + "_model"
                 pcmodelObj["AssetName"] = fbxModels[f].split('\\')[-1]
                 pcmodel.append(pcmodelObj)
-        for i in range(len(pcmodelInstances)): # Yay secret feature
+        for i in range(len(pcmodelInstances)): # terrain instancing
             pcmodelObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
-            pcmodelObj["InstanceName"] = pcmodelInstances[i][0] + "_model"
+            pcmodelObj["InstanceName"] = f"{pcmodelInstances[i][0]}_model_{i}"
             pcmodelObj["AssetName"] = pcmodelInstances[i][0]
             pcmodelObj["Position"]["X"] = pcmodelInstances[i][1][0]
             pcmodelObj["Position"]["Y"] = pcmodelInstances[i][1][2]
@@ -306,7 +355,24 @@ class ExportTerrain(bpy.types.Operator):
             pcmodelObj["Rotation"]["X"] = pcmodelInstances[i][2][0]
             pcmodelObj["Rotation"]["Y"] = pcmodelInstances[i][2][2]
             pcmodelObj["Rotation"]["Z"] = -pcmodelInstances[i][2][1]
+            pcmodelObj["Scale"]["X"] = pcmodelInstances[i][3][0]
+            pcmodelObj["Scale"]["Y"] = pcmodelInstances[i][3][2]
+            pcmodelObj["Scale"]["Z"] = pcmodelInstances[i][3][1]
             pcmodel.append(pcmodelObj)
+        for i in range(len(pccolInstances)): #Collision instancing
+            pccolObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
+            pccolObj["InstanceName"] = f"{pccolInstances[i][0]}_model_{i}"
+            pccolObj["AssetName"] = pccolInstances[i][0]
+            pccolObj["Position"]["X"] = pccolInstances[i][1][0]
+            pccolObj["Position"]["Y"] = pccolInstances[i][1][2]
+            pccolObj["Position"]["Z"] = -pccolInstances[i][1][1]
+            pccolObj["Rotation"]["X"] = pccolInstances[i][2][0]
+            pccolObj["Rotation"]["Y"] = pccolInstances[i][2][2]
+            pccolObj["Rotation"]["Z"] = -pccolInstances[i][2][1]
+            pccolObj["Scale"]["X"] = pccolInstances[i][3][0]
+            pccolObj["Scale"]["Y"] = pccolInstances[i][3][2]
+            pccolObj["Scale"]["Z"] = pccolInstances[i][3][1]
+            instanced_pccol.append(pccolObj)
 
         if bpy.context.scene.keepPcm == False:
             print("Don't keep pcmodel")
@@ -329,6 +395,15 @@ class ExportTerrain(bpy.types.Operator):
                 os.chdir(os.path.dirname(directoryKnuxtools))
                 os.popen(f'knuxtools "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.hedgehog.pointcloud.json" -e=pcmodel').read()
                 shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.pcmodel", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\terrain.pcmodel")
+        if bpy.context.scene.keepPcl == False and instanced_pccol != []:
+            print("add collision instance")
+            pccolFile = open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.hedgehog.pointcloud.json", "x")
+            pccolFile.write(json.dumps(instanced_pccol, indent=2))
+            pccolFile.close()
+
+            os.chdir(os.path.dirname(directoryKnuxtools))
+            os.popen(f'knuxtools "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.hedgehog.pointcloud.json" -e=pccol').read()
+            shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.pccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\instance_collision.pccol")
 
         tempFolderContents = os.listdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\")
         for f in range(len(tempFolderContents)): # For every file in the temp folder
@@ -577,8 +652,10 @@ class ExportObjects(bpy.types.Operator):
                         # Iterate through each Bezier point if not a straight path
                         for point in curve_data.splines.active.bezier_points:
                             # Set the handle types to 'AUTO'
-                            point.handle_left_type = 'AUTO'
-                            point.handle_right_type = 'AUTO'
+                            if point.handle_left_type != 'AUTO' and point.handle_left_type != 'VECTOR':  
+                                point.handle_left_type = 'AUTO'
+                            if point.handle_right_type != 'AUTO' and point.handle_right_type != 'VECTOR':
+                                point.handle_right_type = 'AUTO'
                             
                     loop_bool = curve_data.splines.active.use_cyclic_u
                     
@@ -588,18 +665,16 @@ class ExportObjects(bpy.types.Operator):
                     lastLength = 0.0
                     for i, point in enumerate(points_in_curve):
                         if i == 0:
+                            originStr = False
                             origincoord = f'{point.co.x + obj.location.x}, {point.co.z + obj.location.z}, {-(point.co.y+obj.location.y)}'
+                            if curve_data.splines.active.type == "BEZIER":
+                                if point.handle_right_type == 'VECTOR' and point.handle_left_type == 'VECTOR':
+                                    originStr = True
                             if obj.name.lower().find("_norot") == -1:
                                 try:
-
-                                    #next_point = points_in_curve[i + 1]
-                                    # Call the function to spawn cube, set up constraint, print rotation, and delete cube
-                                    #RotPoint,lastLength = Find_node_rot(obj, point,next_point,lastLength)
                                     RotPoint,rot_checker = Find_node_rot(obj, i, path_dir)
                                     if rot_checker == False:
                                         pass
-                                    #RotPoint = RotPoint.to_quaternion()
-                                    #Rotation
                                     originrotation = f'{round(RotPoint.x,3)}, {round(RotPoint.z,3)}, {-round(RotPoint.y,3)}, {round(RotPoint.w,3)}'
                                     
                                 except Exception as err:
@@ -658,7 +733,7 @@ class ExportObjects(bpy.types.Operator):
                             node_temp = node_temp.replace('DATA_POSITION', nodecoord)
                             node_temp = node_temp.replace('DATA_ROTATION', rotation)
                             node_temp = node_temp.replace('DATA_INDEX', nodeindex)
-                            if obj.name.lower().find("_str") != -1:
+                            if obj.name.lower().find("_str") != -1 or (point.handle_right_type == 'VECTOR' and point.handle_left_type == 'VECTOR'):
                                 node_temp = node_temp.replace('LINETYPE_SNS', 'LINETYPE_STRAIGHT')
                             node_text += node_temp
                             # print(i,point)
@@ -676,7 +751,7 @@ class ExportObjects(bpy.types.Operator):
                     path_temp = path_temp.replace('DATA_NODES', node_ID_list)
                     path_temp = path_temp.replace('DATA_LOOP', str(loop_bool).lower())
                     path_temp = path_temp.replace('DATA_UID', UID_Random)
-                    if obj.name.lower().find("_str") != -1:
+                    if obj.name.lower().find("_str") != -1 or originStr:
                         path_temp = path_temp.replace('LINETYPE_SNS', 'LINETYPE_STRAIGHT')
                     path_text += path_temp
                     node_ID_list =""
@@ -1285,24 +1360,31 @@ class ExportObjects(bpy.types.Operator):
 class ExportHeightmap(bpy.types.Operator):
     bl_idname = "qexport.exportheightmap"
     bl_label = "Heightmap"
-    bl_description = "Exports your level's terrain, collision, materials and textures"
+    bl_description = "Exports your level's Heightmap"
 
     def execute(self, context):
+        startTime = time.time()
+        bpy.types.Scene.heightmapprogress = 0.0
+        updateprogress(0.0)
+
+        mapsize = int(bpy.context.scene.mapsize)
+        mapheight = bpy.context.scene.mapheight
+        
         preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
-
-        directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
-        directoryTexconv = os.path.abspath(bpy.path.abspath(preferences.directoryTexconv)) # Gets texconv path from preferences
-
         absoluteModDir = os.path.abspath(bpy.path.abspath(bpy.context.scene.modDir)) # Gets mod folder directory
         worldId = bpy.context.scene.worldId # Gets the world ID to be edited
 
-        if preferences.directoryHedgearcpack == "" or preferences.directoryTexconv == "": # Gives an error if a program is missing
+        directoryTexconv = os.path.abspath(bpy.path.abspath(preferences.directoryTexconv)) # Gets HedgeSet path from preferences
+        directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
+        if not "[FLC] Heightmap" in bpy.data.objects:
+            return {'FINISHED'}
+        if preferences.directoryTexconv == "" or preferences.directoryHedgearcpack == "": # Gives an error if a program is missing
             def missingProgramError(self, context):
                 missingPrograms = [] # List of missing programs
-                if preferences.directoryHedgearcpack == "":
-                    missingPrograms.append("HedgeArcPack.exe")
                 if preferences.directoryTexconv == "":
                     missingPrograms.append("texconv.exe")
+                if preferences.directoryHedgearcpack == "":
+                    missingPrograms.append("HedgeArcPack.exe")
                 self.layout.label(text=f"The filepath(s) for: {', '.join(missingPrograms)} are not set. \nPlease set the path(s) in Settings.") # Tells the user about the missing prorgrams
 
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Program missing", icon = "QUESTION") # Makes the popup appear
@@ -1315,131 +1397,210 @@ class ExportHeightmap(bpy.types.Operator):
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Mod missing", icon = "QUESTION") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
         
-        unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height.pac", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_heightfield.pac"], directoryHedgearcpack)
+        unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height.pac"], directoryHedgearcpack)
 
-        heightmapExists = False # This part checks if there is a heightmap
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Render"]
+
+        tempfolder = f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\levelcreator-temp\\"
+        if os.path.exists(tempfolder):
+            shutil.rmtree(tempfolder)
+        os.mkdir(tempfolder)
+
+        cameraObjs = []
+        for row in range(int(round(mapsize/1024))):
+            for col in range(int(round(mapsize/1024))):
+                cameraObj = bpy.data.objects.new(f'[FLC] Cam-{(row * (int(round(mapsize/1024)))) + col}', bpy.data.cameras.new(name=f'[FLC] Cam-{((row * (int(round(mapsize/1024)))) + col)}'))
+                bpy.context.scene.collection.objects.link(cameraObj)
+                cameraObj.location = (-((mapsize/2) - 512) + (col * 1024), ((mapsize/2) - 512) - (row * 1024), mapheight + 10)
+                cameraObj.data.type = 'ORTHO' # Sets camera to orthographic
+                cameraObj.data.ortho_scale = 1024 # Sets the camera to capture the whole heightmap
+                cameraObj.data.clip_end = mapheight + 11
+                cameraObjs.append(cameraObj)
+        
+        objsshown = []
         for o in bpy.data.objects:
-            if o.name == "Heightmap_LEVELCREATOR":
-                heightmapExists = True
+            if o.hide_render == False and o.name != "[FLC] Heightmap":
+                objsshown.append(o.name)
+                o.hide_render = True
+
+        activecam = bpy.context.scene.camera
+        bpy.context.scene.camera = bpy.data.objects["[FLC] Cam-0"]
+        color_depth = bpy.context.scene.render.image_settings.color_depth
+        bpy.context.scene.render.image_settings.color_depth = '16'
+        resolution_x = bpy.context.scene.render.resolution_x
+        bpy.context.scene.render.resolution_x = 1024
+        resolution_y = bpy.context.scene.render.resolution_y
+        bpy.context.scene.render.resolution_y = 1024
+        view_transform = bpy.context.scene.view_settings.view_transform
+        bpy.context.scene.view_settings.view_transform = 'Raw'
+        taa_render_samples = bpy.context.scene.eevee.taa_render_samples
+        bpy.context.scene.eevee.taa_render_samples = 1
+        engine = bpy.context.scene.render.engine
+        bpy.context.scene.render.engine = 'BLENDER_EEVEE'
+        worldcol = bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value
+        bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = (0, 0, 0, 1)
+
+        use_multiview = bpy.context.scene.render.use_multiview
+        bpy.context.scene.render.use_multiview = True
+        views_format = bpy.context.scene.render.views_format
+        bpy.context.scene.render.views_format = 'MULTIVIEW'
+        leftuse = bpy.context.scene.render.views["left"].use
+        bpy.context.scene.render.views["left"].use = False
+        rightuse = bpy.context.scene.render.views["left"].use
+        bpy.context.scene.render.views["right"].use = False
+
+        for i in range((int(round(mapsize/1024)))**2):
+            view = bpy.context.scene.render.views.new(f"[FLC] View-{i}")
+            view.camera_suffix = f"-{i}"
+
+        print(f"\n\nRENDER SETUP COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
+        previousTime = time.time()
+
+        bpy.ops.render.render(write_still=False)
+        updateprogress(0.87)
+
+        print(f"\n\nRENDER COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
+        previousTime = time.time()
+
+        image = bpy.data.images["Render Result"] # Gets the Rendered image
+        image.file_format = 'PNG' # Sets the file format
+        try:
+            image.save_render(filepath=f"{tempfolder}Heightmap.png") # Outputs the image straight to the temporary folder
+        except Exception as e:
+            print(f"Possible Error: {e}")
+
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Preview"]
+
+        for c in cameraObjs:
+            bpy.data.cameras.remove(bpy.data.cameras[c.data.name])
+
+        for o in objsshown:
+            try:
+                bpy.data.objects[o].hide_render = False
+            except KeyError:
+                pass
+
+        bpy.context.scene.camera = activecam
+        bpy.context.scene.render.image_settings.color_depth = color_depth
+        bpy.context.scene.render.resolution_x = resolution_x
+        bpy.context.scene.render.resolution_y = resolution_y
+        bpy.context.scene.view_settings.view_transform = view_transform
+        bpy.context.scene.eevee.taa_render_samples = taa_render_samples
+        bpy.context.scene.render.engine = engine
+        bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = worldcol
+
+        bpy.context.scene.render.use_multiview = use_multiview
+        bpy.context.scene.render.views_format = views_format
+        bpy.context.scene.render.views["left"].use = leftuse
+        bpy.context.scene.render.views["right"].use = rightuse
+
+        for i in range((int(round(mapsize/1024)))**2):
+            view = bpy.context.scene.render.views.remove(bpy.context.scene.render.views[f"[FLC] View-{i}"])
+
+        for f in os.listdir(tempfolder):
+            renamed = f"{worldId}_heightmap_{int(f.split('-')[1][:-4]):03}"
+            os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
+            print(os.popen(f'texconv -f R16_UNORM -xlum -y "{tempfolder}\\{f}" -o "{tempfolder[:-1]}"').read()) # Converts the image via command line
+            os.rename(f"{tempfolder}\\{f[:-4]}.dds", f"{renamed}.dds")
+            shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}\\{renamed}.dds", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\{renamed}.dds") # Copies the DDSs to the blend file's folder
         
-        if heightmapExists == False:
-            if bpy.context.scene.keepHgt == False: # Gives an error if there is no heightmap
-                # This will wipe the heightmap from the files, since there is no heightmap
-                for t in range(16):
-                    try:
-                        os.remove(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\w1r03_heightmap_{t:03}.dds")
-                    except:
-                        pass
-                clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_heightfield", ["level", "txt", "rfl"])
+        shutil.rmtree(tempfolder)
 
-                if bpy.context.scene.noPack == False:
-                    pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height"], directoryHedgearcpack)
-                    pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_heightfield"], directoryHedgearcpack)
+        updateprogress(0.13)
 
-                return {'FINISHED'}
-            else:
-                return {'FINISHED'}
-
-        bpy.context.window.workspace = bpy.data.workspaces['Heightmapper'] # Switches to Heightmapper workspace
-    
-        if not("Camera_LEVELCREATOR" in bpy.data.objects): # If a camera doesn't already exist
-            bpy.ops.object.mode_set(mode="OBJECT", toggle=False)
-
-            bpy.ops.object.camera_add(location = [0.0, 0.0, 3000.0], rotation = [0.0, 0.0, 0.0]) # Creates a camera at 3000m above the centre
-            cam = bpy.context.active_object
-            cam.name = "Camera_LEVELCREATOR"
-
-            bpy.context.view_layer.objects.active = bpy.data.objects["Heightmap_LEVELCREATOR"]
-            bpy.ops.object.mode_set(mode="SCULPT", toggle=False)
-        else:
-            cam = bpy.data.objects["Camera_LEVELCREATOR"]
-
-        oldCamera = bpy.context.scene.camera # Gets the old active camera's name so that other renders aren't messed up
-        oldResX = bpy.context.scene.render.resolution_x # Gets the old render resolution so that other renders aren't messed up
-        oldResY = bpy.context.scene.render.resolution_y
-        oldRenderPath = bpy.context.scene.render.filepath # Gets the old render file path so that other renders aren't messed up
-
-        bpy.context.scene.view_settings.view_transform = 'Raw' # Filmic messes up the colours, so switch to standard instead
-        bpy.context.scene.render.image_settings.color_depth = '16' # Switches to 16 bit colour depth (which frontiers uses)
-
-        for o in bpy.data.objects: # Hides all objects from being rendered except for the heightmap
-            if o.name != "Heightmap_LEVELCREATOR":
-                o.hide_render = True 
-
-        for area in bpy.context.screen.areas:
-            if area.type == 'VIEW_3D':
-                activeRegion = area.spaces.active.region_3d
-                oldView = activeRegion.view_rotation
-        
-        
-        for t in range(16):
-            tileCoords = [t % 4, t // 4] # Assigns number of tiles to a grid e.g. assigns 16 tiles to a 4x4 grid
-            cam.location = mathutils.Vector(((tileCoords[0] * 1024) - 1536, (tileCoords[1] * -1024) + 1536, 3000)) # This cool bit of maths changes the camera's position for each tile
-            bpy.context.scene.camera = bpy.data.objects["Camera_LEVELCREATOR"] # Sets the scene's active camera to the new camera
-            cam.data.type = 'ORTHO' # Sets camera to orthographic
-            cam.data.ortho_scale = 1024 # Sets the camera to capture each tile
-            cam.data.clip_end = 5000 # Sets the camera to render in each tile
-
-            print(tileCoords)
-
-            bpy.context.scene.render.resolution_x = 1024 # Sets proper render resolution
-            bpy.context.scene.render.resolution_y = 1024
-
-            bpy.context.scene.render.filepath = f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\w1r03_heightmap_{t:03}.png" # Sets the render file path to the location of the blender file
-            bpy.ops.object.mode_set(mode="EDIT", toggle=False) # Changes to edit mode for UV unwrapping
-
-            for area in bpy.context.screen.areas:
-                if area.type == 'VIEW_3D':
-                    for space in area.spaces:
-                        if space.type == 'VIEW_3D':
-                            targetView = mathutils.Euler(mathutils.Vector((math.radians(-90.0), 0.0, 0.0))) # Sets the view rotation to be rotated to
-                            space.region_3d.view_matrix = targetView.to_matrix().to_4x4() # Rotates to the correct view rotation
-
-                            space.region_3d.update() # Updates the view
-                            bpy.ops.uv.project_from_view(orthographic=True, camera_bounds=False, correct_aspect=True, scale_to_bounds=True) # UV unwrap from view
-
-            for screen in bpy.data.workspaces["Heightmapper"].screens:
-                for area in screen.areas:
-                    if (area.type == "IMAGE_EDITOR"):
-                        area.spaces.active.image = bpy.data.images["gradient.exr"] # Opens the gradient image
-                        bpy.ops.uv.select_all(action='SELECT') # Select all vertices in UV editor
-                        bpy.ops.transform.resize({"area" : area}, value=(1, 16383.9, 1)) # Resize UV map
-                        bpy.ops.transform.rotate({"area" : area}, value=math.radians(90), constraint_axis=(False, False, True)) # Rotate UV map
-            
-                    
-            bpy.ops.object.mode_set(mode="SCULPT", toggle=False)
-
-            bpy.context.scene.render.filepath = f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\w1r03_heightmap_{t:03}.png"
-            bpy.ops.render.render(write_still=False) # RENDER!!!!
-
-            image = bpy.data.images["Render Result"] # Gets the Rendered image
-            image.file_format = 'PNG' # Sets the file format
-
-            bpy.data.images["Render Result"].save_render(filepath=f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\w1r03_heightmap_{t:03}.png") # Outputs the image to the texconv directory
-            os.chdir(f"{os.path.dirname(directoryTexconv)}") # Goes to the directory
-            print(os.popen(f'texconv -f R16_UNORM -xlum -y "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\w1r03_heightmap_{t:03}.png"').read()) # Converts the image via command line
-            shutil.copy2(f"{os.path.dirname(directoryTexconv)}\\w1r03_heightmap_{t:03}.dds", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\")
-            os.remove(f"{os.path.dirname(directoryTexconv)}\\w1r03_heightmap_{t:03}.dds")
-            os.remove(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\w1r03_heightmap_{t:03}.png") # Deletes the old PNGs
-
-        clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_heightfield", ["level", "txt", "rfl"])
         if bpy.context.scene.noPack == False:
             pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height"], directoryHedgearcpack)
-            pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_heightfield"], directoryHedgearcpack)
 
-        bpy.context.scene.camera = oldCamera # Resets the render settings to the old ones so renders are not messed up
-        bpy.context.scene.render.resolution_x = oldResX
-        bpy.context.scene.render.resolution_y = oldResY
-        bpy.context.scene.render.filepath = oldRenderPath
+        print(f"\n\nCONVERTING COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
 
-        for o in bpy.data.objects: # Show all objects for renders
-            if o.name != "Heightmap_LEVELCREATOR":
-                o.hide_render = False 
+        bpy.types.Scene.heightmapprogress = 1.0
+        bpy.types.Scene.heightmapprogresstext = "DONE"
+
+        print(f"\n\nHEIGHTMAP EXPORT COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
+
+        return {'FINISHED'}
+
+class ExportSplatmap(bpy.types.Operator):
+    bl_idname = "qexport.exportsplatmap"
+    bl_label = "Splatmap"
+    bl_description = "Exports your Heightmap's Splatmap, Area and Scale maps"
+    
+    def execute(self, context):
+        preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
+        absoluteModDir = os.path.abspath(bpy.path.abspath(bpy.context.scene.modDir)) # Gets mod folder directory
+        worldId = bpy.context.scene.worldId # Gets the world ID to be edited
+
+        directoryTexconv = os.path.abspath(bpy.path.abspath(preferences.directoryTexconv)) # Gets HedgeSet path from preferences
+        directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
+
+        if not "[FLC] Splatmap" in bpy.data.images:
+            def splatmapError(self, context):
+                self.layout.label(text="No Splatmap found!") # Sets the label of the popup
+            bpy.context.window_manager.popup_menu(splatmapError, title = "Splatmap Failed", icon = "ERROR") # Makes the popup appear
+            return {'FINISHED'}
+        if preferences.directoryTexconv == "" or preferences.directoryHedgearcpack == "": # Gives an error if a program is missing
+            def missingProgramError(self, context):
+                missingPrograms = [] # List of missing programs
+                if preferences.directoryTexconv == "":
+                    missingPrograms.append("texconv.exe")
+                if preferences.directoryHedgearcpack == "":
+                    missingPrograms.append("HedgeArcPack.exe")
+                self.layout.label(text=f"The filepath(s) for: {', '.join(missingPrograms)} are not set. \nPlease set the path(s) in Settings.") # Tells the user about the missing prorgrams
+
+            bpy.context.window_manager.popup_menu(missingProgramError, title = "Program missing", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+        if bpy.context.scene.modDir == "": # Gives an error if no mod directory is sent
+            def missingProgramError(self, context):
+                self.layout.label(text="No Mod directory is set") # Sets the popup label
+
+            bpy.context.window_manager.popup_menu(missingProgramError, title = "Mod missing", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
         
-        bpy.ops.object.mode_set(mode = 'OBJECT')
-        self.report({"INFO"}, f"Quick Export Finished")
+        unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn.pac"], directoryHedgearcpack)
+
+        tempfolder = f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn\\levelcreator-temp\\"
+        if os.path.exists(tempfolder):
+            shutil.rmtree(tempfolder)
+        os.mkdir(tempfolder)
+
+        image = bpy.data.images["[FLC] Splatmap"]
+        image.filepath_raw = f"{tempfolder}{worldId}_splatmap.png"
+        image.file_format = 'PNG'
+        image.save()
+
+        image = bpy.data.images["[FLC] Scale"]
+        image.filepath_raw = f"{tempfolder}{worldId}_scale.png"
+        image.file_format = 'PNG'
+        image.save()
+
+        image = bpy.data.images["[FLC] Area"]
+        image.filepath_raw = f"{tempfolder}{worldId}_area.png"
+        image.file_format = 'PNG'
+        image.save()
+
+        os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
+        os.popen(f'texconv -f R8_UNORM -xlum -y "{tempfolder}{worldId}_splatmap.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+        os.remove(f"{tempfolder}{worldId}_splatmap.png")
+        os.popen(f'texconv -f R8_UNORM -xlum -y "{tempfolder}{worldId}_scale.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+        os.remove(f"{tempfolder}{worldId}_scale.png")
+        os.popen(f'texconv -f R8_UNORM -xlum -y "{tempfolder}{worldId}_area.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+        os.remove(f"{tempfolder}{worldId}_area.png")
+
+        if bpy.context.scene.noPack == False:
+            pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height"], directoryHedgearcpack)
+
+        shutil.rmtree(tempfolder)
+
         return {'FINISHED'}
     
+class ExportDensity(bpy.types.Operator):
+    bl_idname = "qexport.exportdensity"
+    bl_label = "Density"
+    bl_description = "Exports your level's density objects"
+    
+    def execute(self, context):
+        return {'FINISHED'}
+
 class RepackAll(bpy.types.Operator):
     bl_idname = "qexport.repackall"
     bl_label = "Heightmap"

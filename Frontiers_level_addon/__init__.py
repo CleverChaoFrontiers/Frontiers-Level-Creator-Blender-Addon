@@ -21,9 +21,8 @@ from .operators.Frontiers_FBX_script import FrontiersFBX
 from .operators.Frontiers_terrain_script import TerrainScriptfrontiers
 from .operators.Frontiers_terrain_script import FrontiersTerrProps
 
-from .operators.Frontiers_rail_script import PrintRailsOperator
-from .operators.Frontiers_rail_script import FrontiersRails
-from .operators.Frontiers_rail_script import SetBevelOperator
+from .operators.Frontiers_rail_script import PrintPathOperator
+from .operators.Frontiers_rail_script import FrontiersPath
 
 from .operators.Frontiers_Import_script import HSONImportOperator
 from .operators.Frontiers_Import_script import FrontiersImportProperties
@@ -43,7 +42,7 @@ from .operators.Frontiers_quick_import import QimportSettings, CompleteImport, I
 from .operators.Frontiers_camera_script import OBJECT_OT_FrontiersCamConnect
 class LevelCreatorPreferences(AddonPreferences):
     bl_idname = __package__
-    
+
     # Defines a Property to store the directory path
     CustomTemplatePath: bpy.props.StringProperty(  # type: ignore
         name="Directory Path",
@@ -116,7 +115,7 @@ class LevelCreatorPreferences(AddonPreferences):
         # Add directory paths field and download buttons
         row = box.row()
         row.prop(self, "directoryHedgearcpack", text="HedgeArcPack")
-        row.operator("download.hedgearcpack", text="", icon="IMPORT") 
+        row.operator("download.hedgearcpack", text="", icon="IMPORT")
 
         row = box.row()
         row.prop(self, "directoryHedgeset", text="HedgeSet")
@@ -169,7 +168,7 @@ class FrontiersAddonPanel(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'Frontiers Level Creator'
-    
+
     def draw(self, context):
         layout = self.layout
         layout.label(text="version 3.9.6 PLAYTEST")#REMEMBER TO CHANGE THIS
@@ -230,7 +229,7 @@ class QuickExportAdvanced(bpy.types.Panel):
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
-        
+
         # Add label
         layout = self.layout
         layout.prop(context.scene, "noPack", text="Don't Repack")
@@ -262,24 +261,23 @@ class Coord_panel(bpy.types.Panel):
         layout.prop(tool, "collection_name")
         layout.operator("object.print_coordinates")
 
-class Rail_panel(bpy.types.Panel):
+class Path_Panel(bpy.types.Panel):
     bl_label = "Path HSON code"
-    bl_idname = "PT_RailSubPanel"
+    bl_idname = "PT_PathSubPanel"
     bl_parent_id = "PT_PrintCoordinatesPanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
     def draw(self, context):
         layout = self.layout
-        railtool = context.scene.FrontiersRails
-        layout.prop(railtool, "objPath_check")
-        layout.prop(railtool, "straightPath_Check")
-        layout.prop(railtool, "RotationPath_Check")
-        layout.operator("object.set_bevel_operator")
-        layout.prop(railtool, "Railcoll_name")
-        layout.prop(railtool, "Railnode_startindex")
-        layout.operator("object.rail_script")
-        
+        settings = context.scene.FrontiersPath
+        layout.prop(settings, "path_type")
+        layout.prop(settings, "no_smoothing")
+        layout.prop(settings, "use_rotation")
+        layout.prop(settings, "path_collection")
+        layout.prop(settings, "node_start_index")
+        layout.operator("object.frontiers_path_print")
+
 class FBX_panel(bpy.types.Panel):
     bl_label = "Terrain FBX model"
     bl_idname = "PT_FBXSubPanel"
@@ -292,7 +290,7 @@ class FBX_panel(bpy.types.Panel):
         fbxtool = context.scene.FrontiersFBX
         layout.prop(fbxtool, "FBXcollection_name")
         layout.operator("object.export_fbx")
-        
+
 class Terrain_panel(bpy.types.Panel):
     bl_label = ".pcmodel/.pccol Template"
     bl_idname = "PT_TerrSubPanel"
@@ -300,8 +298,8 @@ class Terrain_panel(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
-    
-    
+
+
     def draw(self, context):
         layout = self.layout
         terraintool = context.scene.FrontiersTerrProps
@@ -320,7 +318,7 @@ class FrontiersExperimentalPanel(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'Frontiers Level Creator'
-    
+
     def draw(self, context):
         layout = self.layout
 class HSONImporterPanel(bpy.types.Panel):
@@ -355,7 +353,7 @@ class HSONImporterPanel(bpy.types.Panel):
 
         # Add import button
         row = layout.row()
-        row.operator("object.hson_import", text="Import Objects")     
+        row.operator("object.hson_import", text="Import Objects")
 
 class HeightmapperPanel2(bpy.types.Panel):
     bl_label = "Heightmapper"
@@ -377,11 +375,11 @@ class HeightmapperPanel2(bpy.types.Panel):
         col.scale_y = 2.0
         col2 = split.column()
         row = col.row()
-        row.operator("heightmapper.heightmapper", text="", icon="FCURVE") 
+        row.operator("heightmapper.heightmapper", text="", icon="FCURVE")
         row = col2.row()
-        row.operator("heightmapper.export", text="Export", icon="EXPORT") 
+        row.operator("heightmapper.export", text="Export", icon="EXPORT")
         row = col2.row()
-        row.operator("heightmapper.import", text="Import", icon="IMPORT") 
+        row.operator("heightmapper.import", text="Import", icon="IMPORT")
         # Add directory path field
         row = layout.row()
         row.prop(context.scene, "importDirectory", text="trr_height")
@@ -399,7 +397,7 @@ class HeightmapperSplatmapPanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        
+
         # Add open splatmap button
         split = layout.split(factor=0.25)
         col = split.column()
@@ -407,11 +405,11 @@ class HeightmapperSplatmapPanel(bpy.types.Panel):
         col.scale_y = 2.0
         col2 = split.column()
         row = col.row()
-        row.operator("heightmapper.splatmap", text="", icon="BRUSHES_ALL") 
+        row.operator("heightmapper.splatmap", text="", icon="BRUSHES_ALL")
         row = col2.row()
-        row.operator("heightmapper.splatmapexport", text="Export", icon="EXPORT") 
+        row.operator("heightmapper.splatmapexport", text="Export", icon="EXPORT")
         row = col2.row()
-        row.operator("heightmapper.splatmapimport", text="Splatmap Import", icon="IMPORT") 
+        row.operator("heightmapper.splatmapimport", text="Splatmap Import", icon="IMPORT")
         row = col2.row()
         row.operator("heightmapper.splatmapsettingimport", text="Settings Import", icon="IMPORT")
         # Add directory path field
@@ -440,7 +438,7 @@ class HeightmapperSettingsPanel(bpy.types.Panel):
 
     def draw(self, context):
         layout = self.layout
-        
+
         layout.label(text="Level of Detail", icon="ERROR")
         row = layout.row()
         row.prop(context.scene, "lodnormal", text="Non-sculpting", slider=True)
@@ -545,7 +543,7 @@ def register():#registers the addon when checked in the addon menu
     import bpy # type: ignore
     bpy.utils.register_class(FrontiersAddonPanel)
     bpy.utils.register_class(FrontiersExperimentalPanel)
-    
+
     bpy.utils.register_class(QuickExport)
     bpy.utils.register_class(QuickExportAdvanced)
     bpy.utils.register_class(QuickImport)
@@ -560,11 +558,10 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(FrontiersCoords)
     bpy.types.Scene.FrontiersCoords = bpy.props.PointerProperty(type=FrontiersCoords)
     #register Rail script
-    bpy.utils.register_class(PrintRailsOperator)
-    bpy.utils.register_class(FrontiersRails)
-    bpy.utils.register_class(Rail_panel)    
-    bpy.utils.register_class(SetBevelOperator)
-    bpy.types.Scene.FrontiersRails = bpy.props.PointerProperty(type=FrontiersRails)
+    bpy.utils.register_class(PrintPathOperator)
+    bpy.utils.register_class(FrontiersPath)
+    bpy.utils.register_class(Path_Panel)
+    bpy.types.Scene.FrontiersPath = bpy.props.PointerProperty(type=FrontiersPath)
     #register FBX Script
     bpy.utils.register_class(FBX_panel)
     bpy.utils.register_class(exportFBXfrontiers)
@@ -678,7 +675,7 @@ def register():#registers the addon when checked in the addon menu
 def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(FrontiersAddonPanel)
     bpy.utils.unregister_class(FrontiersExperimentalPanel)
-    
+
     bpy.utils.unregister_class(QuickExport)
     bpy.utils.unregister_class(QuickExportAdvanced)
     bpy.utils.unregister_class(QuickImport)
@@ -692,10 +689,9 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(FrontiersCoords)
     del bpy.types.Scene.FrontiersCoords
     #unregister Rail script
-    bpy.utils.unregister_class(PrintRailsOperator)
-    bpy.utils.unregister_class(FrontiersRails)
-    bpy.utils.unregister_class(SetBevelOperator)
-    del bpy.types.Scene.FrontiersRails
+    bpy.utils.unregister_class(PrintPathOperator)
+    bpy.utils.unregister_class(FrontiersPath)
+    del bpy.types.Scene.FrontiersPath
     #unregister FBX Script
     bpy.utils.unregister_class(FBX_panel)
     bpy.utils.unregister_class(exportFBXfrontiers)
@@ -765,7 +761,7 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(RepackAll)
     bpy.utils.unregister_class(Settings)
     bpy.utils.unregister_class(QexportSettings)
-    
+
     #Density
     bpy.utils.unregister_class(OBJECT_OT_duplicate_link_with_nodes)
     bpy.utils.unregister_class(OBJECT_OT_FrontiersPointCloudExport)
@@ -797,7 +793,7 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(ImportDensity)
     bpy.utils.unregister_class(SettingsImp)
     bpy.utils.unregister_class(QimportSettings)
-    
+
     # Camera connect
     bpy.utils.unregister_class(OBJECT_OT_FrontiersCamConnect)
     bpy.utils.unregister_class(CameraConnectPanel)

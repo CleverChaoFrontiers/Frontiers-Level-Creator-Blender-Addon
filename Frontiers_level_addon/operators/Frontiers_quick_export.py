@@ -8,7 +8,7 @@ import mathutils # type: ignore
 import math
 import bmesh # type: ignore
 import time
-from . import path_export
+from . import Frontiers_rail_script
 
 def pack(files, directoryHedgearcpack):
     for f in range(len(files)): # For every file that needs to be packed
@@ -49,126 +49,6 @@ def updateprogress(advance):
     bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
     return
 
-# def Find_node_rot(curve_obj, current_point, next_point, LastLength = 0, Final_curve_point = False,First_curve_point = False):
-#     # Get the location of the curve object
-
-#     spline = curve_obj.data.splines[0]
-#     # Add a cube at the location of the curve object
-#     bpy.ops.object.empty_add(type='SINGLE_ARROW',location=[0,0,0])
-#     bezier_curve = False
-#     # Get the newly added cube object
-#     cube_obj = bpy.context.active_object
-
-#     # Add Follow Path constraint
-#     bpy.ops.object.constraint_add(type='FOLLOW_PATH')
-#     constraint = cube_obj.constraints[-1]  # Get the last constraint added, which is the Follow Path constraint
-#     splinelength = 0.0
-#     if spline.type == "BEZIER": # If the curve is a bezier curve
-#         points_in_rotcurve = spline.bezier_points #Set the points to iterate to be bezier points instead
-#     else:
-#         points_in_rotcurve = spline.points
-#     for i in range(len(points_in_rotcurve)-1):
-#         if Final_curve_point == False:
-#             segment = (points_in_rotcurve[i+1].co - points_in_rotcurve[i].co).length
-#             splinelength += segment
-#     # Set the target curve
-#     constraint.target = curve_obj
-#     constraint.use_fixed_location = True
-#     constraint.use_curve_follow = True
-#     if Final_curve_point:
-#         constraint.forward_axis = "TRACK_NEGATIVE_Y"#'TRACK_NEGATIVE_Z'
-#         constraint.up_axis = 'UP_Z'
-#     else:
-#         constraint.forward_axis = 'TRACK_NEGATIVE_Y'
-#         constraint.up_axis = 'UP_Z'
-
-#     # Set the offset to follow the curve until reaching the positionof the current_point
-#     if Final_curve_point:
-#         constraint.offset_factor = 1.0
-#     else:
-#         constraint.offset_factor =LastLength + (next_point.co- current_point.co).length / splinelength
-#     NewFactor = constraint.offset_factor
-#     # Apply the modifier
-#     bpy.ops.constraint.apply(constraint= constraint.name)
-#     cube_obj.rotation_mode = 'QUATERNION'
-#     Rotation = cube_obj.rotation_quaternion
-#     # Delete the cube
-#     #bpy.data.objects.remove(cube_obj)
-#     return Rotation, NewFactor
-
-
-#     NewFactor = constraint.offset_factor
-
-#     bpy.context.view_layer.update()  # Ensure the constraint is applied and updated
-
-#     empty_obj.rotation_mode = 'QUATERNION'
-#     Rotation = empty_obj.rotation_quaternion.copy()
-
-#     #bpy.data.objects.remove(empty_obj)
-
-#     return Rotation, NewFactor
-def Find_node_rot(curve_obj,index,path_dir):#New fixed rotation whooo! Based heavily on the density script
-    beveled_curve = False
-    if bpy.context.mode != 'OBJECT':
-        bpy.ops.object.mode_set(mode='OBJECT')
-    if curve_obj.data.bevel_depth != 0:
-        original_bevel_size = curve_obj.data.bevel_depth
-        curve_obj.data.bevel_depth = 0
-        beveled_curve = True
-    object_name = "Frontiers_rotation_plane"
-    nodetree_name = "FrontiersRailRotation"
-    filepath = os.path.join(path_dir, r"Other\frontiers_rotation_solution.blend")
-    # Check if the file exists and is a valid blend file
-    if nodetree_name not in bpy.data.node_groups:
-        try:
-            with bpy.data.libraries.load(filepath, link=False) as (data_from, data_to): #try loading the nodetree. Cancel script if failed
-                data_to.node_groups = [nodetree_name]
-            # with bpy.data.libraries.load(filepath) as (data_from, data_to):
-            #     if object_name in data_from.objects:
-            #         data_to.objects = [object_name]
-                # else:
-                #     print(f"Object '{object_name}' not found in {filepath}")
-                #     return
-        except Exception as error:
-            print(f"Failed to load {filepath}: {error}")
-            return
-    bpy.ops.mesh.primitive_plane_add(size = 1.0)
-    appended_rotobject = bpy.context.view_layer.objects.active
-    # Link the object to the scene
-    # appended_rotobject = None
-    # for rot_solution in data_to.objects:
-    #     if rot_solution is not None:
-    #         bpy.context.collection.objects.link(rot_solution)
-    #         appended_rotobject = rot_solution
-    #         #print(f"Appended '{object_name}' to the current scene.")
-    #     else:
-    #         print(f"Failed to append '{object_name}'.")
-
-    geo_node_mod = appended_rotobject.modifiers.new(name="Frontiersrotation", type='NODES')
-    geo_node_mod.node_group = bpy.data.node_groups[nodetree_name]
-    if appended_rotobject != None:
-        appended_rotobject.modifiers["Frontiersrotation"]["Input_2"] = index
-        appended_rotobject.modifiers["Frontiersrotation"]["Input_3"] = curve_obj
-    else:
-        return 0,False
-    bpy.ops.object.select_all(action='DESELECT')
-    appended_rotobject.select_set(True)
-    bpy.context.view_layer.objects.active = appended_rotobject
-    bpy.ops.object.modifier_apply(modifier="Frontiersrotation",single_user=True)
-    bpy.ops.object.mode_set(mode='EDIT') # Switches to Edit Mode
-    bm = bmesh.from_edit_mesh(appended_rotobject.data) # Gets the Blender Mesh from the rotobject
-    for theface in bm.faces:
-        face = theface
-    appended_rotobject.rotation_mode = 'QUATERNION'
-    objectRotation = face.normal.to_track_quat('Z', 'Y')
-    bpy.ops.object.mode_set(mode='OBJECT')
-    bpy.ops.object.select_all(action='DESELECT')
-    curve_obj.select_set(True)
-    bpy.context.view_layer.objects.active = curve_obj
-    if beveled_curve:
-        curve_obj.data.bevel_depth = original_bevel_size
-    bpy.data.objects.remove(appended_rotobject, do_unlink=True)
-    return objectRotation,True
 def Instantiate(pcmodelname,pccolname,object):
     pcmodel = [pcmodelname.split(".")[0], (object.location.x, object.location.y, object.location.z), (object.rotation_euler.x, object.rotation_euler.y, object.rotation_euler.z), (object.scale.x, object.scale.y,object.scale.z)]
     if pccolname != "":
@@ -520,11 +400,9 @@ class ExportObjects(bpy.types.Operator):
 
         bpy.ops.object.mode_set(mode = 'OBJECT')
 
-        #Get check info
-        path_check = context.scene.FrontiersRails.objPath_check
         # Get the collection
 
-        Node_startindex = context.scene.FrontiersRails.Railnode_startindex
+        node_start_index = context.scene.FrontiersPath.node_start_index
 
         collection_name = bpy.context.scene.objCollection
         collection = collection_name
@@ -601,15 +479,15 @@ class ExportObjects(bpy.types.Operator):
                 if obj.type != 'CURVE':
                     continue
 
-                curve_objects = path_export.curve_to_hson_objects(
+                curve_objects = Frontiers_rail_script.curve_to_hson_objects_from_name(
                     obj,
-                    Node_startindex,
+                    node_start_index,
                     changed_UID_list,
                     lambda t: self.report({"WARNING"}, t)
                 )
 
                 gedit_text += "".join(curve_objects)
-                Node_startindex += len(curve_objects) - 1
+                node_start_index += len(curve_objects) - 1
 
             if changed_UID_list != []:
                 self.report({"INFO"}, f"Duplicate ID's were found. Objects with changed IDs are: {changed_UID_list}")

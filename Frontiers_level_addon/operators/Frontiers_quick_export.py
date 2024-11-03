@@ -611,8 +611,6 @@ class ExportObjects(bpy.types.Operator):
                 gedit_text += "".join(curve_objects)
                 Node_startindex += len(curve_objects) - 1
 
-            print(gedit_text)
-
             if changed_UID_list != []:
                 self.report({"INFO"}, f"Duplicate ID's were found. Objects with changed IDs are: {changed_UID_list}")
 

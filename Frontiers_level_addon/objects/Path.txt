@@ -3,6 +3,7 @@
       "name": "DATA_NAME",
       "type": "Path",
       "position": [DATA_POSITION],
+      "rotation": [DATA_ROTATION],
       "parameters": {
         "tags": {
           "RangeSpawning": {

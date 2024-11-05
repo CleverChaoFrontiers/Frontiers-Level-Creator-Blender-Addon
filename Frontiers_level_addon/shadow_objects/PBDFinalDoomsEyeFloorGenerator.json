@@ -1,0 +1,76 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PBDFinalDoomsEyeFloorGenerator",
+  "type": "PBDFinalDoomsEyeFloorGenerator",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "horizontalNum": 1,
+    "verticalNum": 1,
+    "sizeType": "SIZE_C",
+    "modelType": "MODEL_RANDOM",
+    "colorType": "COLOR_BLUE",
+    "modelRotType": "MODEL_ROT_RANDOM",
+    "createEventDriven": true,
+    "eventDriven": false,
+    "isAppear": true,
+    "appearTime": 0.7,
+    "appearRadMinPos": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "appearRadMaxPos": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "moveType": "MOVE_POINT",
+    "patrolType": "PATROL_ONEWAY",
+    "timeType": "TIME_LOCAL",
+    "moveVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "locaterList": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "isSyncRot": false,
+    "waitTime": 0.0,
+    "phase": 0.0,
+    "speed": 30.0,
+    "rotSpeed": 0.0,
+    "rotSpeedEvent": 0.0,
+    "rotAxis": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "se_flag": false,
+    "randomSeed": 85000,
+    "isSetReverseSide": false,
+    "isPointGeneratorUsed": true,
+    "pointGeneratorObjId": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

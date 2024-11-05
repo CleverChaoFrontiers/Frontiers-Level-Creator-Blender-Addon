@@ -1,14 +1,14 @@
 bl_info = {
     "name": "Frontiers Level Creator",
-    "author": "CleverChao, LightningWyvern, Piranha Mayhem",
-    "version": (3, 9, 6),#REMEMBER TO CHANGE THIS
-    "blender": (3, 0, 0),
+    "author": "CleverChao, Ashrindy, LightningWyvern, Piranha Mayhem, Justin113D",
+    "version": (3, 9, 7),#REMEMBER TO CHANGE THIS
+    "blender": (3, 6, 0),
     "category": "Object",
     "location": "View3D > toolbar > Tool > Frontiers Level Creator",
     "description": "Tools used for creating level mods for Sonic Frontiers"}
 
 import bpy # type: ignore
-import os
+import os, json
 from bpy.types import Operator, AddonPreferences, WindowManager # type: ignore
 from bpy.props import StringProperty, IntProperty, BoolProperty, EnumProperty # type: ignore
 
@@ -30,20 +30,27 @@ from .operators.Frontiers_Import_script import FrontiersImportProperties
 
 from .operators.Frontiers_heightmapper_script import HeightmapperOperator, HeightmapperExport, HeightmapperImport, HeightmapperProps, SplatmapOperator, SplatmapExport, SplatmapImport, SplatmapSettingImport, SplatmapFavourite, SplatmapSet
 
-from .operators.Frontiers_parameter_script import OBJECT_PT_JsonParameters,JsonParametersPropertyGroup,JsonParameterListItem, parametersListvalues,OBJECT_OT_AddListItem,OBJECT_OT_RemoveListItem
+from .operators.Frontiers_parameter_script import OBJECT_PT_JsonParameters,JsonParametersPropertyGroup,JsonParameterListItem, parametersListvalues,OBJECT_OT_AddListItem,OBJECT_OT_RemoveListItem, OBJECT_OT_AddSelected
 from .operators.Frontiers_displaceCurve_script import FrontiersDisplaceGroup, OBJECT_OT_DisplaceOnCurve
 
-from .operators.Frontiers_toolpaths import DownloadHedgearcpack, DownloadHedgeset, DownloadHedgeneedle, DownloadBtmesh, DownloadKnuxtools, DownloadModelconverter, DownloadModelfbx, DownloadTexconv
-from .operators.Frontiers_quick_export import QexportSettings, CompleteExport, ExportTerrain, ExportObjects, ExportHeightmap, ExportSplatmap, ExportDensity, RepackAll, Settings
+from .operators.Frontiers_toolpaths import DownloadHedgearcpack, DownloadHedgeset, DownloadHedgeneedle, DownloadBtmesh, DownloadKnuxtools, DownloadModelconverter, DownloadModelfbx, DownloadTexconv, DownloadGeditTemplate
+from .operators.Frontiers_quick_export import QexportSettings, CompleteExport, ExportTerrain, ExportObjects, ExportHeightmap, ExportSplatmap, ExportDensity, RepackAll, Settings, NameShow
 
 from .operators.Frontiers_density_script import OBJECT_OT_duplicate_link_with_nodes,OBJECT_OT_FrontiersPointCloudExport,FrontiersDensityProperties,DensityPanel,remove_densityscatter,DensityPaintPanel,DensityAddOperator,DensitySubtractOperator,DensityForwardGroupOperator,DensityBackwardsGroupOperator,DensityAssignIndex
 
 from .operators.Frontiers_quick_import import QimportSettings, CompleteImport, ImportTerrain, ImportObjects, ImportHeightmap, ImportSplatmap, ImportDensity, SettingsImp
 
 from .operators.Frontiers_camera_script import OBJECT_OT_FrontiersCamConnect
+
+from .io.cs import csmain
+
 class LevelCreatorPreferences(AddonPreferences):
     bl_idname = __package__
-    
+    Hedgeset_shadowtemp: bpy.props.StringProperty(  # type: ignore
+        name="Shadow Template name",
+        default = "shadow",
+        description="Name of the Shadow Generations template file used in your hedgeset version"
+    )
     # Defines a Property to store the directory path
     CustomTemplatePath: bpy.props.StringProperty(  # type: ignore
         name="Directory Path",
@@ -87,7 +94,7 @@ class LevelCreatorPreferences(AddonPreferences):
         default="",
         description="Path to ModelConverter"
     )
-    directoryModelfbx: bpy.props.StringProperty( # type: ignore (this ONE SINGLE property does not work the same as the others because Blender (I DO NOT KNOW WHY??) )
+    directoryModelfbx: bpy.props.StringProperty( # type: ignore
         name="ModelFBX",
         subtype='FILE_PATH',
         default="",
@@ -99,13 +106,23 @@ class LevelCreatorPreferences(AddonPreferences):
         default="",
         description="Path to texconv"
     )
+    directoryGeditTemplate: bpy.types.Scene.directoryGeditTemplate = bpy.props.StringProperty(
+        name="Gedit Template",
+        subtype='FILE_PATH',
+        default="",
+        description="Path to Gedit Template"
+    )
 
     def draw(self, context):
         layout = self.layout
         box = layout.box()
         row = box.row()
-        row.label(text="Additional Templates")
+        row.label(text="Hedgeset Shadow gens template name")
         row = box.row()
+        row.prop(self, "Hedgeset_shadowtemp")
+        box = layout.box()
+        row = box.row()
+        row.label(text="Additional Templates")
         row.prop(self, "CustomTemplatePath")
 
         # Add "Tool Filepaths" section label
@@ -146,6 +163,10 @@ class LevelCreatorPreferences(AddonPreferences):
         row.prop(self, "directoryTexconv", text="texconv")
         row.operator("download.texconv", text="", icon="IMPORT")
 
+        row = box.row()
+        row.prop(self, "directoryGeditTemplate", text="Gedit Template")
+        row.operator("download.gedittemplate", text="", icon="IMPORT")
+
 class OBJECT_OT_addon_prefs(Operator):
     """Display preferences"""
     bl_idname = "object.addon_prefs"
@@ -163,6 +184,19 @@ class OBJECT_OT_addon_prefs(Operator):
         print(info)
 
         return {'FINISHED'}
+class GamechoicePanel(bpy.types.Panel):
+    bl_label = "Hedgehog Game Choice"
+    bl_idname = "PT_GameChoicePanel"
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_category = 'Frontiers Level Creator'
+    
+    def draw(self, context):
+        layout = self.layout
+        layout.label(text="version 3.9.7 PLAYTEST")#REMEMBER TO CHANGE THIS
+        row = layout.row()
+        row.prop(context.scene, "hedgegameChoice", text="Choose a game")
+
 class FrontiersAddonPanel(bpy.types.Panel):
     bl_label = "Frontiers Export Tools"
     bl_idname = "PT_PrintCoordinatesPanel"
@@ -172,8 +206,8 @@ class FrontiersAddonPanel(bpy.types.Panel):
     
     def draw(self, context):
         layout = self.layout
-        layout.label(text="version 3.9.6 PLAYTEST")#REMEMBER TO CHANGE THIS
-
+        
+        
 class QuickExport(bpy.types.Panel):
     bl_label = "Quick Export"
     bl_idname = "PT_QuickExport"
@@ -192,6 +226,7 @@ class QuickExport(bpy.types.Panel):
         layout.operator("qexport.exportheightmap", text="Heightmap", icon="FCURVE")
         layout.operator("qexport.exportsplatmap", text="Splatmap", icon="BRUSHES_ALL")
         layout.operator("qexport.exportdensity", text="Density", icon="SHADERFX")
+        layout.prop(context.scene, "denCollection", text="Density")
         #layout.operator("qexport.repackall", text="Repack All", icon="FOLDER_REDIRECT")
         layout.operator("qexport.settings", text="Settings", icon="PREFERENCES")
         layout.label(text="Mod Settings")
@@ -199,6 +234,9 @@ class QuickExport(bpy.types.Panel):
         row.prop(context.scene, "modDir", text="Mod")
         row = layout.row()
         row.prop(context.scene, "worldId", text="World")
+        if (4, 0, 0) > bpy.app.version:
+            row = layout.row()
+            row.progress(text=context.scene.exportprogresstext, factor=context.scene.exportprogress, type = 'BAR')
 
 class QuickImport(bpy.types.Panel):
     bl_label = "Quick Import"
@@ -219,8 +257,12 @@ class QuickImport(bpy.types.Panel):
         layout.operator("qimport.settings", text="Settings", icon="PREFERENCES")
         layout.label(text="Import Settings")
         row = layout.row()
-        row.prop(context.scene, "worldDir", text="World Folder")
-
+        row.prop(context.scene, "modDirI", text="Mod")
+        row = layout.row()
+        row.prop(context.scene, "worldIdI", text="World")
+        if (4, 0, 0) > bpy.app.version:
+            row = layout.row()
+            row.progress(text=context.scene.importprogresstext, factor=context.scene.importprogress, type = 'BAR')
 class QuickExportAdvanced(bpy.types.Panel):
     bl_label = "Advanced"
     bl_idname = "PT_QuickExportAdvanced"
@@ -234,18 +276,34 @@ class QuickExportAdvanced(bpy.types.Panel):
         # Add label
         layout = self.layout
         layout.prop(context.scene, "noPack", text="Don't Repack")
-        layout.prop(context.scene, "noVis", text="No Visual Terrain")
-        layout.prop(context.scene, "noCol", text="No Collision")
-        layout.label(text="Don't Clear")
-        layout.prop(context.scene, "eoTerrain", text="Terrain")
-        layout.prop(context.scene, "eoObjects", text="Objects")
-        layout.label(text="Keep Files")
-        layout.prop(context.scene, "keepMat", text="Materials")
-        layout.prop(context.scene, "keepTex", text="Textures")
-        layout.prop(context.scene, "keepHgt", text="Heightmap")
-        layout.prop(context.scene, "keepPcm", text="pcmodel")
-        layout.prop(context.scene, "keepPcl", text="pccol")
-        layout.prop(context.scene, "keepDen", text="Density")
+        layout.operator("qexport.nameshow", text="Toggle Object Names", icon="SYNTAX_OFF")
+        layout.label(text="Writing Settings")
+        layout.prop(context.scene, "exptrr", text="Terrain")
+        layout.prop(context.scene, "expcol", text="Collision")
+        layout.prop(context.scene, "expobj", text="Gedit")
+        layout.prop(context.scene, "expden", text="Density")
+        layout.prop(context.scene, "exphgt", text="Heightmap")
+        layout.prop(context.scene, "expspl", text="Splatmap")
+        layout.prop(context.scene, "expmap", text="Other Maps")
+        layout.prop(context.scene, "expmat", text="Materials")
+        layout.prop(context.scene, "expdds", text="Textures")
+        layout.prop(context.scene, "expuva", text="UV-anim")
+        layout.prop(context.scene, "exppcm", text="pcmodel")
+        layout.prop(context.scene, "exppcl", text="pccol")
+        layout.prop(context.scene, "expmsc", text="Other")
+
+class QuickImportAdvanced(bpy.types.Panel):
+    bl_label = "Advanced"
+    bl_idname = "PT_QuickImportAdvanced"
+    bl_parent_id = "PT_QuickImport"
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_options = {'DEFAULT_CLOSED'}
+
+    def draw(self, context):
+        # Add label
+        layout = self.layout
+        layout.prop(context.scene, "dependencypacs", text="Dependency PACs")
 
 
 class Coord_panel(bpy.types.Panel):
@@ -275,7 +333,7 @@ class Rail_panel(bpy.types.Panel):
         layout.prop(railtool, "objPath_check")
         layout.prop(railtool, "straightPath_Check")
         layout.prop(railtool, "RotationPath_Check")
-        layout.operator("object.set_bevel_operator")
+        
         layout.prop(railtool, "Railcoll_name")
         layout.prop(railtool, "Railnode_startindex")
         layout.operator("object.rail_script")
@@ -315,7 +373,7 @@ class Terrain_panel(bpy.types.Panel):
         layout.prop(terraintool, "json_name")
         layout.operator("object.terrain_script")
 class FrontiersExperimentalPanel(bpy.types.Panel):
-    bl_label = "Frontiers Other Tools Panel"
+    bl_label = "Frontiers Tools Panel"
     bl_idname = "PT_EXPPanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
@@ -323,40 +381,7 @@ class FrontiersExperimentalPanel(bpy.types.Panel):
     
     def draw(self, context):
         layout = self.layout
-class HSONImporterPanel(bpy.types.Panel):
-    bl_label = "Frontiers GEDIT/HSON Importer"
-    bl_idname = "OBJECT_PT_hson_importer"
-    bl_parent_id = "PT_EXPPanel"
-    bl_space_type = 'VIEW_3D'
-    bl_region_type = 'UI'
-    bl_category = "Frontiers Level Creator"
-    bl_options = {'DEFAULT_CLOSED'}
-
-
-    def draw(self, context):
-        layout = self.layout
-        layout.label(text="version 1.0.0")#VERSION INFO
-
-        # Add directory path field
-        row = layout.row()
-        row.prop(context.scene, "hson_directory", text="HSON Path")
-
-        # Add assets library path field
-        row = layout.row()
-        row.prop(context.scene, "hson_assets_library_path", text="Blend Assets")
-
-        # Add collection name field
-        row = layout.row()
-        row.prop(context.scene, "hson_collection_name", text="Collection Name")
-
-        # Add checkbox for creating collections
-        row = layout.row()
-        row.prop(context.scene, "hson_create_collections", text="HSON Collections")
-
-        # Add import button
-        row = layout.row()
-        row.operator("object.hson_import", text="Import Objects")     
-
+        layout.operator("object.set_bevel_operator")
 class HeightmapperPanel2(bpy.types.Panel):
     bl_label = "Heightmapper"
     bl_idname = "OBJECT_PT_heightmapper"
@@ -385,8 +410,9 @@ class HeightmapperPanel2(bpy.types.Panel):
         # Add directory path field
         row = layout.row()
         row.prop(context.scene, "importDirectory", text="trr_height")
-        row = layout.row()
-        heightmapprogress = row.progress(text=context.scene.heightmapprogresstext, factor = context.scene.heightmapprogress, type = 'BAR')
+        if (4, 0, 0) > bpy.app.version:
+            row = layout.row()
+            heightmapprogress = row.progress(text=context.scene.heightmapprogresstext, factor = context.scene.heightmapprogress, type = 'BAR')
 
 class HeightmapperSplatmapPanel(bpy.types.Panel):
     bl_label = "Splatmap"
@@ -420,7 +446,7 @@ class HeightmapperSplatmapPanel(bpy.types.Panel):
         row = layout.row()
         row.prop(context.scene, "splatmapcmnDirectory", text="trr_cmn")
         box = layout.box()
-        box.label(text=context.scene.loadedsplatmap["name"])
+        box.label(text=json.loads(context.scene.loadedsplatmap)["name"])
         row = box.row()
         row.operator("heightmapper.splatmapset", text="Set Material", icon="BRUSH_DATA")
         row = box.row()
@@ -428,6 +454,13 @@ class HeightmapperSplatmapPanel(bpy.types.Panel):
         row.operator("heightmapper.splatmapfavourite", text="", icon="HEART")
         row = box.row()
         row.label(text=context.scene.splatmapfavouritetext)
+        col = box.row().column()
+        try:
+            col.template_preview(bpy.data.textures["[FLC] Splatmap-Preview"], show_buttons=False)
+        except:
+            pass
+        row = box.row()
+        row.label(text="NOTE: Resize window to refresh preview")
 
 class HeightmapperSettingsPanel(bpy.types.Panel):
     bl_label = "Advanced"
@@ -483,6 +516,52 @@ class CameraConnectPanel(bpy.types.Panel):
         layout = self.layout
         layout.operator("object.frontiers_cam_connect")
 preview_collections = {} #This one is for the density script
+
+class LegacyPanel(bpy.types.Panel):
+    bl_label = "Legacy Features"
+    bl_idname = "PT_Legacy"
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_category = 'Frontiers Level Creator'
+    
+    def draw(self, context):
+        pass
+
+class HSONImporterPanel(bpy.types.Panel):
+    bl_label = "Frontiers GEDIT/HSON Importer"
+    bl_idname = "OBJECT_PT_hson_importer"
+    bl_parent_id = "PT_Legacy"
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_category = "Frontiers Level Creator"
+    bl_options = {'DEFAULT_CLOSED'}
+
+
+    def draw(self, context):
+        layout = self.layout
+        layout.label(text="version 1.0.0")#VERSION INFO
+
+        # Add directory path field
+        row = layout.row()
+        row.prop(context.scene, "hson_directory", text="HSON Path")
+
+        # Add assets library path field
+        row = layout.row()
+        row.prop(context.scene, "hson_assets_library_path", text="Blend Assets")
+
+        # Add collection name field
+        row = layout.row()
+        row.prop(context.scene, "hson_collection_name", text="Collection Name")
+
+        # Add checkbox for creating collections
+        row = layout.row()
+        row.prop(context.scene, "hson_create_collections", text="HSON Collections")
+
+        # Add import button
+        row = layout.row()
+        row.operator("object.hson_import", text="Import Objects")     
+
+
 def enum_previews_from_directory_items(self, context): #Function that finds the thumbnails
     """EnumProperty callback"""
     enum_items = []
@@ -537,18 +616,31 @@ def enum_previews_from_directory_items(self, context): #Function that finds the 
     pcoll.Frontiers_Density_thumbnail_dir = directory
     return pcoll.Frontiers_Density_thumbnail
 
-
+class HedgeOtherSettings(bpy.types.PropertyGroup): # Other settings
+    bpy.types.Scene.hedgegameChoice = bpy.props.EnumProperty( 
+        name="Choose a game",
+        items=[
+            ("frontiers", "Sonic Frontiers", ""),
+            ("shadow", "Shadow Generations", "")
+        ],
+        default="frontiers",
+        description="The game you want to create a level for"
+    )
 
 
 
 def register():#registers the addon when checked in the addon menu
     import bpy # type: ignore
-    bpy.utils.register_class(FrontiersAddonPanel)
+    bpy.utils.register_class(GamechoicePanel)
+    bpy.utils.register_class(HedgeOtherSettings)
     bpy.utils.register_class(FrontiersExperimentalPanel)
+    bpy.utils.register_class(FrontiersAddonPanel)
+
     
     bpy.utils.register_class(QuickExport)
     bpy.utils.register_class(QuickExportAdvanced)
     bpy.utils.register_class(QuickImport)
+    bpy.utils.register_class(QuickImportAdvanced)
 
     #register Addon preferences
     bpy.utils.register_class(OBJECT_OT_addon_prefs)
@@ -575,11 +667,6 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(TerrainScriptfrontiers)
     bpy.utils.register_class(FrontiersTerrProps)
     bpy.types.Scene.FrontiersTerrProps = bpy.props.PointerProperty(type=FrontiersTerrProps)
-    #register Import Script
-    bpy.utils.register_class(HSONImporterPanel)
-    bpy.utils.register_class(HSONImportOperator)
-    bpy.utils.register_class(FrontiersImportProperties)
-    bpy.types.Scene.FrontiersImportProperties = bpy.props.PointerProperty(type=FrontiersImportProperties)
     #register Heightmapper Script
     #bpy.utils.register_class(HeightmapperPanel)
     bpy.utils.register_class(HeightmapperPanel2)
@@ -608,6 +695,7 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(JsonParametersPropertyGroup)
     bpy.utils.register_class(OBJECT_OT_AddListItem)
     bpy.utils.register_class(OBJECT_OT_RemoveListItem)
+    bpy.utils.register_class(OBJECT_OT_AddSelected)
     bpy.types.Object.json_parameters = bpy.props.CollectionProperty(type=JsonParametersPropertyGroup)
     bpy.types.Scene.parameters_active_index = bpy.props.IntProperty()
     #register displace on curve script
@@ -626,6 +714,7 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(DownloadModelconverter)
     bpy.utils.register_class(DownloadModelfbx)
     bpy.utils.register_class(DownloadTexconv)
+    bpy.utils.register_class(DownloadGeditTemplate)
     # Quick Export (I am sincerely sorry for all of these unnecessary classes)
     bpy.utils.register_class(CompleteExport)
     bpy.utils.register_class(ExportTerrain)
@@ -635,6 +724,7 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(ExportDensity)
     bpy.utils.register_class(RepackAll)
     bpy.utils.register_class(Settings)
+    bpy.utils.register_class(NameShow)
     bpy.utils.register_class(QexportSettings)
 
     #DENSITY STUFF: THIS IS A LOT MORE THAN NORMAL SO BE WARNED
@@ -675,13 +765,25 @@ def register():#registers the addon when checked in the addon menu
     # Camera connect
     bpy.utils.register_class(OBJECT_OT_FrontiersCamConnect)
     bpy.utils.register_class(CameraConnectPanel)
+
+    bpy.utils.register_class(LegacyPanel)
+
+    #register Import Script
+    bpy.utils.register_class(HSONImporterPanel)
+    bpy.utils.register_class(HSONImportOperator)
+    bpy.utils.register_class(FrontiersImportProperties)
+    bpy.types.Scene.FrontiersImportProperties = bpy.props.PointerProperty(type=FrontiersImportProperties)
+
+    csmain.initCS()
+
 def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(FrontiersAddonPanel)
     bpy.utils.unregister_class(FrontiersExperimentalPanel)
-    
+    bpy.utils.unregister_class(GamechoicePanel)
     bpy.utils.unregister_class(QuickExport)
     bpy.utils.unregister_class(QuickExportAdvanced)
     bpy.utils.unregister_class(QuickImport)
+    bpy.utils.unregister_class(QuickImportAdvanced)
 
     #unregister Addon preferences
     bpy.utils.unregister_class(OBJECT_OT_addon_prefs)
@@ -706,11 +808,6 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(TerrainScriptfrontiers)
     bpy.utils.unregister_class(FrontiersTerrProps)
     del bpy.types.Scene.FrontiersTerrProps
-    #unregister Import Script
-    bpy.utils.unregister_class(HSONImporterPanel)
-    bpy.utils.unregister_class(HSONImportOperator)
-    bpy.utils.unregister_class(FrontiersImportProperties)
-    del bpy.types.Scene.FrontiersImportProperties
     #unregister Heightmapper Script
     #bpy.utils.unregister_class(HeightmapperPanel)
     bpy.utils.unregister_class(HeightmapperPanel2)
@@ -738,6 +835,7 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(parametersListvalues)
     bpy.utils.unregister_class(JsonParametersPropertyGroup)
     bpy.utils.unregister_class(OBJECT_OT_AddListItem)
+    bpy.utils.unregister_class(OBJECT_OT_AddSelected)
     bpy.utils.unregister_class(OBJECT_OT_RemoveListItem)
     del bpy.types.Object.json_parameters
     del bpy.types.Scene.parameters_active_index
@@ -755,6 +853,7 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(DownloadModelconverter)
     bpy.utils.unregister_class(DownloadModelfbx)
     bpy.utils.unregister_class(DownloadTexconv)
+    bpy.utils.unregister_class(DownloadGeditTemplate)
     # Quick Export
     bpy.utils.unregister_class(CompleteExport)
     bpy.utils.unregister_class(ExportTerrain)
@@ -764,6 +863,7 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(ExportDensity)
     bpy.utils.unregister_class(RepackAll)
     bpy.utils.unregister_class(Settings)
+    bpy.utils.unregister_class(NameShow)
     bpy.utils.unregister_class(QexportSettings)
     
     #Density
@@ -801,3 +901,13 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     # Camera connect
     bpy.utils.unregister_class(OBJECT_OT_FrontiersCamConnect)
     bpy.utils.unregister_class(CameraConnectPanel)
+
+    bpy.utils.unregister_class(LegacyPanel)
+
+    #unregister Import Script
+    bpy.utils.unregister_class(HSONImporterPanel)
+    bpy.utils.unregister_class(HSONImportOperator)
+    bpy.utils.unregister_class(FrontiersImportProperties)
+    del bpy.types.Scene.FrontiersImportProperties
+
+    csmain.deinitCS()

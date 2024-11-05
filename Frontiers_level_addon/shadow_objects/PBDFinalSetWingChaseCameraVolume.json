@@ -1,0 +1,57 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PBDFinalSetWingChaseCameraVolume",
+  "type": "PBDFinalSetWingChaseCameraVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "pathDivideNum": 20,
+      "pathSetDirection": "PATH_TO_GOAL",
+      "pathSetLength": 10.0
+    },
+    "distance": 8.0,
+    "hormingDistance": 3.0,
+    "attackingDistance": 25.0,
+    "minDistance": 7.0,
+    "maxDistance": 7.0,
+    "minElevation": 0.0,
+    "maxElevation": 0.0,
+    "targetUpOffset": 1.0,
+    "targetSideOffset": 0.0,
+    "boosTtargetUpOffset": 1.0,
+    "boostTargetSideOffset": 0.0,
+    "maxRollOffset": 10.0,
+    "rollSmoothTime": 0.25,
+    "minRollSpeedThreshold": 0.0,
+    "maxRollSpeedThreshold": 30.0,
+    "fovy": 60.0
+  }
+}

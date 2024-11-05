@@ -1,0 +1,44 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "RollingRockGenerater",
+  "type": "RollingRockGenerater",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "minSpeed": 10.0,
+    "maxSpeed": 200.0,
+    "shotAngleTheta": 0.0,
+    "shotAnglePhi": 345.0,
+    "shotSpeed": 70.0,
+    "linearDamping": 0.1,
+    "setWaitTime": 0.8,
+    "premonitionWaitTime": 1.0,
+    "shotWaitTime": 1.0,
+    "size": 2.0,
+    "life": 5.0,
+    "shotNum": -1,
+    "moveType": "ProgramSimulation",
+    "simulationParam": {
+      "restitution": 0.3,
+      "accel": 0.3,
+      "gravity": 9.8,
+      "rotCoefficient": 1.0
+    },
+    "pathName": ""
+  }
+}

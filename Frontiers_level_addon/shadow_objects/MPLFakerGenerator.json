@@ -1,0 +1,41 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "MPLFakerGenerator",
+  "type": "MPLFakerGenerator",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "isAppear": true,
+    "movePosLocator": "{00000000-0000-0000-0000-000000000000}",
+    "movePosLocator2": "{00000000-0000-0000-0000-000000000000}",
+    "secondMoveDelay": 1.0,
+    "pillarInitPosition": "{00000000-0000-0000-0000-000000000000}",
+    "pillarLandingPositions": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "initWaitTime": 4.5,
+    "initMoveDelay": 0.5,
+    "initMoveUpRatio": 0.5,
+    "index": 0,
+    "isAmoebaPillar": false
+  }
+}

@@ -1,0 +1,25 @@
+# This is an Asset Catalog Definition file for Blender.
+#
+# Empty lines and lines starting with `#` will be ignored.
+# The first non-ignored line should be the version indicator.
+# Other lines are of the format "UUID:catalog/path/for/assets:simple catalog name"
+
+VERSION 1
+
+44403957-582b-4384-b7f2-5788f4f94f89:Cameras:Cameras
+fd8c28fb-c4b6-42cb-b20e-be40df3a4239:Enemies:Enemies
+5dcf8227-5451-41e2-b7d1-629e435662fe:Essentials:Essentials
+e72ca885-cded-4ee2-a95c-ef0d92b5b16d:Gimmicks:Gimmicks
+1624c869-91d1-4457-8c37-a41a597a335a:Hazards:Hazards
+43d7817d-4b03-4bf1-b879-a9a20e802277:Movement:Movement
+78b6b25a-3eb2-4ffa-b412-34e75c48c7c3:Others:Others
+8c3ebf47-2302-4e38-8ce9-ba1f9e388111:Platforms:Platforms
+0a1efedf-583a-4de0-9114-dae1788ff7ba:Powers:Powers
+8d8bf432-c263-4572-bc8b-54341d4cdf0c:Powers/Chaos:Powers-Chaos
+23f72777-1f5f-4597-9f66-0a90a8bfcde2:Powers/Doom:Powers-Doom
+fdfb3f0e-4b4e-48ec-945e-4f8367dcb1ae:Rings:Rings
+af57dcb3-8548-4788-a061-e28e8fbbc244:Sounds and effects:Sounds and effects
+71774716-a166-46db-94dc-6722052a4239:Springs:Springs
+34e4a834-6e38-4111-a714-cac030b2d31f:Switches:Switches
+7298aad2-dde3-4e37-92f1-7a5f9db45d22:Technical:Technical
+fc363d4d-0b6e-4fef-b103-99343fd3b110:Volumes:Volumes

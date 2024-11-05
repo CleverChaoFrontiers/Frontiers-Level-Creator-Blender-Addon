@@ -1,0 +1,51 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CollectionBoxGear",
+  "type": "CollectionBoxGear",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "visual": "Blue",
+    "itemID": 0,
+    "eventType": "EVENT_NONE",
+    "pathMovement": {
+      "moveType": "FIXED",
+      "pathName": "",
+      "locaterList": [
+        "{00000000-0000-0000-0000-000000000000}",
+        "{00000000-0000-0000-0000-000000000000}",
+        "{00000000-0000-0000-0000-000000000000}",
+        "{00000000-0000-0000-0000-000000000000}",
+        "{00000000-0000-0000-0000-000000000000}"
+      ],
+      "twoPointOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "patrolType": "PATROL_RETURN",
+      "timeType": "TIME_GLOBAL",
+      "eventDriven": false,
+      "isReverse": false,
+      "waitTime": 0.0,
+      "phase": 0.0,
+      "speed": 10.0,
+      "killWaitTSecOneway": 0.0
+    }
+  }
+}

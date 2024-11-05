@@ -1,0 +1,44 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "AmoebaPipe",
+  "type": "AmoebaPipe",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "model": "RightAngle",
+    "size": "Normal",
+    "length": 2.0,
+    "radius": 1.0,
+    "cone": {
+      "angle": 30.0,
+      "nearClip": 0.0,
+      "farClip": 3.0,
+      "offset": 0.0
+    },
+    "rotX": 0.0,
+    "rotY": 0.0,
+    "rotZ": 0.0,
+    "shotSpeed": 20.0,
+    "outOfControl": 0.25,
+    "keepVelocityTime": 0.0,
+    "shotOffset": 0.0,
+    "noPlayPipeAnim": false,
+    "isPlayerHide": false,
+    "playerHideToTime": 0.2
+  }
+}

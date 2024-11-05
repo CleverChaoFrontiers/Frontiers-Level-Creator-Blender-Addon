@@ -1,0 +1,74 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Chaospillar",
+  "type": "Chaospillar",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "chaospillarType": "Normal",
+    "chaospillarNormalAttackType": "All",
+    "isRespawn": false,
+    "respawnTime": 6.0,
+    "addLightGaugeNum": -1,
+    "commonParam": {
+      "searchDistance": 40.0,
+      "rotateSpeed": 4.0,
+      "foundAttackStartTime": 1.0
+    },
+    "normalParam": {
+      "tentacleParam": {
+        "attackMaxDistance": 20.0,
+        "attackMinDistance": 0.0,
+        "rotateSpeed": 2.0,
+        "rotateChaseSpeed": 1.0,
+        "attackMaxDegree": 15.0,
+        "waitTime": 1.0,
+        "speed": 1.0,
+        "intervalTime": 1.0
+      },
+      "beamParam": {
+        "attackMaxDistance": 30.0,
+        "attackMinDistance": 0.0,
+        "rotateSpeed": 4.0,
+        "waitTime": 1.0,
+        "intervalTime": 1.0,
+        "maxDegree": 45.0,
+        "speed": 40.0,
+        "lifeTime": 10.0
+      },
+      "tentacleAttackRatio": 70
+    },
+    "guardParam": {
+      "distance": 30.0,
+      "tentacleParam": {
+        "attackMaxDistance": 20.0,
+        "attackMinDistance": 0.0,
+        "rotateSpeed": 2.0,
+        "rotateChaseSpeed": 1.0,
+        "attackMaxDegree": 15.0,
+        "waitTime": 1.0,
+        "speed": 1.0,
+        "intervalTime": 1.0
+      },
+      "stunTime": 1.0
+    },
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "isTransparency": true
+  }
+}

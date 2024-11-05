@@ -1,0 +1,32 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DPowerSealedStand",
+  "type": "DPowerSealedStand",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "actionType": "Blow",
+    "targetCam": "{00000000-0000-0000-0000-000000000000}",
+    "warpLocator": "{00000000-0000-0000-0000-000000000000}",
+    "dsurfCollisionYOffset": -2.1,
+    "guidePathName": "",
+    "clearWarpLocator": "{00000000-0000-0000-0000-000000000000}",
+    "ditemCam": "{00000000-0000-0000-0000-000000000000}",
+    "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "KnucklesPillarNoID",
+  "type": "KnucklesPillarNoID",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "size": "MIDDLE",
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "eventDriven": "EVENT_NONE",
+    "isSyncRot": false,
+    "isSmoothMove": false,
+    "isReverse": false,
+    "isPressDead": false,
+    "moveVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "locaterList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "waitTime": 0.0,
+    "phase": 0.0,
+    "speed": 10.0
+  }
+}

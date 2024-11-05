@@ -1,0 +1,35 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Propeller",
+  "type": "Propeller",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "duration": 6.0,
+    "type": "TYPE_ON",
+    "place": "ON_GROUND",
+    "length": 20.0,
+    "velocity": 50.0,
+    "durOn": 2.0,
+    "durOff": 2.0,
+    "phase": 0.0,
+    "eventDriven": false,
+    "canHomingAttack": true,
+    "isConstrain": false
+  }
+}

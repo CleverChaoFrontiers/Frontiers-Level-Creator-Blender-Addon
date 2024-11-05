@@ -5,56 +5,21 @@ from math import radians
 import pathlib
 from pathlib import Path
 import os
-import bmesh    
-
-# def Find_node_rot(curve_obj, current_point, next_point, LastLength = 0):
-#     # Get the location of the curve object
-#     curve_location = curve_obj.location
-#     spline = curve_obj.data.splines[0]
-#     # Add a cube at the location of the curve object
-#     bpy.ops.object.empty_add(location=[0,0,0])
-
-#     # Get the newly added cube object
-#     cube_obj = bpy.context.active_object
- 
-#     # Add Follow Path constraint
-#     bpy.ops.object.constraint_add(type='FOLLOW_PATH')
-#     constraint = cube_obj.constraints[-1]  # Get the last constraint added, which is the Follow Path constraint
-#     splinelength = 0.0
-#     if spline.type == "BEZIER":
-#         points_in_rotcurve = spline.bezier_points
-#     else:
-#         points_in_rotcurve = spline.points
-#     for i in range(len(points_in_rotcurve) -1):
-#         if i != len(points_in_rotcurve):
-#             segment = (points_in_rotcurve[i+1].co - points_in_rotcurve[i].co).length
-#             splinelength += segment
-#     # Set the target curve
-#     constraint.target = curve_obj
-#     constraint.use_fixed_location = True
-#     constraint.use_curve_follow = True
-#     constraint.forward_axis = 'TRACK_NEGATIVE_Y'
-#     constraint.up_axis = 'UP_Z'
-
-#     # Set the offset to follow the curve until reaching the positionof the current_point
-#     constraint.offset_factor =LastLength + (next_point.co- current_point.co).length / splinelength
-#     NewFactor = constraint.offset_factor
-#     # Apply the modifier
-#     bpy.ops.constraint.apply(constraint= constraint.name)
-#     Rotation = cube_obj.rotation_euler
-#     # Delete the cube
-#     bpy.data.objects.remove(cube_obj)
-#     return Rotation, NewFactor
+import bmesh
 
 def Find_node_rot(curve_obj,index,path_dir):#New fixed rotation whooo! Based heavily on the density script
     beveled_curve = False
+    hedgePath = False
     if bpy.context.mode != 'OBJECT':
         bpy.ops.object.mode_set(mode='OBJECT')
-    if curve_obj.data.bevel_depth != 0:
+    if curve_obj.data.bevel_mode != 'ROUND' and curve_obj.data.bevel_depth != 0 :
+        original_bevel_mode = curve_obj.data.bevel_mode
         original_bevel_size = curve_obj.data.bevel_depth
         curve_obj.data.bevel_depth = 0
         beveled_curve = True
-    object_name = "Frontiers_rotation_plane"
+    if "HedgehogPath" in curve_obj.modifiers:
+        bpy.data.node_groups["HedgehogPath"].nodes["devOff"].inputs[0].default_value = True
+        hedgePath = True
     nodetree_name = "FrontiersRailRotation"
     filepath = os.path.join(path_dir, r"Other\frontiers_rotation_solution.blend")
     # Check if the file exists and is a valid blend file
@@ -62,26 +27,11 @@ def Find_node_rot(curve_obj,index,path_dir):#New fixed rotation whooo! Based hea
         try:
             with bpy.data.libraries.load(filepath, link=False) as (data_from, data_to): #try loading the nodetree. Cancel script if failed
                 data_to.node_groups = [nodetree_name]   
-            # with bpy.data.libraries.load(filepath) as (data_from, data_to):
-            #     if object_name in data_from.objects:
-            #         data_to.objects = [object_name]
-                # else:
-                #     print(f"Object '{object_name}' not found in {filepath}")
-                #     return
         except Exception as error:
             print(f"Failed to load {filepath}: {error}")
             return
     bpy.ops.mesh.primitive_plane_add(size = 1.0)
     appended_rotobject = bpy.context.view_layer.objects.active
-    # Link the object to the scene
-    # appended_rotobject = None
-    # for rot_solution in data_to.objects:
-    #     if rot_solution is not None:
-    #         bpy.context.collection.objects.link(rot_solution)
-    #         appended_rotobject = rot_solution
-    #         #print(f"Appended '{object_name}' to the current scene.")
-    #     else:
-    #         print(f"Failed to append '{object_name}'.")
         
     geo_node_mod = appended_rotobject.modifiers.new(name="Frontiersrotation", type='NODES')
     geo_node_mod.node_group = bpy.data.node_groups[nodetree_name]
@@ -106,29 +56,49 @@ def Find_node_rot(curve_obj,index,path_dir):#New fixed rotation whooo! Based hea
     bpy.context.view_layer.objects.active = curve_obj
     if beveled_curve:
         curve_obj.data.bevel_depth = original_bevel_size
+        curve_obj.data.bevel_mode = original_bevel_mode
+    if hedgePath == True:
+        bpy.data.node_groups["HedgehogPath"].nodes["devOff"].inputs[0].default_value = False
     bpy.data.objects.remove(appended_rotobject, do_unlink=True)
     return objectRotation,True
 
 # Define the operator class
 class SetBevelOperator(bpy.types.Operator):
     bl_idname = "object.set_bevel_operator"
-    bl_label = "Set Bevel geometry for selected Curve"
-    bl_description = "Sets a bevel geometry around the selected curve. This is to mainly to simplify creating rotating rails"    
+    bl_label = "Curve to Hedgehog Path"
+    bl_description = "Sets the curve to work like the path in Hedgehog games. If using Blender 3.6 this simply creates a profile around the curve without calculations"    
 
     def execute(self, context):
             # Get the active object
         obj = bpy.context.active_object
         
+        with bpy.data.libraries.load(f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/railprofile.blend') as (data_from, data_to):
+            if not "[FLC] Profile" in bpy.data.objects:
+                data_to.objects = data_from.objects
+
         # Check if the active object is a curve
         if obj and obj.type == 'CURVE':
+            #Removes hedgehogpath if already on
+            if "HedgehogPath" in obj.modifiers:
+                obj.modifiers.remove(obj.modifiers.get("HedgehogPath"))
+                return {'FINISHED'}    
             # Check if the curve already has a bevel
-            if obj.data.bevel_depth != 0.0:
+            if obj.data.bevel_mode == 'OBJECT':
                 # Set bevel to 0.0 radius
-                obj.data.bevel_depth = 0.0
-            else:
+                obj.data.bevel_mode = 'ROUND'
+                if obj.data.bevel_depth != 0:
+                    obj.data.bevel_depth = 0.0
+                return {'FINISHED'}    
+            elif (4, 1, 0) > bpy.app.version:
                 # Set bevel to profile preset crown with 0.25 radius
-                obj.data.bevel_depth = 0.25
-                obj.data.bevel_mode = 'PROFILE'
+                obj.data.bevel_mode = 'OBJECT'
+                obj.data.bevel_object = bpy.data.objects["[FLC] Profile"]
+            else:
+                if not "HedgehogPath" in bpy.data.node_groups:
+                    with bpy.data.libraries.load(f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/SNS Curve.blend') as (data_from, data_to):
+                            data_to.node_groups = data_from.node_groups
+                geo_node_Path_mod = obj.modifiers.new(name="HedgehogPath", type='NODES')
+                geo_node_Path_mod.node_group = bpy.data.node_groups["HedgehogPath"]
                 
         else:
             self.report({"INFO"}, f"Selected object is not a curve")

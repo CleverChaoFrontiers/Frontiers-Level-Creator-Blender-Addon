@@ -1,0 +1,38 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraShakeTrigger",
+  "type": "CameraShakeTrigger",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "type": "TYPE_ONESHOT",
+    "shakeTime": 0.5,
+    "shakeRange": 10.0,
+    "oneTimeOnly": false,
+    "shakeType": "Directional",
+    "magnitude": 1.0,
+    "freq": 10,
+    "zRot": 0.0,
+    "attnRatio": 0.2,
+    "distanceDecayEnabled": false,
+    "shape": "SHAPE_BOX",
+    "width": 10.0,
+    "height": 2.0,
+    "depth": 10.0
+  }
+}

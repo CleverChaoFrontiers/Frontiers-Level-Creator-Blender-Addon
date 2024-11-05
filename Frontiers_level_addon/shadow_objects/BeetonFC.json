@@ -1,0 +1,59 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "BeetonFC",
+  "type": "BeetonFC",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "SerchLength": 30.0,
+    "SerchMoveSpeed": 15.0,
+    "viewShape": "CONE",
+    "cone": {
+      "SearchDistance": 10.0,
+      "SearchAngle": 90.0
+    },
+    "cuboid": {
+      "size": [
+        10.0,
+        10.0,
+        10.0
+      ],
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "IsMove": false,
+    "CheckShielding": false,
+    "AttackConst": false,
+    "AttackConstAngle": 0.0,
+    "StraightDistance": 0.0,
+    "RespawnTime": 0.0,
+    "RespawnOffsetPos": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "RespawnPathName": "",
+    "isFV": false,
+    "isEscape": false,
+    "eventDriven": false,
+    "isTransparency": true
+  }
+}

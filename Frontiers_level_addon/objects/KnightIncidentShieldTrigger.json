@@ -1,0 +1,35 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "KnightIncidentShieldTrigger",
+  "type": "KnightIncidentShieldTrigger",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "knightIncident": "{00000000-0000-0000-0000-000000000000}",
+    "preset": 2,
+    "passPlane": {
+      "width": 10.0,
+      "height": 40.0,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

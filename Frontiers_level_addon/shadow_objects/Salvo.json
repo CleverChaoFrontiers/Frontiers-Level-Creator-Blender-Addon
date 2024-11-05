@@ -1,0 +1,225 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Salvo",
+  "type": "Salvo",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "eyesightDistance": 72.0,
+    "eyesightDistanceOnBattle": 72.0,
+    "pathName": "",
+    "keepDistanceMin": 72.0,
+    "keepDistanceMax": 75.0,
+    "keepDistanceMinWhileAttacking": 72.0,
+    "keepDistanceMaxWhileAttacking": 75.0,
+    "shootHomingLaserRapidFireNum": 5,
+    "homingLaserSalvo": [
+      {
+        "launch_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "launch_direction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "target_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "speedAtStart": 20.0,
+        "speed": 40.0,
+        "speedMin": 15.0,
+        "speedMax": 40.0,
+        "speedAcceleration": 15.0,
+        "relativeSpeedToDecelerate": 60.0,
+        "decelerateAtOverRelativeSpeed": 0.0,
+        "radius": 0.75,
+        "length": 0.9,
+        "damage_collider_scale": 2.0,
+        "lifeTime": 2.5,
+        "angularSpeed": 230.0,
+        "startDistance": 8.0,
+        "endDistance": 1.0,
+        "onTimeAtStart": 0.6,
+        "onTime": 0.6,
+        "offTime": 1.9,
+        "directionError": 0.0,
+        "targetPositionEstimatedTime": 0.17
+      },
+      {
+        "launch_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "launch_direction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "target_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "speedAtStart": 20.0,
+        "speed": 40.0,
+        "speedMin": 15.0,
+        "speedMax": 40.0,
+        "speedAcceleration": 15.0,
+        "relativeSpeedToDecelerate": 60.0,
+        "decelerateAtOverRelativeSpeed": 0.0,
+        "radius": 0.75,
+        "length": 0.9,
+        "damage_collider_scale": 2.0,
+        "lifeTime": 2.5,
+        "angularSpeed": 230.0,
+        "startDistance": 8.0,
+        "endDistance": 1.0,
+        "onTimeAtStart": 0.6,
+        "onTime": 0.6,
+        "offTime": 1.9,
+        "directionError": 0.0,
+        "targetPositionEstimatedTime": 0.17
+      },
+      {
+        "launch_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "launch_direction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "target_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "speedAtStart": 20.0,
+        "speed": 40.0,
+        "speedMin": 15.0,
+        "speedMax": 40.0,
+        "speedAcceleration": 15.0,
+        "relativeSpeedToDecelerate": 60.0,
+        "decelerateAtOverRelativeSpeed": 0.0,
+        "radius": 0.75,
+        "length": 0.9,
+        "damage_collider_scale": 2.0,
+        "lifeTime": 2.5,
+        "angularSpeed": 230.0,
+        "startDistance": 8.0,
+        "endDistance": 1.0,
+        "onTimeAtStart": 0.6,
+        "onTime": 0.6,
+        "offTime": 1.9,
+        "directionError": 0.0,
+        "targetPositionEstimatedTime": 0.17
+      },
+      {
+        "launch_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "launch_direction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "target_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "speedAtStart": 20.0,
+        "speed": 40.0,
+        "speedMin": 15.0,
+        "speedMax": 40.0,
+        "speedAcceleration": 15.0,
+        "relativeSpeedToDecelerate": 60.0,
+        "decelerateAtOverRelativeSpeed": 0.0,
+        "radius": 0.75,
+        "length": 0.9,
+        "damage_collider_scale": 2.0,
+        "lifeTime": 2.5,
+        "angularSpeed": 230.0,
+        "startDistance": 8.0,
+        "endDistance": 1.0,
+        "onTimeAtStart": 0.6,
+        "onTime": 0.6,
+        "offTime": 1.9,
+        "directionError": 0.0,
+        "targetPositionEstimatedTime": 0.17
+      },
+      {
+        "launch_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "launch_direction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "target_position_offset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "speedAtStart": 20.0,
+        "speed": 40.0,
+        "speedMin": 15.0,
+        "speedMax": 40.0,
+        "speedAcceleration": 15.0,
+        "relativeSpeedToDecelerate": 60.0,
+        "decelerateAtOverRelativeSpeed": 0.0,
+        "radius": 0.75,
+        "length": 0.9,
+        "damage_collider_scale": 2.0,
+        "lifeTime": 2.5,
+        "angularSpeed": 230.0,
+        "startDistance": 8.0,
+        "endDistance": 1.0,
+        "onTimeAtStart": 0.6,
+        "onTime": 0.6,
+        "offTime": 1.9,
+        "directionError": 0.0,
+        "targetPositionEstimatedTime": 0.17
+      }
+    ],
+    "escapeTime": 0.01,
+    "damageVelocityScaleRush": 1.0,
+    "damageVelocityScaleSlamDownward": 1.0,
+    "killBelowPositionY": -3.4028234663852886e+38,
+    "respawnTime": -1.0,
+    "addLightGaugeNum": -1,
+    "warpAttackOffsetType": "Global",
+    "sideView": false,
+    "isTransparency": true,
+    "eventDriven": false
+  }
+}

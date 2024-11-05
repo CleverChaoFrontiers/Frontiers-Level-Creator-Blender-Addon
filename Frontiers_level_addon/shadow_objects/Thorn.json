@@ -1,0 +1,38 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Thorn",
+  "type": "Thorn",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "size": [
+      0.0,
+      0.0
+    ],
+    "interval": [
+      0.0,
+      0.0
+    ],
+    "offTime": 1.0,
+    "onTime": 1.0,
+    "phase": 0.0,
+    "type": "TYPE_APPEAR",
+    "eventDriven": false,
+    "hasRigidbody": true
+  }
+}

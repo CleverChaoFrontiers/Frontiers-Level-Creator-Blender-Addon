@@ -1,0 +1,83 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Soldier",
+  "type": "Soldier",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "eyesightHeightUpperLimit": 3.0,
+    "eyesightHeightLowerLimit": -1.0,
+    "eyesightDistance": 40.0,
+    "eyesightDistanceOnBattle": 45.0,
+    "damageVelocityScaleRush": 1.0,
+    "damageVelocityScaleSlamDownward": 1.0,
+    "killBelowPositionY": -3.4028234663852886e+38,
+    "respawnTime": -1.0,
+    "addLightGaugeNum": -1,
+    "warpAttackOffsetType": "Global",
+    "sideView": true,
+    "isTransparency": true,
+    "movableDistance": 30.0,
+    "attackableDistance": 2.2,
+    "moveSpeed": 3.0,
+    "frontDistanceForCheckTerrain": 1.5,
+    "topYOffsetForCheckTerrain": 1.2,
+    "btmYOffsetForCheckTerrain": 1.0,
+    "heightCannotBeClimbed": 1.0,
+    "warpOffsetForFV": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "warpOffsetForSV": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "warpOffsetForFVWhileBlownUp": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "warpOffsetForSVWhileBlownUp": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "warpOffsetForFVWhileBlownAway": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "warpOffsetForSVWhileBlownAway": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "warpAngleForFV": 0.0,
+    "warpAngleForSV": 0.0,
+    "warpAngleForFVWhileBlownUp": 0.0,
+    "warpAngleForSVWhileBlownUp": 0.0,
+    "warpAngleForFVWhileBlownAway": 0.0,
+    "warpAngleForSVWhileBlownAway": 0.0,
+    "warpOffsetCalcFromNowRot": false,
+    "useTutorial": false,
+    "disableCharacterControlWhenNotBattle": true
+  }
+}

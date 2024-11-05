@@ -1,0 +1,81 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "BigBattery",
+  "type": "BigBattery",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "visual_scale": 1.0,
+    "big_missile_visual_scale": 1.0,
+    "big_missile_diameter": 10.0,
+    "big_missile_height": 30.0,
+    "big_missile_speed": 50.0,
+    "big_missile_acceleration": 0.0,
+    "big_missile_speed_max": 50.0,
+    "big_missile_wait_time_ready": 1.0,
+    "big_missile_wait_time_shot": 20.0,
+    "big_missile_rotate_speed": 3.0,
+    "big_missile_life_time": 10.0,
+    "big_missile_qte_start_distance": 110.0,
+    "big_missile_launch_position_offset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "big_missile_qte_root_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "big_missile_qte_root_rotation": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "big_missile_qte_success_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "big_missile_qte_success_rotation": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "big_missile_qte_fail_position": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "big_missile_qte_fail_rotation": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "objectIds": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ]
+  }
+}

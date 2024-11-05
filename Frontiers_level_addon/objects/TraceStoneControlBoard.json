@@ -1,0 +1,30 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "TraceStoneControlBoard",
+  "type": "TraceStoneControlBoard",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "recordNum": 3,
+    "boardSwitch": "{00000000-0000-0000-0000-000000000000}",
+    "anchors": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "developInput": 0
+  }
+}

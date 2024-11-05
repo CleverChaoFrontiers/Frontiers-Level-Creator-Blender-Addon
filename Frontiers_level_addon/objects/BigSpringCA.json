@@ -1,0 +1,62 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "BigSpringCA",
+  "type": "BigSpringCA",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "visual": "Normal",
+    "firstSpeed": 30.0,
+    "outOfControl": 0.6,
+    "keepVelocityDistance": 5.0,
+    "isHorming": true,
+    "isEventOn": false,
+    "isCyloopOn": false,
+    "cyloopSignDistance": 100.0,
+    "cyloopSignTolerance": 20.0,
+    "isCyKnuckleOn": false,
+    "isHorizon": false,
+    "airtrick": false,
+    "isVisible": true,
+    "isSmooth": false,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      }
+    ],
+    "rollingParam": {
+      "speed": 15.0,
+      "phase": 0.0
+    },
+    "offsetCollision": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scaleCollision": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "isConstrain": false
+  }
+}

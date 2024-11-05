@@ -1,0 +1,28 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "StartPosition",
+  "type": "StartPosition",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "m_startType": "STAND",
+    "m_speed": 0.0,
+    "m_time": 0.0,
+    "m_outOfControlTime": 0.0
+  }
+}

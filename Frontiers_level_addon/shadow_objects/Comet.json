@@ -1,0 +1,70 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Comet",
+  "type": "Comet",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "eyesightDistance": 40.0,
+    "eyesightDistanceOnBattle": 45.0,
+    "rotateSpeed": 180.0,
+    "barrierStartDistance": 50.0,
+    "barrierGuideRange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "startReflectorWaitTime": 0.5,
+    "shootReflectorLifeTime": 4.0,
+    "shootReflectorInterval": 1.5,
+    "shootReflectorIndividualParamNum": 1,
+    "shootReflectorIndividualParams": [
+      {
+        "moveType": "Straight"
+      },
+      {
+        "moveType": "Straight"
+      },
+      {
+        "moveType": "Straight"
+      },
+      {
+        "moveType": "Straight"
+      },
+      {
+        "moveType": "Straight"
+      }
+    ],
+    "dBlowAttackAimAngleLimitH": 0.0,
+    "dBlowAttackAimAngleLimitV": 0.0,
+    "damageVelocityScaleRush": 1.0,
+    "damageVelocityScaleSlamDownward": 1.0,
+    "damageKnockbackLimitDistance": -1.0,
+    "killBelowPositionY": -3.4028234663852886e+38,
+    "respawnTime": -1.0,
+    "addLightGaugeNum": -1,
+    "warpAttackOffsetType": "Global",
+    "sideView": false,
+    "isTransparency": true,
+    "eventDriven": false,
+    "eventDrivenAfterRespawn": false,
+    "performUniqueActions": true,
+    "disableCharacterControlWhenNotBattle": true
+  }
+}

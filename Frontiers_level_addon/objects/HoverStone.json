@@ -1,0 +1,32 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "HoverStone",
+  "type": "HoverStone",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "withBase": false,
+    "hoverOnStart": false,
+    "hoverHeight": 18.0,
+    "fallWaitTime": 5.0,
+    "useHoverLimit": false,
+    "hoverLimitTime": 5.0,
+    "doBoundBackOnHoverUp": true,
+    "bounceBackOnHoverUp": 20.0
+  }
+}

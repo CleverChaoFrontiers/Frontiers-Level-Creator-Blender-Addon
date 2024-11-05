@@ -1,0 +1,40 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DroppedItem",
+  "type": "DroppedItem",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 2,
+    "type": "SEQUENCE_ITEM",
+    "viewItemNum": 8,
+    "getItemNum": 1,
+    "cyloopDriven": true,
+    "cyloopSignDistance": 40.0,
+    "cyloopSignTolerance": 20.0,
+    "ringParam": {
+      "suckedTime": 0.8,
+      "launchAngle": 20.0,
+      "launchMaxSpeed": 12.0,
+      "launchMinSpeed": 15.0,
+      "randomRangeMin": 0.0,
+      "randomRangeMax": 0.0,
+      "lifeTime": -1.0
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PBDMeteoBeamPlace",
+  "type": "PBDMeteoBeamPlace",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "laserDirKind": "UP_DIRECTION",
+    "rotSpeed": 0.0,
+    "length": 20.0,
+    "colRadius": 1.7,
+    "beamColRadius": 1.5,
+    "blowHitDamagePoint": 10,
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "speed": 2.0,
+    "waitTime": 0.0,
+    "phase": 0.0,
+    "eventDriven": true,
+    "eventDrivenBeam": false,
+    "destOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "isReverse": false,
+    "isCreateDirection": true,
+    "isColliderEnable": false,
+    "inputGuideKind": "INPUT_GUIDE_KIND_NONE",
+    "isSE": true,
+    "isWaterEffect": false
+  }
+}

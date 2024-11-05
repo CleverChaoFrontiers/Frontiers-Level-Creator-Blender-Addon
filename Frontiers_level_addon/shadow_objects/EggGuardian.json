@@ -1,0 +1,36 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "EggGuardian",
+  "type": "EggGuardian",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "eyesightDistance": 40.0,
+    "eyesightLostDelayTime": 10.0,
+    "respawnTime": -1.0,
+    "addLightGaugeNum": -1,
+    "isTransparency": true,
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "appearType": "Stand",
+    "fallHeight": 30.0,
+    "fallSpeed": 20.0,
+    "appearEffect": true
+  }
+}

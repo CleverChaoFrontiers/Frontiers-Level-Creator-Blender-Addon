@@ -1,0 +1,47 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PathCircle",
+  "type": "PathCircle",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "setParameter": {
+      "pathUID": 0,
+      "pathType": "OBJ_PATH",
+      "capVisible": "Both",
+      "grindUnitLength": 0.0,
+      "paramType": "PARAM_NONE",
+      "isMovable": false,
+      "homingPoint": "Both",
+      "isDistSpaceGrind": false,
+      "modelColor": "Blue",
+      "isBrakble": false,
+      "isNoneModel": false,
+      "isWaitAppear": false,
+      "normalType": "NOR_DEFAULT",
+      "radius": 5.0,
+      "divideRate": 1.0,
+      "isReverse": false,
+      "connectParam": {
+        "isConnect": false,
+        "connectType": "CONNECT_STRAIGHT",
+        "splineTangentLength": 50.0
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DivingVolume",
+  "type": "DivingVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "limit": true,
+    "easeTimeEnter": 0.5,
+    "easeTimeLeave": 0.5,
+    "outOfControlTime": 1.0,
+    "waitTime": 1.0,
+    "velocityReset": true,
+    "cutStartMotion": false,
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_EACHTIME",
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "pathDivideNum": 20,
+      "pathSetDirection": "PATH_TO_GOAL",
+      "pathSetLength": 10.0
+    },
+    "isEnableHomingAttack": true,
+    "updateSpeedParam": true,
+    "maxVertSpeed": 40.0,
+    "acceleVertForce": 80.0,
+    "maxHorzSpeed": 25.0,
+    "acceleHorzForce": 100.0,
+    "deceleVertForce": 200.0,
+    "deceleHorzForce": 100.0,
+    "deceleNeutralForce": 240.0,
+    "maxVertSpeedBoost": 80.0,
+    "acceleVertForceBoost": 160.0,
+    "maxHorzSpeedBoost": 10.0,
+    "acceleHorzForceBoost": 50.0,
+    "deceleVertForceBoost": 0.0,
+    "deceleHorzForceBoost": 80.0,
+    "deceleNeutralForceBoost": 120.0
+  }
+}

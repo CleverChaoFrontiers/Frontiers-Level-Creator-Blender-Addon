@@ -1,0 +1,34 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Motora",
+  "type": "Motora",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "SerachDistance": 10.0,
+    "Speed": 10.0,
+    "MaxMoveDistance": 5.0,
+    "IsEventOn": false,
+    "IsFV": false,
+    "IsFallStart": false,
+    "isTreadGrass": false,
+    "updateMaterial": false,
+    "isRespawn": false,
+    "isTransparency": true
+  }
+}

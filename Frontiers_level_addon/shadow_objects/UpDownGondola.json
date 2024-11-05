@@ -1,0 +1,35 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "UpDownGondola",
+  "type": "UpDownGondola",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "moveVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "horizontalMovementSpeed": 0.0,
+    "upwardMovementSpeed": 2.0,
+    "waitTimeToRise": 0.0,
+    "downwardMovementSpeed": 3.0,
+    "downwardMovementRange": -3.0,
+    "sizeType": "SIZE_B"
+  }
+}

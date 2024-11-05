@@ -1,0 +1,60 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DivingAirPlane",
+  "type": "DivingAirPlane",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "isEventDriven": false,
+    "startStayTime": 0.0,
+    "lowDafaultPlayerSpeed": 0.0,
+    "lowFastPlayerSpeed": 0.0,
+    "highDafaultPlayerSpeed": 0.0,
+    "highFastPlayerSpeed": 0.0,
+    "verticalSpeed": 0.0,
+    "stayTime": 0.0,
+    "homingDistOffset": 0.0,
+    "setupWeaponTime": 0.0,
+    "attackWeaponTime": 0.0,
+    "circleWeaponNum": 0,
+    "cirlcleWeaponRange": 0.0,
+    "crossWeaponNum": 0,
+    "crossWeaponRange": 0.0,
+    "nextPatternTime": 0.0,
+    "targetToPlayerDist": 0.0,
+    "gameoverDist": 0.0,
+    "gameoverPlayerPos": 0.0,
+    "firstNozzle": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "secondNozzle": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scale": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "visiableCollision": false,
+    "visiableWeaponDebug": false
+  }
+}

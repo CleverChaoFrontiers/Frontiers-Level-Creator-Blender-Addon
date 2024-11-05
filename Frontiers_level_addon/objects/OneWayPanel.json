@@ -1,0 +1,35 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "OneWayPanel",
+  "type": "OneWayPanel",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "isStart": false,
+    "startParam": {
+      "eventDriven": false,
+      "keepLightOnFail": false,
+      "panelIds": [
+        "{00000000-0000-0000-0000-000000000000}"
+      ],
+      "actionIds": [
+        "{00000000-0000-0000-0000-000000000000}"
+      ]
+    }
+  }
+}

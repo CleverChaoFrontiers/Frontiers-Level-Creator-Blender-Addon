@@ -1,0 +1,72 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DoomsEyeFloor",
+  "type": "DoomsEyeFloor",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "sizeType": "SIZE_A",
+    "initialCondition": "CONDITION_NORMAL",
+    "eventCondition": "CONDITION_NORMAL",
+    "enableSolid": true,
+    "eventDriven": true,
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_ONEWAY",
+    "timeType": "TIME_LOCAL",
+    "moveVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "locaterList": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "pathChangeName": "",
+    "pathChangeSpeed": 1.0,
+    "pathChangeEffect": "{00000000-0000-0000-0000-000000000000}",
+    "isSyncRot": false,
+    "isMovable": true,
+    "waitTime": 0.0,
+    "phase": 0.0,
+    "speed": 10.0,
+    "rotSpeed": 0.0,
+    "rotSpeedEvent": 0.0,
+    "rotAxis": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "attackColliderScale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "se_flags": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  }
+}

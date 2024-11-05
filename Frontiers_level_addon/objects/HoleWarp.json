@@ -1,0 +1,28 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "HoleWarp",
+  "type": "HoleWarp",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "exitHole": "{00000000-0000-0000-0000-000000000000}",
+    "camera": "{00000000-0000-0000-0000-000000000000}",
+    "easeInTime": 0.0,
+    "easeOutTime": 0.0
+  }
+}

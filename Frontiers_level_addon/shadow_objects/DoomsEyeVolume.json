@@ -1,0 +1,64 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DoomsEyeVolume",
+  "type": "DoomsEyeVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_EACHTIME",
+    "animation": "ANIMATION_NONE",
+    "requestDamageObject": "TT_None",
+    "damageObjectLength": 100.0,
+    "damageObjectRotateSpeed": 30.0,
+    "damageObjectStunTime": 5.0,
+    "maxSpeed": 100.0,
+    "accelSpeed": 1.0,
+    "damageObjectGuideRange": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "damageObjectGuidePositionOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "damageObjectGuideAction": false,
+    "suspendMovement": false,
+    "useHomingAttack": true,
+    "isEventDriven": false,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "pathDivideNum": 20,
+      "pathSetDirection": "PATH_TO_GOAL",
+      "pathSetLength": 10.0
+    }
+  }
+}

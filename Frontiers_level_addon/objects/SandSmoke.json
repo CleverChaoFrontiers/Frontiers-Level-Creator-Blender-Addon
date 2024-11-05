@@ -1,0 +1,34 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "SandSmoke",
+  "type": "SandSmoke",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "color": "Yellow",
+    "areaType": "Circle",
+    "size": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "amount": 20.0,
+    "minDist": 2.0,
+    "duration": 1.0
+  }
+}

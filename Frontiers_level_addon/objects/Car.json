@@ -1,0 +1,67 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Car",
+  "type": "Car",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "actionType": "RUN",
+    "addSpeed": 10.0,
+    "distance": 20.0,
+    "height": 0.0,
+    "outStrength": 1.0,
+    "inStrength": 3.0,
+    "inAngle": 60.0,
+    "impulseSpeedOn": 35.0,
+    "outOfControl": 0.2,
+    "motionTime": 2.5,
+    "carType": "MINIVAN",
+    "color": 0,
+    "addTime": 1.0,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      }
+    ],
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "eventDriven": false,
+    "isFall": false,
+    "isSyncRot": false,
+    "isSmoothMove": false,
+    "isReverse": false,
+    "moveVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "locaterList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "waitTime": 0.0,
+    "phase": 0.0,
+    "speed": 10.0,
+    "optimized": true
+  }
+}

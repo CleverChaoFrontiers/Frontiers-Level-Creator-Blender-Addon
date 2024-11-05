@@ -1,0 +1,42 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DivingAuraTrain",
+  "type": "DivingAuraTrain",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "setType": "Distance",
+    "value": 3.0,
+    "startNum": 3,
+    "cameraColliderUuids": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "root": {
+      "pathName": "SetPath_7815",
+      "cameraUuid": "{00000000-0000-0000-0000-000000000000}",
+      "cameraEaseInTime": 0.0,
+      "cameraEaseOutTime": 0.0
+    },
+    "speed": 60.0,
+    "collisionScale": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

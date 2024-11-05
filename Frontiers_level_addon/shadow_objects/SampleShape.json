@@ -1,0 +1,43 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "SampleShape",
+  "type": "SampleShape",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "ShapeType": "SHAPE_CYLINDER",
+    "Width": 2.0,
+    "Height": 60.0,
+    "Depth": 10.0,
+    "Red": 255,
+    "Green": 255,
+    "Blue": 255,
+    "Alpha": 255,
+    "IsEnableModel": true,
+    "IsEnableRigidbody": true,
+    "layer": "SOLID",
+    "material": "MAT_NONE",
+    "attributes": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  }
+}

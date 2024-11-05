@@ -1,0 +1,45 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraFollow",
+  "type": "CameraFollow",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "IsCameraView": false,
+    "Fovy": 45.0,
+    "ZRot": 0.0,
+    "Distance": 10.0,
+    "Yaw": 180.0,
+    "Pitch": 10.0,
+    "targetOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gravityOffset": 0.0,
+    "playerOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "enableCollision": false,
+    "enableCheckCelling": false,
+    "enableEyePositionLimit": false,
+    "eyePositionLimitMinY": 0.0
+  }
+}

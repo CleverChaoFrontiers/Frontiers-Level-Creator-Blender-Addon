@@ -1,0 +1,67 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "FishingSequence",
+  "type": "FishingSequence",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "spotId": 0,
+    "sonicObj": "{00000000-0000-0000-0000-000000000000}",
+    "bigObj": "{00000000-0000-0000-0000-000000000000}",
+    "talkCamera": "{00000000-0000-0000-0000-000000000000}",
+    "fishingCamera": "{00000000-0000-0000-0000-000000000000}",
+    "castCamera": "{00000000-0000-0000-0000-000000000000}",
+    "fishingSonicPos": "{00000000-0000-0000-0000-000000000000}",
+    "fishSwimCenter": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fishSwimRadius": 6.0,
+    "buoyCameraTransitTime": 1.0,
+    "buoyCameraOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "battleCameraOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "catchCameraOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fishingCameraTransitTime": 0.5,
+    "cyberNoiseEffectPos": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cyberNoiseEffectRot": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "barbecueSonicObj": "{00000000-0000-0000-0000-000000000000}",
+    "barbecueMachineObj": "{00000000-0000-0000-0000-000000000000}",
+    "barbecueCamera": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

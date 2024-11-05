@@ -1,0 +1,46 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "RotateBlock",
+  "type": "RotateBlock",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "blockExtents": 1.0,
+    "numBlock": 4,
+    "basePointType": "Center",
+    "startType": "Line_1",
+    "moveType": "Loop",
+    "isClockWise": true,
+    "animCurve": "EaseIn",
+    "rotateTime": 1.0,
+    "rotateWaitTime": 1.0,
+    "rotateAngle": 90.0,
+    "offsetRatio": 1.0,
+    "moveRatio": 1.0,
+    "eventDriven": true,
+    "rideOnDriven": false,
+    "pressType": "DeadEdge",
+    "jumpParam": {
+      "isEnable": false,
+      "isSpin": false,
+      "velocityMax": 30.0,
+      "velocityMin": 5.0,
+      "judgeHeightRate": 0.7
+    }
+  }
+}

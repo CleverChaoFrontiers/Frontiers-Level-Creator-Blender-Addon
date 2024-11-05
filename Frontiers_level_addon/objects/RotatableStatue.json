@@ -1,0 +1,56 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "RotatableStatue",
+  "type": "RotatableStatue",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "type": "TYPE_NORMAL",
+    "no": 0,
+    "eventDriven": false,
+    "rotatable": true,
+    "rotateType": "ROTATE_TYPE_45",
+    "collectType": "COLLECT_TYPE_90",
+    "angularVelocity": 30.0,
+    "randomClearCount": 5,
+    "randomRoundMin": 5,
+    "randomRoundMax": 10,
+    "targetList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "isUseEyeSightTarget": false,
+    "eyeSightTargetList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "cameraParam": {
+      "useCameraParam": false,
+      "interoplateTimeActivate": 1.0,
+      "interoplateTimeDeactivate": 1.0,
+      "targetOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cameraPosOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CoreMacho",
+  "type": "CoreMacho",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "eyesightDistance": 20.0,
+    "eyesightDistanceOnBattle": 45.0,
+    "pathName": "",
+    "endMoveRestDistance": 0.0,
+    "damageVelocityScaleRush": 1.0,
+    "damageVelocityScaleSlamDownward": 1.0,
+    "projectileStartDistance": 20.0,
+    "killBelowPositionY": 0.0,
+    "respawnTime": -1.0,
+    "addLightGaugeNum": -1,
+    "warpAttackOffsetType": "Local",
+    "warpAttackOffsetTypeVehicle": "Local",
+    "isTransparency": true,
+    "eventDriven": false,
+    "tornadoes": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "objectsWhenVehicleDead": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ]
+  }
+}

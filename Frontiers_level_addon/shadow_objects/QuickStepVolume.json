@@ -1,0 +1,53 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "QuickStepVolume",
+  "type": "QuickStepVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "line": "LINE2_LEFT",
+    "pathName": "",
+    "speed": 0.0,
+    "speedMin": 0.0,
+    "boostSpeed": 0.0,
+    "boostSpeedMin": 0.0,
+    "boostLvMaxSpeed": 0.0,
+    "boostLvMaxSpeedMin": 0.0,
+    "initialSpeed": 0.0,
+    "stepWidth": 0.0,
+    "jumpMode": "WorldSpace",
+    "endByAir": false,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "pathDivideNum": 20,
+      "pathSetDirection": "PATH_TO_GOAL",
+      "pathSetLength": 10.0
+    }
+  }
+}

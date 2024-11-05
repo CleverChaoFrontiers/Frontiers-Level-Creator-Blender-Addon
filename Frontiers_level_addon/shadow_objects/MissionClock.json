@@ -1,0 +1,51 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "MissionClock",
+  "type": "MissionClock",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 0,
+    "defaultTimeLimitNormal": 25.0,
+    "defaultTimeLimitHard": 35.0,
+    "normalClocks": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "hardClocks": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "targetNormalCamera": "{00000000-0000-0000-0000-000000000000}",
+    "targetHardCamera": "{00000000-0000-0000-0000-000000000000}",
+    "cameraEaseTime": 0.45,
+    "cameraStayClockTime": 0.75,
+    "greatClearTimeNormal": 70.0,
+    "greatClearTimeHard": 120.0,
+    "CollectionItemBoxTypeNormal": "Blue",
+    "CollectionItemBoxIDNormal": 136,
+    "CollectionItemBoxTypeHard": "Yellow",
+    "CollectionItemBoxIDHard": 122
+  }
+}

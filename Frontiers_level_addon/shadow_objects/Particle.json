@@ -1,0 +1,43 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Particle",
+  "type": "Particle",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "effectName": "",
+    "scale": 0.0,
+    "colorR": 0,
+    "colorG": 0,
+    "colorB": 0,
+    "colorA": 0,
+    "sound": {
+      "name": "",
+      "is3D": false,
+      "volume": 0.0
+    },
+    "rumble": {
+      "name": ""
+    },
+    "trigger": "RANGE",
+    "sectorId": 0,
+    "bIsTimeStop": false,
+    "emitPointType": "EMIT_OBJECT",
+    "zOffset": 10.0
+  }
+}

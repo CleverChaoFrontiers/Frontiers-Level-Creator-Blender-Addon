@@ -1,0 +1,48 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Territory",
+  "type": "Territory",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "shape": "SHAPE_BOX",
+    "basePoint": "BASE_CENTER",
+    "pathName": "",
+    "patrolSize": [
+      10.0,
+      10.0,
+      10.0
+    ],
+    "fightSize": [
+      10.0,
+      10.0,
+      10.0
+    ],
+    "patrolOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fightOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "isFallReturnArea": true
+  }
+}

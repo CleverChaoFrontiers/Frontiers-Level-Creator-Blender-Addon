@@ -1,0 +1,36 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "LimitEdgeJumpCollision",
+  "type": "LimitEdgeJumpCollision",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "collisionSize": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "setSpeedNormal": 60.0,
+    "setSpeedBoost": 60.0,
+    "minSpeed": 10.0,
+    "decelerationValue": 0.0,
+    "outOfControlTime": 0.1,
+    "condition": "COND_EACHTIME",
+    "eventDriven": false
+  }
+}

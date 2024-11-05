@@ -1,0 +1,62 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DoomsEyeRoad",
+  "type": "DoomsEyeRoad",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "sizeType": "SIZE_D",
+    "initialCondition": "CONDITION_NORMAL",
+    "eventCondition": "CONDITION_DAMAGE",
+    "enableSolid": false,
+    "usePhysicsMeshForSolid": true,
+    "eventDriven": true,
+    "moveType": "MOVE_PATH",
+    "patrolType": "PATROL_ONEWAY",
+    "timeType": "TIME_LOCAL",
+    "moveVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "locaterList": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "isSyncRot": true,
+    "waitTime": 0.0,
+    "phase": 0.0,
+    "speed": 80.0,
+    "attackColliderScale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "se_flags": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  }
+}

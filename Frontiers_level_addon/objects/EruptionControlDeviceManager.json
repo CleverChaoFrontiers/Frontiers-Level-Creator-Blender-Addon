@@ -1,0 +1,75 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "EruptionControlDeviceManager",
+  "type": "EruptionControlDeviceManager",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "easyLvFailedCount": [
+      8
+    ],
+    "speed": 45.0,
+    "gravity": 9.0,
+    "reflectDampingRatio": 0.8,
+    "reflectDampingSpeed": 1.0,
+    "maxSlope": 60.0,
+    "supportDistance": 0.2,
+    "slideDampingRatio": 0.1,
+    "slideDampingSpeedMin": 3.0,
+    "maxBallCount": 3,
+    "firstReflectionAngle": 130.0,
+    "scoreThatGivesEnergy": 4800000,
+    "scoreOpenShutter": 5000000,
+    "scoreThatRolloverBonus": 3000,
+    "ringCount2": 8,
+    "ringCount4": 16,
+    "ringCount8": 32,
+    "ringCount16": 64,
+    "ringCount32": 128,
+    "ringCount64": 256,
+    "ringCount128": 512,
+    "ringCount256": 1024,
+    "startDuration": 0.5,
+    "restartDuration": 1.0,
+    "clearedDuration": 0.0,
+    "failedDuration": 0.5,
+    "redRingDuration": [
+      10.0
+    ],
+    "scoreRedRing": 500,
+    "countRedRing": 64,
+    "impluseCountFluctuation": 5,
+    "fluctuationAngle": 10.0,
+    "childs": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "childsAfterClearing": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "redRingNodeList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "redRingUsePattern": [
+      {
+        "useNode": [
+          false
+        ]
+      }
+    ]
+  }
+}

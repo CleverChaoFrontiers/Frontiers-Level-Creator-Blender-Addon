@@ -1,0 +1,38 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CrushingWall",
+  "type": "CrushingWall",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "sizePattern": "Pattern4",
+    "timeType": "Local",
+    "basePointType": "Center",
+    "destOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pushingTime": 2.0,
+    "pushingWaitTime": 3.0,
+    "pullingTime": 2.0,
+    "pullingWaitTime": 3.0,
+    "phase": 0.0,
+    "movableCollisionHeight": 0.2
+  }
+}

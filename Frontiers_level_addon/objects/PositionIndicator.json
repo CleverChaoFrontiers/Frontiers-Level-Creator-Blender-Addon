@@ -1,0 +1,38 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PositionIndicator",
+  "type": "PositionIndicator",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "purposeOfUse": "ObjStriderGrindRail",
+    "useCamera": true,
+    "cameraParam": {
+      "azimuth": 90.0,
+      "elevation": 40.0,
+      "distance": 30.0,
+      "zRoll": 0.0,
+      "fovy": 70.0,
+      "frameOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

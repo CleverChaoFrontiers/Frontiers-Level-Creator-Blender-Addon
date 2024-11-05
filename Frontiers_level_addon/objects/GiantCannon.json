@@ -1,0 +1,76 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GiantCannon",
+  "type": "GiantCannon",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "loadingCamera": {
+      "offsetSpace": "Base",
+      "positionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targetOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fovy": 60.0,
+      "interpolateTime": 0.0
+    },
+    "aimCamera": {
+      "offsetSpace": "Barrel",
+      "positionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targetOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fovy": 45.0,
+      "interpolateTime": 0.0
+    },
+    "shootCamera": {
+      "offsetSpace": "Barrel",
+      "positionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "targetOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fovy": 60.0,
+      "interpolateTime": 0.0
+    },
+    "loadingTriggerRadius": 15.0,
+    "loadingPlayerPosition": "{00000000-0000-0000-0000-000000000000}",
+    "loadingWaitTime": 2.0,
+    "turretRotateSpeed": 10.0,
+    "barrelRotateSpeed": 10.0,
+    "shootSpeed": 100.0,
+    "waitResultLimitTime": 3.0
+  }
+}

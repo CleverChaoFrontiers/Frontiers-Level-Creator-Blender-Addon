@@ -1,0 +1,32 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Flipper",
+  "type": "Flipper",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "rotateDirection": "Left",
+    "maxMovableAngle": 60.0,
+    "flipUpTime": 0.1,
+    "apexLaunchAngle": 65.0,
+    "axisLaunchAngle": 85.0,
+    "apexSpeed": 65.0,
+    "axisSpeed": 20.0,
+    "axisReflectionSpeedMin": 10.0
+  }
+}

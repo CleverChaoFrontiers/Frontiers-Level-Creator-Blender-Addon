@@ -1,0 +1,41 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraObjectPan",
+  "type": "CameraObjectPan",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "target": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fovy": 50.0,
+    "enableLimitAngle": false,
+    "azimuthLimitAngle": 0.0,
+    "elevationLimitAngle": 0.0,
+    "worldOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "targetDistance": 150.0,
+    "targetFocusDistance": 120.0,
+    "useDistance": true
+  }
+}

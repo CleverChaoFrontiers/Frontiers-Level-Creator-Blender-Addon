@@ -1,0 +1,61 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "FireworkCactusManager",
+  "type": "FireworkCactusManager",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "time": 3.0,
+    "cameraType": "OBJECT",
+    "cameraPos": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cameraLocator": "{00000000-0000-0000-0000-000000000000}",
+    "cameraParam": {
+      "useCameraParam": true,
+      "interoplateTimeActivate": 1.0,
+      "interoplateTimeDeactivate": 1.0,
+      "targetOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cameraPosOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "dropRingNum": [
+      40
+    ],
+    "dropRingHeight": 40.0,
+    "ringParam": {
+      "suckedTime": 20.0,
+      "launchAngle": 5.0,
+      "launchMaxSpeed": 12.0,
+      "launchMinSpeed": 15.0,
+      "randomRangeMin": 0.0,
+      "randomRangeMax": 0.0,
+      "lifeTime": 20.0
+    }
+  }
+}

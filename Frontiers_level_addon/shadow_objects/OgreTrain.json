@@ -1,0 +1,40 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "OgreTrain",
+  "type": "OgreTrain",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "eventDriven": true,
+    "isReverse": false,
+    "isReturn": false,
+    "isJump": false,
+    "isHuge": false,
+    "isAutorun": false,
+    "firstSpeed": 40.0,
+    "accelPower": 40.0,
+    "targetSpeed": 150.0,
+    "findPathDelayTime": 0.5,
+    "typeCModelNum": 2,
+    "centerPath": "",
+    "centerPath2": "",
+    "centerPath3": "",
+    "landingPath": "",
+    "landingPath2": ""
+  }
+}

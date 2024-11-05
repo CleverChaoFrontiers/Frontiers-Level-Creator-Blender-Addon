@@ -1,0 +1,108 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DragonIncident",
+  "type": "DragonIncident",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "dragon": "{00000000-0000-0000-0000-000000000000}",
+    "eventFirst": {
+      "position": "{00000000-0000-0000-0000-000000000000}",
+      "lookAt": "{00000000-0000-0000-0000-000000000000}"
+    },
+    "eventEnd": {
+      "position": "{00000000-0000-0000-0000-000000000000}",
+      "lookAt": "{00000000-0000-0000-0000-000000000000}"
+    },
+    "eventRetry": {
+      "position": "{00000000-0000-0000-0000-000000000000}",
+      "lookAt": "{00000000-0000-0000-0000-000000000000}"
+    },
+    "autorun": {
+      "pathName": "SetPath_4100",
+      "speed": 22.5,
+      "boostSpeed": 30.0,
+      "boostSpeedMax": 30.0,
+      "width": 0.0,
+      "cameraIntro": {
+        "fovy": 55.0,
+        "zRot": 5.0,
+        "distance": 4.5,
+        "pathOffset": 0.0,
+        "reversePathFront": true,
+        "usePathVerticalComponent": true,
+        "usePathNormal": false,
+        "angleSensitivity": 12.0,
+        "angleSensitivityBoost": 15.0,
+        "azimuthOffsetDeg": 0.0,
+        "elevationOffsetDeg": -20.0,
+        "gravityOffset": 0.0,
+        "playerOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "playerOffsetType": "PLAYER_OFFSET_NORMAL",
+        "interpolateTime": 0.0
+      },
+      "cameraMain": {
+        "fovy": 60.0,
+        "zRot": 0.0,
+        "distance": 8.0,
+        "pathOffset": 0.0,
+        "reversePathFront": false,
+        "usePathVerticalComponent": true,
+        "usePathNormal": true,
+        "angleSensitivity": 12.0,
+        "angleSensitivityBoost": 15.0,
+        "azimuthOffsetDeg": 0.0,
+        "elevationOffsetDeg": 10.0,
+        "gravityOffset": 0.0,
+        "playerOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "playerOffsetType": "PLAYER_OFFSET_NORMAL",
+        "interpolateTime": 0.0
+      },
+      "cameraCollision": [
+        "{00000000-0000-0000-0000-000000000000}"
+      ]
+    },
+    "missile": {
+      "presets": [
+        {
+          "heightOffset": 0.0,
+          "firstPathOffset": 0.0,
+          "approachPathOffset": 40.0,
+          "approachSpeed": 2.0,
+          "attackSpeed": 0.2,
+          "aimTime": 0.2
+        }
+      ],
+      "explodeRadius": 1.0,
+      "explodeTime": 0.1,
+      "damageRings": 30,
+      "dummyIntervalMin": 0.2,
+      "dummyIntervalMax": 0.5,
+      "dummyPresetMax": 0,
+      "dummyDamage": false
+    }
+  }
+}

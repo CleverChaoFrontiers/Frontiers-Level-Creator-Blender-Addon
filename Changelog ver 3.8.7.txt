@@ -1,3 +1,13 @@
+3.9.7
+Shadow Generations support
+Some Shadow Generations objects - the rest can be added by making your own assets or naming objects
+More refined Quick Import
+C# Implementation for a few tools
+Improved rail accuracy
+Numerous bugfixes
+Add objects to object_reference lists in bulk
+Heightmapper rewrite
+
 3.9.6
 Improved Quick import with mathematically correct rotations
 You can now have individual nodes be straight or curved for paths when using Bezier curves.

@@ -1,0 +1,33 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "ApproachStatue",
+  "type": "ApproachStatue",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "noticeDistance": 0.0,
+    "gravity": 0.0,
+    "angularVelocity": 0.0,
+    "moveVelocity": 0.0,
+    "moveDuration": 0.0,
+    "moveBeforeWait": 0.0,
+    "moveAfterWait": 0.0,
+    "blowPowerZ": 0.0,
+    "blowPowerY": 0.0
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Beetle",
+  "type": "Beetle",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "beetleType": "MONOBEETLE",
+    "isRespawn": false,
+    "respawnTime": 3.0,
+    "addLightGaugeNum": -1,
+    "eventDriven": false,
+    "playAppearEffectOnRangeIn": false,
+    "isTransparency": true,
+    "attackParam": {
+      "searchDistance": 15.0,
+      "searchViewAngle": 90.0,
+      "bulletSpeed": 5.0,
+      "prepareTime": 1.0,
+      "attackInterval": 2.0
+    },
+    "barrierParam": {
+      "barrierInterval": 3.0,
+      "barrierTime": 5.0,
+      "firstWaitTime": 0.0,
+      "brakeTime": 5.0,
+      "deploymentType": "Interval",
+      "eventDriven": false
+    },
+    "moveParam": {
+      "moveType": "FIXED",
+      "destOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "moveSpeed": 2.0
+    },
+    "dirType": "DIR_SET",
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "spawnType": "Normal",
+    "enableBlock": true
+  }
+}

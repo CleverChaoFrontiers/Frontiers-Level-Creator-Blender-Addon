@@ -1,0 +1,44 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "StageGate",
+  "type": "StageGate",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "stageID": "SpaceColonyARK",
+    "zoneID": "SpaceColonyARK",
+    "scale": 0.9,
+    "halfExtents": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "colliderOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "dGear": "{00000000-0000-0000-0000-000000000000}",
+    "camera": "{00000000-0000-0000-0000-000000000000}",
+    "stageUICamera": "{00000000-0000-0000-0000-000000000000}",
+    "productionCamera": "{00000000-0000-0000-0000-000000000000}",
+    "viewTime": 5.0,
+    "dPowerSealedStand": "{00000000-0000-0000-0000-000000000000}",
+    "bigId": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

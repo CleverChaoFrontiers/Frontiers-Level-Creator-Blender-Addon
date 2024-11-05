@@ -1,0 +1,36 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PathPolygon",
+  "type": "PathPolygon",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "setParameter": {
+      "polygonType": "SQUARE_PATH",
+      "normalType": "NOR_DEFAULT",
+      "width": 20.0,
+      "height": 10.0,
+      "offsetHeight": 0.0,
+      "connectParam": {
+        "isConnect": false,
+        "connectType": "CONNECT_STRAIGHT",
+        "splineTangentLength": 50.0
+      }
+    }
+  }
+}

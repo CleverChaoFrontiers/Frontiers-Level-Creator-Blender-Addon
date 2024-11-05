@@ -1,0 +1,121 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PBDMotionPlayVolume",
+  "type": "PBDMotionPlayVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "startMotionName": "",
+    "loopMotionName": "",
+    "loopMotionTime": 0.0,
+    "isLoopMotionKeep": false,
+    "isStartMotionInterpolation": true,
+    "endMotionName": "",
+    "motionSpeed": 1.0,
+    "isPlayerPosMotionPlay": false,
+    "motionStartPlayerLocator": "{00000000-0000-0000-0000-000000000000}",
+    "isBossStartPotionStop": false,
+    "isStartWarp": false,
+    "isStateEndAfter": false,
+    "isPlayMotionBeforeWarp": false,
+    "startBossLocator": "{00000000-0000-0000-0000-000000000000}",
+    "startBossFrontVec": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "isEndWarp": false,
+    "isEndWarpNoEffect": false,
+    "stopOverride": false,
+    "isFinal": true,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "pathDivideNum": 20,
+      "pathSetDirection": "PATH_TO_GOAL",
+      "pathSetLength": 10.0
+    },
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      },
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      },
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      },
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      },
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      }
+    ]
+  }
+}

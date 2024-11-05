@@ -1,0 +1,43 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "ImpactTarget",
+  "type": "ImpactTarget",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 0,
+    "activateTime": 10.0,
+    "cancelDistance": 50.0,
+    "impact": 800,
+    "cameraParam": {
+      "interoplateTimeActivate": 1.0,
+      "interoplateTimeDeactivate": 1.0,
+      "targetOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cameraPosOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "extreamRatio": 1.0
+  }
+}

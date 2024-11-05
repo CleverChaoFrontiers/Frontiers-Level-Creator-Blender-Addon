@@ -1,0 +1,41 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "ThornBall",
+  "type": "ThornBall",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "type": "TYPE_NORMAL",
+    "hitEnemy": false,
+    "moveParam": {
+      "time": 2.0,
+      "distance": 5.0,
+      "phase": 0.0,
+      "direction": "DIR_HORIZONTAL",
+      "timeType": "TIME_GLOBAL"
+    },
+    "rollingParam": {
+      "time": 2.0,
+      "radius": 3.0,
+      "phase": 0.0,
+      "direction": "DIR_HORIZONTAL"
+    },
+    "eventDriven": false,
+    "collisionRate": 1.0
+  }
+}

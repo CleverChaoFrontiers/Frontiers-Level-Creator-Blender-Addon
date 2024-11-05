@@ -1,0 +1,66 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GiantCraneManager",
+  "type": "GiantCraneManager",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "row": 27,
+    "col": 21,
+    "gridSize": 2.0,
+    "correctableGrid": 3,
+    "craneSpeed": 8.0,
+    "armSpeed": 3.0,
+    "timeCatch": 0.2,
+    "cranePos": {
+      "row": 12,
+      "col": 0
+    },
+    "orbPos": [
+      {
+        "row": 9,
+        "col": 8
+      }
+    ],
+    "orbMount": [
+      {
+        "pos": {
+          "row": 1,
+          "col": 16
+        },
+        "rotate": 90.0
+      }
+    ],
+    "cameraParam": {
+      "useCameraParam": true,
+      "interoplateTimeActivate": 0.5,
+      "interoplateTimeDeactivate": 0.3,
+      "targetOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cameraPosOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

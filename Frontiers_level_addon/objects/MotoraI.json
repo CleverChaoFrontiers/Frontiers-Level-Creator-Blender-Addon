@@ -1,0 +1,49 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "MotoraI",
+  "type": "MotoraI",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "placement": "WhereItsSet",
+    "movement": "TwoPoint",
+    "destination": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "movementSpeed": 10.0,
+    "rushSpeed": 15.0,
+    "knockbackSpeed": 2.0,
+    "tireRotAnglePerSecWhenMoving": 120.0,
+    "tireRotAnglePerSecWhenChargingup": 480.0,
+    "tireRotAnglePerSecWhenRushing": 240.0,
+    "searchDistance": 15.0,
+    "searchAngle": 90.0,
+    "respawnTime": 3.0,
+    "chargeupTime": 1.0,
+    "timeTilLoseSight": 0.5,
+    "heightToRecognizeAsCliff": 1.0,
+    "distanceToRecognizeObstable": 1.0,
+    "degreeToRotatePerSec": 90.0,
+    "eventDriven": false,
+    "doesRespawn": false,
+    "doesAttack": true,
+    "useFindMotion": true
+  }
+}

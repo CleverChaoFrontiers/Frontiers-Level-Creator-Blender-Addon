@@ -1,0 +1,28 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GaugePuzzleSwitch",
+  "type": "GaugePuzzleSwitch",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 0,
+    "activateTime": 0.0,
+    "upTime": 0.0,
+    "downTime": 0.0
+  }
+}

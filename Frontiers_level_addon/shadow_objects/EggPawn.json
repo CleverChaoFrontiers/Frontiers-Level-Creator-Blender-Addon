@@ -1,0 +1,88 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "EggPawn",
+  "type": "EggPawn",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "pawnType": "NORMAL",
+    "eventDriven": false,
+    "appearType": "STAND",
+    "fallHeight": 30.0,
+    "fallSpeed": 20.0,
+    "eventAttack": false,
+    "shouldKeepAttack": false,
+    "eventAttackParam": {
+      "attackSpeed": 5.0,
+      "attackTime": 1.0,
+      "attackInterval": 2.0
+    },
+    "doesSleep": false,
+    "doesRespawn": false,
+    "respawnTime": 3.0,
+    "addLightGaugeNum": -1,
+    "searchDistance": 15.0,
+    "searchAngle": 90.0,
+    "searchRangeShape": "Sphere",
+    "movementParams": {
+      "moveType": "FIXED",
+      "destOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "moveSpeed": 2.0
+    },
+    "meleeAttackParam": {
+      "attackSpeed": 5.0,
+      "attackTime": 1.0,
+      "attackInterval": 2.0
+    },
+    "canonAttackParam": {
+      "bulletSpeed": 2.0,
+      "prepareTime": 1.0,
+      "attackInterval": 2.0
+    },
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "rotationSpeed": 90.0,
+    "prepareAttackTime": 0.5,
+    "lostSightTime": 2.0,
+    "noSearchOnReturnPos": false,
+    "isTransparency": true,
+    "isSV": false,
+    "enableSafeWallKnockback": false,
+    "isGuide": false,
+    "guideSize": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "guideColOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "guideViewOffset": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

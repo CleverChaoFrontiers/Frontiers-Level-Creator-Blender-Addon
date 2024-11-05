@@ -1,0 +1,40 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "KodamaMasterKing",
+  "type": "KodamaMasterKing",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 0,
+    "eventName": "",
+    "useDefaultPath": true,
+    "hiddenList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "guideCircleEnabled": false,
+    "guideCircleOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "stateType": "Trial",
+    "SuperSonicfollowingDistance": 20.0,
+    "SuperSonicfollowingHomingDistance": 20.0,
+    "SuperSonicfollowingHeightPosition": 5.0
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraPathMoveFollow",
+  "type": "CameraPathMoveFollow",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "IsCameraView": false,
+    "Fovy": 45.0,
+    "ZRot": 0.0,
+    "Distance": 10.0,
+    "Yaw": 0.0,
+    "Pitch": 0.0,
+    "targetOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gravityOffset": 0.0,
+    "playerOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "toPlayerOffset": 0.0,
+    "isFollowTangent": false,
+    "followTangentOffset": 0.0,
+    "pathName": "",
+    "enableCollision": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "MonologueVolume",
+  "type": "MonologueVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 0,
+    "labelName": "",
+    "target": "{00000000-0000-0000-0000-000000000000}",
+    "priority": 0,
+    "useHighPriority": true,
+    "easeTimeEnter": 0.8,
+    "easeTimeLeave": 0.5,
+    "interpolateTypeEnter": "INTERPOLATE_RELATIVE",
+    "interpolateTypeLeave": "INTERPOLATE_RELATIVE",
+    "endByLeave": true,
+    "endByTime": false,
+    "endTime": 2.0,
+    "endByCaption": true,
+    "hold": "EaseInHolded",
+    "useLetterBox": false,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 20.0,
+      "CollisionHeight": 15.0,
+      "CollisionDepth": 10.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "margin": 5.0
+  }
+}

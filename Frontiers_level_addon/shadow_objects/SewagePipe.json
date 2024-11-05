@@ -1,0 +1,30 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "SewagePipe",
+  "type": "SewagePipe",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "type": "WAIT_EVENT_AND_TIME",
+    "animType": "ANIM_8M",
+    "waitTime": 3.0,
+    "signTime": 1.0,
+    "drainTime": 1.5,
+    "drainDistance": 4.5
+  }
+}

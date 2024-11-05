@@ -1,0 +1,36 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Geyser",
+  "type": "Geyser",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "size": "SIZE_M",
+    "eventDriven": false,
+    "timeType": "TIME_LOCAL",
+    "keepRise": true,
+    "disableTime": 0.0,
+    "enableTime": 5.0,
+    "firstWaitTime": 0.0,
+    "riseSpeed": 15.0,
+    "jumpSpeed": 20.0,
+    "outOfControl": 0.05,
+    "keepVelocityTime": 0.0,
+    "enemy": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

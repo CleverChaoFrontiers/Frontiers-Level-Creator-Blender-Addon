@@ -1,0 +1,41 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "TutorialEnemy",
+  "type": "TutorialEnemy",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "health": "One",
+    "targetable": true,
+    "defeatable": false,
+    "attackable": false,
+    "parryEnabled": true,
+    "recoverySmashEnabled": false,
+    "lifeGaugeVisibled": false,
+    "forceFocus": "TargetFocus",
+    "attackWaitTime": 0.5,
+    "attackSpanTime": 1.0,
+    "attackSleepTime": 0.0,
+    "shotDirection": "Aim",
+    "shotSpeed": 2.0,
+    "shotSize": 1.0,
+    "respawnWaitTime": 0.5,
+    "respawnMoveDisatnce": 10.0,
+    "respawnMoveTime": 1.5
+  }
+}

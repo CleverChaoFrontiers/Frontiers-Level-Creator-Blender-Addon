@@ -1,0 +1,41 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Obj3DPuzzleBlock",
+  "type": "Obj3DPuzzleBlock",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "modelType": "isl_obj_3DpuzzleF_piece3",
+    "shapeID": 0,
+    "cameraUUIDForAscendingBlock": "{00000000-0000-0000-0000-000000000000}",
+    "cameraUUIDForDescendingBlock": "{00000000-0000-0000-0000-000000000000}",
+    "cameraSwitchDistance": 0.0,
+    "warpEffectScale": 0.5,
+    "numCellsFromOrigBaseToTop": 2.0,
+    "warpInfo": {
+      "row": 0,
+      "column": 0
+    },
+    "color": "Blue",
+    "presetShape": "OneBlock",
+    "usePreset": false,
+    "rotationInfo": {
+      "rotationAroundY": "Rotate_0"
+    }
+  }
+}

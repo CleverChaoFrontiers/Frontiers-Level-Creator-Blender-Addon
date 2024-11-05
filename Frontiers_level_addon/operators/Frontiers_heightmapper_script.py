@@ -5,18 +5,20 @@ import shutil
 import json
 
 def updateprogress(advance):
-    bpy.types.Scene.heightmapprogress =  bpy.types.Scene.heightmapprogress + advance
-    bpy.types.Scene.heightmapprogresstext = f"LOADING ({round(bpy.types.Scene.heightmapprogress * 100)}%)"
-    bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
-    return
+    if (4, 0, 0) > bpy.app.version:
+        bpy.types.Scene.heightmapprogress =  bpy.types.Scene.heightmapprogress + advance
+        bpy.types.Scene.heightmapprogresstext = f"LOADING ({round(bpy.types.Scene.heightmapprogress * 100)}%)"
+        bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+        return
 
 class HeightmapperOperator(bpy.types.Operator):
     bl_idname = "heightmapper.heightmapper"
     bl_label = "Open Heightmapper"
     bl_description = "Creates a heightmap if there is none, or opens the editor for the existing one"
 
-    bpy.types.Scene.heightmapprogress = 0.0 # Resets the progress bar
-    bpy.types.Scene.heightmapprogresstext = "- - -"
+    if (4, 0, 0) > bpy.app.version:
+        bpy.types.Scene.heightmapprogress = 0.0 # Resets the progress bar
+        bpy.types.Scene.heightmapprogresstext = "- - -"
 
     def execute(self, context): # When button is pressed
         startTime = time.time()
@@ -25,7 +27,8 @@ class HeightmapperOperator(bpy.types.Operator):
             bpy.data.objects["[FLC] Heightmap"].select_set(True)
             bpy.context.view_layer.objects.active = bpy.data.objects["[FLC] Heightmap"]
         else:
-            bpy.types.Scene.heightmapprogress = 0.0
+            if (4, 0, 0) > bpy.app.version:
+                bpy.types.Scene.heightmapprogress = 0.0
 
             bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection # Deselects all collections
             try:
@@ -71,14 +74,9 @@ class HeightmapperOperator(bpy.types.Operator):
         with bpy.data.libraries.load(f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/heightmapper_resources.blend') as (data_from, data_to):
             if not "Heightmap Edit" in bpy.data.workspaces:
                 data_to.workspaces = data_from.workspaces
-            if not "[FLC] Heightmap-Preview" in bpy.data.materials:
+            if not all(x in bpy.data.materials for x in ["[FLC] Heightmap-Preview", "[FLC] Heightmap-Render", "[FLC] Heightmap-Normal"]):
                 data_to.materials = data_from.materials
 
-        bpy.context.window.workspace = bpy.data.workspaces['Heightmap Edit']
-        bpy.context.scene.tool_settings.sculpt.lock_x = True
-        bpy.context.scene.tool_settings.sculpt.lock_y = True # These prevent the user from sculpting terrain that is impossible to import by only allowing editing vertices vertically.
-        
-        bpy.context.view_layer.objects.active.data.materials.append(bpy.data.materials["[FLC] Heightmap-Preview"])
         heightdriver = bpy.data.materials["[FLC] Heightmap-Preview"].node_tree.nodes["Height"].inputs[0].driver_add("default_value").driver
         heightdriver.type = "AVERAGE"
         var = heightdriver.variables.new()
@@ -87,7 +85,7 @@ class HeightmapperOperator(bpy.types.Operator):
         var.targets[0].id_type = "SCENE"
         var.targets[0].id = bpy.context.scene
         var.targets[0].data_path = "mapheight"
-        bpy.context.view_layer.objects.active.data.materials.append(bpy.data.materials["[FLC] Heightmap-Render"])
+
         heightdriver = bpy.data.materials["[FLC] Heightmap-Render"].node_tree.nodes["Height"].inputs[1].driver_add("default_value").driver
         heightdriver.type = "AVERAGE"
         var = heightdriver.variables.new()
@@ -97,10 +95,24 @@ class HeightmapperOperator(bpy.types.Operator):
         var.targets[0].id = bpy.context.scene
         var.targets[0].data_path = "mapheight"
 
+        bpy.context.window.workspace = bpy.data.workspaces['Heightmap Edit']
+        bpy.context.scene.tool_settings.sculpt.lock_x = True
+        bpy.context.scene.tool_settings.sculpt.lock_y = True # These prevent the user from sculpting terrain that is impossible to import by only allowing editing vertices vertically.
+
+        bpy.data.materials["[FLC] Heightmap-Preview"].use_fake_user = 1
+        bpy.data.materials["[FLC] Heightmap-Render"].use_fake_user = 1
+        bpy.data.materials["[FLC] Heightmap-Normal"].use_fake_user = 1
+
+        if len(bpy.data.objects["[FLC] Heightmap"].data.materials) == 0:
+            bpy.data.objects["[FLC] Heightmap"].data.materials.append(None)
+        
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Preview"]
+
         print(f"\n\nMATERIAL ADDING COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
 
-        bpy.types.Scene.heightmapprogress = 1.0
-        bpy.types.Scene.heightmapprogresstext = "DONE"
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.heightmapprogress = 1.0
+            bpy.types.Scene.heightmapprogresstext = "DONE"
 
         print(f"\n\nHEIGHTMAP CREATION COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
         
@@ -113,7 +125,8 @@ class HeightmapperExport(bpy.types.Operator):
 
     def execute(self, context): # When button is pressed
         startTime = time.time()
-        bpy.types.Scene.heightmapprogress = 0.0
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.heightmapprogress = 0.0
         updateprogress(0.0)
 
         mapsize = int(bpy.context.scene.mapsize)
@@ -125,25 +138,29 @@ class HeightmapperExport(bpy.types.Operator):
             def heightmapError(self, context):
                 self.layout.label(text="No Heightmap found!") # Sets the label of the popup
             bpy.context.window_manager.popup_menu(heightmapError, title = "Export Failed", icon = "IMPORT") # Makes the popup appear
-            bpy.types.Scene.heightmapprogress = 1.0
-            bpy.types.Scene.heightmapprogresstext = "CANCELLED"
+            if (4, 0, 0) > bpy.app.version:
+                bpy.types.Scene.heightmapprogress = 1.0
+                bpy.types.Scene.heightmapprogresstext = "CANCELLED"
             return {'FINISHED'}
         if (bpy.data.filepath == ""):
             def saveError(self, context):
                 self.layout.label(text=".blend file is not saved!") # Sets the label of the popup
             bpy.context.window_manager.popup_menu(saveError, title = "Export Failed", icon = "IMPORT") # Makes the popup appear
-            bpy.types.Scene.heightmapprogress = 1.0
-            bpy.types.Scene.heightmapprogresstext = "CANCELLED"
+            if (4, 0, 0) > bpy.app.version:
+                bpy.types.Scene.heightmapprogress = 1.0
+                bpy.types.Scene.heightmapprogresstext = "CANCELLED"
             return {'FINISHED'}
         if preferences.directoryTexconv == "": # Gives an error if a program is missing
             def missingProgramError(self, context):
                 self.layout.label(text=f"The filepath for texconv is not set. \nPlease set the path in Settings.") # Tells the user about the missing prorgrams
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Program missing", icon = "QUESTION") # Makes the popup appear
-            bpy.types.Scene.heightmapprogress = 1.0
-            bpy.types.Scene.heightmapprogresstext = "CANCELLED"
+            if (4, 0, 0) > bpy.app.version:
+                bpy.types.Scene.heightmapprogress = 1.0
+                bpy.types.Scene.heightmapprogresstext = "CANCELLED"
             return {'FINISHED'} # Cancels the operation
 
         bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Render"]
+        bpy.data.objects["[FLC] Heightmap"].hide_render = False
 
         tempfolder = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\"
         if os.path.exists(tempfolder):
@@ -201,7 +218,7 @@ class HeightmapperExport(bpy.types.Operator):
         previousTime = time.time()
 
         bpy.ops.render.render(write_still=False)
-        updateprogress(0.87)
+        updateprogress(0.55)
 
         print(f"\n\nRENDER COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
         previousTime = time.time()
@@ -217,12 +234,6 @@ class HeightmapperExport(bpy.types.Operator):
 
         for c in cameraObjs:
             bpy.data.cameras.remove(bpy.data.cameras[c.data.name])
-
-        for o in objsshown:
-            try:
-                bpy.data.objects[o].hide_render = False
-            except KeyError:
-                pass
 
         bpy.context.scene.camera = activecam
         bpy.context.scene.render.image_settings.color_depth = color_depth
@@ -246,14 +257,87 @@ class HeightmapperExport(bpy.types.Operator):
             os.popen(f'texconv -f R16_UNORM -xlum -y "{tempfolder}\\{f}" -o "{tempfolder[:-1]}"').read() # Converts the image via command line
             shutil.copy2(f"{tempfolder}\\{f[:-4]}.dds", f"{os.path.dirname(bpy.data.filepath)}") # Copies the DDSs to the blend file's folder
         
+
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Normal"]
+
+        cameraObj = bpy.data.objects.new(f'[FLC] Cam-Normal', bpy.data.cameras.new(name=f'[FLC] Cam-Normal'))
+        bpy.context.scene.collection.objects.link(cameraObj)
+        cameraObj.location = (0, 0, mapheight + 10)
+        cameraObj.data.type = 'ORTHO' # Sets camera to orthographic
+        cameraObj.data.ortho_scale = mapsize # Sets the camera to capture the whole heightmap
+        cameraObj.data.clip_end = mapheight + 11
+
+        activecam = bpy.context.scene.camera
+        bpy.context.scene.camera = bpy.data.objects["[FLC] Cam-Normal"]
+        color_depth = bpy.context.scene.render.image_settings.color_depth
+        bpy.context.scene.render.image_settings.color_depth = '8'
+        resolution_x = bpy.context.scene.render.resolution_x
+        bpy.context.scene.render.resolution_x = 4096
+        resolution_y = bpy.context.scene.render.resolution_y
+        bpy.context.scene.render.resolution_y = 4096
+        view_transform = bpy.context.scene.view_settings.view_transform
+        bpy.context.scene.view_settings.view_transform = 'Standard'
+        taa_render_samples = bpy.context.scene.eevee.taa_render_samples
+        bpy.context.scene.eevee.taa_render_samples = 1
+        engine = bpy.context.scene.render.engine
+        bpy.context.scene.render.engine = 'BLENDER_EEVEE'
+        worldcol = bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value
+        bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = (0.5, 0.5, 1.0, 1.0)
+
+        print(f"\n\nRENDER SETUP COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
+        previousTime = time.time()
+
+        bpy.ops.render.render(write_still=False)
+        updateprogress(0.35)
+
+        print(f"\n\nRENDER COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
+        previousTime = time.time()
+
+        image = bpy.data.images["Render Result"] # Gets the Rendered image
+        image.file_format = 'PNG' # Sets the file format
+        try:
+            image.save_render(filepath=f"{tempfolder}Heightmap_nrm.png") # Outputs the image straight to the temporary folder
+        except Exception as e:
+            print(f"Possible Error: {e}")
+
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Preview"]
+
+        bpy.data.cameras.remove(bpy.data.cameras[cameraObj.data.name])
+
+        for o in objsshown:
+            try:
+                bpy.data.objects[o].hide_render = False
+            except KeyError:
+                pass
+
+        bpy.context.scene.camera = activecam
+        bpy.context.scene.render.image_settings.color_depth = color_depth
+        bpy.context.scene.render.resolution_x = resolution_x
+        bpy.context.scene.render.resolution_y = resolution_y
+        bpy.context.scene.view_settings.view_transform = view_transform
+        bpy.context.scene.eevee.taa_render_samples = taa_render_samples
+        bpy.context.scene.render.engine = engine
+        bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = worldcol
+
+        for f in os.listdir(tempfolder):
+            if "nrm" in f:
+                os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
+                os.popen(f'texconv -f R8G8B8A8_UNORM -xlum -y "{tempfolder}\\{f}" -o "{tempfolder[:-1]}"').read() # Converts the image via command line
+                shutil.copy2(f"{tempfolder}\\{f[:-4]}.dds", f"{os.path.dirname(bpy.data.filepath)}") # Copies the DDSs to the blend file's folder
+            else:
+                os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
+                os.popen(f'texconv -f R16_UNORM -xlum -y "{tempfolder}\\{f}" -o "{tempfolder[:-1]}"').read() # Converts the image via command line
+                shutil.copy2(f"{tempfolder}\\{f[:-4]}.dds", f"{os.path.dirname(bpy.data.filepath)}") # Copies the DDSs to the blend file's folder
+
         shutil.rmtree(tempfolder)
 
-        updateprogress(0.13)
+        updateprogress(0.1)
 
         print(f"\n\nCONVERTING COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
 
-        bpy.types.Scene.heightmapprogress = 1.0
-        bpy.types.Scene.heightmapprogresstext = "DONE"
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.heightmapprogress = 1.0
+            bpy.types.Scene.heightmapprogresstext = "DONE"
 
         print(f"\n\nHEIGHTMAP EXPORT COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
 
@@ -267,7 +351,8 @@ class HeightmapperImport(bpy.types.Operator):
 
     def execute(self, context): # When button is pressed
         startTime = time.time()
-        bpy.types.Scene.heightmapprogress = 0.0
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.heightmapprogress = 0.0
         updateprogress(0.0)
 
         previoustime = time.time()
@@ -437,8 +522,9 @@ class HeightmapperImport(bpy.types.Operator):
 
         updateprogress(0.22)
 
-        bpy.types.Scene.heightmapprogress = 1.0
-        bpy.types.Scene.heightmapprogresstext = "DONE"
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.heightmapprogress = 1.0
+            bpy.types.Scene.heightmapprogresstext = "DONE"
 
         print(f"\n\nHEIGHTMAP IMPORT COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
 
@@ -448,12 +534,6 @@ class SplatmapOperator(bpy.types.Operator):
     bl_idname = "heightmapper.splatmap"
     bl_label = "Open Splatmap Edit"
     bl_description = "Opens Splatmap Edit"
-
-    bpy.types.Scene.loadedsplatmap = {
-        "name": "No Splatmap Loaded",
-        "filepath": "",
-        "data": []
-    }
 
     def execute(self, context): # When button is pressed
         if not "[FLC] Heightmap" in bpy.data.objects:
@@ -470,20 +550,36 @@ class SplatmapOperator(bpy.types.Operator):
         with bpy.data.libraries.load(f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/heightmapper_resources.blend') as (data_from, data_to):
             if not "Splatmap Edit" in bpy.data.workspaces:
                 data_to.workspaces = data_from.workspaces
+
+        if not "[FLC] Splatmap" in bpy.data.images:
+            splatmapimg = bpy.data.images.new("[FLC] Splatmap", 1024, 1024, alpha=False)
+        else:
+            splatmapimg = bpy.data.images["[FLC] Splatmap"]
         
-        bpy.context.view_layer.objects.active.data.materials.append(bpy.data.materials["[FLC] Splatmap"])
-        bpy.context.view_layer.objects.active.data.materials.append(bpy.data.materials["[FLC] Scale"])
-        bpy.context.view_layer.objects.active.data.materials.append(bpy.data.materials["[FLC] Area"])
-        bpy.context.view_layer.objects.active.data.materials[0] = bpy.data.materials["[FLC] Splatmap"]
-        splatmapimg = bpy.data.images.new("[FLC] Splatmap", 1024, 1024, alpha=False)
-        scaleimg = bpy.data.images.new("[FLC] Scale", 2048, 2048, alpha=False)
-        areaimg = bpy.data.images.new("[FLC] Area", 2048, 2048, alpha=False)
+        if not "[FLC] Scale" in bpy.data.images:
+            scaleimg = bpy.data.images.new("[FLC] Scale", 2048, 2048, alpha=False)
+        else:
+            scaleimg = bpy.data.images["[FLC] Scale"]
+        
+        if not "[FLC] Area" in bpy.data.images:
+            areaimg = bpy.data.images.new("[FLC] Area", 2048, 2048, alpha=False)
+        else:
+            areaimg = bpy.data.images["[FLC] Area"]
 
         bpy.data.materials["[FLC] Splatmap"].node_tree.nodes["SplatNode"].image = splatmapimg
         bpy.data.materials["[FLC] Splatmap"].node_tree.nodes["SplatNode"].image.colorspace_settings.name = "Non-Color"
         bpy.data.materials["[FLC] Scale"].node_tree.nodes["scale"].image = scaleimg
         bpy.data.materials["[FLC] Area"].node_tree.nodes["area"].image = areaimg
 
+        bpy.data.materials["[FLC] Splatmap"].use_fake_user = 1
+        bpy.data.materials["[FLC] Scale"].use_fake_user = 1
+        bpy.data.materials["[FLC] Area"].use_fake_user = 1
+
+        if len(bpy.data.objects["[FLC] Heightmap"].data.materials) == 0:
+            bpy.data.objects["[FLC] Heightmap"].data.materials.append(None)
+
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Splatmap"]
+        
         bpy.context.window.workspace = bpy.data.workspaces['Splatmap Edit']
         bpy.data.brushes["TexDraw"].curve_preset = 'CONSTANT'
         bpy.context.scene.tool_settings.image_paint.normal_angle = 90
@@ -516,16 +612,22 @@ class SplatmapExport(bpy.types.Operator):
             return {'FINISHED'} # Cancels the operation
 
         image = bpy.data.images["[FLC] Splatmap"]
+        image.update()
+        image.size
         image.filepath_raw = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\splatmap.png"
         image.file_format = 'PNG'
         image.save()
 
         image = bpy.data.images["[FLC] Scale"]
+        image.update()
+        image.size
         image.filepath_raw = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\scale.png"
         image.file_format = 'PNG'
         image.save()
 
         image = bpy.data.images["[FLC] Area"]
+        image.update()
+        image.size
         image.filepath_raw = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\area.png"
         image.file_format = 'PNG'
         image.save()
@@ -533,7 +635,7 @@ class SplatmapExport(bpy.types.Operator):
         os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
         os.popen(f'texconv -f R8_UNORM -xlum -y "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\splatmap.png" -o "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}"').read() # Converts the image via command line
         os.remove(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\splatmap.png")
-        os.popen(f'texconv -f R8_UNORM -xlum -y "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\scale.png" -o "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}"').read() # Converts the image via command line
+        os.popen(f'texconv -f BC4_UNORM -xlum -y "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\scale.png" -o "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}"').read() # Converts the image via command line
         os.remove(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\scale.png")
         os.popen(f'texconv -f R8_UNORM -xlum -y "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\area.png" -o "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}"').read() # Converts the image via command line
         os.remove(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\area.png")
@@ -567,29 +669,51 @@ class SplatmapImport(bpy.types.Operator):
             if not "Splatmap Edit" in bpy.data.workspaces:
                 data_to.workspaces = data_from.workspaces
         
-        bpy.context.view_layer.objects.active.data.materials.append(bpy.data.materials["[FLC] Splatmap"])
-        bpy.context.view_layer.objects.active.data.materials[0] = bpy.data.materials["[FLC] Splatmap"]
+        bpy.data.materials["[FLC] Splatmap"].use_fake_user = 1
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Splatmap"]
+        
+        if "[FLC] Splatmap" in bpy.data.images:
+            bpy.data.images["[FLC] Splatmap"].name = "[FLC] Splatmap-OLD"
+            bpy.data.images["[FLC] Splatmap"].use_fake_user = 0
+        if "[FLC] Scale" in bpy.data.images:
+            bpy.data.images["[FLC] Scale"].name = "[FLC] Scale-OLD"
+            bpy.data.images["[FLC] Scale"].use_fake_user = 0
+        if "[FLC] Area" in bpy.data.images:
+            bpy.data.images["[FLC] Area"].name = "[FLC] Area-OLD"
+            bpy.data.images["[FLC] Area"].use_fake_user = 0
+
         for f in os.listdir(os.path.abspath(bpy.path.abspath(splatmapcmnDirectory))):
             if f.endswith("splatmap.dds"):
                 splatmapimg = bpy.data.images.load(f"{splatmapcmnDirectory}\\{f}", check_existing = True)
                 splatmapimg.name = "[FLC] Splatmap"
+                splatmapimg.use_fake_user = 1
+                splatmapimg.pack()
+
+                bpy.data.materials["[FLC] Splatmap"].node_tree.nodes["SplatNode"].image = splatmapimg
+                bpy.data.materials["[FLC] Splatmap"].node_tree.nodes["SplatNode"].image.colorspace_settings.name = "Non-Color"
             if f.endswith("scale.dds"):
                 scaleimg = bpy.data.images.load(f"{splatmapcmnDirectory}\\{f}", check_existing = True)
                 scaleimg.name = "[FLC] Scale"
+                scaleimg.use_fake_user = 1
+                scaleimg.pack()
+
+                bpy.data.materials["[FLC] Scale"].node_tree.nodes["scale"].image = scaleimg
             if f.endswith("area.dds"):
                 areaimg = bpy.data.images.load(f"{splatmapcmnDirectory}\\{f}", check_existing = True)
                 areaimg.name = "[FLC] Area"
+                areaimg.use_fake_user = 1
+                areaimg.pack()
 
-        bpy.data.materials["[FLC] Splatmap"].node_tree.nodes["SplatNode"].image = splatmapimg
-        bpy.data.materials["[FLC] Splatmap"].node_tree.nodes["SplatNode"].image.colorspace_settings.name = "Non-Color"
-        bpy.data.materials["[FLC] Scale"].node_tree.nodes["scale"].image = scaleimg
-        bpy.data.materials["[FLC] Area"].node_tree.nodes["area"].image = areaimg
+                bpy.data.materials["[FLC] Area"].node_tree.nodes["area"].image = areaimg
 
         bpy.context.window.workspace = bpy.data.workspaces['Splatmap Edit']
         bpy.data.brushes["TexDraw"].curve_preset = 'CONSTANT'
         bpy.context.scene.tool_settings.image_paint.normal_angle = 90
         bpy.context.object.active_material.paint_active_slot = 0
-        bpy.context.space_data.uv_editor.show_texpaint = False
+        try:
+            bpy.context.space_data.uv_editor.show_texpaint = False
+        except AttributeError:
+            pass
 
 
         return {'FINISHED'}
@@ -601,7 +725,7 @@ class SplatmapSettingImport(bpy.types.Operator):
     bl_options = {"UNDO"}
 
     def execute(self, context): # When button is pressed
-        splatmapdata = bpy.types.Scene.loadedsplatmap
+        splatmapdata = json.loads(bpy.context.scene.loadedsplatmap)
         splatmapheightDirectory = bpy.context.scene.splatmapheightDirectory
         preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
         directoryKnuxtools = os.path.abspath(bpy.path.abspath(preferences.directoryKnuxtools)) # Gets KnuxTools path from preferences
@@ -642,7 +766,10 @@ class SplatmapSettingImport(bpy.types.Operator):
             if not "[FLC] Splatmap" in bpy.data.node_groups:
                 data_to.node_groups = data_from.node_groups
         
-        material = bpy.data.materials.new("[FLC] Splatmap")
+        if not "[FLC] Splatmap" in bpy.data.materials:
+            material = bpy.data.materials.new("[FLC] Splatmap")
+        else:
+            material = bpy.data.materials["[FLC] Splatmap"]
         material.use_nodes = True
         nodes = material.node_tree.nodes
         links = material.node_tree.links
@@ -679,7 +806,10 @@ class SplatmapSettingImport(bpy.types.Operator):
             links.new(mappingNode.outputs[0], trrtexnode.inputs[0])
         links.new(baseinput, outputnode.inputs[0])
 
-        scalemat = bpy.data.materials.new("[FLC] Scale")
+        if not "[FLC] Scale" in bpy.data.materials:
+            scalemat = bpy.data.materials.new("[FLC] Scale")
+        else:
+            scalemat = bpy.data.materials["[FLC] Scale"]
         scalemat.use_nodes = True
         nodes = scalemat.node_tree.nodes
         for i in nodes:
@@ -690,7 +820,10 @@ class SplatmapSettingImport(bpy.types.Operator):
         imgnode.name = "scale"
         scalemat.node_tree.links.new(imgnode.outputs[0], outputnode.inputs[0])
 
-        areamat = bpy.data.materials.new("[FLC] Area")
+        if not "[FLC] Area" in bpy.data.materials:
+            areamat = bpy.data.materials.new("[FLC] Area")
+        else:
+            areamat = bpy.data.materials["[FLC] Area"]
         areamat.use_nodes = True
         nodes = areamat.node_tree.nodes
         for i in nodes:
@@ -700,6 +833,8 @@ class SplatmapSettingImport(bpy.types.Operator):
         imgnode.image = None
         imgnode.name = "area"
         areamat.node_tree.links.new(imgnode.outputs[0], outputnode.inputs[0])
+        
+        bpy.context.scene.loadedsplatmap = json.dumps(splatmapdata)
 
         return {'FINISHED'}
 
@@ -709,13 +844,11 @@ class SplatmapFavourite(bpy.types.Operator):
     bl_description = "Adds the ID to the list below"
     bl_options = {"UNDO"}
 
-    bpy.types.Scene.splatmapfavouritetext = "No Favourites"
-    bpy.types.Scene.splatmapfavourites = []
-
     def execute(self, context): # When button is pressed
         text = ""
         splatmapid = bpy.context.scene.splatmapid
-        splatmapdata = bpy.types.Scene.loadedsplatmap
+        splatmapdata = json.loads(bpy.context.scene.loadedsplatmap)
+        splatmapfavourites = json.loads(bpy.context.scene.splatmapfavourites)
 
         if splatmapdata["name"] == "":
             def splatmapError(self, context):
@@ -723,20 +856,24 @@ class SplatmapFavourite(bpy.types.Operator):
             bpy.context.window_manager.popup_menu(splatmapError, title = "No Splatmap", icon = "QUESTION") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
         
-        if splatmapid in context.scene.splatmapfavourites:
-            bpy.types.Scene.splatmapfavourites.pop(context.scene.splatmapfavourites.index(splatmapid))
+        if splatmapid in splatmapfavourites:
+            splatmapfavourites.pop(splatmapfavourites.index(splatmapid))
         else:
-            bpy.types.Scene.splatmapfavourites.append(splatmapid)
+            splatmapfavourites.append(splatmapid)
 
         entries = []
         print(splatmapdata["data"])
-        for f in bpy.types.Scene.splatmapfavourites:
+        for f in splatmapfavourites:
             for d in splatmapdata["data"]:
                 if d["index"] == f:
                     entries.append(f'#{f} [{d["type"]}]')
                     break
         text = ", ".join(entries)
-        bpy.types.Scene.splatmapfavouritetext = text
+        bpy.context.scene.splatmapfavouritetext = text
+        
+        bpy.context.scene.loadedsplatmap = json.dumps(splatmapdata)
+        bpy.context.scene.splatmapfavourites = json.dumps(splatmapfavourites)
+
         return {'FINISHED'}
 
 class SplatmapSet(bpy.types.Operator):
@@ -745,20 +882,28 @@ class SplatmapSet(bpy.types.Operator):
     bl_description = "Sets the brush to use the correct splatmap colour"
     bl_options = {"UNDO"}
 
+    bpy.types.Scene.splatmappreviewscale = 1.0
+
     def execute(self, context): # When button is pressed
-        splatmapdata = bpy.types.Scene.loadedsplatmap
+        splatmapdata = json.loads(bpy.context.scene.loadedsplatmap)
 
         splatmapid = bpy.context.scene.splatmapid
         colour = ((1/255) * splatmapid)
         bpy.data.brushes["TexDraw"].color = (colour, colour, colour)
         bpy.data.brushes["TexDraw"].use_accumulate = True
         bpy.data.brushes["TexDraw"].use_paint_antialiasing = False
+        try:
+            bpy.context.space_data.uv_editor.show_texpaint = False
+        except AttributeError:
+            pass
 
         if "[FLC] Splatmap-Preview" not in bpy.data.textures:
             bpy.data.textures.new("[FLC] Splatmap-Preview", type="IMAGE")
+            bpy.data.textures["[FLC] Splatmap-Preview"].use_fake_user = 1
         for d in splatmapdata["data"]:
             if d["index"] == splatmapid:
                 bpy.data.textures["[FLC] Splatmap-Preview"].image = bpy.data.images[f'{d["image"]}.dds']
+                bpy.data.textures["[FLC] Splatmap-Preview"].use_fake_user = 1
                 return {'FINISHED'}
         def materialError(self, context):
             self.layout.label(text=f"No material found with the corresponding ID") # Tells the user about the missing prorgrams
@@ -788,6 +933,21 @@ class HeightmapperProps(bpy.types.PropertyGroup): # Properties
         name="Splatmap ID",
         default=0,
         description="ID of the material to paint with"
+    )
+    bpy.types.Scene.loadedsplatmap = bpy.props.StringProperty(
+        name="loadedsplatmap",
+        default='{"name": "No Splatmap Loaded", "filepath": "", "data": []}',
+        description='Stores loaded splatmap data as a string so it can be saved to the .blend'
+    )
+    bpy.types.Scene.splatmapfavouritetext = bpy.props.StringProperty(
+        name="splatmapfavouritetext",
+        default="No Favourites",
+        description="Stores splatmap favourites display text"
+    )
+    bpy.types.Scene.splatmapfavourites = bpy.props.StringProperty(
+        name="splatmapfavourites",
+        default="[]",
+        description="Stores splatmap favourites as a string so it can be saved to the .blend"
     )
     bpy.types.Scene.lodnormal = bpy.props.IntProperty(
         name="Non-sculpting Level of Detail",

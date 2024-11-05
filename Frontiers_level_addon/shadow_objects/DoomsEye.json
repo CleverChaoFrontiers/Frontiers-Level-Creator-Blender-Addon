@@ -1,0 +1,131 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DoomsEye",
+  "type": "DoomsEye",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "pathName": "",
+    "isKillEndMove": true,
+    "isEventDriven": true,
+    "isHomingAttack": false,
+    "isAuraEffect": false,
+    "homingAttackDistanceOffset": 0.0,
+    "speed": 80.0,
+    "maxHp": 1,
+    "barrierHp": 5,
+    "damageHA": 1,
+    "stunTime": 5.0,
+    "useDebugSpeed": true,
+    "modelScale": 2.0,
+    "startStateType": "MOVE",
+    "keepDistanceMinWhileMoving": 1.0,
+    "keepDistanceMaxWhileMoving": 0.0,
+    "movementRestartDistance": 10.0,
+    "ditem_no": -1,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      },
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      },
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      },
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      },
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}",
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      }
+    ],
+    "conversations": [
+      {
+        "labelName": "",
+        "displayTime": 2.0,
+        "delayTime": 0.0,
+        "isSondOnly": false
+      },
+      {
+        "labelName": "",
+        "displayTime": 2.0,
+        "delayTime": 0.0,
+        "isSondOnly": false
+      },
+      {
+        "labelName": "",
+        "displayTime": 2.0,
+        "delayTime": 0.0,
+        "isSondOnly": false
+      },
+      {
+        "labelName": "",
+        "displayTime": 2.0,
+        "delayTime": 0.0,
+        "isSondOnly": false
+      },
+      {
+        "labelName": "",
+        "displayTime": 2.0,
+        "delayTime": 0.0,
+        "isSondOnly": false
+      }
+    ]
+  }
+}

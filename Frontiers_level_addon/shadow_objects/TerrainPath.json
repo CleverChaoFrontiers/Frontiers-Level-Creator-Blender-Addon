@@ -1,0 +1,62 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "TerrainPath",
+  "type": "TerrainPath",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "pathName": "",
+    "widthStart": 10.0,
+    "widthEnd": 10.0,
+    "height": 0.0,
+    "wallHeight": 1.0,
+    "split": 50,
+    "ColorType": "COLOR_GREEN",
+    "EnableDamage": false,
+    "EnableSolid": true,
+    "AttrParkour": false,
+    "AttrBreakable": false,
+    "AttrSlope": false,
+    "AttrWall": false,
+    "AttrLoop": false,
+    "AttrSlide": false,
+    "AttrSlider": false,
+    "AttrAmoeba": false,
+    "AttrWater": false,
+    "material": "MAT_NONE",
+    "rightWallType": "WALL_NONE",
+    "leftWallType": "WALL_NONE",
+    "frontWallType": "WALL_NONE",
+    "backWallType": "WALL_NONE",
+    "normalType": "NORMAL_BY_PATH",
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "eventDriven": false,
+    "destOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "movePathName": "",
+    "isReverse": false,
+    "moveSpeed": 2.0,
+    "waitTime": 0.0,
+    "phase": 0.0
+  }
+}

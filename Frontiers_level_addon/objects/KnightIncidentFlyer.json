@@ -1,0 +1,95 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "KnightIncidentFlyer",
+  "type": "KnightIncidentFlyer",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "pathName": "",
+    "loopInfo": [
+      {
+        "enable": false,
+        "start": 0.0,
+        "end": 1.0,
+        "cameraActivator": "{00000000-0000-0000-0000-000000000000}"
+      }
+    ],
+    "no": 0,
+    "config": {
+      "trail": {
+        "interval": 0.1,
+        "recordNum": 150,
+        "width": 6.0,
+        "wallHeight": 1.5,
+        "holes": [
+          {
+            "start": 0.0,
+            "end": 0.0
+          }
+        ]
+      },
+      "escape": {
+        "startSpeed": 40.0,
+        "decrease": 1.5,
+        "minSpeed": 22.0,
+        "targetDisableTime": 6.0,
+        "resetByFallTime": 10.0,
+        "shot": {
+          "posTable": [
+            {
+              "enabled": false,
+              "shotAnimSpeed": 1.0,
+              "oneBullet": [
+                {
+                  "vert": 0.0,
+                  "initSpeed": -10.0,
+                  "maxSpeed": 10.0,
+                  "acc": 10.0,
+                  "lifeTime": 10.0
+                }
+              ]
+            }
+          ],
+          "readyDuration": 0.1
+        },
+        "camera": {
+          "fovy": 60.0,
+          "distance": 30.0,
+          "azimuth": -90.0,
+          "elevation": 0.0,
+          "limitRightRatio": 0.3,
+          "limitLeftRatio": 1.5,
+          "upScrollRatio": 0.0,
+          "limitUpScrollDistance": 0.0,
+          "downScrollRatio": 0.0,
+          "limitDownScrollDistance": 0.0,
+          "isLimitPathDistance": false,
+          "limitPathDistanceMin": 0.0,
+          "limitPathDistanceMax": 0.0,
+          "isSmoothPath": true
+        },
+        "quickStep": {
+          "enable": false,
+          "speed": 15.0,
+          "boostSpeed": 20.0,
+          "boostSpeedMax": 20.0
+        }
+      }
+    }
+  }
+}

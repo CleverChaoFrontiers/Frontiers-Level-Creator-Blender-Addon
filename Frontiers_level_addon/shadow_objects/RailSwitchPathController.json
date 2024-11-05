@@ -1,0 +1,38 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "RailSwitchPathController",
+  "type": "RailSwitchPathController",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "switchId": 0,
+    "defaultPathType": "Blue",
+    "bluePathName1": "",
+    "bluePathName2": "",
+    "bluePathName3": "",
+    "bluePathName4": "",
+    "bluePathName5": "",
+    "blueHomingType": "None",
+    "redPathName1": "",
+    "redPathName2": "",
+    "redPathName3": "",
+    "redPathName4": "",
+    "redPathName5": "",
+    "redHomingType": "None"
+  }
+}

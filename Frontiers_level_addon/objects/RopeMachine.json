@@ -1,0 +1,49 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "RopeMachine",
+  "type": "RopeMachine",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 0,
+    "maxSpeed": 450.0,
+    "minSpeed": 550.0,
+    "maxStopTime": 0.1,
+    "minStopTime": 0.1,
+    "activateTime": 15.0,
+    "startWaitTime": 1.0,
+    "doubleJump": 0.0,
+    "randomJump": true,
+    "doubleJumpNumerator": 0,
+    "doubleJumpDenominator": 1,
+    "cameraParam": {
+      "interoplateTimeActivate": 1.0,
+      "interoplateTimeDeactivate": 1.0,
+      "targetOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cameraPosOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Meteorite",
+  "type": "Meteorite",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "sizeType": "SMALL",
+    "shotDirType": "AUTO",
+    "upSpeed": 15.0,
+    "speedMin": 5.0,
+    "speedMax": 5.0,
+    "respawnTime": 6.0,
+    "outOfControlTime": 0.1,
+    "keepVelocityTime": 0.1,
+    "ignoreSwingingTime": 1.0,
+    "isHorming": true,
+    "isRespawn": true,
+    "debrisData": {
+      "gravity": 10.0,
+      "lifeTime": 30.0,
+      "mass": 1.0,
+      "friction": 0.3,
+      "explosionScale": 0.3,
+      "impulseScale": 0.5
+    },
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "isSmoothMove": false,
+    "isReverse": false,
+    "moveVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "locaterList": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "waitTime": 0.0,
+    "phase": 0.0,
+    "speed": 10.0,
+    "fragmentMin": 8,
+    "fragmentMax": 15,
+    "fragmentdeleteTime": 3.0,
+    "fragmentspeedMin": 20.0,
+    "fragmentspeedMax": 30.0,
+    "fragmentScaleMin": 0.1,
+    "fragmentScaleMax": 1.0,
+    "isFragmentMovePlayerVelocity": true
+  }
+}

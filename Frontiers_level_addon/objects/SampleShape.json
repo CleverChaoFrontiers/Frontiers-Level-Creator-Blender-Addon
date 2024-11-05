@@ -1,0 +1,34 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "SampleShape",
+  "type": "SampleShape",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "Width": 0.0,
+    "Height": 0.0,
+    "Depth": 0.0,
+    "Red": 0,
+    "Green": 0,
+    "Blue": 0,
+    "Alpha": 0,
+    "IsEnableModel": false,
+    "IsEnableRigidbody": false,
+    "attributes": []
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Chaosfly",
+  "type": "Chaosfly",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "chaosflyType": "Normal",
+    "chaosflyNormalAttackType": "All",
+    "isRespawn": false,
+    "respawnTime": 6.0,
+    "addLightGaugeNum": -1,
+    "commonParam": {
+      "searchDistance": 40.0,
+      "rotateSpeed": 4.0,
+      "foundAttackStartTime": 1.0
+    },
+    "normalParam": {
+      "tentacleParam": {
+        "attackMaxDistance": 20.0,
+        "attackMinDistance": 0.0,
+        "rotateSpeed": 2.0,
+        "rotateChaseSpeed": 1.0,
+        "attackMaxDegree": 15.0,
+        "waitTime": 1.0,
+        "speed": 1.0,
+        "intervalTime": 1.0
+      },
+      "beamParam": {
+        "attackMaxDistance": 30.0,
+        "attackMinDistance": 0.0,
+        "rotateSpeed": 4.0,
+        "waitTime": 1.0,
+        "intervalTime": 1.0,
+        "maxDegree": 45.0,
+        "speed": 40.0,
+        "lifeTime": 10.0
+      },
+      "tentacleAttackRatio": 70
+    },
+    "divisionParam": {
+      "distance": 20.0,
+      "DivisionMax": 30.0,
+      "cellParam": {
+        "addLightGaugeNum": -1,
+        "spawnSpeed": 10.0,
+        "moveSpeed": 6.0,
+        "jumpAttackSpeed": 10.0,
+        "jumpAttackheight": 0.5,
+        "attackStartTime": 0.0,
+        "attackDistance": 5.0,
+        "attackMaxDegree": 20.0,
+        "rotSpeed": 3.0,
+        "moveRotSpeed": 3.0,
+        "rotateSpeedMin": 180.0,
+        "rotateSpeedMax": 360.0,
+        "rotateSpeedMaxSpeedMin": 1.0,
+        "rotateSpeedMinSpeedMax": 5.0,
+        "collisionParam": {
+          "blockCollisionParam": {
+            "collisionRadius": 0.5,
+            "collisionHeight": 0.0,
+            "collisionPosOffset": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "damageCollisionRadiusOffset": 1.0,
+          "damageCollisionHeightOffset": 0.0,
+          "damageCollisionPosOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "touchCollisionRadiusOffset": 0.3,
+          "touchCollisionHeightOffset": 0.0,
+          "touchCollisionPosOffset": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "comboParam": {
+          "warpRadius": 1.5,
+          "warpHeight": 0.0
+        }
+      }
+    },
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "isTransparency": true
+  }
+}

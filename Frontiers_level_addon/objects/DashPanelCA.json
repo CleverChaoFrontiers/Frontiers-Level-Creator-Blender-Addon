@@ -1,0 +1,46 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DashPanelCA",
+  "type": "DashPanelCA",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "ocTime": 0.3,
+    "speed": 30.0,
+    "isVisible": true,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      }
+    ],
+    "adjustPath": {
+      "pathname": "",
+      "adjustSpeed": 3.0,
+      "adjustTime": 1.0
+    },
+    "isCyloopOn": false,
+    "cyloopSignDistance": 100.0,
+    "cyloopSignTolerance": 20.0,
+    "isCyKnuckleOn": false,
+    "changeType": "CHANGE_NONE"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "RunningMachine",
+  "type": "RunningMachine",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 0,
+    "clearType": "ClearTypeMileage",
+    "mileage": {
+      "length": 200.0
+    },
+    "keep": {
+      "targetSpeedType": "TypeFixed",
+      "fixed": {
+        "targetSpeed": 20.0
+      },
+      "sin": {
+        "offset": 20.0,
+        "amplitude": 10.0,
+        "period": 5.0
+      },
+      "random": {
+        "min": 5.0,
+        "max": 30.0,
+        "period": 2.0
+      },
+      "speedThreshold": 3.0,
+      "speedTime": 3.0
+    },
+    "useTimer": true,
+    "activateTime": 10.0,
+    "startWaitTime": 0.5,
+    "cameraActivator": "{00000000-0000-0000-0000-000000000000}",
+    "fixPlayerPos": true,
+    "foremostSpeed": 40.0,
+    "backmostSpeed": 3.0
+  }
+}

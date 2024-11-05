@@ -1,0 +1,55 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraActivator",
+  "type": "CameraActivator",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "target": "{00000000-0000-0000-0000-000000000000}",
+    "type": "INTERPOLATE",
+    "priority": 0,
+    "useHighPriority": true,
+    "delayTime": 0.0,
+    "enableLifeTime": true,
+    "lifeTime": 0.1,
+    "disableControl": false,
+    "disableType": "FROZEN",
+    "isPause": false,
+    "interpolate": {
+      "easeTimeOn": 0.5,
+      "easeTimeOff": 0.5,
+      "interpolateTypeOn": "INTERPOLATE_RELATIVE",
+      "interpolateTypeOff": "INTERPOLATE_RELATIVE",
+      "useReturnCamera": false,
+      "returnCameraTarget": "{00000000-0000-0000-0000-000000000000}",
+      "returnCameraHeight": 2.0,
+      "returnCameraInterpolateRatio": 0.8
+    },
+    "fade": {
+      "fadeOutTimeOn": 0.5,
+      "fadeStayTimeOn": 0.5,
+      "fadeInTimeOn": 0.5,
+      "fadeOutTimeOff": 0.5,
+      "fadeStayTimeOff": 0.5,
+      "fadeInTimeOff": 0.5,
+      "stopWhenFade": true,
+      "resumeDelayTime": 0.5
+    },
+    "purposeOfUse": "Normal"
+  }
+}

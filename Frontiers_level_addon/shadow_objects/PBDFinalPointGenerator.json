@@ -1,0 +1,83 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PBDFinalPointGenerator",
+  "type": "PBDFinalPointGenerator",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "startPassPosLocator": "{00000000-0000-0000-0000-000000000000}",
+    "endPassPosLocator": "{00000000-0000-0000-0000-000000000000}",
+    "gridXNum": 6,
+    "gridYNum": 6,
+    "gridZNum": 3,
+    "gridSize": [
+      10.0,
+      10.0,
+      10.0
+    ],
+    "notCreateArea": [
+      0.0,
+      0.0
+    ],
+    "notOverlapRadius": 20.0,
+    "randomSeed": 800,
+    "offsetPosDataList": [
+      {
+        "indexNo": -1,
+        "offsetPos": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "indexNo": -1,
+        "offsetPos": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "indexNo": -1,
+        "offsetPos": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "indexNo": -1,
+        "offsetPos": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "indexNo": -1,
+        "offsetPos": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "useNum": 134
+  }
+}

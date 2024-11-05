@@ -1,0 +1,45 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DownReel",
+  "type": "DownReel",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "standLegNum": 3,
+    "standStickNum": 1,
+    "maxLength": 120.0,
+    "shotLength": 20.0,
+    "downSpeedMax": 50.0,
+    "upSpeedMax": 50.0,
+    "firstSpeed": 20.0,
+    "shotAngle": 40.0,
+    "outOfControl": 0.6,
+    "isExtendOver": true,
+    "isOneTimeUp": false,
+    "eventDriven": false,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      }
+    ]
+  }
+}

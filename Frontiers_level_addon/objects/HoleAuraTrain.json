@@ -1,0 +1,31 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "HoleAuraTrain",
+  "type": "HoleAuraTrain",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "pathName": "",
+    "reverse": false,
+    "cameraUuid": "{00000000-0000-0000-0000-000000000000}",
+    "cameraEaseInTime": 0.0,
+    "cameraEaseOutTime": 0.0,
+    "speed": 0.0,
+    "exitHole": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

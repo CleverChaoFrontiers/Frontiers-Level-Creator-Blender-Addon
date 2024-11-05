@@ -2,7 +2,7 @@ from typing import Any
 import bpy
 import mathutils
 import random
-from math import radians
+from math import radians, degrees
 import pathlib
 from pathlib import Path
 import os
@@ -24,6 +24,7 @@ class PrintCoordinatesOperator(bpy.types.Operator):
     def execute(self, context):
         collection_name = context.scene.FrontiersCoords.collection_name
         collection = collection_name
+        game_choice = context.scene.hedgegameChoice
         if bpy.context.mode != 'OBJECT':
             bpy.ops.object.mode_set(mode='OBJECT')
         script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Finds path to the folder this script is in [DO NOT TOUCH]
@@ -31,7 +32,10 @@ class PrintCoordinatesOperator(bpy.types.Operator):
         blend_dir = os.path.dirname(blend_file_path) # Gets the name of the directory the Blender file is in
         path_dir = os.path.join(blend_dir,script_dir)
         #Set up compatible objects depending on the files in template file
-        ObjectDirectory = f"objects" 
+        if game_choice == "shadow":
+            ObjectDirectory = f"shadow_objects" 
+        else:
+            ObjectDirectory = f"objects" 
         ObjectDirectory_path = os.path.join(path_dir,ObjectDirectory) 
         volume_objects = ["CameraFollow", "CameraPan","CameraFix","CameraRailSideView","CameraRailForwardView"] #Only volumes with double code
         compatible_objects =[]
@@ -154,7 +158,7 @@ class PrintCoordinatesOperator(bpy.types.Operator):
                 if obj.type == 'LIGHT':
                     #check if it is one of the two supported lights
                     if obj.data.type == 'POINT':
-                        file_name = f"objects\PointLight.json" 
+                        file_name = f"{ObjectDirectory}\PointLight.json" 
                         file_path = os.path.join(path_dir, file_name)
                         with open(file_path, "r") as file: #with open opens the file temporarily in order to avoid memory leak
                             light_temp = json.load(file)
@@ -228,6 +232,89 @@ class PrintCoordinatesOperator(bpy.types.Operator):
                         elif render_engine == 'CYCLES':
                             CurrentLevel["enableShadow"] = obj.data.cycles.cast_shadow
                         gedit_text += f'{json.dumps(light_temp, indent=2)},\n' #Adds code to full gedit text that is then printed
+                    elif obj.data.type == 'SPOT':
+                        file_name = f"{ObjectDirectory}\SpotLight.json" 
+                        file_path = os.path.join(path_dir, file_name)
+                        with open(file_path, "r") as file: #with open opens the file temporarily in order to avoid memory leak
+                            light_temp = json.load(file)
+                        if "json_parameters" in obj and "use_display_json_parameters" in obj and obj["use_display_json_parameters"] == True: #if Manual parameters are checked. do this instead of geonodes.
+                            for parameter in obj.json_parameters:
+                                PropertyName = parameter.name
+                                PropertyType = PropertyName.split("/")[-1]
+                                propvector = False
+                                if PropertyType == "float":
+                                    PropertyValue = parameter.float_value
+                                elif PropertyType == "enum":
+                                    enumParameter = parameter.enum_items
+                                    foundEnum = False
+                                    for enumItems in enumParameter:
+                                        if enumItems.selected == True:
+                                            PropertyValue = enumItems.value
+                                            foundEnum = True
+                                            break
+                                    if foundEnum == False:
+                                        PropertyValue = ""
+                                elif PropertyType == "int":
+                                    PropertyValue = parameter.int_value
+                                elif PropertyType == "bool":
+                                    PropertyValue = parameter.bool_value
+                                elif PropertyType == "vector":
+                                    propvector = True
+                                    PropertyValue = parameter.vector_value
+                                elif PropertyType == "string":
+                                    if parameter.object_value in bpy.data.objects and "DataID" in bpy.data.objects[parameter.object_value]:
+                                         IDstring = "{"+bpy.data.objects[parameter.object_value]+"}"
+                                         PropertyValue = IDstring
+                                    else:
+                                        PropertyValue = parameter.string_value
+                                elif PropertyType == "ERR":
+                                    print(f'for object {name},Attribute:{AttName} was passed for being incompatible in current version.')
+                                    continue
+                                CurrentLevel = light_temp["parameters"]
+                                        
+                                if "/" in PropertyName:#If propertyname is on the form [Firstlayer][Secondlayer], Make sure that the script replaces the value on that layer.
+                                        
+                                    PropertyName = PropertyName.split("/")
+                                            
+                                    for key in PropertyName[:-2]:
+                                        if "[" in key:
+                                            ListKey = key.split("[")
+                                            Listindex = int(ListKey[1].split("]")[0])
+                                            CurrentLevel = CurrentLevel[ListKey[0]][Listindex]
+                                        else:
+                                            CurrentLevel = CurrentLevel[key]
+                                    # if type(CurrentLevel) == list:
+                                    #     CurrentLevel = CurrentLevel[0]
+                                    PropertyName = PropertyName[-2]
+                                            
+                                if propvector == True:
+                                    CurrentLevel[PropertyName] = [PropertyValue[0],PropertyValue[1],PropertyValue[2]]
+                                else:
+                                    CurrentLevel[PropertyName] = PropertyValue
+                        light_temp["id"] = Id
+                        light_temp["name"] = name
+                        light_temp["position"] = coordinates
+                        rotation = obj.rotation_quaternion
+                        rotation = mathutils.Euler((rotation.to_euler().x + radians(90), rotation.to_euler().y, rotation.to_euler().z)).to_quaternion()
+                        light_temp["rotation"] = [rotation.x, rotation.z, -rotation.y, rotation.w]
+                        
+                        Intense = obj.data.energy/64 #Have to divide blenders intensity to accurately portrait frontiers lights.
+                        CurrentLevel = light_temp["parameters"]
+                        CurrentLevel["colorR"] = obj.data.color[0]*255*Intense
+                        CurrentLevel["colorG"] = obj.data.color[1]*255*Intense
+                        CurrentLevel["colorB"] = obj.data.color[2]*255*Intense
+                        CurrentLevel["outerConeAngle"] = (degrees(obj.data.spot_size)) / 2
+                        CurrentLevel["innerConeAngle"] = (degrees(obj.data.spot_size) * (1 - obj.data.spot_blend)) / 2
+                        if obj.data.use_custom_distance == True:
+                            CurrentLevel["attenuationRadius"] = obj.data.cutoff_distance
+                        else:
+                            CurrentLevel["attenuationRadius"] = 32768
+                        render_engine = bpy.context.scene.render.engine
+                        if render_engine == 'BLENDER_EEVEE':
+                            CurrentLevel["enableShadow"] = obj.data.use_shadow
+                        elif render_engine == 'CYCLES':
+                            CurrentLevel["enableShadow"] = obj.data.cycles.cast_shadow
+                        gedit_text += f'{json.dumps(light_temp, indent=2)},\n' #Adds code to full gedit text that is then printed
                 else:
                     #for theobject in compatible_objects: #Checks if object is compatible with Gedit templates
                     theobject = name.split(".")[0]
@@ -246,7 +333,7 @@ class PrintCoordinatesOperator(bpy.types.Operator):
                             file_name = f"{theobject}.json"
                             file_path = os.path.join(CustomDirectory_path, file_name)
                         else:
-                            file_name = f"objects\{theobject}.json" 
+                            file_name = f"{ObjectDirectory}\{theobject}.json" 
                             file_path = os.path.join(path_dir, file_name)
                         
                         with open(file_path, "r") as file: #with open opens the file temporarily in order to avoid memory leak
@@ -517,8 +604,7 @@ class PrintCoordinatesOperator(bpy.types.Operator):
                                         changed_ID_list.append(Otherobj.name)
                                         OtherID = self.ID_generator()
                                         Otherobj["DataID"] = OtherID
-                                camX = ""
-                                file_name = f"objects\_legacy_{thevolume}.json" 
+                                file_name = f"{ObjectDirectory}\_legacy_{thevolume}.json" 
                                 file_path = os.path.join(path_dir, file_name)
 
                             if "DataID2" not in obj:

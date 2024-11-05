@@ -1,0 +1,38 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "EggTank",
+  "type": "EggTank",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "serachDistance": 40.0,
+    "moveType": "MOVE_NONE",
+    "moveDistance": 10.0,
+    "moveSpeed": 10.0,
+    "isRespawn": false,
+    "eventDriven": false,
+    "isFV": true,
+    "bulletSpeed": 10.0,
+    "bulletMaxFlyingDistance": 50.0,
+    "bulletContinuousShellingNum": 3,
+    "bulletShellingInterval": 0.38,
+    "bulletCoolDownTime": 2.0,
+    "bulletFiringAngle": 0.0,
+    "isTransparency": true
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "RhinolinerActionTrigger",
+  "type": "RhinolinerActionTrigger",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "eventDriven": false,
+    "size": [
+      10.0,
+      10.0,
+      10.0
+    ]
+  }
+}

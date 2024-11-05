@@ -169,7 +169,10 @@ def flatten_parameters(parameters, parent_key='', separator='/'): #This is for g
     return dict(items)
 def get_rfl_filepath(obj_name):
     enumerator_list = {}
-    file_name = "Other\\rangers-rfl.json"
+    if bpy.context.scene.hedgegameChoice == "shadow":
+        file_name = "Other\\shadow-rfl.json"
+    else:
+        file_name = "Other\\rangers-rfl.json"
     script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Finds path to the folder this script is in [DO NOT TOUCH]
     blend_file_path = bpy.data.filepath # Finds file path of Blender file
     blend_dir = os.path.dirname(blend_file_path) # Gets the name of the directory the Blender file is in
@@ -188,7 +191,7 @@ def get_rfl_filepath(obj_name):
         objName_list.append("ObjPointSoundSourceSpawner")
     elif obj_name == "CarVan" or obj_name == "CarHatchback" or obj_name == "CarMinivan":
         objName_list.append("ObjCarSpawner")
-    elif obj_name == "NormalFloor2m" or obj_name == "NormalFloor10m":
+    elif obj_name == "NormalFloor2m" or obj_name == "NormalFloor10m" or obj_name == "ThroughFloor":
         objName_list.append("ObjNormalFloorSpawner")
     elif obj_name == "JumpBoard":
         objName_list.append("ObjJumpBoardPathSpawner")
@@ -268,7 +271,10 @@ def get_json_filepath(obj_name,obj): #gets the path to the templates
         file_name = f"{obj_name}.json"
         filepath = os.path.join(CustomDirectory_path, file_name)
     elif obj_name not in volume_objects or "FrontiersCamera" in obj:
-        file_name = f"objects\{obj_name}.json" 
+        if bpy.context.scene.hedgegameChoice == "shadow":
+            file_name = f"shadow_objects\{obj_name}.json" 
+        else:
+            file_name = f"objects\{obj_name}.json" 
         filepath = os.path.join(path_dir, file_name)
     return filepath
 
@@ -278,6 +284,8 @@ def update_parameters(self, context):
         if obj.animation_data is not None and obj.animation_data.drivers:
             for driver in obj.animation_data.drivers:
                 obj.animation_data.drivers.remove(driver)
+        obj.json_parameters.clear()
+        return
     obj_name = obj.name.split('.', 1)[0]
     
     json_filepath = get_json_filepath(obj_name,obj)
@@ -470,7 +478,7 @@ class OBJECT_PT_JsonParameters(bpy.types.Panel):
                             row.prop(item, "object_value")
                         elif data_type[-1].startswith("list"):
                             box = layout.box()
-                            split = box.split(factor=0.9)
+                            split = box.split(factor=0.8)
                             col = split.column()
                             col.label(text=menuName)
                             
@@ -490,6 +498,10 @@ class OBJECT_PT_JsonParameters(bpy.types.Panel):
                             col = split.column(align=True)
                             col.operator("object.add_list_item", text="", icon="ADD").index = obj.json_parameters.find(item.name)
                             col.operator("object.remove_list_item", text="", icon="REMOVE").index = obj.json_parameters.find(item.name)
+                            split = split.split(factor=0.6666)
+                            col = split.column()
+                            col.scale_y = 2.0
+                            col.operator("object.add_selected", text="", icon="SELECT_SET").index = obj.json_parameters.find(item.name)
 class OBJECT_OT_AddListItem(bpy.types.Operator):
     bl_idname = "object.add_list_item"
     bl_label = "Add List Item"
@@ -498,7 +510,7 @@ class OBJECT_OT_AddListItem(bpy.types.Operator):
     def execute(self, context):
         obj = context.object
         if obj:
-            obj.json_parameters[self.index].list_value.add()
+            item = obj.json_parameters[self.index].list_value.add()
         return {'FINISHED'}
 
 # Operator to remove a list item
@@ -512,6 +524,23 @@ class OBJECT_OT_RemoveListItem(bpy.types.Operator):
         if obj:
             obj.json_parameters[self.index].list_value.remove(len(obj.json_parameters[self.index].list_value)-1)   
         return {'FINISHED'}
+
+class OBJECT_OT_AddSelected(bpy.types.Operator):
+    bl_idname = "object.add_selected"
+    bl_label = "Add All Selected Objects"
+    index: bpy.props.IntProperty()
+
+    def execute(self, context):
+        obj = context.object
+        if obj:
+            selected = bpy.context.selected_objects
+            for o in selected:
+                if bpy.context.active_object != o and not obj.json_parameters[self.index].name.split('/')[-1] in ["listINT", "listFLOAT"]:
+                    obj.json_parameters[self.index].list_value.add()
+                    obj.json_parameters[self.index].list_value[-1].listobject = o
+                        
+        return {'FINISHED'}
+    
 bpy.types.Object.use_display_json_parameters = bpy.props.BoolProperty(
     name="Display JSON Parameters",
     default=False,

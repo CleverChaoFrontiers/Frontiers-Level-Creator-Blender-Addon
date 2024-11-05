@@ -66,6 +66,14 @@ class DownloadTexconv(bpy.types.Operator):
         webbrowser.open("https://github.com/microsoft/DirectXTex/releases/latest/", new=0, autoraise=True) 
         return {"FINISHED"}
     
+class DownloadGeditTemplate(bpy.types.Operator):
+    bl_idname = "download.gedittemplate"
+    bl_label = "Download"
+
+    def execute(self, context):
+        webbrowser.open("https://github.com/Ashrindy/AshDumpLib/blob/master/AshDumpLib/HedgehogEngine/BINA/RFL/frontiers.template.hson.json", new=0, autoraise=True) 
+        return {"FINISHED"}
+    
 class Toolpaths(bpy.types.PropertyGroup): # Properties
     bpy.types.Scene.directoryHedgearcpack = bpy.props.StringProperty( # The directory for texconv (the program required to convert heightmaps to DDS correctly)
         name="HedgeArcPack",
@@ -114,4 +122,10 @@ class Toolpaths(bpy.types.PropertyGroup): # Properties
         subtype='FILE_PATH',
         default="",
         description="Path to texconv"
+    )
+    bpy.types.Scene.directoryGeditTemplate = bpy.props.StringProperty( # The directory for texconv (the program required to convert heightmaps to DDS correctly)
+        name="Gedit Template",
+        subtype='FILE_PATH',
+        default="",
+        description="Path to Gedit Template"
     )

@@ -1,0 +1,36 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GravityCylinderWall",
+  "type": "GravityCylinderWall",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "type": "RatGuard",
+    "ratGuardParam": {
+      "radType": "RADIUS_3m50",
+      "ratGuardType": "CIRCLE"
+    },
+    "obstacleParam": {
+      "radType": "RADIUS_1m",
+      "angleType": "ANGLE_270"
+    },
+    "yRot": 0.0,
+    "isStand": true,
+    "collisionScale": 1.0
+  }
+}

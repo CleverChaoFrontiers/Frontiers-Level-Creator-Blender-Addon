@@ -1,0 +1,27 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "MOLBurner",
+  "type": "MOLBurner",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "length": 0.0,
+    "isRight": false,
+    "lifeTime": 0.0
+  }
+}

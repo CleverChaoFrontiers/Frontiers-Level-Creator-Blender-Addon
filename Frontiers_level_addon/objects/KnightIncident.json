@@ -1,0 +1,82 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "KnightIncident",
+  "type": "KnightIncident",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "fv": {
+      "startPosition": "{00000000-0000-0000-0000-000000000000}",
+      "fvShieldPathName": "SetPath_4103",
+      "camera": "{00000000-0000-0000-0000-000000000000}",
+      "shieldSpeed": 5.0
+    },
+    "eventFirst": {
+      "position": "{00000000-0000-0000-0000-000000000000}",
+      "lookAt": "{00000000-0000-0000-0000-000000000000}"
+    },
+    "eventEnd": {
+      "position": "{00000000-0000-0000-0000-000000000000}",
+      "lookAt": "{00000000-0000-0000-0000-000000000000}",
+      "endDistance": 80.0
+    },
+    "eventRetry": {
+      "position": "{00000000-0000-0000-0000-000000000000}",
+      "lookAt": "{00000000-0000-0000-0000-000000000000}"
+    },
+    "flyer": {
+      "flyer": "{00000000-0000-0000-0000-000000000000}",
+      "pathName": "SetPath_4105"
+    },
+    "shield": {
+      "presets": [
+        {
+          "launchOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "approachOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "approachSpeed": 1.0,
+          "attackOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "attackSpeed": 0.0,
+          "attackReadyTime": 1.5,
+          "attackTime": 1.0,
+          "finishOffset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "finishSpeed": 2.0,
+          "rotationY": 0.0,
+          "forceOfBoost": 0.0
+        }
+      ],
+      "collisionRadius": 9.0,
+      "damageRings": 10
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "BalloonCA",
+  "type": "BalloonCA",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "balloonColor": "COLOR_RED",
+    "dimension": "DIM_FV",
+    "upSpeed": 15.0,
+    "speedMin": 0.0,
+    "speedMax": 5.0,
+    "respawnTime": 10.0,
+    "outOfControlTime": 0.1,
+    "keepVelocityTime": 0.1,
+    "ignoreSwingingTime": 1.0,
+    "isDefaultPositionRespawn": false,
+    "isGroupSet": false,
+    "eventDriven": false,
+    "isHorming": true,
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      }
+    ]
+  }
+}

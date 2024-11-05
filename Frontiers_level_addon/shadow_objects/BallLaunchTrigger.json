@@ -1,0 +1,37 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "BallLaunchTrigger",
+  "type": "BallLaunchTrigger",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "pathName": "",
+    "minSpeed": 0.0,
+    "maxSpeed": 0.0,
+    "reverse": false,
+    "passPlane": {
+      "width": 5.0,
+      "height": 20.0,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

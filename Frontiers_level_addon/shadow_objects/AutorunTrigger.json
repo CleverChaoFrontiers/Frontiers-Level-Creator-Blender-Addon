@@ -1,0 +1,60 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "AutorunTrigger",
+  "type": "AutorunTrigger",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "action": "ACT_START",
+    "pathName": "",
+    "speed": -1.0,
+    "speedMin": -1.0,
+    "boostSpeed": -1.0,
+    "boostSpeedMin": -1.0,
+    "initialSpeed": -1.0,
+    "outOfControlTime": 0.0,
+    "glidingMoveRadius": 10.0,
+    "glidingMoveAspectRatio": 1.0,
+    "glidingMoveRadiusChangeTime": 0.0,
+    "lockBoost": false,
+    "lockBoostTime": 0.0,
+    "lockTimeStop": false,
+    "lockTimeStopTime": 0.0,
+    "width": 0.0,
+    "adjustSpeed": 20.0,
+    "limitTime": 0.0,
+    "state": "DEFAULTSTATE_ON",
+    "jumpMode": "NoneJump",
+    "forceFall": false,
+    "endByAir": false,
+    "custom": false,
+    "initialSideSpeed": 3.0,
+    "acceleSideForce": 10.0,
+    "deceleSideForce": 35.0,
+    "maxSideSpeed": 15.0,
+    "passPlane": {
+      "width": 5.0,
+      "height": 20.0,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

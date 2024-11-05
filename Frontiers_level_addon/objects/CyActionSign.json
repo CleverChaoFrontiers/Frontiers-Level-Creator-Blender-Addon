@@ -1,0 +1,35 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CyActionSign",
+  "type": "CyActionSign",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "visual": "Normal",
+    "objAmyList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "objKnucklesList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "objTailsList": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "holeDirection": "CyActionSignDir"
+  }
+}

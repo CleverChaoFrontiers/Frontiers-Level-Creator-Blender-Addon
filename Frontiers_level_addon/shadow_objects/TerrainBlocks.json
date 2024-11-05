@@ -1,0 +1,57 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "TerrainBlocks",
+  "type": "TerrainBlocks",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "Width": 0.0,
+    "Height": 0.0,
+    "Blocks": [
+      {
+        "z": 0.0,
+        "y": 0.0
+      },
+      {
+        "z": 0.0,
+        "y": 0.0
+      },
+      {
+        "z": 0.0,
+        "y": 0.0
+      },
+      {
+        "z": 0.0,
+        "y": 0.0
+      },
+      {
+        "z": 0.0,
+        "y": 0.0
+      }
+    ],
+    "LayerGroup": "LAYER_LAND",
+    "AttrEnableParkour": false,
+    "WallLeft": "WALL_NONE",
+    "WallRight": "WALL_NONE",
+    "WallFront": "WALL_NONE",
+    "WallBack": "WALL_NONE",
+    "WallHeight": 0.0,
+    "ColorType": "COLOR_GREEN",
+    "Interval": 0.0
+  }
+}

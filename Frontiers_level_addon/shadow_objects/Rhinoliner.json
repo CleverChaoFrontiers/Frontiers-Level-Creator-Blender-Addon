@@ -1,0 +1,137 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "Rhinoliner",
+  "type": "Rhinoliner",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "isWaitStart": true,
+    "eventDriven": false,
+    "isTransparency": true,
+    "isUTurn": true,
+    "isInterruptionJumpMotion": false,
+    "addLightGaugeNum": -1,
+    "initializedSpeed": 20.0,
+    "initializedMaxSpeed": 30.0,
+    "initializedAccleration": 10.0,
+    "actionParametors": [
+      {
+        "actionType": "None",
+        "accelerationParam": {
+          "speed": 30.0,
+          "accel": 10.0
+        },
+        "pathParam": {
+          "targetType": "ToOffset",
+          "distPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "toObjectID": "{00000000-0000-0000-0000-000000000000}",
+          "upPower": 5.0,
+          "speed": 10.0,
+          "jumpSpeedAccel": 30.0
+        }
+      },
+      {
+        "actionType": "None",
+        "accelerationParam": {
+          "speed": 30.0,
+          "accel": 10.0
+        },
+        "pathParam": {
+          "targetType": "ToOffset",
+          "distPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "toObjectID": "{00000000-0000-0000-0000-000000000000}",
+          "upPower": 5.0,
+          "speed": 10.0,
+          "jumpSpeedAccel": 30.0
+        }
+      },
+      {
+        "actionType": "None",
+        "accelerationParam": {
+          "speed": 30.0,
+          "accel": 10.0
+        },
+        "pathParam": {
+          "targetType": "ToOffset",
+          "distPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "toObjectID": "{00000000-0000-0000-0000-000000000000}",
+          "upPower": 5.0,
+          "speed": 10.0,
+          "jumpSpeedAccel": 30.0
+        }
+      },
+      {
+        "actionType": "None",
+        "accelerationParam": {
+          "speed": 30.0,
+          "accel": 10.0
+        },
+        "pathParam": {
+          "targetType": "ToOffset",
+          "distPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "toObjectID": "{00000000-0000-0000-0000-000000000000}",
+          "upPower": 5.0,
+          "speed": 10.0,
+          "jumpSpeedAccel": 30.0
+        }
+      },
+      {
+        "actionType": "None",
+        "accelerationParam": {
+          "speed": 30.0,
+          "accel": 10.0
+        },
+        "pathParam": {
+          "targetType": "ToOffset",
+          "distPosition": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "toObjectID": "{00000000-0000-0000-0000-000000000000}",
+          "upPower": 5.0,
+          "speed": 10.0,
+          "jumpSpeedAccel": 30.0
+        }
+      }
+    ],
+    "cameraVolumeIds": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ]
+  }
+}

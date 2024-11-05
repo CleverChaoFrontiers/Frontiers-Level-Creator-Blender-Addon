@@ -1,0 +1,27 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "SpringPole",
+  "type": "SpringPole",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "visual": "NORMAL",
+    "speedMin": -5.0,
+    "speedMax": -6.0
+  }
+}

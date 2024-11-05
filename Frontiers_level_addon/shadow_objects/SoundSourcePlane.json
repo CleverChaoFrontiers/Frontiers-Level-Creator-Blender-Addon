@@ -1,0 +1,41 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "SoundSourcePlane",
+  "type": "SoundSourcePlane",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "cueName": "",
+    "volume": 0.0,
+    "is3D": false,
+    "pos3D": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "planeTrigger": {
+      "width": 5.0,
+      "height": 20.0,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

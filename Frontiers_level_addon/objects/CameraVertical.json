@@ -1,0 +1,33 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraVertical",
+  "type": "CameraVertical",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "fovy": 60.0,
+    "distance": 15.0,
+    "elevationOffsetDeg": 0.0,
+    "gravityOffset": 0.0,
+    "playerOffset": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PointLight",
+  "type": "PointLight",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "colorR": 15000.0,
+    "colorG": 3000.0,
+    "colorB": 20000.0,
+    "sourceRadius": 400.0,
+    "halfLength": 10000.0,
+    "attenuationRadius": 220.0,
+    "enableShadow": false,
+    "move": {
+      "type": "MOVE_NONE",
+      "distance": 10.0,
+      "cycle": 5.0
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DamageTubeVolume",
+  "type": "DamageTubeVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "width": 15.0,
+    "height": 20.0,
+    "thickness": 0.35,
+    "deg": 25.0
+  }
+}

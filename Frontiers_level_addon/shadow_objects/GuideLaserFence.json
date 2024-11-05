@@ -1,0 +1,37 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GuideLaserFence",
+  "type": "GuideLaserFence",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "actionType": "ACT_KEEP",
+    "timeType": "TIME_GLOBAL",
+    "laserNum": 3,
+    "laserOffsetY": 0.5,
+    "laserLength": 14.0,
+    "laserHeight": 2.0,
+    "waitTime": 2.0,
+    "activeTime": 2.0,
+    "phase": 0.0,
+    "isDamageFence": true,
+    "isEnablePoleCollision": false,
+    "isEventDriven": false,
+    "isSE": true
+  }
+}

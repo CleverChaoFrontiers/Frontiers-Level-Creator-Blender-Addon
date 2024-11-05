@@ -1,0 +1,60 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "TimeBombGenerator",
+  "type": "TimeBombGenerator",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "timeBomb": {
+      "activationCamera": {
+        "positionOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "targetOffset": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "fovy": 60.0,
+        "endInterpolateTime": 0.5
+      },
+      "disableInputInCatching": true,
+      "catchingMoveHeight": 3.0,
+      "limitTime": 30.0,
+      "levitationOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "levitationAngleY": -90.0,
+      "levitationFollowFactor": 0.3,
+      "cameraDistance": 15.0,
+      "cameraInitialElevation": 30.0,
+      "putOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "explodeRadius": 5.0,
+      "explodeTime": 0.2,
+      "despawnTime": 1.5
+    }
+  }
+}

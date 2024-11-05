@@ -1,0 +1,40 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "EggFlyer",
+  "type": "EggFlyer",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "doesRespawn": false,
+    "respawnTime": 10.0,
+    "addLightGaugeNum": -1,
+    "searchDistance": 15.0,
+    "searchAngle": 90.0,
+    "rotationSpeed": 90.0,
+    "bulletSpeed": 1.0,
+    "bulletCount": 10,
+    "bulletInterval": 0.2,
+    "bulletLimitDistance": 15.0,
+    "prepareTime": 1.5,
+    "rechargeTime": 1.0,
+    "lostSightTime": 10.0,
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "isTransparency": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "MissionRing",
+  "type": "MissionRing",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 0,
+    "challengeID": 0,
+    "defaultTimeLimitNormal": 30.0,
+    "defaultTimeLimitHard": 45.0,
+    "ringNormaNormal": 100,
+    "ringNormaHard": 200,
+    "targetNormalCamera": "{00000000-0000-0000-0000-000000000000}",
+    "targetHardCamera": "{00000000-0000-0000-0000-000000000000}",
+    "cameraEaseTime": 0.45,
+    "cameraStayTime": 0.75,
+    "greatClearTimeNormal": 20.0,
+    "greatClearTimeHard": 35.0,
+    "CollectionItemBoxTypeNormal": "Blue",
+    "CollectionItemBoxIDNormal": 121,
+    "CollectionItemBoxTypeHard": "Blue",
+    "CollectionItemBoxIDHard": 128
+  }
+}

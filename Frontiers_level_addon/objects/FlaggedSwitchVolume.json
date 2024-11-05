@@ -1,0 +1,50 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "FlaggedSwitchVolume",
+  "type": "FlaggedSwitchVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "condition": "COND_PULSE",
+    "lifetime": 0.0,
+    "eventDriven": false,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 1.0,
+      "CollisionHeight": 61.0,
+      "CollisionDepth": 61.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "actions": [
+      {
+        "action": "On",
+        "objectIds": [
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "delayTime": 0.0
+      }
+    ]
+  }
+}

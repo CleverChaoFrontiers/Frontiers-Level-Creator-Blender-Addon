@@ -1,0 +1,46 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "WhiteSpaceDestructibleWall",
+  "type": "WhiteSpaceDestructibleWall",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "Height": 8.0,
+    "Width": 16.0,
+    "Depth": 1.0,
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "maxHp": 100,
+    "spearAttackDamageValue": 10,
+    "spinAttackDamageValue": 10,
+    "enemyBlowAwayAttackDamageValue": 50,
+    "dWingAttackDamageValue": 100,
+    "debrisData": {
+      "gravity": 10.0,
+      "lifeTime": 30.0,
+      "mass": 1.0,
+      "friction": 0.3,
+      "explosionScale": 0.3,
+      "impulseScale": 0.5
+    },
+    "no": 0
+  }
+}

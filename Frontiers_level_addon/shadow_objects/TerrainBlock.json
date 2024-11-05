@@ -1,0 +1,70 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "TerrainBlock",
+  "type": "TerrainBlock",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "BlockType": "BLOCK_BOX",
+    "BlockWidth": 1.0,
+    "BlockWidthEnd": 1.0,
+    "BlockHeight": 1.0,
+    "BlockDepth": 1.0,
+    "BlockDepthOffset": 0.0,
+    "ArchRadius": 1.0,
+    "ArchDegree": 90.0,
+    "ArchDivNum": 10,
+    "SlopeHeight": 0.0,
+    "EnableDamage": false,
+    "EnableSolid": true,
+    "LayerGroup": "LAYER_LAND",
+    "AttrParkour": false,
+    "AttrBreakable": false,
+    "AttrSlope": false,
+    "AttrWall": false,
+    "AttrLoop": false,
+    "AttrSlide": false,
+    "AttrSlider": false,
+    "AttrUnsupported": false,
+    "AttrAmoeba": false,
+    "AttrWater": false,
+    "material": "MAT_NONE",
+    "WallLeft": "WALL_NONE",
+    "WallRight": "WALL_NONE",
+    "WallFront": "WALL_NONE",
+    "WallBack": "WALL_NONE",
+    "WallHeight": 1.0,
+    "ColorType": "COLOR_WHITE",
+    "Interval": 0.0,
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "damageType": "BDT_None",
+    "eventDriven": false,
+    "destOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "isReverse": false,
+    "moveSpeed": 2.0,
+    "waitTime": 0.0,
+    "phase": 0.0
+  }
+}

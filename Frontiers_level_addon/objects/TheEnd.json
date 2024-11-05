@@ -1,0 +1,37 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "TheEnd",
+  "type": "TheEnd",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "isEvent": false,
+    "blockCollisionPos": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "modelPosDepth": 39.5,
+    "modelScale": 1.0,
+    "blockColliderRadius": 25.5,
+    "HitColliderRadius": 28.9,
+    "target": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ]
+  }
+}

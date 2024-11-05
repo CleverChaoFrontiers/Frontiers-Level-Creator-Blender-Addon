@@ -420,6 +420,7 @@ class DensityPanel(bpy.types.Panel):
     """Creates a Panel in the Object properties window"""
     bl_label = "Frontiers Density Panel"
     bl_idname = "OBJECT_PT_previews"
+    bl_parent_id = "PT_EXPPanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'Frontiers Level Creator'

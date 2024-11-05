@@ -1,0 +1,57 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "SmallBattery",
+  "type": "SmallBattery",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "visual_scale": 1.0,
+    "respawnTime": -1.0,
+    "small_missile_visual_scale": 1.0,
+    "small_missile_collision_size_type": "Diameter_x_Diameter",
+    "small_missile_diameter": 1.2,
+    "small_missile_height": 5.0,
+    "small_missile_width": 1.2,
+    "small_missile_speed": 10.0,
+    "small_missile_acceleration": 0.0,
+    "small_missile_speed_max": 30.0,
+    "small_missile_wait_time_ready": 0.0,
+    "small_missile_wait_time_shot": 3.0,
+    "small_missile_life_time": 6.0,
+    "small_missile_launch_position_offset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "small_missile_blown_velocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "small_missile_omen_type": "OT_A",
+    "small_missile_omen_skip_1st_time": true,
+    "small_missile_rotate_forward_type": "RFT_HALFZ",
+    "small_missile_se_flags": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DashCircleBullet",
+  "type": "DashCircleBullet",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "moveSpeed": 0.0,
+    "ocTime": 0.0,
+    "dashSpeed": 0.0,
+    "lifeTime": 0.0,
+    "offsetAngle": 0.0,
+    "scale": 0.0,
+    "groundCheck": false,
+    "groundNormal": false,
+    "specifiiedLanding": false,
+    "specifiiedLandingOffsetHeight": 0.0
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraCyberStandard",
+  "type": "CameraCyberStandard",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "fovy": 45.0,
+    "zRot": 0.0,
+    "distance": 6.0,
+    "pathName": "",
+    "pathOffset": 0.0,
+    "reversePathFront": false,
+    "azimuthSensitivity": 12.0,
+    "elevationUpSensitivity": 7.5,
+    "elevationDownSensitivity": 6.0,
+    "azimuthOffset": 0.0,
+    "elevationOffset": 0.0,
+    "targetUpOffset": 1.0
+  }
+}

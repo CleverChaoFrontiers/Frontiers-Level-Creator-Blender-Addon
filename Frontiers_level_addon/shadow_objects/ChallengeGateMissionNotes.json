@@ -1,0 +1,43 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "ChallengeGateMissionNotes",
+  "type": "ChallengeGateMissionNotes",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "pathName": "",
+    "pathMoveSpeed": 20.0,
+    "speedToPath": 20.0,
+    "time": 20.0,
+    "notesColor": "Blue",
+    "isWating": false,
+    "waitRange": 40.0,
+    "targetCam": "{00000000-0000-0000-0000-000000000000}",
+    "preMoveTime": 2.0,
+    "preMoveWaitCamTime": 1.0,
+    "eventDriven": false,
+    "normalGoalPos": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "isEclipse": true,
+    "CollectionItemBoxType": "Blue",
+    "CollectionItemBoxID": 101
+  }
+}

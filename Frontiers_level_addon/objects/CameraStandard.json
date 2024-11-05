@@ -1,0 +1,43 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraStandard",
+  "type": "CameraStandard",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "common": {
+      "distance": 10.5,
+      "azimuthSensitivity": 7.5,
+      "elevationUpSensitivity": 6.0,
+      "elevationDownSensitivity": 7.5,
+      "elevationOffset": 0.0
+    },
+    "dash": {
+      "minDistance": 10.5,
+      "maxDistance": 13.2,
+      "elevationOffset": 0.0,
+      "azimuthSensitivity": 15.0
+    },
+    "lockon": {
+      "distance": 5.0,
+      "elevationOffset": 0.0,
+      "targetUpOffset": 1.2
+    },
+    "disabledBattleState": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraVolumeOnce",
+  "type": "CameraVolumeOnce",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "target": "{00000000-0000-0000-0000-000000000000}",
+    "priority": 0,
+    "useHighPriority": false,
+    "easeTimeEnter": 0.0,
+    "easeTimeLeave": 0.0,
+    "interpolateTypeEnter": "INTERPOLATE_RELATIVE",
+    "interpolateTypeLeave": "INTERPOLATE_RELATIVE",
+    "enableCollisionEnter": false,
+    "enableCollisionLeave": false,
+    "disableFreeMode": false,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "pathDivideNum": 20,
+      "pathSetDirection": "PATH_TO_GOAL",
+      "pathSetLength": 10.0
+    }
+  }
+}

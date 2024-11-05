@@ -1,0 +1,47 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DamageVolume",
+  "type": "DamageVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "type": "TypeReuse",
+    "eventDriven": true,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_ALL",
+      "CollisionWidth": 61.0,
+      "CollisionHeight": 31.0,
+      "CollisionDepth": 31.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "targets": [
+      {
+        "objects": [
+          "{00000000-0000-0000-0000-000000000000}"
+        ],
+        "damagePoint": 10
+      }
+    ]
+  }
+}

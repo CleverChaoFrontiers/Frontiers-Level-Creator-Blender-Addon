@@ -1,0 +1,30 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "HackingPlayerMachine",
+  "type": "HackingPlayerMachine",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "rightLimit": 28.0,
+    "leftLimit": 28.0,
+    "frontLimit": 5.0,
+    "backLimit": 5.0,
+    "enableDepth": false,
+    "targetManager": "{00000000-0000-0000-0000-000000000000}"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PracticeNotifyVolume",
+  "type": "PracticeNotifyVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "gimmickNo": 3,
+    "practiceNo": 2,
+    "tipsNo": 2,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 40.0,
+      "CollisionHeight": 30.0,
+      "CollisionDepth": 40.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "margin": 5.0,
+    "unlockStatus": "UNLOCK_NOT_LOCK"
+  }
+}

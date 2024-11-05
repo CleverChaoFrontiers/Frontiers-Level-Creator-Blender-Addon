@@ -1,0 +1,33 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PipeSpring",
+  "type": "PipeSpring",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "velocitySpring": 25.0,
+    "outOfControlSpring": 0.2,
+    "velocityPipeOut": 20.0,
+    "outOfControlPipeOut": 0.3,
+    "closeSec": 0.3,
+    "isStartClose": true,
+    "colliderHeight": 0.6,
+    "colliderRadius": 0.7,
+    "openSec": 0.5
+  }
+}

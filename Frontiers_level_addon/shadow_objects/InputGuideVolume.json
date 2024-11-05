@@ -1,0 +1,65 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "InputGuideVolume",
+  "type": "InputGuideVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "displayType": "DISPLAYTYPE_2D",
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "pathDivideNum": 20,
+      "pathSetDirection": "PATH_TO_GOAL",
+      "pathSetLength": 10.0
+    },
+    "guideType": "TIMESTOP",
+    "endRule": "LEAVE_VOLUME",
+    "displayTime": 3.0,
+    "screenPos": [
+      0.0,
+      0.0
+    ],
+    "locator": "{00000000-0000-0000-0000-000000000000}",
+    "locatorOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "enableFlags": {
+      "lightGage": false,
+      "enableBoost": false,
+      "enableDWing": false,
+      "dAmoeba": false,
+      "timeStop": true
+    },
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_EACHTIME",
+    "disableOption": false
+  }
+}

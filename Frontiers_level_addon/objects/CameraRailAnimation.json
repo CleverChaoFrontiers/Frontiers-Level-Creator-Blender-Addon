@@ -1,0 +1,35 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraRailAnimation",
+  "type": "CameraRailAnimation",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "fovy": 60.0,
+    "upDirType": "UPDIR_Y_UP",
+    "zRot": 0.0,
+    "eyePathName": "",
+    "eyePathOffset": 0.0,
+    "atPathName": "",
+    "atPathOffset": 0.0,
+    "type": "TIME_DRIVEN",
+    "motionLength": 2.0,
+    "reversePathAdvance": false,
+    "correctTargetPoint": true
+  }
+}

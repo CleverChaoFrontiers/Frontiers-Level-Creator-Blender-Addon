@@ -8,12 +8,17 @@ import mathutils # type: ignore
 import math
 import bmesh # type: ignore
 import time
+import copy
+from .Frontiers_rail_script import Find_node_rot
 
 def pack(files, directoryHedgearcpack):
     for f in range(len(files)): # For every file that needs to be packed
         if os.path.exists(files[f]): # Check if file exists
             os.chdir(os.path.dirname(directoryHedgearcpack)) # Go to the directory that hedgearcpack is in
-            print(os.popen(f'hedgearcpack "{files[f]}" -T=rangers').read()) # Run hedgearcpack to pack the file
+            if bpy.context.scene.hedgegameChoice == "shadow":
+                print(os.popen(f'hedgearcpack "{files[f]}" -T=sxsg').read()) # Run hedgearcpack to pack the file for shadow
+            else:
+                print(os.popen(f'hedgearcpack "{files[f]}" -T=rangers').read()) # Run hedgearcpack to pack the file
 
 def unpack(files, directoryHedgearcpack):
     for f in range(len(files)): # For every file that needs to be packed
@@ -32,7 +37,7 @@ def clearFolder(filepath, keepFiles):
     files = os.listdir(filepath) # Gets every file/folder in the directory
     for f in range(len(files)): # For every file/folder
         if os.path.isfile(f"{filepath}\\{files[f]}"): # Only if is file, not folder
-            if not files[f].split(".")[-1] in keepFiles: # If the file extension is not in the list of extensions to be kept
+            if not files[f].split(".")[-1].lower() in keepFiles: # If the file extension is not in the list of extensions to be kept
                 os.remove(f"{filepath}\\{files[f]}") # Removes file
 
 def ID_generator(self):
@@ -42,138 +47,76 @@ def ID_generator(self):
         Id = Id.replace("X", hexValues[random.randrange(len(hexValues))], 1) # generates a random ID
     return Id
 
-def updateprogress(advance):
-    bpy.types.Scene.heightmapprogress =  bpy.types.Scene.heightmapprogress + advance
-    bpy.types.Scene.heightmapprogresstext = f"LOADING ({round(bpy.types.Scene.heightmapprogress * 100)}%)"
-    bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
-    return
+def updateprogress(advance, name, milestone):
+    if (4, 0, 0) > bpy.app.version:
+        bpy.types.Scene.exportprogress =  bpy.types.Scene.exportprogress + advance
+        bpy.types.Scene.exportprogresstext = f"{name} ({round(bpy.types.Scene.exportprogress * 100)}%)"
+        if bpy.types.Scene.exportprogress >= milestone:
+            bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+            milestone = (math.floor(bpy.types.Scene.exportprogress * 10) / 10) + 0.1
+        return milestone
 
-# def Find_node_rot(curve_obj, current_point, next_point, LastLength = 0, Final_curve_point = False,First_curve_point = False):
-#     # Get the location of the curve object
-    
-#     spline = curve_obj.data.splines[0]
-#     # Add a cube at the location of the curve object
-#     bpy.ops.object.empty_add(type='SINGLE_ARROW',location=[0,0,0])
-#     bezier_curve = False
-#     # Get the newly added cube object
-#     cube_obj = bpy.context.active_object
- 
-#     # Add Follow Path constraint
-#     bpy.ops.object.constraint_add(type='FOLLOW_PATH')
-#     constraint = cube_obj.constraints[-1]  # Get the last constraint added, which is the Follow Path constraint
-#     splinelength = 0.0
-#     if spline.type == "BEZIER": # If the curve is a bezier curve
-#         points_in_rotcurve = spline.bezier_points #Set the points to iterate to be bezier points instead
-#     else:
-#         points_in_rotcurve = spline.points
-#     for i in range(len(points_in_rotcurve)-1):
-#         if Final_curve_point == False:
-#             segment = (points_in_rotcurve[i+1].co - points_in_rotcurve[i].co).length
-#             splinelength += segment
-#     # Set the target curve
-#     constraint.target = curve_obj
-#     constraint.use_fixed_location = True
-#     constraint.use_curve_follow = True
-#     if Final_curve_point:
-#         constraint.forward_axis = "TRACK_NEGATIVE_Y"#'TRACK_NEGATIVE_Z'
-#         constraint.up_axis = 'UP_Z'
-#     else:
-#         constraint.forward_axis = 'TRACK_NEGATIVE_Y'
-#         constraint.up_axis = 'UP_Z'
+#def Find_node_rot(curve_obj,index,path_dir):#New fixed rotation whooo! Based heavily on the density script
+#    beveled_curve = False
+#    if bpy.context.mode != 'OBJECT':
+#        bpy.ops.object.mode_set(mode='OBJECT')
+#    if curve_obj.data.bevel_mode != 'ROUND':
+#        original_bevel_mode = curve_obj.data.bevel_mode
+#        original_bevel_size = curve_obj.data.bevel_depth
+#        curve_obj.data.bevel_mode = 'ROUND'
+#        if curve_obj.data.bevel_depth != 0:
+#            curve_obj.data.bevel_depth = 0
+#        beveled_curve = True
+#    object_name = "Frontiers_rotation_plane"
+#    nodetree_name = "FrontiersRailRotation"
+#    filepath = os.path.join(path_dir, r"Other\\frontiers_rotation_solution.blend")
+#    # Check if the file exists and is a valid blend file
+#    if nodetree_name not in bpy.data.node_groups:
+#        try:
+#            with bpy.data.libraries.load(filepath, link=False) as (data_from, data_to): #try loading the nodetree. Cancel script if failed
+#                data_to.node_groups = [nodetree_name]   
+#        except Exception as error:
+#            print(f"Failed to load {filepath}: {error}")
+#            return
+#    bpy.ops.mesh.primitive_plane_add(size = 1.0)
+#    appended_rotobject = bpy.context.view_layer.objects.active
+#        
+#    geo_node_mod = appended_rotobject.modifiers.new(name="Frontiersrotation", type='NODES')
+#    geo_node_mod.node_group = bpy.data.node_groups[nodetree_name]
+#    if appended_rotobject != None:
+#        appended_rotobject.modifiers["Frontiersrotation"]["Input_2"] = index
+#        appended_rotobject.modifiers["Frontiersrotation"]["Input_3"] = curve_obj
+#    else:
+#        return 0,False
+#    bpy.ops.object.select_all(action='DESELECT')
+#    appended_rotobject.select_set(True)
+#    bpy.context.view_layer.objects.active = appended_rotobject
+#    bpy.ops.object.modifier_apply(modifier="Frontiersrotation",single_user=True)
+#    bpy.ops.object.mode_set(mode='EDIT') # Switches to Edit Mode
+#    bm = bmesh.from_edit_mesh(appended_rotobject.data) # Gets the Blender Mesh from the rotobject
+#    for theface in bm.faces:
+#        face = theface
+#    appended_rotobject.rotation_mode = 'QUATERNION'
+#    objectRotation = face.normal.to_track_quat('Z', 'Y')
+#    bpy.ops.object.mode_set(mode='OBJECT')
+#    bpy.ops.object.select_all(action='DESELECT')
+#    curve_obj.select_set(True)
+#    bpy.context.view_layer.objects.active = curve_obj
+#    if beveled_curve:
+#        curve_obj.data.bevel_depth = original_bevel_size
+#        curve_obj.data.bevel_mode = original_bevel_mode
+#    bpy.data.objects.remove(appended_rotobject, do_unlink=True)
+#    return objectRotation,True
 
-#     # Set the offset to follow the curve until reaching the positionof the current_point
-#     if Final_curve_point:
-#         constraint.offset_factor = 1.0
-#     else:
-#         constraint.offset_factor =LastLength + (next_point.co- current_point.co).length / splinelength
-#     NewFactor = constraint.offset_factor
-#     # Apply the modifier
-#     bpy.ops.constraint.apply(constraint= constraint.name)
-#     cube_obj.rotation_mode = 'QUATERNION'
-#     Rotation = cube_obj.rotation_quaternion 
-#     # Delete the cube
-#     #bpy.data.objects.remove(cube_obj)
-#     return Rotation, NewFactor
-
-
-#     NewFactor = constraint.offset_factor
-
-#     bpy.context.view_layer.update()  # Ensure the constraint is applied and updated
-
-#     empty_obj.rotation_mode = 'QUATERNION'
-#     Rotation = empty_obj.rotation_quaternion.copy()
-
-#     #bpy.data.objects.remove(empty_obj)
-
-#     return Rotation, NewFactor
-def Find_node_rot(curve_obj,index,path_dir):#New fixed rotation whooo! Based heavily on the density script
-    beveled_curve = False
-    if bpy.context.mode != 'OBJECT':
-        bpy.ops.object.mode_set(mode='OBJECT')
-    if curve_obj.data.bevel_depth != 0:
-        original_bevel_size = curve_obj.data.bevel_depth
-        curve_obj.data.bevel_depth = 0
-        beveled_curve = True
-    object_name = "Frontiers_rotation_plane"
-    nodetree_name = "FrontiersRailRotation"
-    filepath = os.path.join(path_dir, r"Other\frontiers_rotation_solution.blend")
-    # Check if the file exists and is a valid blend file
-    if nodetree_name not in bpy.data.node_groups:
-        try:
-            with bpy.data.libraries.load(filepath, link=False) as (data_from, data_to): #try loading the nodetree. Cancel script if failed
-                data_to.node_groups = [nodetree_name]   
-            # with bpy.data.libraries.load(filepath) as (data_from, data_to):
-            #     if object_name in data_from.objects:
-            #         data_to.objects = [object_name]
-                # else:
-                #     print(f"Object '{object_name}' not found in {filepath}")
-                #     return
-        except Exception as error:
-            print(f"Failed to load {filepath}: {error}")
-            return
-    bpy.ops.mesh.primitive_plane_add(size = 1.0)
-    appended_rotobject = bpy.context.view_layer.objects.active
-    # Link the object to the scene
-    # appended_rotobject = None
-    # for rot_solution in data_to.objects:
-    #     if rot_solution is not None:
-    #         bpy.context.collection.objects.link(rot_solution)
-    #         appended_rotobject = rot_solution
-    #         #print(f"Appended '{object_name}' to the current scene.")
-    #     else:
-    #         print(f"Failed to append '{object_name}'.")
-        
-    geo_node_mod = appended_rotobject.modifiers.new(name="Frontiersrotation", type='NODES')
-    geo_node_mod.node_group = bpy.data.node_groups[nodetree_name]
-    if appended_rotobject != None:
-        appended_rotobject.modifiers["Frontiersrotation"]["Input_2"] = index
-        appended_rotobject.modifiers["Frontiersrotation"]["Input_3"] = curve_obj
-    else:
-        return 0,False
-    bpy.ops.object.select_all(action='DESELECT')
-    appended_rotobject.select_set(True)
-    bpy.context.view_layer.objects.active = appended_rotobject
-    bpy.ops.object.modifier_apply(modifier="Frontiersrotation",single_user=True)
-    bpy.ops.object.mode_set(mode='EDIT') # Switches to Edit Mode
-    bm = bmesh.from_edit_mesh(appended_rotobject.data) # Gets the Blender Mesh from the rotobject
-    for theface in bm.faces:
-        face = theface
-    appended_rotobject.rotation_mode = 'QUATERNION'
-    objectRotation = face.normal.to_track_quat('Z', 'Y')
-    bpy.ops.object.mode_set(mode='OBJECT')
-    bpy.ops.object.select_all(action='DESELECT')
-    curve_obj.select_set(True)
-    bpy.context.view_layer.objects.active = curve_obj
-    if beveled_curve:
-        curve_obj.data.bevel_depth = original_bevel_size
-    bpy.data.objects.remove(appended_rotobject, do_unlink=True)
-    return objectRotation,True
 def Instantiate(pcmodelname,pccolname,object):
-    pcmodel = [pcmodelname.split(".")[0], (object.location.x, object.location.y, object.location.z), (object.rotation_euler.x, object.rotation_euler.y, object.rotation_euler.z), (object.scale.x, object.scale.y,object.scale.z)]
-    if pccolname != "":
-        pccol = [pcmodelname.split(".")[0]+"_"+ pccolname.split(".")[0], (object.location.x, object.location.y, object.location.z), (object.rotation_euler.x, object.rotation_euler.y, object.rotation_euler.z),(object.scale.x, object.scale.y,object.scale.z)]
+    if pcmodelname != None:
+        pcmodel = [pcmodelname.split(".")[0], (object.location.x, object.location.y, object.location.z), (object.rotation_euler.x, object.rotation_euler.y, object.rotation_euler.z), (object.scale.x, object.scale.y,object.scale.z)]
     else:
-        pccol = ""
+        pcmodel = None
+    if pccolname != None:
+        pccol = [pccolname.split(".")[0], (object.location.x, object.location.y, object.location.z), (object.rotation_euler.x, object.rotation_euler.y, object.rotation_euler.z),(object.scale.x, object.scale.y,object.scale.z)]
+    else:
+        pccol = None
     return pcmodel, pccol
 class CompleteExport(bpy.types.Operator):
     bl_idname = "qexport.completeexport"
@@ -200,7 +143,16 @@ class ExportTerrain(bpy.types.Operator):
     bl_label = "Terrain"
     bl_description = "Exports your level's terrain, collision, materials and textures"
 
+    if (4, 0, 0) > bpy.app.version:
+        bpy.types.Scene.exportprogress = 0.0 # Resets the progress bar
+        bpy.types.Scene.exportprogresstext = "- - -"
+
     def execute(self, context):
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 0.0
+        milestone = 0
+        updateprogress(0.0, "Terrain", milestone)
+
         preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
         directoryModelconverter = os.path.abspath(bpy.path.abspath(preferences.directoryModelconverter)) # Gets ModelConverter path from preferences
         directoryBtmesh = os.path.abspath(bpy.path.abspath(preferences.directoryBtmesh)) # Gets btmesh path from preferences
@@ -229,6 +181,12 @@ class ExportTerrain(bpy.types.Operator):
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Program missing", icon = "QUESTION") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
 
+        if not bpy.data.is_saved:
+            def saveError(self, context):
+                self.layout.label(text="The .blend file is not saved!") # Sets the popup label
+            bpy.context.window_manager.popup_menu(saveError, title = "File not saved", icon = "DISK_DRIVE") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+        
         if bpy.context.scene.modDir == "": # Gives an error if no mod directory is sent
             def missingProgramError(self, context):
                 self.layout.label(text="No Mod directory is set") # Sets the popup label
@@ -244,13 +202,37 @@ class ExportTerrain(bpy.types.Operator):
         
         unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00.pac", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc.pac", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density.pac"], directoryHedgearcpack)
 
-        bpy.ops.object.mode_set(mode = 'OBJECT')
+        if bpy.context.view_layer.objects.active == None:
+            for o in bpy.data.objects:
+                bpy.context.view_layer.objects.active = o
+                break
+        try:
+            bpy.ops.object.mode_set(mode = 'OBJECT')
+        except RuntimeError:
+            pass
 
-        #for m in bpy.data.materials:
-        #    m.name = m.name.replace(".", "__") # Removes any "."s from material names, which cause crashes (broken in Blender 4.0)
+        oldmats = []
+        newmats = []
+        for m in bpy.data.materials:
+            if "." in m.name:
+                if m.name[:m.name.find(".")] in bpy.data.materials:
+                    oldmats.append(m)
+                    newmats.append(bpy.data.materials[m.name[:m.name.find(".")]])
+        
+        if len(oldmats) != 0:
+            for o in bpy.data.objects:
+                if o.type == "MESH":
+                    for ms in o.material_slots:
+                        if ms.material in oldmats:
+                            ms.material = newmats[oldmats.index(ms.material)]
+        
+        for m in oldmats:
+            bpy.data.materials.remove(m)
+                    
 
         collection = bpy.context.scene.trrCollection # Gets the chosen collection
         fbxModels = [] # Initialises the list of paths to FBX models
+        fbxCollectionNames = []
 
         if os.path.exists(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp"):
             shutil.rmtree(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp")
@@ -260,6 +242,9 @@ class ExportTerrain(bpy.types.Operator):
             collection = bpy.context.scene.collection
 
         print(f"Exporting from Collection \"{collection.name}\".")
+        
+        estimated = ((len(collection.children) + 1) * 6) + (len(bpy.data.images) * 0.4)
+        print(f"Est: {estimated}")
 
         pcmodelInstances = [] # Secret feature mainly for placing multiple animated .models (I needed it for a project)
         pccolInstances = []
@@ -267,127 +252,195 @@ class ExportTerrain(bpy.types.Operator):
             bpy.ops.object.select_all(action='DESELECT') # Deselects all
             for o in c.all_objects:
                 original_rotate_mode = o.rotation_mode
-                if o.name[:6].upper() == "_INST_":
+                #if o.name[:6].upper() == "_INST_":
+                #    if original_rotate_mode != "XZY":
+                #        o.rotation_mode = "QUATERNION"
+                #        o.rotation_mode = "XZY"
+                #
+                #    pcmodelInstances.append([o.name[6:].split(".")[0], (o.location.x, o.location.y, o.location.z), (o.rotation_euler.x, o.rotation_euler.y, o.rotation_euler.z), (o.scale.x, o.scale.y,o.scale.z)])
+                #    if original_rotate_mode != "XZY":
+                #        o.rotation_mode = "QUATERNION"
+                #        o.rotation_mode = original_rotate_mode
+                #elif o.name[:9].upper() == "_INSTCOL_":
+                #    if original_rotate_mode != "XZY":
+                #        o.rotation_mode = "QUATERNION"
+                #        o.rotation_mode = "XZY"
+                #
+                #    pccolInstances.append([o.name[9:].split(".")[0]+"_col", (o.location.x, o.location.y, o.location.z), (o.rotation_euler.x, o.rotation_euler.y, o.rotation_euler.z), (o.scale.x, o.scale.y,o.scale.z)])
+                #    if original_rotate_mode != "XZY":
+                #        o.rotation_mode = "QUATERNION"
+                #        o.rotation_mode = original_rotate_mode
+                #elif "INST(" in o.name:
+                #    if original_rotate_mode != "XZY":
+                #        o.rotation_mode = "QUATERNION"
+                #        o.rotation_mode = "XZY"
+                #    splitInst = o.name.split("(")
+                #    
+                #    inst_names = splitInst[1].replace(")","").split(",")
+                #    
+                #    inst_names.append("")
+                #    pcmodelInst, pccolInst = Instantiate(inst_names[0],inst_names[1],o)
+                #    pcmodelInstances.append(pcmodelInst)
+                #    if pccolInst != "":
+                #        pccolInstances.append(pccolInst)
+                #    if original_rotate_mode != "XZY":
+                #        o.rotation_mode = "QUATERNION"
+                #        o.rotation_mode = original_rotate_mode
+                print(f"o.name.lower() {o.name.lower()}")
+                if o.name.lower().startswith("inst("):
+                    instsettings = o.name[5:o.name.find(")")].replace(", ", ",")
+                    instsettings = instsettings.split(",")
+                    instname = instsettings[0].replace('"', '')
+                    
                     if original_rotate_mode != "XZY":
                         o.rotation_mode = "QUATERNION"
                         o.rotation_mode = "XZY"
 
-                    pcmodelInstances.append([o.name[6:].split(".")[0], (o.location.x, o.location.y, o.location.z), (o.rotation_euler.x, o.rotation_euler.y, o.rotation_euler.z), (o.scale.x, o.scale.y,o.scale.z)])
-                    if original_rotate_mode != "XZY":
-                        o.rotation_mode = "QUATERNION"
-                        o.rotation_mode = original_rotate_mode
-                elif o.name[:9].upper() == "_INSTCOL_":
-                    if original_rotate_mode != "XZY":
-                        o.rotation_mode = "QUATERNION"
-                        o.rotation_mode = "XZY"
+                    if len(instsettings) > 1:
+                        if instsettings[1].lower() == "visual":
+                            pcmodelInst, pccolInst = Instantiate(instname,None,o)
+                        elif instsettings[1].lower() == "collision":
+                            pcmodelInst, pccolInst = Instantiate(None,instname,o)
+                    else:
+                        pcmodelInst, pccolInst = Instantiate(instname,instname,o)
 
-                    pccolInstances.append([o.name[9:].split(".")[0]+"_col", (o.location.x, o.location.y, o.location.z), (o.rotation_euler.x, o.rotation_euler.y, o.rotation_euler.z), (o.scale.x, o.scale.y,o.scale.z)])
-                    if original_rotate_mode != "XZY":
-                        o.rotation_mode = "QUATERNION"
-                        o.rotation_mode = original_rotate_mode
-                elif "INST(" in o.name:
-                    if original_rotate_mode != "XZY":
-                        o.rotation_mode = "QUATERNION"
-                        o.rotation_mode = "XZY"
-                    splitInst = o.name.split("(")
-                    
-                    inst_names = splitInst[1].replace(")","").split(",")
-                    
-                    inst_names.append("")
-                    pcmodelInst, pccolInst = Instantiate(inst_names[0],inst_names[1],o)
-                    pcmodelInstances.append(pcmodelInst)
-                    if pccolInst != "":
+                    if pcmodelInst != None:
+                        pcmodelInstances.append(pcmodelInst)
+                    if pccolInst != None:
                         pccolInstances.append(pccolInst)
+                    
                     if original_rotate_mode != "XZY":
                         o.rotation_mode = "QUATERNION"
                         o.rotation_mode = original_rotate_mode
                 else:
                     if not "FrontiersAsset" in o:
                         o.select_set(True)
-            bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{c.name.replace(' ', '_')}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = True, add_leaf_bones=False,mesh_smooth_type='FACE')
-            fbxModels.append(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{c.name.replace(' ', '_')}")
+            exportname = c.name.replace(' ', '_')
+            for rm in ["InstOnly_", "instonly_", "INSTONLY_", "_NoCol", "_NoVis", "_nocol", "_novis", "_NOCOL", "_NOVIS"]:
+                exportname = exportname.replace(rm, "")
+            bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = True, add_leaf_bones=False,mesh_smooth_type='FACE')
+            fbxModels.append(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}")
+            fbxCollectionNames.append(c.name)
         
+
+            milestone = updateprogress(4 / estimated, "Terrain", milestone)
+
         bpy.ops.object.select_all(action='DESELECT') # Deselects all
         for obj in collection.objects:
             if not "FrontiersAsset" in obj:
                 obj.select_set(True)
-        
-        bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{collection.name.replace(' ', '_')}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = True, add_leaf_bones=False,mesh_smooth_type='FACE')
-        fbxModels.append(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{collection.name.replace(' ', '_')}")
 
-        if bpy.context.scene.eoTerrain == False:
-            keepFiles = ["level", "txt", "rfl"]
-            if bpy.context.scene.keepPcm == True:
-                keepFiles.append("pcmodel")
-            if bpy.context.scene.keepPcl == True:
-                keepFiles.append("pccol")
-            if bpy.context.scene.keepTex == True:
-                keepFiles.append("dds")
-            if bpy.context.scene.keepMat == True:
-                keepFiles.append("material")
-            clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00", keepFiles)
-            clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc", keepFiles)
-            if bpy.context.scene.keepDen == False:
-                clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density", ["level", "txt", "rfl"])
+        exportname = collection.name.replace(' ', '_')
+        for rm in ["InstOnly_", "instonly_", "INSTONLY_", "_NoCol", "_NoVis", "_nocol", "_novis", "_NOCOL", "_NOVIS"]:
+            exportname = exportname.replace(rm, "")
+        bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = True, add_leaf_bones=False,mesh_smooth_type='FACE')
+        fbxModels.append(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}")
+        fbxCollectionNames.append(collection.name)
+
+        keepFiles = ["level", "txt", "rfl"]
+        if bpy.context.scene.exptrr in ["add", "write", "keep"]:
+            keepFiles.append("terrain-model")
+        if bpy.context.scene.expcol in ["add", "write", "keep"]:
+            keepFiles.append("btmesh")
+        if bpy.context.scene.expmat in ["add", "write", "keep"]:
+            keepFiles.append("material")
+        if bpy.context.scene.expdds in ["add", "write", "keep"]:
+            keepFiles.append("dds")
+        if bpy.context.scene.expuva in ["add", "write", "keep"]:
+            keepFiles.append("uv-anim")
+        if bpy.context.scene.exppcm in ["add", "write", "keep"]:
+            keepFiles.append("pcmodel")
+        if bpy.context.scene.exppcl in ["add", "write", "keep"]:
+            keepFiles.append("pccol")
+        if bpy.context.scene.expmsc in ["add", "write", "keep"]:
+            keepFiles.extend(["pt-anim", "path", "pxd", "pcrt", "light", "model", "fxcol", "vat"])
+        clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00", keepFiles)
+        clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc", keepFiles)
+
+        keepFiles = ["level", "txt", "rfl"]
+        if bpy.context.scene.expden in ["add", "write", "keep"]:
+            keepFiles.extend(["densitypointcloud", "btmesh", "densitysetting", "material", "model","dds"])
+        clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density", keepFiles)
 
         os.chdir(os.path.dirname(directoryModelconverter))
         pcmodel = []
         instanced_pccol = []
         for f in range(len(fbxModels)):
-            fbxName = fbxModels[f].split("\\")[-1]
+            fbxName = fbxCollectionNames[f]
+            fbxName = fbxName.replace("instonly", "").replace("INSTONLY_", "").replace("InstOnly_", "")
+            fbxName = fbxName.replace("_nocol", "").replace("_NOCOL", "").replace("_NoCol", "")
             print(f"Terrain - {fbxName}")
-            if bpy.context.scene.noVis == False and not "_novis" in fbxName.lower():
-                print("_novis" in fbxName.lower())
-                os.popen(f'ModelConverter --frontiers "{fbxModels[f]}.fbx" "{fbxModels[f]}.terrain-model"').read()
-                shutil.move(f"{fbxModels[f]}.terrain-model", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\{fbxName}.terrain-model")
+            if not "_novis" in fbxCollectionNames[f].lower():
+                if bpy.context.scene.exptrr in ["clear", "write"]:
+                    os.popen(f'ModelConverter --frontiers "{fbxModels[f]}.fbx" "{fbxModels[f]}.terrain-model"').read()
+                    shutil.move(f"{fbxModels[f]}.terrain-model", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\{fbxName}.terrain-model")
+
+                    if not "instonly_" in fbxCollectionNames[f].lower():
+                        pcmodelObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
+                        pcmodelObj["InstanceName"] = fbxModels[f].split('\\')[-1] + "_model"
+                        pcmodelObj["AssetName"] = fbxModels[f].split('\\')[-1]
+                        pcmodel.append(pcmodelObj)
+                elif bpy.context.scene.exptrr == "add":
+                    if not os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\{fbxName}.terrain-model"):
+                        os.popen(f'ModelConverter --frontiers "{fbxModels[f]}.fbx" "{fbxModels[f]}.terrain-model"').read()
+                        shutil.move(f"{fbxModels[f]}.terrain-model", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\{fbxName}.terrain-model")
+
+                        if not "instonly_" in fbxCollectionNames[f].lower():
+                            pcmodelObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
+                            pcmodelObj["InstanceName"] = fbxModels[f].split('\\')[-1] + "_model"
+                            pcmodelObj["AssetName"] = fbxModels[f].split('\\')[-1]
+                            pcmodel.append(pcmodelObj)
+
+        if bpy.context.scene.exppcm in ["clear", "write", "add"]:
+            for i in range(len(pcmodelInstances)): # terrain instancing
+
+                instName = pcmodelInstances[i][0]
+                instName = instName.replace("instonly", "").replace("INSTONLY_", "").replace("InstOnly_", "")
+                instName = instName.replace("_nocol", "").replace("_NOCOL", "").replace("_NoCol", "")
 
                 pcmodelObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
-                pcmodelObj["InstanceName"] = fbxModels[f].split('\\')[-1] + "_model"
-                pcmodelObj["AssetName"] = fbxModels[f].split('\\')[-1]
+                pcmodelObj["InstanceName"] = f"{instName}_model_{i}"
+                pcmodelObj["AssetName"] = instName
+
+                pcmodelObj["Position"]["X"] = pcmodelInstances[i][1][0]
+                pcmodelObj["Position"]["Y"] = pcmodelInstances[i][1][2]
+                pcmodelObj["Position"]["Z"] = -pcmodelInstances[i][1][1]
+                pcmodelObj["Rotation"]["X"] = pcmodelInstances[i][2][0]
+                pcmodelObj["Rotation"]["Y"] = pcmodelInstances[i][2][2]
+                pcmodelObj["Rotation"]["Z"] = -pcmodelInstances[i][2][1]
+                pcmodelObj["Scale"]["X"] = pcmodelInstances[i][3][0]
+                pcmodelObj["Scale"]["Y"] = pcmodelInstances[i][3][2]
+                pcmodelObj["Scale"]["Z"] = pcmodelInstances[i][3][1]
                 pcmodel.append(pcmodelObj)
-        for i in range(len(pcmodelInstances)): # terrain instancing
-            pcmodelObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
-            pcmodelObj["InstanceName"] = f"{pcmodelInstances[i][0]}_model_{i}"
-            pcmodelObj["AssetName"] = pcmodelInstances[i][0]
-            pcmodelObj["Position"]["X"] = pcmodelInstances[i][1][0]
-            pcmodelObj["Position"]["Y"] = pcmodelInstances[i][1][2]
-            pcmodelObj["Position"]["Z"] = -pcmodelInstances[i][1][1]
-            pcmodelObj["Rotation"]["X"] = pcmodelInstances[i][2][0]
-            pcmodelObj["Rotation"]["Y"] = pcmodelInstances[i][2][2]
-            pcmodelObj["Rotation"]["Z"] = -pcmodelInstances[i][2][1]
-            pcmodelObj["Scale"]["X"] = pcmodelInstances[i][3][0]
-            pcmodelObj["Scale"]["Y"] = pcmodelInstances[i][3][2]
-            pcmodelObj["Scale"]["Z"] = pcmodelInstances[i][3][1]
-            pcmodel.append(pcmodelObj)
-        for i in range(len(pccolInstances)): #Collision instancing
-            pccolObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
-            pccolObj["InstanceName"] = f"{pccolInstances[i][0]}_model_{i}"
-            pccolObj["AssetName"] = pccolInstances[i][0]
-            pccolObj["Position"]["X"] = pccolInstances[i][1][0]
-            pccolObj["Position"]["Y"] = pccolInstances[i][1][2]
-            pccolObj["Position"]["Z"] = -pccolInstances[i][1][1]
-            pccolObj["Rotation"]["X"] = pccolInstances[i][2][0]
-            pccolObj["Rotation"]["Y"] = pccolInstances[i][2][2]
-            pccolObj["Rotation"]["Z"] = -pccolInstances[i][2][1]
-            pccolObj["Scale"]["X"] = pccolInstances[i][3][0]
-            pccolObj["Scale"]["Y"] = pccolInstances[i][3][2]
-            pccolObj["Scale"]["Z"] = pccolInstances[i][3][1]
-            instanced_pccol.append(pccolObj)
+        
+        if bpy.context.scene.exppcl in ["clear", "write", "add"]:
+            for i in range(len(pccolInstances)): #Collision instancing
+                if "instonly_" in fbxName.lower():
+                    instName = pccolInstances[i][0]
+                    instName = instName.replace("instonly", "").replace("INSTONLY_", "").replace("InstOnly_", "")
+                    instName = instName.replace("_novis", "").replace("_NOVIS", "").replace("_NoVis", "")
 
-        if bpy.context.scene.keepPcm == False:
-            print("Don't keep pcmodel")
-            pcmodelFile = open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.hedgehog.pointcloud.json", "x")
-            pcmodelFile.write(json.dumps(pcmodel, indent=2))
-            pcmodelFile.close()
+                    pccolObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
+                    pccolObj["InstanceName"] = f"{instName}_model_{i}"
+                    pccolObj["AssetName"] = instName
+                else:
+                    pccolObj = {"UnknownUInt32_1": 1, "InstanceName": "", "AssetName": "", "Position": {"X": 0, "Y": 0, "Z": 0}, "Rotation": {"X": 0, "Y": 0, "Z": 0}, "Scale": {"X": 1.0, "Y": 1.0, "Z": 1.0}}
+                    pccolObj["InstanceName"] = f"{pccolInstances[i][0]}_model_{i}"
+                    pccolObj["AssetName"] = pccolInstances[i][0]
+                pccolObj["Position"]["X"] = pccolInstances[i][1][0]
+                pccolObj["Position"]["Y"] = pccolInstances[i][1][2]
+                pccolObj["Position"]["Z"] = -pccolInstances[i][1][1]
+                pccolObj["Rotation"]["X"] = pccolInstances[i][2][0]
+                pccolObj["Rotation"]["Y"] = pccolInstances[i][2][2]
+                pccolObj["Rotation"]["Z"] = -pccolInstances[i][2][1]
+                pccolObj["Scale"]["X"] = pccolInstances[i][3][0]
+                pccolObj["Scale"]["Y"] = pccolInstances[i][3][2]
+                pccolObj["Scale"]["Z"] = pccolInstances[i][3][1]
+                instanced_pccol.append(pccolObj)
 
-            os.chdir(os.path.dirname(directoryKnuxtools))
-            os.popen(f'knuxtools "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.hedgehog.pointcloud.json" -e=pcmodel').read()
-            shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.pcmodel", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\terrain.pcmodel")
-
-        else:
-            print("Keep pcmodel")
-            if not os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\terrain.pcmodel"):
-                print("Add anyway")
+        if bpy.context.scene.exppcm in ["clear", "write", "add"]:
+            if not (bpy.context.scene.exppcm == "add" and os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\terrain.pcmodel")):
+                print("Don't keep pcmodel")
                 pcmodelFile = open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.hedgehog.pointcloud.json", "x")
                 pcmodelFile.write(json.dumps(pcmodel, indent=2))
                 pcmodelFile.close()
@@ -395,79 +448,100 @@ class ExportTerrain(bpy.types.Operator):
                 os.chdir(os.path.dirname(directoryKnuxtools))
                 os.popen(f'knuxtools "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.hedgehog.pointcloud.json" -e=pcmodel').read()
                 shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.pcmodel", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\terrain.pcmodel")
-        if bpy.context.scene.keepPcl == False and instanced_pccol != []:
-            print("add collision instance")
-            pccolFile = open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.hedgehog.pointcloud.json", "x")
-            pccolFile.write(json.dumps(instanced_pccol, indent=2))
-            pccolFile.close()
+                
+        if bpy.context.scene.exppcl in ["clear", "write", "add"] and instanced_pccol != []:
+            if not (bpy.context.scene.exppcl == "add" and os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\instance_collision.pccol")):
+                print("add collision instance")
+                pccolFile = open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.hedgehog.pointcloud.json", "x")
+                pccolFile.write(json.dumps(instanced_pccol, indent=2))
+                pccolFile.close()
 
-            os.chdir(os.path.dirname(directoryKnuxtools))
-            os.popen(f'knuxtools "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.hedgehog.pointcloud.json" -e=pccol').read()
-            shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.pccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\instance_collision.pccol")
+                os.chdir(os.path.dirname(directoryKnuxtools))
+                os.popen(f'knuxtools "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.hedgehog.pointcloud.json" -e=pccol').read()
+                shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.pccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\instance_collision.pccol")
 
-        tempFolderContents = os.listdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\")
-        for f in range(len(tempFolderContents)): # For every file in the temp folder
-            if tempFolderContents[f].split(".")[-1].lower() == "material": # If the file is a .material
-                if bpy.context.scene.keepMat == False:
+        if bpy.context.scene.expmat in ["clear", "write"]:
+            tempFolderContents = os.listdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\")
+            for f in range(len(tempFolderContents)): # For every file in the temp folder
+                if tempFolderContents[f].split(".")[-1].lower() == "material": # If the file is a .material
                     shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{tempFolderContents[f]}", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\{tempFolderContents[f]}")
-                else:
-                    try:
-                        shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{tempFolderContents[f]}", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\")
-                    except:
-                        pass
-
+        elif bpy.context.scene.expmat == "add":
+            tempFolderContents = os.listdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\")
+            for f in range(len(tempFolderContents)): # For every file in the temp folder
+                if tempFolderContents[f].split(".")[-1].lower() == "material": # If the file is a .material
+                    if not os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\{tempFolderContents[f]}"):
+                        shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{tempFolderContents[f]}", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\{tempFolderContents[f]}")
+        
         os.chdir(os.path.dirname(directoryBtmesh))
         for f in range(len(fbxModels)):
-            fbxName = fbxModels[f].split("\\")[-1]
+            fbxName = fbxCollectionNames[f]
+            fbxFileName = fbxModels[f].split("\\")[-1]
             print(f"Collision - {fbxName}")
-            if bpy.context.scene.noCol == False and not "_nocol" in fbxName.lower():
-                print("_nocol" in fbxName.lower())
-                os.popen(f'btmesh "{fbxModels[f]}.fbx"').read()
-                shutil.move(f"{fbxModels[f]}_col.btmesh", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\{fbxName}_col.btmesh")
-                shutil.move(f"{fbxModels[f]}_col.pccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\{fbxName}_col.pccol")
+            os.popen(f'btmesh "{fbxModels[f]}.fbx"').read()
 
-        loggedImages = []
-        for o in collection.all_objects:
-            if o.type == "MESH" and not "FrontiersAsset" in o:
-                for m in o.data.materials:
-                    try:
-                        for n in m.node_tree.nodes:
-                            if n.type == "TEX_IMAGE":
-                                if os.path.exists(os.path.abspath(bpy.path.abspath(n.image.filepath))):
-                                    loggedImages.append(os.path.abspath(bpy.path.abspath(n.image.filepath)))
-                                else:
-                                    n.image.file_format = "PNG"
-                                    n.image.name = n.image.name.replace(".dds", ".png").replace(".DDS", ".png")
-                                    n.image.filepath_raw = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{n.image.name}"
-                                    n.image.save()
-                                    loggedImages.append(n.image.filepath)
-                    except Exception as e:
-                        print(e)
+            if bpy.context.scene.expcol in ["clear", "write"] and not "_nocol" in fbxName.lower():
+                shutil.move(f"{fbxModels[f]}_col.btmesh", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\{fbxFileName}_col.btmesh")
+                if bpy.context.scene.exppcl in ["clear", "write"] and not "instonly_" in fbxName.lower():
+                    shutil.move(f"{fbxModels[f]}_col.pccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\{fbxFileName}_col.pccol")
 
-        for i in loggedImages:
-            print(i)
-            if i[-4:].lower() == ".dds":
-                print(f"From: {i}, To: {absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00")
-                shutil.copy2(i, f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00")
-                loggedImages.pop(loggedImages.index(i))
+            elif bpy.context.scene.expcol == "add" and not "_nocol" in fbxName.lower():
+                if not os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\{fbxName}_col.btmesh"):
+                    shutil.move(f"{fbxModels[f]}_col.btmesh", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\{fbxFileName}_col.btmesh")
+                    if bpy.context.scene.exppcl in ["clear", "write"] and not "instonly_" in fbxName.lower():
+                        shutil.move(f"{fbxModels[f]}_col.pccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\{fbxFileName}_col.pccol")
 
-        texList = open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\texList.txt", "x")
-        texList.write("\n".join(loggedImages))
-        texList.close()
+            milestone = updateprogress(2 / estimated, "Terrain", milestone)
 
-        os.chdir(os.path.dirname(directoryTexconv))
-        texListLocation = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\texList.txt"
-        texDestination = f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00"
-        if bpy.context.scene.keepTex == False:
+        if bpy.context.scene.expdds in ["clear", "write", "add"]:
+            loggedImages = []
+            for o in collection.all_objects:
+                if o.type == "MESH" and not "FrontiersAsset" in o:
+                    for m in o.data.materials:
+                        try:
+                            for n in m.node_tree.nodes:
+                                if n.type == "TEX_IMAGE":
+                                    if os.path.exists(os.path.abspath(bpy.path.abspath(n.image.filepath))):
+                                        loggedImages.append(os.path.abspath(bpy.path.abspath(n.image.filepath)))
+                                    else:
+                                        n.image.file_format = "PNG"
+                                        n.image.name = n.image.name.replace(".dds", ".png").replace(".DDS", ".png")
+                                        n.image.filepath_raw = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{n.image.name}"
+                                        n.image.save()
+                                        if not n.image.filepath in loggedImages:
+                                            loggedImages.append(n.image.filepath)
+                                            milestone = updateprogress(0.2 / estimated, "Terrain", milestone)
+                        except Exception as e:
+                            print(e)
+
+            for i in loggedImages:
+                print(i)
+                if i[-4:].lower() == ".dds":
+                    filename = i.split("\\")[-1]
+                    if not (bpy.context.scene.expdds == "add" and os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\{filename}")):
+                        print(f"From: {i}, To: {absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00")
+                        shutil.copy2(i, f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00")
+                        loggedImages.pop(loggedImages.index(i))
+                        milestone = updateprogress(0.2 / estimated, "Terrain", milestone)
+
+            texList = open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\texList.txt", "x")
+            texList.write("\n".join(loggedImages))
+            texList.close()
+
+            os.chdir(os.path.dirname(directoryTexconv))
+            texListLocation = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\texList.txt"
+            texDestination = f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00"
+                
             print(os.popen(f'texconv -flist "{texListLocation}" -y -f BC7_UNORM -o "{texDestination}"').read())
-        else:
-            if not os.path.exists(texDestination):
-                print(os.popen(f'texconv -flist "{texListLocation}" -f BC7_UNORM -o "{texDestination}"').read())
 
         shutil.rmtree(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp")
 
         if bpy.context.scene.noPack == False:
             pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density"], directoryHedgearcpack)
+        
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 1.0
+            bpy.types.Scene.exportprogresstext = "DONE"
+        
         self.report({"INFO"}, f"Quick Export Finished")
         return{"FINISHED"}
     
@@ -486,13 +560,24 @@ class ExportObjects(bpy.types.Operator):
     
     def execute(self, context):
 
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 0.0
+        milestone = 0
+        updateprogress(0.0, "Objects", milestone)
+    
         preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
         directoryHedgeset = os.path.abspath(bpy.path.abspath(preferences.directoryHedgeset)) # Gets Hedgeset path from preferences
         directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
-
+        game_choice = context.scene.hedgegameChoice
+        if game_choice == "shadow":
+            hedgeset_game_choice = preferences.Hedgeset_shadowtemp
         absoluteModDir = os.path.abspath(bpy.path.abspath(bpy.context.scene.modDir)) # Gets mod folder directory
         worldId = bpy.context.scene.worldId # Gets the world ID to be edited
 
+        if bpy.context.scene.expobj == "keep":
+            self.report({"INFO"}, f"Quick Export Finished")
+            return {'FINISHED'}
+        
         if preferences.directoryHedgeset == "" or preferences.directoryHedgearcpack == "": # Gives an error if a program is missing
             def missingProgramError(self, context):
                 missingPrograms = [] # List of missing programs
@@ -514,10 +599,17 @@ class ExportObjects(bpy.types.Operator):
         
         unpack([f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit.pac"], directoryHedgearcpack)
 
-        if bpy.context.scene.eoObjects == False:
+        if bpy.context.scene.expobj == "clear":
             clearFolder(f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit", ["level", "txt", "rfl"])
         
-        bpy.ops.object.mode_set(mode = 'OBJECT')
+        if bpy.context.view_layer.objects.active == None:
+            for o in bpy.data.objects:
+                bpy.context.view_layer.objects.active = o
+                break
+        try:
+            bpy.ops.object.mode_set(mode = 'OBJECT')
+        except RuntimeError:
+            pass
 
         #Get check info
         path_check = context.scene.FrontiersRails.objPath_check
@@ -532,9 +624,19 @@ class ExportObjects(bpy.types.Operator):
             self.report({"WARNING"}, f"Collection{collection_name} not found")
             return {"CANCELLED"}
 
+        objecttotal = 0
+
         collections = [collection_name]
-        for c in collection_name.children:
-            collections.append(c)
+        objecttotal += len(collection_name.objects)
+        for c1 in collection_name.children:
+            collections.append(c1)
+            objecttotal += len(c1.objects)
+            for c2 in c1.children:
+                collections.append(c2)
+                objecttotal += len(c2.objects)
+                for c3 in c2.children:
+                    collections.append(c3)
+                    objecttotal += len(c3.objects)
 
         blend_file_path = bpy.data.filepath
         script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -542,7 +644,10 @@ class ExportObjects(bpy.types.Operator):
         path_dir = os.path.join(blend_dir,script_dir)
 
         #Set up compatible objects depending on the files in template file
-        ObjectDirectory = f"objects" 
+        if game_choice == "shadow":
+            ObjectDirectory = f"shadow_objects"
+        else:
+            ObjectDirectory = f"objects" 
         ObjectDirectory_path = os.path.join(path_dir,ObjectDirectory) 
         volume_objects = ["CameraFollow", "CameraPan","CameraFix","CameraRailSideView","CameraRailForwardView"] #Only volumes with double code
         compatible_objects =[]
@@ -591,6 +696,9 @@ class ExportObjects(bpy.types.Operator):
 
         # RAILS SECTION ---------------------------------------------------------------------
         for c in collections:
+            if os.path.exists(f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.gedit") and bpy.context.scene.expobj == "add":
+                continue
+
             collection = c
             changed_UID_list =[]
             path_text = ""
@@ -607,6 +715,8 @@ class ExportObjects(bpy.types.Operator):
                         PathType = 'OBJ_PATH'
                     elif obj.name.lower().find("svpath") != -1:
                         PathType = 'SV_PATH'
+                    elif "HedgehogPath" in obj.modifiers:
+                        PathType = bpy.data.node_groups["HedgehogPath"].nodes["PATH_TYPE"].inputs[obj.modifiers["HedgehogPath"]["Socket_5"]+1].name
                     else:
                         PathType = 'GR_PATH'
                     #finish file paths
@@ -757,6 +867,8 @@ class ExportObjects(bpy.types.Operator):
                     node_ID_list =""
                     obj.select_set(False)
 
+                    milestone = updateprogress(1 / objecttotal, "Objects", milestone)
+
             gedit_text += path_text
             gedit_text += node_text
             if changed_UID_list != []:
@@ -811,7 +923,7 @@ class ExportObjects(bpy.types.Operator):
                 if obj.type == 'LIGHT':
                     #check if it is one of the two supported lights
                     if obj.data.type == 'POINT':
-                        file_name = f"objects\PointLight.json" 
+                        file_name = f"{ObjectDirectory}\PointLight.json" 
                         file_path = os.path.join(path_dir, file_name)
                         with open(file_path, "r") as file: #with open opens the file temporarily in order to avoid memory leak
                             light_temp = json.load(file)
@@ -885,6 +997,89 @@ class ExportObjects(bpy.types.Operator):
                         elif render_engine == 'CYCLES':
                             CurrentLevel["enableShadow"] = obj.data.cycles.cast_shadow
                         obj_text += f'{json.dumps(light_temp, indent=2)},\n' #Adds code to full gedit text that is then printed
+                    if obj.data.type == 'SPOT':
+                        file_name = f"{ObjectDirectory}\SpotLight.json" 
+                        file_path = os.path.join(path_dir, file_name)
+                        with open(file_path, "r") as file: #with open opens the file temporarily in order to avoid memory leak
+                            light_temp = json.load(file)
+                        if "json_parameters" in obj and "use_display_json_parameters" in obj and obj["use_display_json_parameters"] == True: #if Manual parameters are checked. do this instead of geonodes.
+                            for parameter in obj.json_parameters:
+                                PropertyName = parameter.name
+                                PropertyType = PropertyName.split("/")[-1]
+                                propvector = False
+                                if PropertyType == "float":
+                                    PropertyValue = parameter.float_value
+                                elif PropertyType == "enum":
+                                    enumParameter = parameter.enum_items
+                                    foundEnum = False
+                                    for enumItems in enumParameter:
+                                        if enumItems.selected == True:
+                                            PropertyValue = enumItems.value
+                                            foundEnum = True
+                                            break
+                                    if foundEnum == False:
+                                        PropertyValue = enumParameter[0].value
+                                elif PropertyType == "int":
+                                    PropertyValue = parameter.int_value
+                                elif PropertyType == "bool":
+                                    PropertyValue = parameter.bool_value
+                                elif PropertyType == "vector":
+                                    propvector = True
+                                    PropertyValue = parameter.vector_value
+                                elif PropertyType == "string":
+                                    if parameter.object_value in bpy.data.objects and "DataID" in bpy.data.objects[parameter.object_value]:
+                                         IDstring = "{"+bpy.data.objects[parameter.object_value]+"}"
+                                         PropertyValue = IDstring
+                                    else:
+                                        PropertyValue = parameter.string_value
+                                elif PropertyType == "ERR":
+                                    print(f'for object {name},Attribute:{AttName} was passed for being incompatible in current version.')
+                                    continue
+                                CurrentLevel = light_temp["parameters"]
+                                        
+                                if "/" in PropertyName:#If propertyname is on the form [Firstlayer][Secondlayer], Make sure that the script replaces the value on that layer.
+                                        
+                                    PropertyName = PropertyName.split("/")
+                                            
+                                    for key in PropertyName[:-2]:
+                                        if "[" in key:
+                                            ListKey = key.split("[")
+                                            Listindex = int(ListKey[1].split("]")[0])
+                                            CurrentLevel = CurrentLevel[ListKey[0]][Listindex]
+                                        else:
+                                            CurrentLevel = CurrentLevel[key]
+                                    # if type(CurrentLevel) == list:
+                                    #     CurrentLevel = CurrentLevel[0]
+                                    PropertyName = PropertyName[-2]
+                                            
+                                if propvector == True:
+                                    CurrentLevel[PropertyName] = [PropertyValue[0],PropertyValue[1],PropertyValue[2]]
+                                else:
+                                    CurrentLevel[PropertyName] = PropertyValue
+                        light_temp["id"] = Id
+                        light_temp["name"] = name
+                        light_temp["position"] = coordinates
+                        rotation = obj.rotation_quaternion
+                        rotation = mathutils.Euler((rotation.to_euler().x + math.radians(90), rotation.to_euler().y, rotation.to_euler().z)).to_quaternion()
+                        light_temp["rotation"] = [rotation.x, rotation.z, -rotation.y, rotation.w]
+                        
+                        Intense = obj.data.energy/64 #Have to divide blenders intensity to accurately portrait frontiers lights.
+                        CurrentLevel = light_temp["parameters"]
+                        CurrentLevel["colorR"] = obj.data.color[0]*255*Intense
+                        CurrentLevel["colorG"] = obj.data.color[1]*255*Intense
+                        CurrentLevel["colorB"] = obj.data.color[2]*255*Intense
+                        CurrentLevel["outerConeAngle"] = (math.degrees(obj.data.spot_size)) / 2
+                        CurrentLevel["innerConeAngle"] = (math.degrees(obj.data.spot_size) * (1 - obj.data.spot_blend)) / 2
+                        if obj.data.use_custom_distance == True:
+                            CurrentLevel["attenuationRadius"] = obj.data.cutoff_distance
+                        else:
+                            CurrentLevel["attenuationRadius"] = 32768
+                        render_engine = bpy.context.scene.render.engine
+                        if render_engine == 'BLENDER_EEVEE':
+                            CurrentLevel["enableShadow"] = obj.data.use_shadow
+                        elif render_engine == 'CYCLES':
+                            CurrentLevel["enableShadow"] = obj.data.cycles.cast_shadow
+                        obj_text += f'{json.dumps(light_temp, indent=2)},\n' #Adds code to full gedit text that is then printed
                 else:
                     theobject = name.split(".")[0]
                     if "FrontiersCamera" in obj:
@@ -897,7 +1092,7 @@ class ExportObjects(bpy.types.Operator):
                             file_name = f"{theobject}.json"
                             file_path = os.path.join(CustomDirectory_path, file_name)
                         else:
-                            file_name = f"objects\{theobject}.json" 
+                            file_name = f"{ObjectDirectory}\{theobject}.json" 
                             file_path = os.path.join(path_dir, file_name)
                     
                         with open(file_path, "r") as file: #with open opens the file temporarily in order to avoid memory leak
@@ -1336,6 +1531,7 @@ class ExportObjects(bpy.types.Operator):
 
                         
                 obj.select_set(False)
+                milestone = updateprogress(1 / objecttotal, "Objects", milestone)
 
             #Code that opens the window with the gedit code
             if obj_text != "":
@@ -1348,12 +1544,17 @@ class ExportObjects(bpy.types.Operator):
             gedit.close()
 
             os.chdir(os.path.dirname(directoryHedgeset))
-            print(os.popen(f'HedgeSet "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.hson" "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.gedit" -game=frontiers -platform=pc').read())
+            print(os.popen(f'HedgeSet "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.hson" "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.gedit" -game={hedgeset_game_choice} -platform=pc').read())
 
             os.remove(f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.hson")
 
         if bpy.context.scene.noPack == False:
             pack([f'{absoluteModDir}\\raw\\gedit\\{worldId}_gedit'], directoryHedgearcpack)
+        
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 1.0
+            bpy.types.Scene.exportprogresstext = "DONE"
+        
         self.report({"INFO"}, f"Quick Export Finished")
         return{"FINISHED"}
     
@@ -1364,8 +1565,14 @@ class ExportHeightmap(bpy.types.Operator):
 
     def execute(self, context):
         startTime = time.time()
-        bpy.types.Scene.heightmapprogress = 0.0
-        updateprogress(0.0)
+
+        if bpy.context.scene.exphgt == "keep":
+            return {'FINISHED'}
+        
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 0.0
+        milestone = 0
+        updateprogress(0.0, "Heightmap", milestone)
 
         mapsize = int(bpy.context.scene.mapsize)
         mapheight = bpy.context.scene.mapheight
@@ -1376,8 +1583,6 @@ class ExportHeightmap(bpy.types.Operator):
 
         directoryTexconv = os.path.abspath(bpy.path.abspath(preferences.directoryTexconv)) # Gets HedgeSet path from preferences
         directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
-        if not "[FLC] Heightmap" in bpy.data.objects:
-            return {'FINISHED'}
         if preferences.directoryTexconv == "" or preferences.directoryHedgearcpack == "": # Gives an error if a program is missing
             def missingProgramError(self, context):
                 missingPrograms = [] # List of missing programs
@@ -1397,8 +1602,23 @@ class ExportHeightmap(bpy.types.Operator):
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Mod missing", icon = "QUESTION") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
         
+        if not os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height.pac"):
+            def missingFolderError(self, context):
+                self.layout.label(text="No trr_height folder found") # Sets the popup label
+
+            bpy.context.window_manager.popup_menu(missingFolderError, title = "Folder missing", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+        
         unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height.pac"], directoryHedgearcpack)
 
+        if bpy.context.scene.exphgt == "clear":
+            for f in os.listdir(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height"):
+                if "heightmap" in f and "dds" in f:
+                    os.remove(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\{f}")
+
+        if not "[FLC] Heightmap" in bpy.data.objects:
+            return {'FINISHED'}
+        
         bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Render"]
 
         tempfolder = f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\levelcreator-temp\\"
@@ -1457,7 +1677,7 @@ class ExportHeightmap(bpy.types.Operator):
         previousTime = time.time()
 
         bpy.ops.render.render(write_still=False)
-        updateprogress(0.87)
+        milestone = updateprogress(0.55, "Heightmap", milestone)
 
         print(f"\n\nRENDER COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
         previousTime = time.time()
@@ -1465,7 +1685,7 @@ class ExportHeightmap(bpy.types.Operator):
         image = bpy.data.images["Render Result"] # Gets the Rendered image
         image.file_format = 'PNG' # Sets the file format
         try:
-            image.save_render(filepath=f"{tempfolder}Heightmap.png") # Outputs the image straight to the temporary folder
+            image.save_render(filepath=f"{tempfolder}h.png") # Outputs the image straight to the temporary folder
         except Exception as e:
             print(f"Possible Error: {e}")
 
@@ -1473,12 +1693,6 @@ class ExportHeightmap(bpy.types.Operator):
 
         for c in cameraObjs:
             bpy.data.cameras.remove(bpy.data.cameras[c.data.name])
-
-        for o in objsshown:
-            try:
-                bpy.data.objects[o].hide_render = False
-            except KeyError:
-                pass
 
         bpy.context.scene.camera = activecam
         bpy.context.scene.render.image_settings.color_depth = color_depth
@@ -1497,24 +1711,93 @@ class ExportHeightmap(bpy.types.Operator):
         for i in range((int(round(mapsize/1024)))**2):
             view = bpy.context.scene.render.views.remove(bpy.context.scene.render.views[f"[FLC] View-{i}"])
 
+        os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the texconv directory
         for f in os.listdir(tempfolder):
-            renamed = f"{worldId}_heightmap_{int(f.split('-')[1][:-4]):03}"
-            os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
-            print(os.popen(f'texconv -f R16_UNORM -xlum -y "{tempfolder}\\{f}" -o "{tempfolder[:-1]}"').read()) # Converts the image via command line
-            os.rename(f"{tempfolder}\\{f[:-4]}.dds", f"{renamed}.dds")
-            shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}\\{renamed}.dds", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\{renamed}.dds") # Copies the DDSs to the blend file's folder
+            id = format(int(f[2:-4]), "03d")
+            os.popen(f'texconv -f R16_UNORM -xlum -y "{tempfolder}{f}" -o "{tempfolder[:-1]}"').read() # Converts the image via command line
+            os.rename(f"{tempfolder}{f[:-4]}.dds", f"{tempfolder}{worldId}_heightmap_{id}.dds")
+            shutil.copy2(f"{tempfolder}{worldId}_heightmap_{id}.dds", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\{worldId}_heightmap_{id}.dds")
         
+
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Normal"]
+        bpy.data.objects["[FLC] Heightmap"].hide_render = False
+
+        cameraObj = bpy.data.objects.new(f'[FLC] Cam-Normal', bpy.data.cameras.new(name=f'[FLC] Cam-Normal'))
+        bpy.context.scene.collection.objects.link(cameraObj)
+        cameraObj.location = (0, 0, mapheight + 10)
+        cameraObj.data.type = 'ORTHO' # Sets camera to orthographic
+        cameraObj.data.ortho_scale = mapsize # Sets the camera to capture the whole heightmap
+        cameraObj.data.clip_end = mapheight + 11
+
+        activecam = bpy.context.scene.camera
+        bpy.context.scene.camera = bpy.data.objects["[FLC] Cam-Normal"]
+        color_depth = bpy.context.scene.render.image_settings.color_depth
+        bpy.context.scene.render.image_settings.color_depth = '8'
+        resolution_x = bpy.context.scene.render.resolution_x
+        bpy.context.scene.render.resolution_x = 4096
+        resolution_y = bpy.context.scene.render.resolution_y
+        bpy.context.scene.render.resolution_y = 4096
+        view_transform = bpy.context.scene.view_settings.view_transform
+        bpy.context.scene.view_settings.view_transform = 'Standard'
+        taa_render_samples = bpy.context.scene.eevee.taa_render_samples
+        bpy.context.scene.eevee.taa_render_samples = 1
+        engine = bpy.context.scene.render.engine
+        bpy.context.scene.render.engine = 'BLENDER_EEVEE'
+        worldcol = bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value
+        bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = (0.5, 0.5, 1.0, 1.0)
+
+        print(f"\n\nRENDER SETUP COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
+        previousTime = time.time()
+
+        bpy.ops.render.render(write_still=False)
+        milestone = updateprogress(0.35, "Heightmap", milestone)
+
+        print(f"\n\nRENDER COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
+        previousTime = time.time()
+
+        image = bpy.data.images["Render Result"] # Gets the Rendered image
+        image.file_format = 'PNG' # Sets the file format
+        try:
+            image.save_render(filepath=f"{tempfolder}hgt.png") # Outputs the image straight to the temporary folder
+        except Exception as e:
+            print(f"Possible Error: {e}")
+
+        bpy.data.objects["[FLC] Heightmap"].data.materials[0] = bpy.data.materials["[FLC] Heightmap-Preview"]
+
+        bpy.data.cameras.remove(bpy.data.cameras[cameraObj.data.name])
+
+        for o in objsshown:
+            try:
+                bpy.data.objects[o].hide_render = False
+            except KeyError:
+                pass
+
+        bpy.context.scene.camera = activecam
+        bpy.context.scene.render.image_settings.color_depth = color_depth
+        bpy.context.scene.render.resolution_x = resolution_x
+        bpy.context.scene.render.resolution_y = resolution_y
+        bpy.context.scene.view_settings.view_transform = view_transform
+        bpy.context.scene.eevee.taa_render_samples = taa_render_samples
+        bpy.context.scene.render.engine = engine
+        bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = worldcol
+
+        os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
+        os.popen(f'texconv -f R8G8B8A8_UNORM -xlum -y "{tempfolder}hgt.png" -o "{tempfolder[:-1]}"').read() # Converts the image via command line
+        os.rename(f"{tempfolder}hgt.dds", f"{tempfolder}{worldId}_heightmap_nrm.dds")
+        shutil.copy2(f"{tempfolder}{worldId}_heightmap_nrm.dds", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height\\{worldId}_heightmap_nrm.dds")
+
         shutil.rmtree(tempfolder)
 
-        updateprogress(0.13)
+        milestone = updateprogress(0.1, "Heightmap", milestone)
 
         if bpy.context.scene.noPack == False:
             pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height"], directoryHedgearcpack)
 
         print(f"\n\nCONVERTING COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
 
-        bpy.types.Scene.heightmapprogress = 1.0
-        bpy.types.Scene.heightmapprogresstext = "DONE"
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 1.0
+            bpy.types.Scene.exportprogresstext = "DONE"
 
         print(f"\n\nHEIGHTMAP EXPORT COMPLETE ----------\nTIME ELAPSED: {time.time() - startTime}")
 
@@ -1526,6 +1809,11 @@ class ExportSplatmap(bpy.types.Operator):
     bl_description = "Exports your Heightmap's Splatmap, Area and Scale maps"
     
     def execute(self, context):
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 0.0
+        milestone = 0
+        updateprogress(0.0, "Splatmap", milestone)
+
         preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
         absoluteModDir = os.path.abspath(bpy.path.abspath(bpy.context.scene.modDir)) # Gets mod folder directory
         worldId = bpy.context.scene.worldId # Gets the world ID to be edited
@@ -1563,34 +1851,61 @@ class ExportSplatmap(bpy.types.Operator):
             shutil.rmtree(tempfolder)
         os.mkdir(tempfolder)
 
-        image = bpy.data.images["[FLC] Splatmap"]
-        image.filepath_raw = f"{tempfolder}{worldId}_splatmap.png"
-        image.file_format = 'PNG'
-        image.save()
+        milestone = updateprogress(0.1, "Splatmap", milestone)
 
-        image = bpy.data.images["[FLC] Scale"]
-        image.filepath_raw = f"{tempfolder}{worldId}_scale.png"
-        image.file_format = 'PNG'
-        image.save()
+        if bpy.context.scene.expspl != "keep":
+            image = bpy.data.images["[FLC] Splatmap"]
+            image.update()
+            image.size
+            image.filepath_raw = f"{tempfolder}{worldId}_splatmap.png"
+            image.file_format = 'PNG'
+            image.save()
 
-        image = bpy.data.images["[FLC] Area"]
-        image.filepath_raw = f"{tempfolder}{worldId}_area.png"
-        image.file_format = 'PNG'
-        image.save()
+            os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
+            if bpy.context.scene.expspl == "clear":
+                os.popen(f'texconv -f R8_UNORM -xlum -y "{tempfolder}{worldId}_splatmap.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+            else:
+                os.popen(f'texconv -f R8_UNORM -xlum -n "{tempfolder}{worldId}_splatmap.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+            os.remove(f"{tempfolder}{worldId}_splatmap.png")
+        
+        milestone = updateprogress(0.3, "Splatmap", milestone)
 
-        os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
-        os.popen(f'texconv -f R8_UNORM -xlum -y "{tempfolder}{worldId}_splatmap.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
-        os.remove(f"{tempfolder}{worldId}_splatmap.png")
-        os.popen(f'texconv -f R8_UNORM -xlum -y "{tempfolder}{worldId}_scale.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
-        os.remove(f"{tempfolder}{worldId}_scale.png")
-        os.popen(f'texconv -f R8_UNORM -xlum -y "{tempfolder}{worldId}_area.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
-        os.remove(f"{tempfolder}{worldId}_area.png")
+        if bpy.context.scene.expmap != "keep":
+            image = bpy.data.images["[FLC] Scale"]
+            image.update()
+            image.size
+            image.filepath_raw = f"{tempfolder}{worldId}_scale.png"
+            image.file_format = 'PNG'
+            image.save()
+
+            image = bpy.data.images["[FLC] Area"]
+            image.update()
+            image.size
+            image.filepath_raw = f"{tempfolder}{worldId}_area.png"
+            image.file_format = 'PNG'
+            image.save()
+
+            os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(directoryTexconv)))}") # Goes to the directory
+            if bpy.context.scene.expmap == "clear":
+                os.popen(f'texconv -f BC4_UNORM -xlum -y "{tempfolder}{worldId}_scale.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+                os.popen(f'texconv -f R8_UNORM -xlum -y "{tempfolder}{worldId}_area.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+            else:
+                os.popen(f'texconv -f BC4_UNORM -xlum -n "{tempfolder}{worldId}_scale.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+                os.popen(f'texconv -f R8_UNORM -xlum -n "{tempfolder}{worldId}_area.png" -o "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"').read() # Converts the image via command line
+            os.remove(f"{tempfolder}{worldId}_scale.png")
+            os.remove(f"{tempfolder}{worldId}_area.png")
+
+        milestone = updateprogress(0.6, "Splatmap", milestone)
 
         if bpy.context.scene.noPack == False:
-            pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height"], directoryHedgearcpack)
+            pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_cmn"], directoryHedgearcpack)
 
         shutil.rmtree(tempfolder)
 
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 1.0
+            bpy.types.Scene.exportprogresstext = "DONE"
+        
         return {'FINISHED'}
     
 class ExportDensity(bpy.types.Operator):
@@ -1599,6 +1914,191 @@ class ExportDensity(bpy.types.Operator):
     bl_description = "Exports your level's density objects"
     
     def execute(self, context):
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 0.0
+        milestone = 0
+        updateprogress(0.0, "Density", milestone)
+
+        if not bpy.context.scene.expden == "keep":
+            collection = context.scene.denCollection # Name of collection that will be exported goes here
+            preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences # Gets preferences
+            directoryKnuxtools = os.path.abspath(bpy.path.abspath(preferences.directoryKnuxtools)) # Gets Hedgeset path from preferences
+            directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
+
+            absoluteModDir = os.path.abspath(bpy.path.abspath(bpy.context.scene.modDir)) # Gets mod folder directory
+            worldId = bpy.context.scene.worldId # Gets the world ID to be edited
+
+            if preferences.directoryKnuxtools == "" or preferences.directoryHedgearcpack == "": # Gives an error if a program is missing
+                def missingProgramError(self, context):
+                    missingPrograms = [] # List of missing programs
+                    if preferences.directoryKnuxtools == "":
+                        missingPrograms.append("KnuxTools.exe")
+                    if preferences.directoryHedgearcpack == "":
+                        missingPrograms.append("HedgeArcPack.exe")
+                    self.layout.label(text=f"The filepath(s) for: {', '.join(missingPrograms)} are not set. \nPlease set the path(s) in Settings.") # Tells the user about the missing prorgrams
+
+                bpy.context.window_manager.popup_menu(missingProgramError, title = "Program missing", icon = "QUESTION") # Makes the popup appear
+                return {'FINISHED'} # Cancels the operation
+
+            if bpy.context.scene.modDir == "": # Gives an error if no mod directory is sent
+                def missingProgramError(self, context):
+                    self.layout.label(text="No Mod directory is set") # Sets the popup label
+                bpy.context.window_manager.popup_menu(missingProgramError, title = "Mod missing", icon = "QUESTION") # Makes the popup appear
+                return {'FINISHED'} # Cancels the operation
+            
+            if bpy.context.scene.expspl == "keep":
+                return {'FINISHED'}
+            
+            unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density.pac"], directoryHedgearcpack)
+
+            if bpy.context.scene.expspl == "clear":
+                for f in os.listdir(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density"):
+                    if f.endswith("densitypointcloud"):
+                        os.remove(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density\\{f}")
+
+            printCode = [] # This is tha variable that will hold the code to be printed
+            numObjects = len(collection.all_objects) # This counts the number of objects to go though (used for the progress meter)
+            objectsDone = 0 # Starts the progress meter at 0
+
+            # Creates the template json (It's easier in this case to create it here instead of an external file since it's easy to edit and is quite short)
+            template = {"TypeIndex": 0, 
+                        "UnknownUInt32_1": 16777216, 
+                        "Position": {
+                            "X": 0.0,
+                            "Y": 0.0,
+                            "Z": 0.0 },
+                        "Rotation": {
+                            "X": 0.0,
+                            "Y": 0.0,
+                            "Z": 0.0,
+                            "W": 0.0,
+                            "IsIdentity": False }, # Not sure what this bit does, more research required
+                        "Scale": {
+                            "X": 1.0,
+                            "Y": 1.0,
+                            "Z": 1.0 },
+                        "Colour": {
+                            "Red": 131,
+                            "Green": 161,
+                            "Blue": 127,
+                            "Alpha": 255 }
+                        }
+            
+            objecttotal = len(collection.objects)
+            for obj in collection.objects: # Goes through every object in the chosen collection
+                
+                bpy.ops.object.select_all(action='DESELECT')
+                obj.select_set(True)
+                
+                bpy.context.view_layer.objects.active = obj
+                bpy.ops.object.mode_set(mode='OBJECT')
+                if obj.type == "MESH" and "FrontiersDensityID" in obj and "FrontiersDensityAsset" in obj: # This part processes single density objects
+                    #print(f" No Modifier for {obj.name}")
+                    # This part gets all of the properties needed
+                    objectPosition = obj.location # Gets the object's location
+                    original_rotation_mode = obj.rotation_mode
+                    obj.rotation_mode = 'QUATERNION'
+                    
+                    
+                    #objectRotation = mathutils.Vector((obj.rotation_quaternion.x, obj.rotation_quaternion.z, -obj.rotation_quaternion.y, obj.rotation_quaternion.w)) # Gets the object's rotation as a quaternion (A type of Rotation) compatible with Sonic Frontiers
+                    objectScale = obj.scale # Gets the object's scale (yay, scale support!)
+                        
+                    objectCode = template # Copies the template over to a new variable that will be edited
+                        
+                    # This part sets all of the correct values in the code
+                    objectCode["TypeIndex"] = obj["FrontiersDensityID"] # Sets ID
+                        
+                    objectCode["Position"]["X"] = objectPosition.x # Sets X position
+                    objectCode["Position"]["Y"] = objectPosition.z # Sets Y position
+                    objectCode["Position"]["Z"] = -objectPosition.y # Sets Z position
+                        
+                    objectCode["Rotation"]["X"] = obj.rotation_quaternion.x # Sets X rotation
+                    objectCode["Rotation"]["Y"] = obj.rotation_quaternion.z # Sets Y rotation
+                    objectCode["Rotation"]["Z"] = -obj.rotation_quaternion.y # Sets Z rotation
+                    objectCode["Rotation"]["W"] = obj.rotation_quaternion.w # Sets W rotation
+                        
+                    objectCode["Scale"]["X"] = objectScale.x # Sets X scale
+                    objectCode["Scale"]["Y"] = objectScale.z # Sets Y scale
+                    objectCode["Scale"]["Z"] = objectScale.y # Sets Z scale
+                        
+                    objectCode["Colour"]["Red"] = 131 # Sets Red colour based on hex code in object name
+                    objectCode["Colour"]["Green"] = 161 # Sets Green colour based on hex code in object name
+                    objectCode["Colour"]["Blue"] = 127 # Sets Blue colour based on hex code in object name
+                    objectCode["Colour"]["Alpha"] = 255 # Sets Alpha colour based on hex code in object name
+                        
+                    printCode.append(copy.deepcopy(objectCode)) # Adds the object's code to the full code that will be printed at the end
+                    obj.rotation_mode = original_rotation_mode
+                elif obj.type == "MESH" and "FrontiersDensity" in obj.modifiers: # This part generates an object at every vertex in the mesh
+                    #print(f"Modifier for {obj.name} with {obj['FrontiersDensityID']}")
+                    bpy.ops.object.duplicate(linked=True, mode='TRANSLATION')
+                    dup_obj = bpy.context.active_object
+                    # Ensure we're in object mode
+                    if bpy.context.mode != 'OBJECT':
+                        bpy.ops.object.mode_set(mode='OBJECT')
+                    for modifiers in dup_obj.modifiers:
+                        bpy.ops.object.modifier_apply(modifier=modifiers.name,single_user=True)
+                    bpy.ops.object.select_all(action='DESELECT')
+                    dup_obj.select_set(True)
+                    bpy.context.view_layer.objects.active = dup_obj
+                    bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
+                    bpy.ops.object.mode_set(mode='EDIT') # Switches to Edit Mode
+                    bm = bmesh.from_edit_mesh(dup_obj.data) # Gets the Blender Mesh from the object
+                    
+                    numVerts = len(bm.verts) # This counts the number of vertices to go though (used for the progress meter)
+                    vertsDone = 0 # Starts the progress meter at 0
+                    
+                    for face in bm.faces:
+                        original_rotation_mode = dup_obj.rotation_mode
+                        #dup_obj.rotation_mode = 'QUATERNION'
+                        # This part gets all of the properties needed
+                        objectPosition = face.calc_center_median() + dup_obj.location # Gets the vertex's location
+                        
+                        objectRotation = face.normal.to_track_quat('Z', 'Y')
+
+                        objectCode = template # Copies the template over to a new variable that will be edited
+                        
+                        # This part sets all of the correct values in the code
+                        objectCode["TypeIndex"] = dup_obj["FrontiersDensityID"] # Sets ID
+                        
+                        objectCode["Position"]["X"] = objectPosition.x # Sets X position
+                        objectCode["Position"]["Y"] = objectPosition.z # Sets Y position
+                        objectCode["Position"]["Z"] = -objectPosition.y # Sets Z position
+                        
+                        objectCode["Rotation"]["X"] = objectRotation.x # Sets X rotation
+                        objectCode["Rotation"]["Y"] = objectRotation.z # Sets Y rotation
+                        objectCode["Rotation"]["Z"] = -objectRotation.y # Sets Z rotation
+                        objectCode["Rotation"]["W"] = objectRotation.w # Sets W rotation
+                        
+                        objectCode["Colour"]["Red"] = 179 # Sets Red colour 
+                        objectCode["Colour"]["Green"] = 223 # Sets Green colour 
+                        objectCode["Colour"]["Blue"] = 127 # Sets Blue colour 
+                        objectCode["Colour"]["Alpha"] = 233 # Sets Alpha colour 
+                        
+                        printCode.append(copy.deepcopy(objectCode)) # Adds the object's code to the full code that will be printed at the end
+                        
+                        vertsDone += 1
+                        print(f"{obj.name}   \t{round(math.degrees(face.normal.x), 3)},{round(math.degrees(face.normal.z), 3)},{round(math.degrees(face.normal.y), 3)}   \t{vertsDone}/{numVerts}\t{round((vertsDone / numVerts) * 100, 2)}%\t{round((objectsDone / numObjects) * 100, 2)}%") # Debug
+                    bpy.ops.object.mode_set(mode='OBJECT')
+                    bpy.ops.object.delete(use_global=False)
+                objectsDone += 1
+                print(f"{obj.name}  \t{objectsDone}/{numObjects}\t{round((objectsDone / numObjects) * 100, 2)}%") # This prints the progress to the console
+                
+                milestone = updateprogress(1 / objecttotal, "Density", milestone)
+
+            jsonfile = open(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density\\{worldId}_pointcloud.hedgehog.densitypointcloud.json", "x")
+            jsonfile.write(json.dumps(printCode, indent = 2)) # Adds the code to the text
+            jsonfile.close()
+
+            os.chdir(os.path.dirname(directoryKnuxtools))
+            os.popen(f'knuxtools "{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density\\{worldId}_pointcloud.hedgehog.densitypointcloud.json"').read()
+            os.remove(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density\\{worldId}_pointcloud.hedgehog.densitypointcloud.json")
+
+            pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density"], directoryHedgearcpack)
+
+        if (4, 0, 0) > bpy.app.version:
+            bpy.types.Scene.exportprogress = 1.0
+            bpy.types.Scene.exportprogresstext = "DONE"
+        
         return {'FINISHED'}
 
 class RepackAll(bpy.types.Operator):
@@ -1662,27 +2162,30 @@ class Settings(bpy.types.Operator):
 
         return{"FINISHED"}
 
+class NameShow(bpy.types.Operator):
+    bl_idname = "qexport.nameshow"
+    bl_label = "Object Names"
+    bl_description = "Overlays the names of Frontiers Objects"
+
+    bpy.types.Scene.nameshow = False
+    def execute(self, context):
+        if bpy.context.scene.nameshow == False:
+            bpy.context.scene.nameshow = True
+            for o in bpy.data.objects:
+                if o.name.split(".")[0] not in ["Ring", "NormalFloor"] and "FrontiersAsset" in o:
+                    o.show_name = True
+        else:
+            bpy.context.scene.nameshow = False
+            for o in bpy.data.objects:
+                if o.name.split(".")[0] not in ["Ring", "NormalFloor"] and "FrontiersAsset" in o:
+                    o.show_name = False
+        return{"FINISHED"}
+
 
 class QexportSettings(bpy.types.PropertyGroup): # Other settings
-    bpy.types.Scene.trrCollection = bpy.props.PointerProperty( 
-        name="Terrain Collection",
-        type=bpy.types.Collection,
-        description="Collection that your terrain objects are in. \nIf this is empty, all terrain will be exported, regardless of collections.\nTo make a collection only export collision, add '_NoVis'\nTo make a collection not export collision, add '_NoCol'"
-    )
-    bpy.types.Scene.objCollection = bpy.props.PointerProperty( 
-        name="Objects Collection",
-        type=bpy.types.Collection,
-        description="Collection that your objects are in. \n\nThe type of paths exported will depend on the name of the path object.\n2D section path: 'SVPath'\nObject path: 'ObjPath'\nPath properties (can be applied to any type of path)\nDisable Smoothing: Add '_str'\nDisable Rotation: Add '_NoRot'"
-    )
-    bpy.types.Scene.modDir = bpy.props.StringProperty( 
-        name="Mod Directory",
-        subtype='DIR_PATH',
-        default="",
-        description="Path to your mod folder"
-    )
-    bpy.types.Scene.worldId = bpy.props.EnumProperty( 
-        name="World ID",
-        items=[
+    def worldidchoice(self, _):
+        world_items = {
+        "frontiers" : [
             ("w1f01", "w1f01 (Fishing)", ""),
             ("w1h01", "w1h01 (Hacking)", ""),
             ("w1r03", "w1r03 (Kronos)", ""),
@@ -1725,7 +2228,64 @@ class QexportSettings(bpy.types.PropertyGroup): # Other settings
             ("w7d05", "w7d05 (4-8)", ""),
             ("w9d07", "w9d07 (4-9)", "")
         ],
-        default="w6d01",
+        "shadow" : [
+            # ARK
+            ("w01a10", "w01a11 (ARK Act 1)", ""),
+            ("w01a20", "w01a20 (ARK Act 2)", ""),
+
+            # Rail Canyon
+            ("w02a10", "w02a10 (Rail Canyon Act 1)", ""),
+            ("w02a20", "w02a20 (Rail Canyon Act 2)", ""),
+
+            # Kingdom Valley
+            ("w03a10", "w03a10 (Kingdom Valley Act 1)", ""),
+            ("w03a20", "w03a20 (Kingdom Valley Act 2)", ""),
+
+            # Sunset Heights
+            ("w04a10", "w04a10 (Sunset Heights Act 1)", ""),
+            ("w04a20", "w04a20 (Sunset Heights Act 2)", ""),
+
+            # Chaos Island
+            ("w05a10", "w05a10 (Chaos Island Act 1)", ""),
+            ("w05a20", "w05a20 (Chaos Island Act 2)", ""),
+
+            # City
+            ("w06a10", "w06a10 (City Act 1)", ""),
+            ("w06a20", "w06a20 (City Act 2)", "")
+
+        ]
+        }
+        try:
+            return world_items[bpy.context.scene.hedgegameChoice]
+        except KeyError:
+            return [
+                ('-', f'no options for {bpy.context.scene.hedgegameChoice}', ''),
+            ]
+    bpy.types.Scene.trrCollection = bpy.props.PointerProperty( 
+        name="Terrain Collection",
+        type=bpy.types.Collection,
+        description="Collection that your terrain objects are in. \nIf this is empty, all terrain will be exported, regardless of collections.\nTo make a collection only export collision, add '_NoVis'\nTo make a collection not export collision, add '_NoCol'"
+    )
+    bpy.types.Scene.objCollection = bpy.props.PointerProperty( 
+        name="Objects Collection",
+        type=bpy.types.Collection,
+        description="Collection that your objects are in. \n\nThe type of paths exported will depend on the name of the path object.\n2D section path: 'SVPath'\nObject path: 'ObjPath'\nPath properties (can be applied to any type of path)\nDisable Smoothing: Add '_str'\nDisable Rotation: Add '_NoRot'"
+    )
+    bpy.types.Scene.denCollection = bpy.props.PointerProperty( 
+        name="Density Collection",
+        type=bpy.types.Collection,
+        description="Collection that your density is in"
+    )
+    bpy.types.Scene.modDir = bpy.props.StringProperty( 
+        name="Mod Directory",
+        subtype='DIR_PATH',
+        default="",
+        description="Path to your mod folder"
+    )
+    bpy.types.Scene.worldId = bpy.props.EnumProperty( 
+        name="World ID",
+        items= worldidchoice,
+        #default=worldidchoice[0],
         description="The world you wish to export to"
     )
 
@@ -1735,53 +2295,143 @@ class QexportSettings(bpy.types.PropertyGroup): # Other settings
         default=False,
         description="Disables automatic repacking of files when using Quick Export (Except for the Repack All button obviously)"
     )
-    bpy.types.Scene.eoTerrain = bpy.props.BoolProperty( # Access through "bpy.context.scene.eoTerrain"
-        name="Don't Clear Terrain",
+    bpy.types.Scene.nameshow = bpy.props.BoolProperty(
+        name="Show Object Names",
         default=False,
-        description="Makes the program not clear the terrain folders before exporting"
+        description="Overlays the names of objects with exceptions like rings\n(Just here until I think of a better place to put this setting)"
     )
-    bpy.types.Scene.eoObjects = bpy.props.BoolProperty( # Access through "bpy.context.scene.eoObjects"
-        name="Don't Clear Objects",
-        default=False,
-        description="Makes the program not clear the object folders before exporting"
+    bpy.types.Scene.exptrr = bpy.props.EnumProperty( 
+        name="Terrain Writing",
+        items=[
+            ("clear", "Clear", "Removes all .terrain-models, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing terrain-models, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing .terrain-models, and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new terrain-models")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )
-    bpy.types.Scene.keepMat = bpy.props.BoolProperty(   # Access through "bpy.context.scene.keepMat"
-        name="Keep .Materials",
-        default=False,
-        description="Don't edit pre-existing materials"
+    bpy.types.Scene.expcol = bpy.props.EnumProperty( 
+        name="Collison Writing",
+        items=[
+            ("clear", "Clear", "Removes all .btmeshes, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing btmeshes, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing .btmeshes, and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new btmeshes")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )
-    bpy.types.Scene.keepTex = bpy.props.BoolProperty(   # Access through "bpy.context.scene.keepTex"
-        name="Keep Textures",
-        default=False,
-        description="Don't edit pre-existing textures"
+    bpy.types.Scene.expobj = bpy.props.EnumProperty( 
+        name="Object Writing",
+        items=[
+            ("clear", "Clear", "Removes all .gedits, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing gedits, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing .gedits, and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new gedits")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )
-    bpy.types.Scene.keepHgt = bpy.props.BoolProperty(   # Access through "bpy.context.scene.keepHgt"
-        name="Keep Heightmap",
-        default=False,
-        description="Don't edit the pre-existing heightmap"
+    bpy.types.Scene.expden = bpy.props.EnumProperty( 
+        name="Density Writing",
+        items=[
+            ("clear", "Clear", "Removes all density, then adds the new density"),
+            ("keep", "Keep", "Do not export any new density")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )
-    bpy.types.Scene.keepPcm = bpy.props.BoolProperty(   # Access through "bpy.context.scene.keepPcm"
-        name="Keep .pcmodels",
-        default=False,
-        description="Don't edit pre-existing pcmodels"
+    bpy.types.Scene.exphgt = bpy.props.EnumProperty( 
+        name="Heightmap Writing",
+        items=[
+            ("clear", "Clear", "Removes the old heightmap, then adds the new one"),
+            ("keep", "Keep", "Do not export any new heightmap")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )
-    bpy.types.Scene.keepPcl = bpy.props.BoolProperty(   # Access through "bpy.context.scene.keepPcl"
-        name="Keep .pccols",
-        default=False,
-        description="Don't edit pre-existing pccols"
+    bpy.types.Scene.expspl = bpy.props.EnumProperty( 
+        name="Splatmap Writing",
+        items=[
+            ("clear", "Clear", "Removes the current splatmap, then adds the new one"),
+            ("keep", "Keep", "Do not export any new splatmap")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )
-    bpy.types.Scene.keepDen = bpy.props.BoolProperty(   # Access through "bpy.context.scene.keepDen"
-        name="Keep Density",
-        default=False,
-        description="Don't edit pre-existing density"
+    bpy.types.Scene.expmap = bpy.props.EnumProperty( 
+        name="Other Map Writing",
+        items=[
+            ("clear", "Clear", "Removes all other heightmap related maps, then adds the new ones"),
+            ("keep", "Keep", "Do not export any new heightmap related maps")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )
-    bpy.types.Scene.noVis = bpy.props.BoolProperty(   # Access through "bpy.context.scene.noVis"
-        name="No Visual Terrain",
-        default=False,
-        description="Doesn't export .terrain-model"
+    bpy.types.Scene.expmat = bpy.props.EnumProperty( 
+        name="Material Writing",
+        items=[
+            ("clear", "Clear", "Removes all .materials, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing materials, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing .materials and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new materials")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )
-    bpy.types.Scene.noCol = bpy.props.BoolProperty(   # Access through "bpy.context.scene.noCol"
-        name="No Collision",
-        default=False,
-        description="Doesn't export .btmesh"
+    bpy.types.Scene.expdds = bpy.props.EnumProperty( 
+        name="Texture Writing",
+        items=[
+            ("clear", "Clear", "Removes all textures, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing textures, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing textures, and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new textures")
+        ],
+        default="clear",
+        description="Hover over options for details"
+    )
+    bpy.types.Scene.expuva = bpy.props.EnumProperty( 
+        name="UV-anim Writing",
+        items=[
+            ("clear", "Clear", "Removes all .UV-anims, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing UV-anims, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing UV-anims, and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new UV-anims")
+        ],
+        default="clear",
+        description="Hover over options for details"
+    )
+    bpy.types.Scene.exppcm = bpy.props.EnumProperty( 
+        name="pcmodel Writing",
+        items=[
+            ("clear", "Clear", "Removes all .pcmodels, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing pcmodels, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing pcmodels, and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new pcmodels")
+        ],
+        default="clear",
+        description="Hover over options for details"
+    )
+    bpy.types.Scene.exppcl = bpy.props.EnumProperty( 
+        name="pccol Writing",
+        items=[
+            ("clear", "Clear", "Removes all .pccols, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing pccols, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing pccols, and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new pccols")
+        ],
+        default="clear",
+        description="Hover over options for details"
+    )
+    bpy.types.Scene.expmsc = bpy.props.EnumProperty( 
+        name="Other Writing",
+        items=[
+            ("clear", "Clear", "Removes all other random types of files, then adds the new ones"),
+            ("write", "Overwrite", "Keeps existing other random types of files, but overwrites them if you export one of the same name"),
+            ("add", "Add", "Keeps existing other random types of files, and only adds new ones, not removing or editing old ones"),
+            ("keep", "Keep", "Do not export any new other random types of files")
+        ],
+        default="clear",
+        description="Hover over options for details"
     )

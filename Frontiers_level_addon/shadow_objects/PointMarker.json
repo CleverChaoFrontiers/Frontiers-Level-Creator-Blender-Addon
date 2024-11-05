@@ -1,0 +1,41 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PointMarker",
+  "type": "PointMarker",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "Width": 5.0,
+    "StageType": "FORWARDVIEW",
+    "modelType": "Normal",
+    "passPlane": {
+      "width": 7.0,
+      "height": 20.0,
+      "offset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "restartType": "Standard",
+    "camera": "{00000000-0000-0000-0000-000000000000}",
+    "cameraLimit": 1.0,
+    "isDistSpace": false,
+    "isReset": false
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "EggFlapper",
+  "type": "EggFlapper",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "actionType": "Normal",
+    "moveType": "Fixed",
+    "orientationForMoveTypeFix": "Set",
+    "updateTimeType": "Global",
+    "moveOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "moveSpeed": 2.0,
+    "searchDistance": 15.0,
+    "searchAngle": 90.0,
+    "attackCannonSpeed": 2.0,
+    "attackCannonReadyTime": 1.0,
+    "attackCannonCycleTime": 2.0,
+    "attackCannonLifeTime": 2.0,
+    "attackCannonRadius": 2.0,
+    "attackCannonHeight": -1.0,
+    "attackNeedleOffTime": 1.3,
+    "attackNeedleOnTime": 1.2,
+    "attackNeedlePhaseTime": 1.0,
+    "respawnTime": -1.0,
+    "addLightGaugeNum": -1,
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "appearEffect": true,
+    "eventDriven": false,
+    "isTransparency": true,
+    "forceThunderToBeTreatedAsGrounded": false,
+    "bIsGuide": false,
+    "guideSize": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "guideColOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "guideViewOffset": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

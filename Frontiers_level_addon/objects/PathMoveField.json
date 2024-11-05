@@ -1,0 +1,38 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "PathMoveField",
+  "type": "PathMoveField",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "cameraParam": {
+      "azimuth": 0.0,
+      "elevation": 89.9,
+      "distance": 3.1,
+      "zRoll": 0.0,
+      "fovy": 40.0,
+      "frameOffset": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "pathName": "",
+    "speed": 0.2
+  }
+}

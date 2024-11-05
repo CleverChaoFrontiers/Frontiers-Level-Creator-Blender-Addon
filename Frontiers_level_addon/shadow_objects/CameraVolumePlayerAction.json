@@ -1,0 +1,54 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraVolumePlayerAction",
+  "type": "CameraVolumePlayerAction",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "playerActionType": "DWING",
+    "target": "{00000000-0000-0000-0000-000000000000}",
+    "priority": 0,
+    "useHighPriority": true,
+    "easeTimeEnter": 0.5,
+    "easeTimeLeave": 0.5,
+    "interpolateTypeEnter": "INTERPOLATE_RELATIVE",
+    "interpolateTypeLeave": "INTERPOLATE_RELATIVE",
+    "enableCollisionEnter": false,
+    "enableCollisionLeave": false,
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_EACHTIME",
+    "disableFreeMode": true,
+    "volume": {
+      "ShapeType": "SHAPE_BOX",
+      "basePoint": "BASE_CENTER",
+      "CollisionFilter": "FILTER_DEFAULT",
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
+      "CollisionOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "pathName": "",
+      "pathDivideNum": 20,
+      "pathSetDirection": "PATH_TO_GOAL",
+      "pathSetLength": 10.0
+    }
+  }
+}

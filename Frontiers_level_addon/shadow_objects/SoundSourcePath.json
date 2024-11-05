@@ -1,0 +1,33 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "SoundSourcePath",
+  "type": "SoundSourcePath",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "cueName": "",
+    "playMode": "PLAYMODE_LOOP",
+    "timeOffset": 0.0,
+    "playInterval": 0.0,
+    "volume": 0.0,
+    "hearingRange": 0.0,
+    "undampedRange": 0.0,
+    "pathName": "",
+    "searchDivideNum": 8
+  }
+}

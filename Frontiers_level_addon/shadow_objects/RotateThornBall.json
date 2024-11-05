@@ -1,0 +1,61 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "RotateThornBall",
+  "type": "RotateThornBall",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "rotateType": "TYPE_RIGHT",
+    "angularVelocity": 180.0,
+    "startType": "START_ROTATE",
+    "placeType": "ON_GROUND",
+    "timeType": "TIME_GLOBAL",
+    "eventDriven": false,
+    "showCenterObj": true,
+    "axisNum": 4,
+    "axisParam": [
+      {
+        "radius": 4.0,
+        "ballNum": 2,
+        "ballInterval": 0.0
+      },
+      {
+        "radius": 4.0,
+        "ballNum": 2,
+        "ballInterval": 0.0
+      },
+      {
+        "radius": 4.0,
+        "ballNum": 2,
+        "ballInterval": 0.0
+      },
+      {
+        "radius": 4.0,
+        "ballNum": 2,
+        "ballInterval": 0.0
+      },
+      {
+        "radius": 4.0,
+        "ballNum": 2,
+        "ballInterval": 0.0
+      }
+    ],
+    "disableSolidCollision": false,
+    "playHeadSE": false
+  }
+}

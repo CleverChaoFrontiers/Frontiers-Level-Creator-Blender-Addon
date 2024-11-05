@@ -1,0 +1,44 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "EggpawnFc",
+  "type": "EggpawnFc",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "shotType": "SHOT_ONE_HAND",
+    "approachLimit": 10.0,
+    "serachDistance": 25.0,
+    "serachAngle": 360.0,
+    "moveDistance": 0.0,
+    "shotCoolDown": true,
+    "attackConst": false,
+    "attackConstAngle": 0.0,
+    "isFV": true,
+    "eventDriven": false,
+    "isGravity": false,
+    "isFallStart": false,
+    "isTreadGrass": false,
+    "updateMaterial": false,
+    "isStatic": false,
+    "toSVPathDistance": 0.0,
+    "isRespawn": false,
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "isTransparency": true
+  }
+}

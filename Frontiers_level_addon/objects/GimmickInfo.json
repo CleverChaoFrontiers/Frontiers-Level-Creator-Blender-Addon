@@ -1,0 +1,40 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GimmickInfo",
+  "type": "GimmickInfo",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": 1,
+    "eventDriven": false,
+    "puzzleID": "",
+    "childInfo": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "childLogic": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "childEvent": [
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "luaName": "",
+    "isHideMapIcon": false,
+    "isPuzzle": false,
+    "playType": "TYPE_ANYTIME"
+  }
+}

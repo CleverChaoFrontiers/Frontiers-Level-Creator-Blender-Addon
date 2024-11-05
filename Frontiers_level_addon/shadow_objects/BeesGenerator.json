@@ -1,0 +1,50 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "BeesGenerator",
+  "type": "BeesGenerator",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "eventType": "Wait",
+    "pathName": "",
+    "numBees": 10,
+    "numFirstBees": 0,
+    "appearSpan": 2.0,
+    "moveSpeed": 13.0,
+    "startPosObj": "{00000000-0000-0000-0000-000000000000}",
+    "endPosObj": "{00000000-0000-0000-0000-000000000000}",
+    "repat": false,
+    "pad1": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "repeatSpanTime": 1.0,
+    "homingReBound": true,
+    "homingDir": "Forward",
+    "pad2": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

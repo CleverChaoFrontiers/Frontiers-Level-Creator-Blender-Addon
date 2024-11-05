@@ -1,0 +1,51 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CameraRailForwardView",
+  "type": "CameraRailForwardView",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "IsCameraView": false,
+    "fovy": 45.0,
+    "zRot": 0.0,
+    "distance": 10.0,
+    "pathName": "",
+    "pathOffset": 0.0,
+    "reversePathFront": false,
+    "usePathVerticalComponent": false,
+    "usePathNormal": false,
+    "usePosLerp": false,
+    "posSensitivity": 1.0,
+    "posSensitivityBoost": 1.0,
+    "angleSensitivity": 0.15,
+    "angleSensitivityBoost": 0.15,
+    "azimuthOffsetDeg": 0.0,
+    "elevationOffsetDeg": 5.0,
+    "gravityOffset": 0.5,
+    "playerOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "playerOffsetType": "PLAYER_OFFSET_NORMAL",
+    "enableCollision": false,
+    "enableCheckCelling": false,
+    "enableEyePositionLimit": false,
+    "eyePositionLimitMinY": 0.0
+  }
+}

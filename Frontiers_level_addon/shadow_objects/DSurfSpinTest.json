@@ -1,0 +1,43 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DSurfSpinTest",
+  "type": "DSurfSpinTest",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "size": [
+      10.0,
+      10.0,
+      10.0
+    ],
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_LOCAL",
+    "eventDriven": false,
+    "destOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "isReverse": false,
+    "moveSpeed": 0.0,
+    "waitTime": 0.0,
+    "phase": 0.0
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "AmoebaFloor",
+  "type": "AmoebaFloor",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "sizeType": "SIZE_B",
+    "moveType": "MOVE_NONE",
+    "patrolType": "PATROL_RETURN",
+    "timeType": "TIME_GLOBAL",
+    "eventDriven": false,
+    "isFall": false,
+    "waitFallTime": 3.0,
+    "isSyncRot": false,
+    "isSmoothMove": false,
+    "isReverse": false,
+    "isPressDead": false,
+    "isWallLeft": false,
+    "isWallRight": false,
+    "isWallFront": false,
+    "isWallBack": false,
+    "WallHeight": 1.0,
+    "moveVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "locaterList": [
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}",
+      "{00000000-0000-0000-0000-000000000000}"
+    ],
+    "waitTime": 0.0,
+    "phase": 0.0,
+    "speed": 10.0,
+    "isTransparency": true,
+    "isCameraTransparency": false,
+    "isHideUntilEvent": false,
+    "playMoveSE": false,
+    "playStopSE": false,
+    "useChaosAppearAnim": false,
+    "isAmoebaFront": false,
+    "isFrontWall": false,
+    "isFrontWallLeft": true,
+    "isFrontWallRight": true
+  }
+}

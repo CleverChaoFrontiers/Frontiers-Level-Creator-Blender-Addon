@@ -1,0 +1,35 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "DragonCameraChangeVolume",
+  "type": "DragonCameraChangeVolume",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "priority": 0,
+    "easeTimeEnter": 0.0,
+    "easeTimeLeave": 0.0,
+    "upOffset": 0.0,
+    "distance": 0.0,
+    "azimuthOffset": 0.0,
+    "elevationOffset": 0.0,
+    "roll": 0.0,
+    "isChangeFocus": false,
+    "focusRatio": 0.0,
+    "focusLimitAngle": 0.0
+  }
+}

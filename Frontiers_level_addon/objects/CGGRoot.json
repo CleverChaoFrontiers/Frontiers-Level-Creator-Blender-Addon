@@ -1,0 +1,35 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "CGGRoot",
+  "type": "CGGRoot",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 1000.0,
+        "rangeOut": 20.0
+      }
+    },
+    "base": {
+      "children": [
+        "{00000000-0000-0000-0000-000000000000}"
+      ]
+    },
+    "timer": {
+      "unitTime": 5.0,
+      "decPoint": 5.0
+    },
+    "railNum": 2,
+    "debugAreaRadius": 40.0
+  }
+}

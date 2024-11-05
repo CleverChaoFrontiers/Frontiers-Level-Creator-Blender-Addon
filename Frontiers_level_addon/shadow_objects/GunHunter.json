@@ -1,0 +1,63 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GunHunter",
+  "type": "GunHunter",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "eventDriven": false,
+    "playAppearEffect": false,
+    "playAppearEffectOnRangeIn": false,
+    "appearType": "APPEARTYPE_STAND",
+    "fallHeight": 30.0,
+    "fallSpeed": 20.0,
+    "upHeight": 3.5,
+    "upSpeed": 3.0,
+    "doomeyeAnimePlaySpeed": 1.0,
+    "doesRespawn": false,
+    "respawnTime": 1.0,
+    "addLightGaugeNum": -1,
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "attackParam": {
+      "searchDistance": 50.0,
+      "attackDistance": 20.0,
+      "bulletSpeed": 5.0,
+      "attackChargeTime": 1.0,
+      "attackInterval": 2.0,
+      "playSeekAnimation": true
+    },
+    "isTransparency": true,
+    "isGuide": false,
+    "guideSize": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "guideColOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "guideViewOffset": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

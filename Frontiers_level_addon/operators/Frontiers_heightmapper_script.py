@@ -5,7 +5,7 @@ import shutil
 import json
 
 def updateprogress(advance):
-    if (4, 0, 0) > bpy.app.version:
+    if (4, 0, 0) < bpy.app.version:
         bpy.types.Scene.heightmapprogress =  bpy.types.Scene.heightmapprogress + advance
         bpy.types.Scene.heightmapprogresstext = f"LOADING ({round(bpy.types.Scene.heightmapprogress * 100)}%)"
         bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
@@ -16,7 +16,7 @@ class HeightmapperOperator(bpy.types.Operator):
     bl_label = "Open Heightmapper"
     bl_description = "Creates a heightmap if there is none, or opens the editor for the existing one"
 
-    if (4, 0, 0) > bpy.app.version:
+    if (4, 0, 0) < bpy.app.version:
         bpy.types.Scene.heightmapprogress = 0.0 # Resets the progress bar
         bpy.types.Scene.heightmapprogresstext = "- - -"
 
@@ -27,7 +27,7 @@ class HeightmapperOperator(bpy.types.Operator):
             bpy.data.objects["[FLC] Heightmap"].select_set(True)
             bpy.context.view_layer.objects.active = bpy.data.objects["[FLC] Heightmap"]
         else:
-            if (4, 0, 0) > bpy.app.version:
+            if (4, 0, 0) < bpy.app.version:
                 bpy.types.Scene.heightmapprogress = 0.0
 
             bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection # Deselects all collections
@@ -110,7 +110,7 @@ class HeightmapperOperator(bpy.types.Operator):
 
         print(f"\n\nMATERIAL ADDING COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.heightmapprogress = 1.0
             bpy.types.Scene.heightmapprogresstext = "DONE"
 
@@ -125,7 +125,7 @@ class HeightmapperExport(bpy.types.Operator):
 
     def execute(self, context): # When button is pressed
         startTime = time.time()
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.heightmapprogress = 0.0
         updateprogress(0.0)
 
@@ -138,7 +138,7 @@ class HeightmapperExport(bpy.types.Operator):
             def heightmapError(self, context):
                 self.layout.label(text="No Heightmap found!") # Sets the label of the popup
             bpy.context.window_manager.popup_menu(heightmapError, title = "Export Failed", icon = "IMPORT") # Makes the popup appear
-            if (4, 0, 0) > bpy.app.version:
+            if (4, 0, 0) < bpy.app.version:
                 bpy.types.Scene.heightmapprogress = 1.0
                 bpy.types.Scene.heightmapprogresstext = "CANCELLED"
             return {'FINISHED'}
@@ -146,7 +146,7 @@ class HeightmapperExport(bpy.types.Operator):
             def saveError(self, context):
                 self.layout.label(text=".blend file is not saved!") # Sets the label of the popup
             bpy.context.window_manager.popup_menu(saveError, title = "Export Failed", icon = "IMPORT") # Makes the popup appear
-            if (4, 0, 0) > bpy.app.version:
+            if (4, 0, 0) < bpy.app.version:
                 bpy.types.Scene.heightmapprogress = 1.0
                 bpy.types.Scene.heightmapprogresstext = "CANCELLED"
             return {'FINISHED'}
@@ -154,7 +154,7 @@ class HeightmapperExport(bpy.types.Operator):
             def missingProgramError(self, context):
                 self.layout.label(text=f"The filepath for texconv is not set. \nPlease set the path in Settings.") # Tells the user about the missing prorgrams
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Program missing", icon = "QUESTION") # Makes the popup appear
-            if (4, 0, 0) > bpy.app.version:
+            if (4, 0, 0) < bpy.app.version:
                 bpy.types.Scene.heightmapprogress = 1.0
                 bpy.types.Scene.heightmapprogresstext = "CANCELLED"
             return {'FINISHED'} # Cancels the operation
@@ -335,7 +335,7 @@ class HeightmapperExport(bpy.types.Operator):
 
         print(f"\n\nCONVERTING COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.heightmapprogress = 1.0
             bpy.types.Scene.heightmapprogresstext = "DONE"
 
@@ -351,7 +351,7 @@ class HeightmapperImport(bpy.types.Operator):
 
     def execute(self, context): # When button is pressed
         startTime = time.time()
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.heightmapprogress = 0.0
         updateprogress(0.0)
 
@@ -522,7 +522,7 @@ class HeightmapperImport(bpy.types.Operator):
 
         updateprogress(0.22)
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.heightmapprogress = 1.0
             bpy.types.Scene.heightmapprogresstext = "DONE"
 

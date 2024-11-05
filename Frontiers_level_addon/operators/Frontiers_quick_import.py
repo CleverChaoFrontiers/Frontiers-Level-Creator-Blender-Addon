@@ -220,7 +220,7 @@ def readMaterial(path):
         return materialData
 
 def updateprogress(advance, name, milestone):
-    if (4, 0, 0) > bpy.app.version:
+    if (4, 0, 0) < bpy.app.version:
         bpy.types.Scene.importprogress =  bpy.types.Scene.importprogress + advance
         bpy.types.Scene.importprogresstext = f"{name} ({round(bpy.types.Scene.importprogress * 100)}%)"
         if bpy.types.Scene.importprogress >= milestone:
@@ -234,11 +234,11 @@ class CompleteImport(bpy.types.Operator):
     bl_description = "Imports terrain, objects and the heightmap"
 
     def execute(self, context):
-        ImportTerrain(self, context)
-        ImportObjects(self, context)
-        ImportHeightmap(self, context)
-        ImportSplatmap(self, context)
-        ImportDensity(self, context)
+        ImportTerrain.execute(self, context)
+        ImportObjects.execute(self, context)
+        ImportHeightmap.execute(self, context)
+        ImportSplatmap.execute(self, context)
+        ImportDensity.execute(self, context)
         return{"FINISHED"}
 
 class ImportTerrain(bpy.types.Operator):
@@ -246,14 +246,14 @@ class ImportTerrain(bpy.types.Operator):
     bl_label = "Terrain"
     bl_description = "Imports terrain"
 
-    if (4, 0, 0) > bpy.app.version:
+    if (4, 0, 0) < bpy.app.version:
         bpy.types.Scene.importprogress = 0.0 # Resets the progress bar
         bpy.types.Scene.importprogresstext = "- - -"
 
     def execute(self, context):
         startTime = time.time()
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 0.0
         milestone = 0
         updateprogress(0.0, "Terrain", milestone)
@@ -660,7 +660,7 @@ class ImportTerrain(bpy.types.Operator):
                 self.layout.label(text=f"Dependency Folders: {', '.join(missingdependencies)} are missing, ignore this if there are no issues") # Sets the popup label
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Missing dependencies", icon = "QUESTION") # Makes the popup appear
         
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 1.0
             bpy.types.Scene.importprogresstext = "DONE"
 
@@ -675,7 +675,7 @@ class ImportObjects(bpy.types.Operator):
     def execute(self, context):
         startTime = time.time()
         
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 0.0
         milestone = 0.0
         updateprogress(0.0, "Objects", milestone)
@@ -1024,7 +1024,7 @@ class ImportObjects(bpy.types.Operator):
             ids[children[c]].parent = ids[parents[c]]
         print(ids)
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 1.0
             bpy.types.Scene.importprogresstext = "DONE"
 
@@ -1037,7 +1037,7 @@ class ImportHeightmap(bpy.types.Operator):
 
     def execute(self, context):
         startTime = time.time()
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 0.0
         milestone = 0.0
 
@@ -1216,7 +1216,7 @@ class ImportHeightmap(bpy.types.Operator):
 
         milestone = updateprogress(0.22, "Heightmap", milestone)
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 1.0
             bpy.types.Scene.importprogresstext = "DONE"
 
@@ -1230,7 +1230,7 @@ class ImportSplatmap(bpy.types.Operator):
     bl_description = "Imports splatmap"
 
     def execute(self, context):
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 0.0
         milestone = 0.0
         milestone = updateprogress(0.0, "Splatmap", milestone)
@@ -1369,7 +1369,7 @@ class ImportSplatmap(bpy.types.Operator):
         bpy.data.materials["[FLC] Scale"].node_tree.nodes["scale"].image = scaleimg
         bpy.data.materials["[FLC] Area"].node_tree.nodes["area"].image = areaimg
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 1.0
             bpy.types.Scene.importprogresstext = "DONE"
 
@@ -1383,7 +1383,7 @@ class ImportDensity(bpy.types.Operator):
     def execute(self, context):
         startTime = time.time()
         
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 0.0
         milestone = 0
         updateprogress(0.0, "Density", milestone)
@@ -1514,7 +1514,7 @@ class ImportDensity(bpy.types.Operator):
                 except:
                     pass
         
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 1.0
             bpy.types.Scene.importprogresstext = "DONE"
 
@@ -1584,7 +1584,7 @@ class QimportSettings(bpy.types.PropertyGroup): # Other settings
         ],
         "shadow" : [
             # ARK
-            ("w01a10", "w01a11 (ARK Act 1)", ""),
+            ("w01a11", "w01a11 (ARK Act 1)", ""),
             ("w01a20", "w01a20 (ARK Act 2)", ""),
 
             # Rail Canyon

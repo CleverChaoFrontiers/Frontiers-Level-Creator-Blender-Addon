@@ -48,7 +48,7 @@ def ID_generator(self):
     return Id
 
 def updateprogress(advance, name, milestone):
-    if (4, 0, 0) > bpy.app.version:
+    if (4, 0, 0) < bpy.app.version:
         bpy.types.Scene.exportprogress =  bpy.types.Scene.exportprogress + advance
         bpy.types.Scene.exportprogresstext = f"{name} ({round(bpy.types.Scene.exportprogress * 100)}%)"
         if bpy.types.Scene.exportprogress >= milestone:
@@ -143,12 +143,12 @@ class ExportTerrain(bpy.types.Operator):
     bl_label = "Terrain"
     bl_description = "Exports your level's terrain, collision, materials and textures"
 
-    if (4, 0, 0) > bpy.app.version:
+    if (4, 0, 0) < bpy.app.version:
         bpy.types.Scene.exportprogress = 0.0 # Resets the progress bar
         bpy.types.Scene.exportprogresstext = "- - -"
 
     def execute(self, context):
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 0.0
         milestone = 0
         updateprogress(0.0, "Terrain", milestone)
@@ -200,7 +200,7 @@ class ExportTerrain(bpy.types.Operator):
             bpy.context.window_manager.popup_menu(missingProgramError, title = ".bat file selected", icon = "ERROR") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
         
-        unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00.pac", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc.pac", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density.pac"], directoryHedgearcpack)
+        unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00.pac", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc.pac"], directoryHedgearcpack)
 
         if bpy.context.view_layer.objects.active == None:
             for o in bpy.data.objects:
@@ -356,11 +356,6 @@ class ExportTerrain(bpy.types.Operator):
             keepFiles.extend(["pt-anim", "path", "pxd", "pcrt", "light", "model", "fxcol", "vat"])
         clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00", keepFiles)
         clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc", keepFiles)
-
-        keepFiles = ["level", "txt", "rfl"]
-        if bpy.context.scene.expden in ["add", "write", "keep"]:
-            keepFiles.extend(["densitypointcloud", "btmesh", "densitysetting", "material", "model","dds"])
-        clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density", keepFiles)
 
         os.chdir(os.path.dirname(directoryModelconverter))
         pcmodel = []
@@ -536,9 +531,9 @@ class ExportTerrain(bpy.types.Operator):
         shutil.rmtree(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp")
 
         if bpy.context.scene.noPack == False:
-            pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density"], directoryHedgearcpack)
+            pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc"], directoryHedgearcpack)
         
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 1.0
             bpy.types.Scene.exportprogresstext = "DONE"
         
@@ -560,7 +555,7 @@ class ExportObjects(bpy.types.Operator):
     
     def execute(self, context):
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 0.0
         milestone = 0
         updateprogress(0.0, "Objects", milestone)
@@ -1551,7 +1546,7 @@ class ExportObjects(bpy.types.Operator):
         if bpy.context.scene.noPack == False:
             pack([f'{absoluteModDir}\\raw\\gedit\\{worldId}_gedit'], directoryHedgearcpack)
         
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 1.0
             bpy.types.Scene.exportprogresstext = "DONE"
         
@@ -1569,7 +1564,7 @@ class ExportHeightmap(bpy.types.Operator):
         if bpy.context.scene.exphgt == "keep":
             return {'FINISHED'}
         
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 0.0
         milestone = 0
         updateprogress(0.0, "Heightmap", milestone)
@@ -1795,7 +1790,7 @@ class ExportHeightmap(bpy.types.Operator):
 
         print(f"\n\nCONVERTING COMPLETE ----------\nTIME ELAPSED: {time.time() - previousTime}")
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 1.0
             bpy.types.Scene.exportprogresstext = "DONE"
 
@@ -1809,7 +1804,7 @@ class ExportSplatmap(bpy.types.Operator):
     bl_description = "Exports your Heightmap's Splatmap, Area and Scale maps"
     
     def execute(self, context):
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 0.0
         milestone = 0
         updateprogress(0.0, "Splatmap", milestone)
@@ -1902,7 +1897,7 @@ class ExportSplatmap(bpy.types.Operator):
 
         shutil.rmtree(tempfolder)
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 1.0
             bpy.types.Scene.exportprogresstext = "DONE"
         
@@ -1914,7 +1909,7 @@ class ExportDensity(bpy.types.Operator):
     bl_description = "Exports your level's density objects"
     
     def execute(self, context):
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 0.0
         milestone = 0
         updateprogress(0.0, "Density", milestone)
@@ -2095,7 +2090,7 @@ class ExportDensity(bpy.types.Operator):
 
             pack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_density"], directoryHedgearcpack)
 
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.exportprogress = 1.0
             bpy.types.Scene.exportprogresstext = "DONE"
         
@@ -2230,7 +2225,7 @@ class QexportSettings(bpy.types.PropertyGroup): # Other settings
         ],
         "shadow" : [
             # ARK
-            ("w01a10", "w01a11 (ARK Act 1)", ""),
+            ("w01a11", "w01a11 (ARK Act 1)", ""),
             ("w01a20", "w01a20 (ARK Act 2)", ""),
 
             # Rail Canyon
@@ -2249,10 +2244,18 @@ class QexportSettings(bpy.types.PropertyGroup): # Other settings
             ("w05a10", "w05a10 (Chaos Island Act 1)", ""),
             ("w05a20", "w05a20 (Chaos Island Act 2)", ""),
 
-            # City
-            ("w06a10", "w06a10 (City Act 1)", ""),
-            ("w06a20", "w06a20 (City Act 2)", "")
+            # Radical Highway
+            ("w06a10", "w06a10 (Radical Highway Act 1)", ""),
+            ("w06a20", "w06a20 (Radical Highway Act 2)", ""),
 
+            # White Space
+            ("w09a10", "w09a10 (White Space)", ""),
+
+            # Bosses
+            ("w11b10", "w11b10 (Biolizard)", ""),
+            ("w12b10", "w12b10 (Metal Overlord)", ""),
+            ("w13b10", "w13b10 (Mephiles)", ""),
+            ("w14b10", "w14b10 (Devil Doom)", "")
         ]
         }
         try:

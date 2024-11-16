@@ -16,9 +16,23 @@
   "parameters": {
     "tags": {
       "RangeSpawning": {
-        "rangeIn": 1000.0,
+        "rangeIn": 800.0,
         "rangeOut": 20.0
       }
+    },
+    "effectName": "",
+    "scale": 0.0,
+    "colorR": 0,
+    "colorG": 0,
+    "colorB": 0,
+    "colorA": 0,
+    "sound": {
+      "name": "",
+      "is3D": false,
+      "volume": 0.0
+    },
+    "rumble": {
+      "name": ""
     },
     "shapeType": "SHAPE_BOX",
     "width": 100.0,

@@ -1534,9 +1534,18 @@ class ExportObjects(bpy.types.Operator):
                 gedit_text += obj_text
             gedit_text = '{\n  "version": 1,\n  "objects": [\n' + gedit_text[:-2] + "\n  ]\n}"
 
+            if bpy.context.scene.hedgegameChoice == "shadow":
+                geditTemplate = f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/shadow.json'
+            else:
+                geditTemplate = f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/frontiers.json'
+            
             gedit = open(f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.hson", "x")
             gedit.write(gedit_text)
             gedit.close()
+
+            #from AshDumpLib.HedgehogEngine.BINA.RFL import Reflection, ObjectWorld, ReflectionData # type: ignore
+            #ObjectWorld.TemplateData = ReflectionData.Template.GetTemplateFromFilePath(geditTemplate)
+            #ObjectWorld.ToGedit(ObjectWorld.FromHsonString(gedit_text)).SaveToFile(f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.gedit")
 
             os.chdir(os.path.dirname(directoryHedgeset))
             print(os.popen(f'HedgeSet "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.hson" "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.gedit" -game={hedgeset_game_choice} -platform=pc').read())

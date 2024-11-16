@@ -20,7 +20,7 @@
         "rangeOut": 20.0
       }
     },
-    "collectionMode": "Art",
+    "collectionMode": "None",
     "volume": {
       "ShapeType": "SHAPE_BOX",
       "basePoint": "BASE_CENTER",

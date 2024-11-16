@@ -16,19 +16,19 @@
   "parameters": {
     "tags": {
       "RangeSpawning": {
-        "rangeIn": 1000.0,
+        "rangeIn": 800.0,
         "rangeOut": 20.0
       }
     },
     "layerName": "",
-    "enabled": false,
+    "enabled": true,
     "volume": {
       "ShapeType": "SHAPE_BOX",
       "basePoint": "BASE_CENTER",
       "CollisionFilter": "FILTER_DEFAULT",
-      "CollisionWidth": 20.0,
-      "CollisionHeight": 40.0,
-      "CollisionDepth": 41.0,
+      "CollisionWidth": 5.0,
+      "CollisionHeight": 20.0,
+      "CollisionDepth": 1.0,
       "CollisionOffset": [
         0.0,
         0.0,

@@ -717,9 +717,9 @@ class ImportObjects(bpy.types.Operator):
         geditFiles = []
         for f in os.listdir(geditFolder):
             if f.endswith(".gedit"):
-                if directoryHedgeset != "":
+                if preferences.directoryHedgeset != "":
                     os.chdir(os.path.dirname(directoryHedgeset))
-                    print(os.popen(f'HedgeSet "{geditFolder}\\{f}" -game=frontiers -platform=pc').read())
+                    print(os.popen(f'HedgeSet "{geditFolder}\\{f}" -game={context.scene.hedgegameChoice} -platform=pc').read())
 
                     hsonName = f.replace(".gedit", ".hson")
                     geditFiles.append(f"{geditFolder}\\{hsonName}")
@@ -729,14 +729,23 @@ class ImportObjects(bpy.types.Operator):
         # Find the Level Creator asset pack
         lcAssetPacks = []
         for l in bpy.context.preferences.filepaths.asset_libraries:
-            if "flc-identifier" in os.listdir(l.path):
-                lcAssetPacks.append(l)
+            try:
+                if "flc-identifier" in os.listdir(l.path) and context.scene.hedgegameChoice == "frontiers":
+                    lcAssetPacks.append(l)
+                elif "slc-identifier" in os.listdir(l.path) and context.scene.hedgegameChoice == "shadow":
+                    lcAssetPacks.append(l)
+            except FileNotFoundError:
+                pass
         
         if len(lcAssetPacks) > 1: # If 2+ asset packs are installed for some reason, get whichever has the latest version
             assetPack = lcAssetPacks[0]
             assetPackVer = 0
             for p in lcAssetPacks:
-                newAssetPackVer = open(f"{p.path}\\flc-identifier", "rb").read()
+                if context.scene.hedgegameChoice == "frontiers":
+                    newAssetPackVer = open(f"{p.path}\\flc-identifier", "rb").read()
+                else:
+                    newAssetPackVer = open(f"{p.path}\\slc-identifier", "rb").read()
+
                 if int.from_bytes(newAssetPackVer, "big") > assetPackVer:
                     assetPack = p
                     assetPackVer = int.from_bytes(newAssetPackVer, "big")
@@ -781,11 +790,15 @@ class ImportObjects(bpy.types.Operator):
             rootcollection = bpy.data.collections.new("Objects")
             bpy.context.scene.collection.children.link(rootcollection)
         
+        if bpy.context.scene.hedgegameChoice == "shadow":
+            geditTemplate = f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/shadow.json'
+        else:
+            geditTemplate = f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/frontiers.json'
+
         gedittotal = 0
         for f in geditFiles:
             if f.endswith(".gedit"):
                 from AshDumpLib.HedgehogEngine.BINA.RFL import ObjectWorld # type: ignore
-                geditTemplate = bpy.context.preferences.addons[__package__.split(".")[0]].preferences.directoryGeditTemplate
                 gedit = ObjectWorld(f, geditTemplate)
                 try:
                     gedittotal += len(gedit.Objects)
@@ -820,7 +833,6 @@ class ImportObjects(bpy.types.Operator):
             geditFileData = ""
             if f.endswith(".gedit"):
                 from AshDumpLib.HedgehogEngine.BINA.RFL import ObjectWorld # type: ignore
-                geditTemplate = bpy.context.preferences.addons[__package__.split(".")[0]].preferences.directoryGeditTemplate
                 gedit = ObjectWorld(f, geditTemplate)
                 geditFileData = gedit.ToHsonString()
             else:
@@ -907,94 +919,96 @@ class ImportObjects(bpy.types.Operator):
                 except:
                     continue
                 for p in blendObj.json_parameters:
-                    parampath = p.name.split("/")
-                    print(parampath)
-                    propertyType = parampath[-1]
-                    if len(parampath) == 2:
-                        if propertyType == "float":
-                            p.float_value = o["parameters"][parampath[0]]
-                        elif propertyType == "enum":
-                            for e in p.enum_items:
-                                if e.value == o["parameters"][parampath[0]]:
-                                    e.selected = True
-                                else:
-                                    e.selected = False
-                        elif propertyType == "int":
-                            try:
-                                p.int_value = o["parameters"][parampath[0]]
-                            except:
-                                print("Int assignment error: probably a template issue")
-                        elif propertyType == "bool":
-                            p.bool_value = o["parameters"][parampath[0]]
-                        elif propertyType == "vector":
-                            p.vector_value = o["parameters"][parampath[0]]
-                        elif propertyType == "string":
-                            p.string_value = o["parameters"][parampath[0]]
-                    elif len(parampath) == 3:
-                        if parampath[0].endswith("]"):
+                    try:
+                        parampath = p.name.split("/")
+                        print(parampath)
+                        propertyType = parampath[-1]
+                        if len(parampath) == 2:
                             if propertyType == "float":
-                                p.float_value = o["parameters"][parampath[0][:parampath[0].find("[")]][int(parampath[0][parampath[0].find("[") + 1:-1])][parampath[1]]
+                                p.float_value = o["parameters"][parampath[0]]
                             elif propertyType == "enum":
                                 for e in p.enum_items:
-                                    if e.value == o["parameters"][parampath[0][:parampath[0].find("[")]][int(parampath[0][parampath[0].find("[") + 1:-1])][parampath[1]]:
+                                    if e.value == o["parameters"][parampath[0]]:
                                         e.selected = True
                                     else:
                                         e.selected = False
                             elif propertyType == "int":
                                 try:
-                                    p.int_value = o["parameters"][parampath[0]][parampath[1]]
+                                    p.int_value = o["parameters"][parampath[0]]
                                 except:
                                     print("Int assignment error: probably a template issue")
                             elif propertyType == "bool":
-                                p.bool_value = o["parameters"][parampath[0]][parampath[1]]
+                                p.bool_value = o["parameters"][parampath[0]]
                             elif propertyType == "vector":
-                                p.vector_value = o["parameters"][parampath[0]][parampath[1]]
+                                p.vector_value = o["parameters"][parampath[0]]
                             elif propertyType == "string":
-                                print(o["parameters"][parampath[0][:parampath[0].find("[")]][int(parampath[0][parampath[0].find("[") + 1:-1])][parampath[1]])
-                                p.string_value = o["parameters"][parampath[0]][parampath[1]]
+                                p.string_value = o["parameters"][parampath[0]]
+                        elif len(parampath) == 3:
+                            if parampath[0].endswith("]"):
+                                if propertyType == "float":
+                                    p.float_value = o["parameters"][parampath[0][:parampath[0].find("[")]][int(parampath[0][parampath[0].find("[") + 1:-1])][parampath[1]]
+                                elif propertyType == "enum":
+                                    for e in p.enum_items:
+                                        if e.value == o["parameters"][parampath[0][:parampath[0].find("[")]][int(parampath[0][parampath[0].find("[") + 1:-1])][parampath[1]]:
+                                            e.selected = True
+                                        else:
+                                            e.selected = False
+                                elif propertyType == "int":
+                                    try:
+                                        p.int_value = o["parameters"][parampath[0]][parampath[1]]
+                                    except:
+                                        print("Int assignment error: probably a template issue")
+                                elif propertyType == "bool":
+                                    p.bool_value = o["parameters"][parampath[0]][parampath[1]]
+                                elif propertyType == "vector":
+                                    p.vector_value = o["parameters"][parampath[0]][parampath[1]]
+                                elif propertyType == "string":
+                                    print(o["parameters"][parampath[0][:parampath[0].find("[")]][int(parampath[0][parampath[0].find("[") + 1:-1])][parampath[1]])
+                                    p.string_value = o["parameters"][parampath[0]][parampath[1]]
+                            else:
+                                if propertyType == "float":
+                                    p.float_value = o["parameters"][parampath[0]][parampath[1]]
+                                elif propertyType == "enum":
+                                    for e in p.enum_items:
+                                        if e.value == o["parameters"][parampath[0]][parampath[1]]:
+                                            e.selected = True
+                                        else:
+                                            e.selected = False
+                                elif propertyType == "int":
+                                    try:
+                                        p.int_value = o["parameters"][parampath[0]][parampath[1]]
+                                    except:
+                                        print("Int assignment error: probably a template issue")
+                                elif propertyType == "bool":
+                                    p.bool_value = o["parameters"][parampath[0]][parampath[1]]
+                                elif propertyType == "vector":
+                                    p.vector_value = o["parameters"][parampath[0]][parampath[1]]
+                                elif propertyType == "string":
+                                    p.string_value = o["parameters"][parampath[0]][parampath[1]]
+                        elif len(parampath) == 4:
+                            if propertyType == "float":
+                                p.float_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
+                            elif propertyType == "enum":
+                                for e in p.enum_items:
+                                    if e.value == o["parameters"][parampath[0]][parampath[1]][parampath[2]]:
+                                        e.selected = True
+                                    else:
+                                        e.selected = False
+                            elif propertyType == "int":
+                                try:
+                                    p.int_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
+                                except:
+                                    print("Int assignment error: probably a template issue")
+                            elif propertyType == "bool":
+                                p.bool_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
+                            elif propertyType == "vector":
+                                p.vector_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
+                            elif propertyType == "string":
+                                p.string_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
                         else:
-                            if propertyType == "float":
-                                p.float_value = o["parameters"][parampath[0]][parampath[1]]
-                            elif propertyType == "enum":
-                                for e in p.enum_items:
-                                    if e.value == o["parameters"][parampath[0]][parampath[1]]:
-                                        e.selected = True
-                                    else:
-                                        e.selected = False
-                            elif propertyType == "int":
-                                try:
-                                    p.int_value = o["parameters"][parampath[0]][parampath[1]]
-                                except:
-                                    print("Int assignment error: probably a template issue")
-                            elif propertyType == "bool":
-                                p.bool_value = o["parameters"][parampath[0]][parampath[1]]
-                            elif propertyType == "vector":
-                                p.vector_value = o["parameters"][parampath[0]][parampath[1]]
-                            elif propertyType == "string":
-                                p.string_value = o["parameters"][parampath[0]][parampath[1]]
-                    elif len(parampath) == 4:
-                        if propertyType == "float":
-                            p.float_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
-                        elif propertyType == "enum":
-                            for e in p.enum_items:
-                                if e.value == o["parameters"][parampath[0]][parampath[1]][parampath[2]]:
-                                    e.selected = True
-                                else:
-                                    e.selected = False
-                        elif propertyType == "int":
-                            try:
-                                p.int_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
-                            except:
-                                print("Int assignment error: probably a template issue")
-                        elif propertyType == "bool":
-                            p.bool_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
-                        elif propertyType == "vector":
-                            p.vector_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
-                        elif propertyType == "string":
-                            p.string_value = o["parameters"][parampath[0]][parampath[1]][parampath[2]]
-                    else:
-                        raise Exception("Parameter Name Error")
-                    
+                            raise Exception("Parameter Name Error")
+                    except:
+                        pass
                 milestone = updateprogress(1 / gedittotal, "Objects", milestone)
             
             for path in range(len(paths)):
@@ -1008,12 +1022,18 @@ class ImportObjects(bpy.types.Operator):
                     #handlepoint = angle.to_matrix().col[2].normalized() * tangentlen
                     #handlepoint2 = -handlepoint
 
-                    points[point].co = (pathnodepos[pathnodes[path][point]][0] - ids[paths[path]].location.x, -pathnodepos[pathnodes[path][point]][2] - ids[paths[path]].location.y, pathnodepos[pathnodes[path][point]][1] - ids[paths[path]].location.z) 
+                    try:
+                        points[point].co = (pathnodepos[pathnodes[path][point]][0] - ids[paths[path]].location.x, -pathnodepos[pathnodes[path][point]][2] - ids[paths[path]].location.y, pathnodepos[pathnodes[path][point]][1] - ids[paths[path]].location.z) 
+                    except KeyError:
+                        points[point].co = (0, 0, 0)
                     points[point].handle_left_type = "AUTO"
                     points[point].handle_right_type = "AUTO"
                     #points[point].handle_left = handlepoint + points[point].co
                     #points[point].handle_right = handlepoint2 + points[point].co
-            geditFile.close()
+            try:
+                geditFile.close()
+            except UnboundLocalError:
+                pass
         
         for o in objectAssets:
             try:
@@ -1022,7 +1042,7 @@ class ImportObjects(bpy.types.Operator):
                 pass
         for c in range(len(children)):
             ids[children[c]].parent = ids[parents[c]]
-        print(ids)
+        #print(ids)
 
         if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 1.0

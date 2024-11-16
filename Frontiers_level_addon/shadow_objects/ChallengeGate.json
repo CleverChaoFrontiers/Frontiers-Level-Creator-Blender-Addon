@@ -20,7 +20,7 @@
         "rangeOut": 20.0
       }
     },
-    "stageID": "Gimmick",
+    "stageID": "Enemy",
     "challengeID": "Rings",
     "targetNotes": "{00000000-0000-0000-0000-000000000000}",
     "scale": 1.0,
@@ -34,6 +34,6 @@
       0.0,
       0.0
     ],
-    "iconKind": "Gimmick"
+    "iconKind": "Enemy"
   }
 }

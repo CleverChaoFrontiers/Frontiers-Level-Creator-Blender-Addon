@@ -20,8 +20,8 @@
         "rangeOut": 20.0
       }
     },
-    "stageID": "SpaceColonyARK",
-    "zoneID": "SpaceColonyARK",
+    "stageID": 10,
+    "zoneID": "ChaosIsland",
     "scale": 0.9,
     "halfExtents": [
       0.0,

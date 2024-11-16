@@ -51,6 +51,10 @@ class LevelCreatorPreferences(AddonPreferences):
         default = "shadow",
         description="Name of the Shadow Generations template file used in your hedgeset version"
     )
+    blendhog_sharptoggle: BoolProperty(  # type: ignore
+        name="internaltools_toggle",
+        default = False,
+    )
     # Defines a Property to store the directory path
     CustomTemplatePath: bpy.props.StringProperty(  # type: ignore
         name="Directory Path",
@@ -106,24 +110,23 @@ class LevelCreatorPreferences(AddonPreferences):
         default="",
         description="Path to texconv"
     )
-    directoryGeditTemplate: bpy.types.Scene.directoryGeditTemplate = bpy.props.StringProperty(
-        name="Gedit Template",
-        subtype='FILE_PATH',
-        default="",
-        description="Path to Gedit Template"
-    )
+    #directoryGeditTemplate: bpy.types.Scene.directoryGeditTemplate = bpy.props.StringProperty(
+    #    name="Gedit Template",
+    #    subtype='FILE_PATH',
+    #    default="",
+    #    description="Path to Gedit Template"
+    #)
 
     def draw(self, context):
         layout = self.layout
         box = layout.box()
         row = box.row()
-        row.label(text="Hedgeset Shadow gens template name")
-        row = box.row()
-        row.prop(self, "Hedgeset_shadowtemp")
-        box = layout.box()
-        row = box.row()
         row.label(text="Additional Templates")
         row.prop(self, "CustomTemplatePath")
+        row = box.row()
+        row.operator("toggle.blendhogsharptools")
+        row = box.row()
+        row.prop(self, "Hedgeset_shadowtemp")
 
         # Add "Tool Filepaths" section label
         box = layout.box()
@@ -163,10 +166,26 @@ class LevelCreatorPreferences(AddonPreferences):
         row.prop(self, "directoryTexconv", text="texconv")
         row.operator("download.texconv", text="", icon="IMPORT")
 
-        row = box.row()
-        row.prop(self, "directoryGeditTemplate", text="Gedit Template")
-        row.operator("download.gedittemplate", text="", icon="IMPORT")
+        #row = box.row()
+        #row.prop(self, "directoryGeditTemplate", text="Gedit Template")
+        #row.operator("download.gedittemplate", text="", icon="IMPORT")
 
+class SharpToolsToggle(Operator):
+    bl_idname = "toggle.blendhogsharptools"
+    bl_label = "Internal Tools (Experimental)"
+    bl_description = "Use internal tools for import/export"
+    
+    def execute(self, context):
+        preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences 
+        if preferences.blendhog_sharptoggle == False:
+            csmain.initCS()
+            preferences.blendhog_sharptoggle = True
+            self.report({"INFO"}, f"Internal tools have been turned on")
+        else:
+            csmain.deinitCS()
+            preferences.blendhog_sharptoggle = False
+            self.report({"INFO"}, f"Internal tools have been turned off")
+        return{"FINISHED"}
 class OBJECT_OT_addon_prefs(Operator):
     """Display preferences"""
     bl_idname = "object.addon_prefs"
@@ -174,15 +193,6 @@ class OBJECT_OT_addon_prefs(Operator):
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        preferences = context.preferences
-        addon_prefs = preferences.addons[__package__].preferences
-
-        info = ("Custom Template directory: %s" %
-                (addon_prefs.CustomTemplatePath))
-
-        self.report({'INFO'}, info)
-        print(info)
-
         return {'FINISHED'}
 class GamechoicePanel(bpy.types.Panel):
     bl_label = "Hedgehog Game Choice"
@@ -234,7 +244,7 @@ class QuickExport(bpy.types.Panel):
         row.prop(context.scene, "modDir", text="Mod")
         row = layout.row()
         row.prop(context.scene, "worldId", text="World")
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             row = layout.row()
             row.progress(text=context.scene.exportprogresstext, factor=context.scene.exportprogress, type = 'BAR')
 
@@ -260,7 +270,7 @@ class QuickImport(bpy.types.Panel):
         row.prop(context.scene, "modDirI", text="Mod")
         row = layout.row()
         row.prop(context.scene, "worldIdI", text="World")
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             row = layout.row()
             row.progress(text=context.scene.importprogresstext, factor=context.scene.importprogress, type = 'BAR')
 class QuickExportAdvanced(bpy.types.Panel):
@@ -410,7 +420,7 @@ class HeightmapperPanel2(bpy.types.Panel):
         # Add directory path field
         row = layout.row()
         row.prop(context.scene, "importDirectory", text="trr_height")
-        if (4, 0, 0) > bpy.app.version:
+        if (4, 0, 0) < bpy.app.version:
             row = layout.row()
             heightmapprogress = row.progress(text=context.scene.heightmapprogresstext, factor = context.scene.heightmapprogress, type = 'BAR')
 
@@ -635,8 +645,8 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(HedgeOtherSettings)
     bpy.utils.register_class(FrontiersExperimentalPanel)
     bpy.utils.register_class(FrontiersAddonPanel)
+    bpy.utils.register_class(SharpToolsToggle)
 
-    
     bpy.utils.register_class(QuickExport)
     bpy.utils.register_class(QuickExportAdvanced)
     bpy.utils.register_class(QuickImport)
@@ -645,7 +655,6 @@ def register():#registers the addon when checked in the addon menu
     #register Addon preferences
     bpy.utils.register_class(OBJECT_OT_addon_prefs)
     bpy.utils.register_class(LevelCreatorPreferences)
-
     #register Coords script
     bpy.utils.register_class(Coord_panel)
     bpy.utils.register_class(PrintCoordinatesOperator)
@@ -668,7 +677,6 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(FrontiersTerrProps)
     bpy.types.Scene.FrontiersTerrProps = bpy.props.PointerProperty(type=FrontiersTerrProps)
     #register Heightmapper Script
-    #bpy.utils.register_class(HeightmapperPanel)
     bpy.utils.register_class(HeightmapperPanel2)
     bpy.utils.register_class(HeightmapperOperator)
     bpy.utils.register_class(HeightmapperExport)
@@ -681,17 +689,10 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(SplatmapFavourite)
     bpy.utils.register_class(SplatmapSet)
     bpy.utils.register_class(HeightmapperSettingsPanel)
-    #bpy.utils.register_class(HeightmapperOperator)
-    #bpy.utils.register_class(HeightmapperRender)
-    #bpy.utils.register_class(HeightmapperRenderPanel)
-    #bpy.utils.register_class(HeightmapperImport)
-    #bpy.utils.register_class(HeightmapperImportPanel)
-    #bpy.utils.register_class(HeightmapperAdvancedPanel)
-    #bpy.utils.register_class(HeightmapperProps)
     #register Parameter Script
+    bpy.utils.register_class(JsonParameterListItem)#added
     bpy.utils.register_class(OBJECT_PT_JsonParameters)
     bpy.utils.register_class(parametersListvalues)
-    bpy.utils.register_class(JsonParameterListItem)#added
     bpy.utils.register_class(JsonParametersPropertyGroup)
     bpy.utils.register_class(OBJECT_OT_AddListItem)
     bpy.utils.register_class(OBJECT_OT_RemoveListItem)
@@ -703,8 +704,6 @@ def register():#registers the addon when checked in the addon menu
     bpy.types.Scene.FrontiersDisplaceGroup = bpy.props.PointerProperty(type=FrontiersDisplaceGroup)
     bpy.utils.register_class(OBJECT_OT_DisplaceOnCurve)
     bpy.utils.register_class(DisplaceOnCurvePanel)
-
-
     # Tool paths
     bpy.utils.register_class(DownloadHedgearcpack)
     bpy.utils.register_class(DownloadHedgeset)
@@ -728,7 +727,6 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(QexportSettings)
 
     #DENSITY STUFF: THIS IS A LOT MORE THAN NORMAL SO BE WARNED
-
     bpy.utils.register_class(OBJECT_OT_duplicate_link_with_nodes)
     bpy.utils.register_class(OBJECT_OT_FrontiersPointCloudExport)
     WindowManager.Frontiers_Density_thumbnail = EnumProperty(
@@ -741,7 +739,6 @@ def register():#registers the addon when checked in the addon menu
 
     preview_collections["main"] = pcoll
     bpy.utils.register_class(FrontiersDensityProperties)
-    bpy.types.Scene.FrontiersDensityProperties = bpy.props.PointerProperty(type=FrontiersDensityProperties)
     bpy.utils.register_class(remove_densityscatter)
     bpy.utils.register_class(DensityPanel)
     bpy.utils.register_class(DensityPaintPanel)
@@ -750,7 +747,7 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(DensityForwardGroupOperator)
     bpy.utils.register_class(DensityBackwardsGroupOperator)
     bpy.utils.register_class(DensityAssignIndex)
-
+    bpy.types.Scene.FrontiersDensityProperties = bpy.props.PointerProperty(type=FrontiersDensityProperties)
 
     # Quick Import
     bpy.utils.register_class(CompleteImport)
@@ -774,12 +771,17 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(FrontiersImportProperties)
     bpy.types.Scene.FrontiersImportProperties = bpy.props.PointerProperty(type=FrontiersImportProperties)
 
-    csmain.initCS()
+    #csmain.initCS()
 
 def unregister():#Uninstall the addon when dechecked in the addon menu
-    bpy.utils.unregister_class(FrontiersAddonPanel)
-    bpy.utils.unregister_class(FrontiersExperimentalPanel)
+    if bpy.context.preferences.addons[__package__.split(".")[0]].preferences.blendhog_sharptoggle:
+        csmain.deinitCS()
     bpy.utils.unregister_class(GamechoicePanel)
+    bpy.utils.unregister_class(HedgeOtherSettings)
+    bpy.utils.unregister_class(FrontiersExperimentalPanel)
+    bpy.utils.unregister_class(FrontiersAddonPanel)
+    bpy.utils.unregister_class(SharpToolsToggle)
+
     bpy.utils.unregister_class(QuickExport)
     bpy.utils.unregister_class(QuickExportAdvanced)
     bpy.utils.unregister_class(QuickImport)
@@ -796,6 +798,7 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     #unregister Rail script
     bpy.utils.unregister_class(PrintRailsOperator)
     bpy.utils.unregister_class(FrontiersRails)
+    bpy.utils.unregister_class(Rail_panel)    
     bpy.utils.unregister_class(SetBevelOperator)
     del bpy.types.Scene.FrontiersRails
     #unregister FBX Script
@@ -809,7 +812,6 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(FrontiersTerrProps)
     del bpy.types.Scene.FrontiersTerrProps
     #unregister Heightmapper Script
-    #bpy.utils.unregister_class(HeightmapperPanel)
     bpy.utils.unregister_class(HeightmapperPanel2)
     bpy.utils.unregister_class(HeightmapperOperator)
     bpy.utils.unregister_class(HeightmapperExport)
@@ -822,21 +824,14 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(SplatmapFavourite)
     bpy.utils.unregister_class(SplatmapSet)
     bpy.utils.unregister_class(HeightmapperSettingsPanel)
-    #bpy.utils.unregister_class(HeightmapperOperator)
-    #bpy.utils.unregister_class(HeightmapperRender)
-    #bpy.utils.unregister_class(HeightmapperRenderPanel)
-    #bpy.utils.unregister_class(HeightmapperImport)
-    #bpy.utils.unregister_class(HeightmapperImportPanel)
-    #bpy.utils.unregister_class(HeightmapperAdvancedPanel)
-    #bpy.utils.unregister_class(HeightmapperProps)
     #unregister Parameter Script
     bpy.utils.unregister_class(JsonParameterListItem)#added
     bpy.utils.unregister_class(OBJECT_PT_JsonParameters)
     bpy.utils.unregister_class(parametersListvalues)
     bpy.utils.unregister_class(JsonParametersPropertyGroup)
     bpy.utils.unregister_class(OBJECT_OT_AddListItem)
-    bpy.utils.unregister_class(OBJECT_OT_AddSelected)
     bpy.utils.unregister_class(OBJECT_OT_RemoveListItem)
+    bpy.utils.unregister_class(OBJECT_OT_AddSelected)
     del bpy.types.Object.json_parameters
     del bpy.types.Scene.parameters_active_index
     #unregister displace on curve script
@@ -910,4 +905,4 @@ def unregister():#Uninstall the addon when dechecked in the addon menu
     bpy.utils.unregister_class(FrontiersImportProperties)
     del bpy.types.Scene.FrontiersImportProperties
 
-    csmain.deinitCS()
+    

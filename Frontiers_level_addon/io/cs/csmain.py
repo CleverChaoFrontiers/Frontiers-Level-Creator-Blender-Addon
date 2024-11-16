@@ -1,4 +1,4 @@
-import sys, subprocess, os
+import sys, subprocess, os, bpy
 
 def installModule(packageName):
     try:
@@ -6,8 +6,12 @@ def installModule(packageName):
     except:
         python_exe = os.path.join(sys.prefix, 'bin', 'python.exe')
         subprocess.call([python_exe, "-m", "ensurepip"])
-        subprocess.call([python_exe, "-m", "pip", "install", "--upgrade", "pip"])
-        subprocess.call([python_exe, "-m", "pip", "install", packageName])
+        if (4, 2, 2) == bpy.app.version:
+            subprocess.call([python_exe, "-m", "install", "--upgrade", "pip"])
+            subprocess.call([python_exe, "-m", "install", packageName])
+        else:
+            subprocess.call([python_exe, "-m", "pip", "install", "--upgrade", "pip"])
+            subprocess.call([python_exe, "-m", "pip", "install", packageName])
 
 def initCS():
     installModule("pythonnet")

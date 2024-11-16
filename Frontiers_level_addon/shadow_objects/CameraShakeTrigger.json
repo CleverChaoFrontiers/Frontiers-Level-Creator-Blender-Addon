@@ -24,7 +24,7 @@
     "shakeTime": 0.6,
     "shakeRange": 200.0,
     "oneTimeOnly": true,
-    "shakeType": "Directional",
+    "shakeType": "Random",
     "magnitude": 0.55,
     "freq": 5,
     "zRot": 0.0,

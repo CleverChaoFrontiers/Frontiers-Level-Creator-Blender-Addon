@@ -8,6 +8,10 @@ VERSION 1
 
 44403957-582b-4384-b7f2-5788f4f94f89:Cameras:Cameras
 fd8c28fb-c4b6-42cb-b20e-be40df3a4239:Enemies:Enemies
+15f3756d-99f1-43d0-99eb-2ccca489fa5d:Enemies/Badniks:Enemies-Badniks
+8b3b67b9-7b65-424e-b7fd-5096b190de3a:Enemies/Black Arms:Enemies-Black Arms
+6813da9a-1999-4497-9591-afa0bbe412d4:Enemies/G.U.N:Enemies-G.U.N
+83e62c98-0161-434f-85cf-24da9c355fe4:Enemies/Others:Enemies-Others
 5dcf8227-5451-41e2-b7d1-629e435662fe:Essentials:Essentials
 e72ca885-cded-4ee2-a95c-ef0d92b5b16d:Gimmicks:Gimmicks
 1624c869-91d1-4457-8c37-a41a597a335a:Hazards:Hazards

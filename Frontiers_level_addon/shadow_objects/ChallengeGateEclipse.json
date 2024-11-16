@@ -20,7 +20,7 @@
         "rangeOut": 20.0
       }
     },
-    "stageID": "Gimmick",
+    "stageID": "Enemy",
     "iconKind": "Gimmick"
   }
 }

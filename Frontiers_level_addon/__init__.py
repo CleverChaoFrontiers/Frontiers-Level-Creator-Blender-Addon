@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Blendhog Level Creator",
     "author": "CleverChao, Ashrindy, LightningWyvern, Piranha Mayhem, Justin113D",
-    "version": (3, 9, 9),#REMEMBER TO CHANGE THIS
+    "version": (4, 0, 0),#REMEMBER TO CHANGE THIS
     "blender": (3, 6, 0),
     "category": "Object",
     "location": "View3D > toolbar > Tool > Blendhog Level Creator",
@@ -173,7 +173,7 @@ class LevelCreatorPreferences(AddonPreferences):
 class SharpToolsToggle(Operator):
     bl_idname = "toggle.blendhogsharptools"
     bl_label = "Internal Tools (Experimental)"
-    bl_description = "Use internal tools for import/export"
+    bl_description = "Use certain internal tools for some operations - less stable and tested, but can accelerate intensive operations"
     
     def execute(self, context):
         preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences 

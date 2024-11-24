@@ -99,6 +99,13 @@ class SetBevelOperator(bpy.types.Operator):
                             data_to.node_groups = data_from.node_groups
                 geo_node_Path_mod = obj.modifiers.new(name="HedgehogPath", type='NODES')
                 geo_node_Path_mod.node_group = bpy.data.node_groups["HedgehogPath"]
+                obj.data.splines.active.type == "BEZIER"
+                for point in obj.data.splines.active.bezier_points:
+                    # Set the handle types to 'AUTO'
+                    if point.handle_left_type != 'AUTO' and point.handle_left_type != 'VECTOR':  
+                        point.handle_left_type = 'AUTO'
+                    if point.handle_right_type != 'AUTO' and point.handle_right_type != 'VECTOR':
+                        point.handle_right_type = 'AUTO'
                 
         else:
             self.report({"INFO"}, f"Selected object is not a curve")

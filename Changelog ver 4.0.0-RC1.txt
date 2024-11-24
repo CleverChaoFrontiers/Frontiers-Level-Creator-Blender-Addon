@@ -1,3 +1,13 @@
+4.0.0 Release Candidate 1
+Renamed everything to Blendhog Level Creator
+Many, many bugfixes
+
+3.9.9
+Bugfixes
+
+3.9.8
+Bugfixes
+
 3.9.7
 Shadow Generations support
 Some Shadow Generations objects - the rest can be added by making your own assets or naming objects

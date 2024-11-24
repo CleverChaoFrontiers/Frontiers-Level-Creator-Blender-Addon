@@ -1,11 +1,11 @@
 bl_info = {
-    "name": "Frontiers Level Creator",
+    "name": "Blendhog Level Creator",
     "author": "CleverChao, Ashrindy, LightningWyvern, Piranha Mayhem, Justin113D",
-    "version": (3, 9, 7),#REMEMBER TO CHANGE THIS
+    "version": (3, 9, 9),#REMEMBER TO CHANGE THIS
     "blender": (3, 6, 0),
     "category": "Object",
-    "location": "View3D > toolbar > Tool > Frontiers Level Creator",
-    "description": "Tools used for creating level mods for Sonic Frontiers"}
+    "location": "View3D > toolbar > Tool > Blendhog Level Creator",
+    "description": "Tools used for creating level mods for HE-2 Games"}
 
 import bpy # type: ignore
 import os, json
@@ -199,20 +199,20 @@ class GamechoicePanel(bpy.types.Panel):
     bl_idname = "PT_GameChoicePanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'Frontiers Level Creator'
+    bl_category = 'Blendhog Level Creator'
     
     def draw(self, context):
         layout = self.layout
-        layout.label(text="version 3.9.7 PLAYTEST")#REMEMBER TO CHANGE THIS
+        layout.label(text="version 3.9.9 PLAYTEST")#REMEMBER TO CHANGE THIS
         row = layout.row()
         row.prop(context.scene, "hedgegameChoice", text="Choose a game")
 
 class FrontiersAddonPanel(bpy.types.Panel):
-    bl_label = "Frontiers Export Tools"
+    bl_label = "Export Tools"
     bl_idname = "PT_PrintCoordinatesPanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'Frontiers Level Creator'
+    bl_category = 'Blendhog Level Creator'
     
     def draw(self, context):
         layout = self.layout
@@ -383,11 +383,11 @@ class Terrain_panel(bpy.types.Panel):
         layout.prop(terraintool, "json_name")
         layout.operator("object.terrain_script")
 class FrontiersExperimentalPanel(bpy.types.Panel):
-    bl_label = "Frontiers Tools Panel"
+    bl_label = "Tools Panel"
     bl_idname = "PT_EXPPanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'Frontiers Level Creator'
+    bl_category = 'Blendhog Level Creator'
     
     def draw(self, context):
         layout = self.layout
@@ -398,7 +398,7 @@ class HeightmapperPanel2(bpy.types.Panel):
     bl_parent_id = "PT_EXPPanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "Frontiers Level Creator"
+    bl_category = "Blendhog Level Creator"
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
@@ -430,7 +430,7 @@ class HeightmapperSplatmapPanel(bpy.types.Panel):
     bl_parent_id = "OBJECT_PT_heightmapper"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "Frontiers Level Creator"
+    bl_category = "Blendhog Level Creator"
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
@@ -478,7 +478,7 @@ class HeightmapperSettingsPanel(bpy.types.Panel):
     bl_parent_id = "OBJECT_PT_heightmapper"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "Frontiers Level Creator"
+    bl_category = "Blendhog Level Creator"
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
@@ -501,7 +501,7 @@ class DisplaceOnCurvePanel(bpy.types.Panel):
     bl_parent_id = "PT_EXPPanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'Frontiers Level Creator'
+    bl_category = 'Blendhog Level Creator'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
@@ -519,7 +519,7 @@ class CameraConnectPanel(bpy.types.Panel):
     bl_parent_id = "PT_EXPPanel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'Frontiers Level Creator'
+    bl_category = 'Blendhog Level Creator'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
@@ -532,18 +532,18 @@ class LegacyPanel(bpy.types.Panel):
     bl_idname = "PT_Legacy"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'Frontiers Level Creator'
+    bl_category = 'Blendhog Level Creator'
     
     def draw(self, context):
         pass
 
 class HSONImporterPanel(bpy.types.Panel):
-    bl_label = "Frontiers GEDIT/HSON Importer"
+    bl_label = "Legacy GEDIT/HSON Importer"
     bl_idname = "OBJECT_PT_hson_importer"
     bl_parent_id = "PT_Legacy"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "Frontiers Level Creator"
+    bl_category = "Blendhog Level Creator"
     bl_options = {'DEFAULT_CLOSED'}
 
 
@@ -770,11 +770,11 @@ def register():#registers the addon when checked in the addon menu
     bpy.utils.register_class(HSONImportOperator)
     bpy.utils.register_class(FrontiersImportProperties)
     bpy.types.Scene.FrontiersImportProperties = bpy.props.PointerProperty(type=FrontiersImportProperties)
-
-    #csmain.initCS()
+    if bpy.context.preferences.addons[__package__.split(".")[0]].preferences.blendhog_sharptoggle: #If Csharp is turned on, it stays on with this
+        csmain.initCS()
 
 def unregister():#Uninstall the addon when dechecked in the addon menu
-    if bpy.context.preferences.addons[__package__.split(".")[0]].preferences.blendhog_sharptoggle:
+    if bpy.context.preferences.addons[__package__.split(".")[0]].preferences.blendhog_sharptoggle: #If Csharp is turned on, unregister with this
         csmain.deinitCS()
     bpy.utils.unregister_class(GamechoicePanel)
     bpy.utils.unregister_class(HedgeOtherSettings)

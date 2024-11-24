@@ -35,10 +35,16 @@ def clearFolder(filepath, keepFiles):
     filepath = f"{filepath}\\"
     os.chdir(filepath) # Goes to the directory to be cleared
     files = os.listdir(filepath) # Gets every file/folder in the directory
-    for f in range(len(files)): # For every file/folder
-        if os.path.isfile(f"{filepath}\\{files[f]}"): # Only if is file, not folder
-            if not files[f].split(".")[-1].lower() in keepFiles: # If the file extension is not in the list of extensions to be kept
-                os.remove(f"{filepath}\\{files[f]}") # Removes file
+    if "OTHER" in keepFiles:
+        for f in range(len(files)): # For every file/folder
+            if os.path.isfile(f"{filepath}\\{files[f]}"): # Only if is file, not folder
+                if not files[f].split(".")[-1].lower() in keepFiles and files[f].split(".")[-1].lower() in ["terrain-model", "btmesh", "gedit", "densitypointcloud", "densitysetting", "dds", "uv-anim", "pcmodel", "pccol"]: # If the file extension is not in the list of extensions to be kept
+                    os.remove(f"{filepath}\\{files[f]}") # Removes file
+    else:
+        for f in range(len(files)): # For every file/folder
+            if os.path.isfile(f"{filepath}\\{files[f]}"): # Only if is file, not folder
+                if not files[f].split(".")[-1].lower() in keepFiles: # If the file extension is not in the list of extensions to be kept
+                    os.remove(f"{filepath}\\{files[f]}") # Removes file
 
 def ID_generator(self):
     Id = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
@@ -315,7 +321,11 @@ class ExportTerrain(bpy.types.Operator):
                 else:
                     if not "FrontiersAsset" in o:
                         o.select_set(True)
-            exportname = c.name.replace(' ', '_')
+            if "Full Name" in c:
+                exportname = c["Full Name"].replace(' ', '_')
+            else:
+                exportname = c.name.replace(' ', '_')
+
             for rm in ["InstOnly_", "instonly_", "INSTONLY_", "_NoCol", "_NoVis", "_nocol", "_novis", "_NOCOL", "_NOVIS"]:
                 exportname = exportname.replace(rm, "")
             bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = True, add_leaf_bones=False,mesh_smooth_type='FACE')
@@ -353,7 +363,7 @@ class ExportTerrain(bpy.types.Operator):
         if bpy.context.scene.exppcl in ["add", "write", "keep"]:
             keepFiles.append("pccol")
         if bpy.context.scene.expmsc in ["add", "write", "keep"]:
-            keepFiles.extend(["pt-anim", "path", "pxd", "pcrt", "light", "model", "fxcol", "vat"])
+            keepFiles.extend(["OTHER"])
         clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00", keepFiles)
         clearFolder(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc", keepFiles)
 
@@ -566,6 +576,8 @@ class ExportObjects(bpy.types.Operator):
         game_choice = context.scene.hedgegameChoice
         if game_choice == "shadow":
             hedgeset_game_choice = preferences.Hedgeset_shadowtemp
+        else:
+            hedgeset_game_choice = "frontiers"
         absoluteModDir = os.path.abspath(bpy.path.abspath(bpy.context.scene.modDir)) # Gets mod folder directory
         worldId = bpy.context.scene.worldId # Gets the world ID to be edited
 
@@ -1125,6 +1137,14 @@ class ExportObjects(bpy.types.Operator):
                                         elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "UID" in parameter.object_value and parameter.object_value.type == "CURVE":
                                             UIDstring = "SetPath_"+parameter.object_value["UID"]
                                             PropertyValue = UIDstring
+                                        elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "DataID" not in parameter.object_value and parameter.object_value.type != "CURVE":
+                                            parameter.object_value["DataID"] = self.ID_generator()
+                                            IDstring = "{"+parameter.object_value["DataID"]+"}"
+                                            PropertyValue = IDstring
+                                        elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "UID" not in parameter.object_value and parameter.object_value.type == "CURVE":
+                                            parameter.object_value["UID"] = str(random.randint(5000, 200000))
+                                            UIDstring = "SetPath_"+ parameter.object_value["UID"]
+                                            PropertyValue = UIDstring
                                         else:
                                             PropertyValue = parameter.string_value
                                     elif PropertyType.startswith("list"):
@@ -1291,7 +1311,10 @@ class ExportObjects(bpy.types.Operator):
                             pass
                         #adds the values      
                         object_temp["id"] = Id
-                        object_temp["name"] = name
+                        if "use_blendhog_name" in obj and "blendhog_name" in obj and obj["use_blendhog_name"] == True:
+                            object_temp["name"] = obj["blendhog_name"]
+                        else:
+                            object_temp["name"] = name
                         object_temp["position"] = coordinates
                         if "rotation" in object_temp:
                             object_temp["rotation"] = rotation

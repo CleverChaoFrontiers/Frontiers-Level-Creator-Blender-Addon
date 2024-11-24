@@ -37,7 +37,7 @@
     "lockTimeStopTime": 0.0,
     "width": 0.0,
     "adjustSpeed": 20.0,
-    "state": "DEFAULTSTATE_OFF",
+    "state": "DEFAULTSTATE_ON",
     "action": "ACTION_EACHTIME",
     "jumpMode": "NoneJump",
     "forceFall": false,

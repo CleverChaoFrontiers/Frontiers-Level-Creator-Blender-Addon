@@ -280,6 +280,7 @@ def get_json_filepath(obj_name,obj): #gets the path to the templates
 
 def update_parameters(self, context):
     obj = context.object
+
     if obj.use_display_json_parameters == False:
         if obj.animation_data is not None and obj.animation_data.drivers:
             for driver in obj.animation_data.drivers:
@@ -287,7 +288,7 @@ def update_parameters(self, context):
         obj.json_parameters.clear()
         return
     obj_name = obj.name.split('.', 1)[0]
-    
+    obj.blendhog_name = obj.name
     json_filepath = get_json_filepath(obj_name,obj)
     rfl_enum = get_rfl_filepath(obj_name)
     if os.path.exists(json_filepath):
@@ -419,7 +420,7 @@ class JsonParametersPropertyGroup(bpy.types.PropertyGroup):
 
 
 class OBJECT_PT_JsonParameters(bpy.types.Panel):
-    bl_label = "Frontiers Level creator: Gedit/Hson parameters from template"
+    bl_label = "Blendhog Level creator: Parameter Menu"
     bl_idname = "OBJECT_PT_json_parameters"
     bl_space_type = 'PROPERTIES'
     bl_region_type = 'WINDOW'
@@ -438,6 +439,12 @@ class OBJECT_PT_JsonParameters(bpy.types.Panel):
                     layout.label(text="Warning: Blender light settings will take priority. Only options not covered by blender will be changed")
                 else:
                     layout.label(text="Warning: this will override parameters set by Geometry Nodes.")
+                
+                alternative_name = bpy.props.StringProperty()
+                alternative_name = obj.name
+                row = layout.row()
+                row.prop(obj,"use_blendhog_name",text="Object name")
+                row.prop(obj, "blendhog_name", text="")
                 for item in obj.json_parameters:
                     name = item.name
                     
@@ -546,3 +553,11 @@ bpy.types.Object.use_display_json_parameters = bpy.props.BoolProperty(
     default=False,
     update=update_parameters
 )
+bpy.types.Object.blendhog_name = bpy.props.StringProperty(
+    name="blendhog Alt Name",
+    description="Sets a different name in-engine for the object. Has some technical uses",
+    default="",
+)
+bpy.types.Object.use_blendhog_name = bpy.props.BoolProperty(
+    name="Use alternative object name",
+    default=False,)

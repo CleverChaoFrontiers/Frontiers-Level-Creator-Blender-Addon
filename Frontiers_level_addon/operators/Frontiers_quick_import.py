@@ -264,7 +264,10 @@ class ImportTerrain(bpy.types.Operator):
         directoryHedgearcpack = os.path.abspath(bpy.path.abspath(preferences.directoryHedgearcpack)) # Gets HedgeArcPack path from preferences
         directoryHedgeneedle = os.path.abspath(bpy.path.abspath(preferences.directoryHedgeneedle)) # Gets HedgeNeedle path from preferences
         directoryModelfbx = os.path.abspath(bpy.path.abspath(preferences.directoryModelfbx)) # Gets ModelFBX path from preferences
-        worldTypeId = bpy.context.scene.worldIdI[:2] # e.g. w6, w1, w3
+        if ord(bpy.context.scene.worldIdI[2]) in range(ord("0"), ord("9") + 1):
+            worldTypeId = bpy.context.scene.worldIdI[:3] # e.g. w06, w01, w03
+        else:
+            worldTypeId = bpy.context.scene.worldIdI[:2] # e.g. w6, w1, w3
         worldType = bpy.context.scene.worldIdI # e.g. w6d01, w1r03, w3r01
         commonFolder = f"{os.path.abspath(bpy.path.abspath(bpy.context.scene.modDirI))}\\raw\\stage\\{worldTypeId}_common"
         print(worldType)
@@ -301,7 +304,7 @@ class ImportTerrain(bpy.types.Operator):
         loggedPcmodelInstances = [[], [], [], []]
         loggedBtmeshes = []
         loggedPccols = []
-        defaultpacs = [f"{worldFolder}\\{worldType}_trr_s00", f"{worldFolder}\\{worldType}_misc", f"{os.path.abspath(bpy.path.abspath(bpy.context.scene.modDirI))}\\raw\\stage\\{worldTypeId}_common"]
+        defaultpacs = [f"{worldFolder}\\{worldType}_trr_s00", f"{worldFolder}\\{worldType}_misc", f"{os.path.abspath(bpy.path.abspath(bpy.context.scene.modDirI))}\\raw\\stage\\{worldTypeId}_common", f"{os.path.abspath(bpy.path.abspath(bpy.context.scene.modDirI))}\\raw\\stage\\{worldTypeId}_floor"]
         dependencypacs = bpy.context.scene.dependencypacs.replace(", ", ",").replace("/", "\\").replace(".pac", "").replace(".PAC", "").split(",")
         dependencypacs = [f"{os.path.abspath(bpy.path.abspath(bpy.context.scene.modDirI))}\\raw\\stage\\{dep}" for dep in dependencypacs]
         allpacs = defaultpacs + dependencypacs
@@ -327,7 +330,10 @@ class ImportTerrain(bpy.types.Operator):
         for dependency in allpacs:
             for file in os.listdir(dependency): # Logs all relevant files in trr_s00
                 extension = file.split(".")[-1].lower()
-                if extension == "terrain-model" or extension == "model":
+                if extension == "terrain-model":
+                    loggedModels.append(f"{dependency}\\{file}")
+                #elif preferences.blendhog_sharptoggle == True and extension == "model":
+                if False:
                     loggedModels.append(f"{dependency}\\{file}")
                 elif extension == "material":
                     loggedMaterials.append(f"{dependency}\\{file}")
@@ -381,8 +387,8 @@ class ImportTerrain(bpy.types.Operator):
         readModels = [[], []]
 
         for model in loggedModels:
-            #if preferences.directoryHedgeneedle == "":
-            if True:
+            #if preferences.blendhog_sharptoggle == True:
+            if False:
                 try:
                     from SharpNeedleWrap import ModelWrap # type: ignore (makes the warning disappear)
                     modelFile = ModelWrap()
@@ -391,17 +397,17 @@ class ImportTerrain(bpy.types.Operator):
                     readModels[1].append(modelFile)
                     print(f"{os.path.splitext(os.path.basename(model))[0]}")
                 except Exception as e:
-                    print(f"{model}: {e}") 
+                    print(f"Frontiers_quick_import.py Error 0: {model} {e}") 
             else:
                 os.chdir(os.path.dirname(directoryHedgeneedle))
                 needlefile = open(model, "rb")
                 if needlefile.read(8) == b"NEDARCV1":
                     needlefile.close()
                     os.popen(f'HedgeNeedle "{model}"').read()
-                    lodName = model.split('\\')[-1][:-14]
+                    lodName = model.split('\\')[-1].split(".")[0]
                     try:
-                        shutil.move(f"{model[:-14]}\\{lodName}.0.terrain-model", f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\")
-                        shutil.rmtree(f"{model[:-14]}\\")
+                        shutil.move(f"{model.split('.')[0]}\\{lodName}.0.terrain-model", f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\")
+                        shutil.rmtree(f"{model.split('.')[0]}\\")
                         os.chdir(os.path.dirname(directoryModelfbx))
                         trrModelPath = f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{lodName}.0.terrain-model"
                         os.popen(f'ModelFBX "{trrModelPath}"').read()
@@ -420,7 +426,7 @@ class ImportTerrain(bpy.types.Operator):
                         os.popen(f'ModelFBX "{trrModelPath}"').read()
                         #print(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{modelbasename}.fbx --> {modelbasename[:-14]}.fbx")
                         os.chdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\")
-                        os.rename(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{modelbasename}.fbx",f"{modelbasename[:-14]}.fbx")
+                        os.rename(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{modelbasename}.fbx",f"{modelbasename.split('.')[0]}.fbx")
                     except Exception as e:
                         print(e)    
             milestone = updateprogress(0.2 / estimated, "Terrain", milestone)
@@ -439,14 +445,15 @@ class ImportTerrain(bpy.types.Operator):
         alreadyImported = []
         importedObjects = []
 
+        truncatedcollectionscount = 0
         for instance in range(len(loggedPcmodelInstances[0])):
             print(loggedPcmodelInstances[0][instance])
             try:
                 if loggedPcmodelInstances[0][instance] in alreadyImported:
                     pass
                 else:
-                    #if preferences.directoryHedgeneedle == "":
-                    if True:
+                    #if preferences.blendhog_sharptoggle == True:
+                    if False:
                         readModel = readModels[1][readModels[0].index(loggedPcmodelInstances[0][instance])]
                         from ..io.utilities import CreateMesh
                         old_objs = set(context.scene.objects)
@@ -481,13 +488,20 @@ class ImportTerrain(bpy.types.Operator):
                             material = bpy.data.materials.new(name=l.MaterialFileName)
                             mesh.materials.append(material)
                         obj = bpy.data.objects.new(loggedPcmodelInstances[0][instance], mesh)
-                        subcollection = bpy.data.collections.new(f"InstOnly_{loggedPcmodelInstances[0][instance]}_NoCol")
+                        if len(f"InstOnly_{loggedPcmodelInstances[0][instance]}") < 64:
+                            subcollection = bpy.data.collections.new(f"InstOnly_{loggedPcmodelInstances[0][instance]}")
+                        else:
+                            subcollection = bpy.data.collections.new(f"[TRUNCATED{truncatedcollectionscount}]InstOnly_{loggedPcmodelInstances[0][instance]}")
+                            truncatedcollectionscount += 1
+                        subcollection["Full Name"] = f"InstOnly_{loggedPcmodelInstances[0][instance]}"
                         collection.children.link(subcollection)
                         subcollection.objects.link(obj)
                         alreadyImported.append(list(set(context.scene.objects) - old_objs)[0].name)
                         bm = bmesh.new()
                         bm.from_mesh(obj.data)
                         bmesh.ops.rotate(bm, cent=mathutils.Vector((0, 0, 0)), matrix=mathutils.Matrix.Rotation(math.radians(90), 4, 'X'), verts=bm.verts)
+                        for face in bm.faces:
+                            face.normal_flip()
                         bm.to_mesh(obj.data)
                         bm.free()
                         obj.hide_set(True)
@@ -507,9 +521,15 @@ class ImportTerrain(bpy.types.Operator):
                             try:
                                 alreadyImported.append(list(set(context.scene.objects) - old_objs)[0].name)
                                 obj = bpy.data.objects[loggedPcmodelInstances[0][instance]]
-                                subcollection = bpy.data.collections.new(f"InstOnly_{loggedPcmodelInstances[0][instance]}_NoCol")
+                                if len(f"InstOnly_{loggedPcmodelInstances[0][instance]}") < 64:
+                                    subcollection = bpy.data.collections.new(f"InstOnly_{loggedPcmodelInstances[0][instance]}")
+                                else:
+                                    subcollection = bpy.data.collections.new(f"[TRUNCATED{truncatedcollectionscount}]InstOnly_{loggedPcmodelInstances[0][instance]}")
+                                    truncatedcollectionscount += 1
+                                subcollection["Full Name"] = f"InstOnly_{loggedPcmodelInstances[0][instance]}"
                                 collection.children.link(subcollection)
                                 subcollection.objects.link(obj)
+                                bpy.context.view_layer.layer_collection.collection.objects.unlink(obj)
                                 bm = bmesh.new()
                                 bm.from_mesh(obj.data)
                                 bmesh.ops.rotate(bm, cent=mathutils.Vector((0, 0, 0)), matrix=mathutils.Matrix.Rotation(math.radians(90), 4, 'X'), verts=bm.verts)
@@ -520,7 +540,13 @@ class ImportTerrain(bpy.types.Operator):
                             except IndexError:
                                 continue
                 
-                subcollection = bpy.data.collections[f"InstOnly_{loggedPcmodelInstances[0][instance]}_NoCol"]
+                if len(f"InstOnly_{loggedPcmodelInstances[0][instance]}") < 64:
+                    subcollection = bpy.data.collections[f"InstOnly_{loggedPcmodelInstances[0][instance]}"]
+                else:
+                    for c in bpy.data.collections:
+                        if "Full Name" in c:
+                            if c["Full Name"] == f"InstOnly_{loggedPcmodelInstances[0][instance]}":
+                                subcollection = c
                 trrObj = bpy.data.objects.new(f'INST("{loggedPcmodelInstances[0][instance]}", visual)', bpy.data.objects[loggedPcmodelInstances[0][instance]].data)
                 subcollection.objects.link(trrObj)
                 trrObj.rotation_mode = "XYZ"
@@ -531,7 +557,7 @@ class ImportTerrain(bpy.types.Operator):
                 trrObj.rotation_euler = (loggedPcmodelInstances[2][instance]["X"], -loggedPcmodelInstances[2][instance]["Z"], loggedPcmodelInstances[2][instance]["Y"])
                 importedObjects.append(trrObj)
             except FileNotFoundError as e:
-                print(f"Line 393:{e}")
+                print(f"Frontiers_quick_import.py Error 1:{e}")
             milestone = updateprogress(0.01 / estimated, "Terrain", milestone)
 
         bpy.ops.object.select_all(action='DESELECT')
@@ -563,8 +589,13 @@ class ImportTerrain(bpy.types.Operator):
 
         print(f"{len(loggedMaterials)} materials found:\n{loggedMaterials}")
 
+        if preferences.blendhog_sharptoggle == True:
+            from AshDumpLib.HedgehogEngine import NTSP # type: ignore
+            NTSP.NTSPManager.CurrentDirectory = f"{os.path.abspath(bpy.path.abspath(bpy.context.scene.modDirI))}\\raw\\texture_streaming\\"
+        print("Directory Set")
+
         for f in loggedMaterials:
-            if True:
+            if preferences.blendhog_sharptoggle == True:
                 try:
                     from SharpNeedle.HedgehogEngine.Mirage import Material # type: ignore
                     materialData = Material()
@@ -582,7 +613,18 @@ class ImportTerrain(bpy.types.Operator):
                             if f"{textureName}.dds" in bpy.data.images:
                                 imageNode.image = bpy.data.images[f"{textureName}.dds"]
                             else:
-                                imageNode.image = bpy.data.images.load(f"{loggedImages[textureName]}")
+                                imageFile = open(f"{loggedImages[textureName]}", "rb")
+                                if imageFile.read(4) == b"NTSI":
+                                    print(f"Streamed Texture Detected: {loggedImages[textureName]}")
+                                    ntsi = NTSP.NTSI(f"{loggedImages[textureName]}")
+                                    ddsfile = open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{textureName}.dds", "xb")
+                                    ddsfile.write(bytes(ntsi.ImageData))
+                                    ddsfile.close()
+                                    imageNode.image = bpy.data.images.load(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{textureName}.dds")
+                                    imageNode.image.pack()
+                                else:
+                                    imageNode.image = bpy.data.images.load(f"{loggedImages[textureName]}")
+                                imageFile.close()
                         except Exception as e:
                             print(f"image not found: {e}")
                         print(i.Type)
@@ -717,7 +759,7 @@ class ImportObjects(bpy.types.Operator):
         geditFiles = []
         for f in os.listdir(geditFolder):
             if f.endswith(".gedit"):
-                if preferences.directoryHedgeset != "":
+                if preferences.blendhog_sharptoggle == False:
                     os.chdir(os.path.dirname(directoryHedgeset))
                     print(os.popen(f'HedgeSet "{geditFolder}\\{f}" -game={context.scene.hedgegameChoice} -platform=pc').read())
 
@@ -749,8 +791,13 @@ class ImportObjects(bpy.types.Operator):
                 if int.from_bytes(newAssetPackVer, "big") > assetPackVer:
                     assetPack = p
                     assetPackVer = int.from_bytes(newAssetPackVer, "big")
-        else:
+        elif len(lcAssetPacks) == 1:
             assetPack = lcAssetPacks[0]
+        else:
+            def assetError(self, context):
+                self.layout.label(text="No valid Frontiers/Shadow asset pack found - update existing asset packs or install new ones") # Sets the popup label
+            bpy.context.window_manager.popup_menu(saveError, title = "Asset Packs Missing", icon = "ERROR") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
 
         print(assetPack.name)
 
@@ -796,15 +843,24 @@ class ImportObjects(bpy.types.Operator):
             geditTemplate = f'{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/Other/frontiers.json'
 
         gedittotal = 0
-        for f in geditFiles:
-            if f.endswith(".gedit"):
-                from AshDumpLib.HedgehogEngine.BINA.RFL import ObjectWorld # type: ignore
-                gedit = ObjectWorld(f, geditTemplate)
-                try:
-                    gedittotal += len(gedit.Objects)
-                except KeyError:
-                    pass
-            else:
+        if preferences.blendhog_sharptoggle == True:
+            for f in geditFiles:
+                if f.endswith(".gedit"):
+                    from AshDumpLib.HedgehogEngine.BINA.RFL import ObjectWorld # type: ignore
+                    gedit = ObjectWorld(f, geditTemplate)
+                    try:
+                        gedittotal += len(gedit.Objects)
+                    except KeyError:
+                        pass
+                else:
+                    geditFile = open(f, "r")
+                    geditData = json.loads(geditFile.read())
+                    try:
+                        gedittotal += len(geditData["objects"])
+                    except KeyError:
+                        pass
+        else:
+            for f in geditFiles:
                 geditFile = open(f, "r")
                 geditData = json.loads(geditFile.read())
                 try:
@@ -821,7 +877,7 @@ class ImportObjects(bpy.types.Operator):
         pathnodepos = {} # Positions of all path nodes
         pathnoderot = {} # Rotations of all path nodes
         for f in geditFiles:
-            geditname = f.split("\\")[-1][:-5]
+            geditname = f.split("\\")[-1].split(".")[0]
             try:
                 if geditname[0] == "w" and geditname[1] in [str(i) for i in range(1, 10)] and geditname[5] == "_":
                     geditname = geditname[6:]
@@ -902,6 +958,9 @@ class ImportObjects(bpy.types.Operator):
                         blendObj = bpy.data.objects.new(o["type"], None)
                         collection.objects.link(blendObj)
                         blendObj.name = o["type"]
+                        bpy.ops.object.select_all(action='DESELECT')
+                        blendObj.select_set(True)
+                        bpy.context.view_layer.objects.active = blendObj
                 blendObj.location = (o["position"][0], -o["position"][2], o["position"][1])
                 try:
                     blendObj.rotation_mode = "QUATERNION"
@@ -915,8 +974,11 @@ class ImportObjects(bpy.types.Operator):
                 blendObj["DataID"] = o["id"][1:-1]
                 try:
                     blendObj.use_display_json_parameters = True
+                    blendObj.use_blendhog_name = True
                     update_parameters(blendObj, bpy.context)
-                except:
+                    blendObj.blendhog_name = o["name"]
+                except Exception as e:
+                    print(f"Frontiers_quick_import.py Error 2: {o['name']} {e}")
                     continue
                 for p in blendObj.json_parameters:
                     try:
@@ -1095,7 +1157,14 @@ class ImportHeightmap(bpy.types.Operator):
         if os.path.exists(tempfolder):
             shutil.rmtree(tempfolder)
         os.mkdir(tempfolder)
+        
+        if not os.path.exists(heightfolder): # Gives an error if no world directory is sent
+            def missingFolderError(self, context):
+                self.layout.label(text="No trr_height Directory found") # Sets the popup label
 
+            bpy.context.window_manager.popup_menu(missingProgramError, title = "trr_height missing", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+        
         previoustime = time.time()
 
         tileimgs = []

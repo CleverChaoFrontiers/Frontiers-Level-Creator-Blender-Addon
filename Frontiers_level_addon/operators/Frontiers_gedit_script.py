@@ -372,6 +372,15 @@ class PrintCoordinatesOperator(bpy.types.Operator):
                                         elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "UID" in parameter.object_value and parameter.object_value.type == "CURVE":
                                             UIDstring = "SetPath_"+parameter.object_value["UID"]
                                             PropertyValue = UIDstring
+                                        elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "DataID" not in parameter.object_value and parameter.object_value.type != "CURVE":
+                                            Id = self.ID_generator()
+                                            parameter.object_value["DataID"] = Id
+                                            IDstring = "{"+parameter.object_value["DataID"]+"}"
+                                            PropertyValue = IDstring
+                                        elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "UID" not in parameter.object_value and parameter.object_value.type == "CURVE":
+                                            parameter.object_value["UID"] = str(random.randint(5000, 200000))
+                                            UIDstring = "SetPath_"+ parameter.object_value["UID"]
+                                            PropertyValue = UIDstring
                                         else:
                                             PropertyValue = parameter.string_value
                                     elif PropertyType.startswith("list"):
@@ -520,7 +529,10 @@ class PrintCoordinatesOperator(bpy.types.Operator):
                             pass
                         #adds the values      
                         object_temp["id"] = Id
-                        object_temp["name"] = name
+                        if "use_blendhog_name" in obj and "blendhog_name" in obj and obj["use_blendhog_name"] == True:
+                            object_temp["name"] = obj["blendhog_name"]
+                        else:
+                            object_temp["name"] = name
                         object_temp["position"] = coordinates
                         if "rotation" in object_temp:
                             object_temp["rotation"] = rotation

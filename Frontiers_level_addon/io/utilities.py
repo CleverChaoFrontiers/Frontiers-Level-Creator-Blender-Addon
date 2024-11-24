@@ -1,5 +1,5 @@
 import bpy
-import mathutils # type:ignore
+import mathutils, bmesh # type:ignore
 
 def CreateMesh(vertices, uvs, normals, triangles, colors, meshName):
     triangles_grouped = [(i[0], i[1], i[2]) for i in triangles]
@@ -7,14 +7,17 @@ def CreateMesh(vertices, uvs, normals, triangles, colors, meshName):
     mesh.from_pydata(vertices, [], triangles_grouped)
     mesh.update()
     
-    try:
-        if uvs:
-            for i in uvs:
+    
+    if uvs:
+        for i in uvs:
+            try:
                 uv_layer = mesh.uv_layers.new(name=f"UVMap{uvs.index(i)}")
                 for loop in mesh.loops:
                     uv_layer.data[loop.index].uv = i[loop.vertex_index]
-    except Exception as e:
-        print(f"Line 16:{e}")
+            except AttributeError as e:
+                print(f"utilities.py Error 0: {e}")
+            except IndexError as e:
+                print(f"utilities.py Error 1: {e}")
 
     if normals:
         mesh.normals_split_custom_set([-normals[loop.vertex_index] for loop in mesh.loops])
@@ -33,3 +36,22 @@ def CreateMesh(vertices, uvs, normals, triangles, colors, meshName):
         mesh.polygons[i].material_index = tri[3]  
 
     return mesh
+
+def BlendMeshToModel(mesh):
+    bm = bmesh.new()
+    bm.from_mesh(mesh.copy())
+    bmesh.ops.triangulate(bm, faces=bm.faces[:])
+    bm.to_mesh(mesh)
+    bm.free()
+
+    vertices = mesh.vertices
+    print(f"vertices: {vertices}\n\n\n\n")
+
+    triangles = [[tri[0], tri[1], tri[2]] for tri in mesh.polygons]
+    print(f"triangles: {triangles}\n\n\n\n")
+
+    normals = [-loop.normal for loop in mesh.loops]
+
+    meshName = mesh.name.replace(" Mesh", "")
+    
+    return vertices, uvs, normals, triangles, colors, meshName

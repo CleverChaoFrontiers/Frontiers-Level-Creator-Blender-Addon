@@ -6,12 +6,30 @@ def installModule(packageName):
     except:
         python_exe = os.path.join(sys.prefix, 'bin', 'python.exe')
         subprocess.call([python_exe, "-m", "ensurepip"])
-        if (4, 2, 2) == bpy.app.version:
-            subprocess.call([python_exe, "-m", "install", "--upgrade", "pip"])
-            subprocess.call([python_exe, "-m", "install", packageName])
+        if (4, 2, 0) <= bpy.app.version:
+            try:
+                subprocess.call([python_exe, "-m", "install", "--upgrade", "pip"])
+                subprocess.call([python_exe, "-m", "install", packageName])
+            except Exception as e:
+                print(e)
+            
+            try:
+                subprocess.call([python_exe, "-m", "pip", "install", "--upgrade", "pip"])
+                subprocess.call([python_exe, "-m", "pip", "install", packageName])
+            except Exception as e:
+                print(e)
         else:
-            subprocess.call([python_exe, "-m", "pip", "install", "--upgrade", "pip"])
-            subprocess.call([python_exe, "-m", "pip", "install", packageName])
+            try:
+                subprocess.call([python_exe, "-m", "install", "--upgrade", "pip"])
+                subprocess.call([python_exe, "-m", "install", packageName])
+            except Exception as e:
+                print(e)
+            
+            try:
+                subprocess.call([python_exe, "-m", "pip", "install", "--upgrade", "pip"])
+                subprocess.call([python_exe, "-m", "pip", "install", packageName])
+            except Exception as e:
+                print(e)
 
 def initCS():
     installModule("pythonnet")

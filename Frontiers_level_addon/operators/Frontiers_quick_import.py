@@ -285,10 +285,24 @@ class ImportTerrain(bpy.types.Operator):
             return {'FINISHED'} # Cancels the operation
 
         if bpy.context.scene.modDirI == "": # Gives an error if no world directory is sent
-            def missingProgramError(self, context):
+            def directoryError(self, context):
                 self.layout.label(text="No Mod directory is set") # Sets the popup label
 
-            bpy.context.window_manager.popup_menu(missingProgramError, title = "Mod directory not set", icon = "QUESTION") # Makes the popup appear
+            bpy.context.window_manager.popup_menu(directoryError, title = "Mod directory not set", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+        
+        if not os.path.exists(os.path.abspath(bpy.path.abspath(bpy.context.scene.modDirI))): # Gives an error if directory is missing
+            def directoryError(self, context):
+                self.layout.label(text="Missing mod directory") # Sets the popup label
+
+            bpy.context.window_manager.popup_menu(directoryError, title = "Mod directory could not be found", icon = "QUESTION") # Makes the popup appear
+            return {'FINISHED'} # Cancels the operation
+        
+        if not "raw" in os.listdir(os.path.abspath(bpy.path.abspath(bpy.context.scene.modDirI))): # Gives an error if directory may be invalid
+            def directoryError(self, context):
+                self.layout.label(text="Invalid mod directory") # Sets the popup label
+
+            bpy.context.window_manager.popup_menu(directoryError, title = "'raw' folder not found, check that the correct directory has been selected\nFor importing from vanilla, select x64\nFor importing from a mod, select the root mod folder", icon = "QUESTION") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
 
         if not bpy.data.is_saved:
@@ -355,7 +369,7 @@ class ImportTerrain(bpy.types.Operator):
         os.mkdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp")
 
         for pcmodel in loggedPcmodels:
-            if preferences.directoryKnuxtools == "":
+            if preferences.blendhog_sharptoggle == True:
                 from AshDumpLib.HedgehogEngine.BINA.Terrain import PointCloud # type: ignore
                 pointcloud = PointCloud(pcmodel)
                 for i in pointcloud.Points:
@@ -493,6 +507,9 @@ class ImportTerrain(bpy.types.Operator):
                         else:
                             subcollection = bpy.data.collections.new(f"[TRUNCATED{truncatedcollectionscount}]InstOnly_{loggedPcmodelInstances[0][instance]}")
                             truncatedcollectionscount += 1
+                        if "_shadow" in loggedPcmodelInstances[0][instance] or "_occluder" in loggedPcmodelInstances[0][instance]:
+                            subcollection.hide_viewport = True
+                            subcollection.hide_render = True
                         subcollection["Full Name"] = f"InstOnly_{loggedPcmodelInstances[0][instance]}"
                         collection.children.link(subcollection)
                         subcollection.objects.link(obj)
@@ -526,10 +543,16 @@ class ImportTerrain(bpy.types.Operator):
                                 else:
                                     subcollection = bpy.data.collections.new(f"[TRUNCATED{truncatedcollectionscount}]InstOnly_{loggedPcmodelInstances[0][instance]}")
                                     truncatedcollectionscount += 1
+                                if "_shadow" in loggedPcmodelInstances[0][instance] or "_occluder" in loggedPcmodelInstances[0][instance]:
+                                    subcollection.hide_viewport = True
+                                    subcollection.hide_render = True
                                 subcollection["Full Name"] = f"InstOnly_{loggedPcmodelInstances[0][instance]}"
                                 collection.children.link(subcollection)
                                 subcollection.objects.link(obj)
-                                bpy.context.view_layer.layer_collection.collection.objects.unlink(obj)
+                                try:
+                                    bpy.context.view_layer.layer_collection.collection.objects.unlink(obj)
+                                except Exception as e:
+                                    print(f"Frontiers_quick_import.py Error 5: {obj.name} {e}") 
                                 bm = bmesh.new()
                                 bm.from_mesh(obj.data)
                                 bmesh.ops.rotate(bm, cent=mathutils.Vector((0, 0, 0)), matrix=mathutils.Matrix.Rotation(math.radians(90), 4, 'X'), verts=bm.verts)
@@ -702,6 +725,12 @@ class ImportTerrain(bpy.types.Operator):
                 self.layout.label(text=f"Dependency Folders: {', '.join(missingdependencies)} are missing, ignore this if there are no issues") # Sets the popup label
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Missing dependencies", icon = "QUESTION") # Makes the popup appear
         
+        if preferences.blendhog_sharptoggle == False and (bpy.context.scene.hedgegameChoice == "shadow" or bpy.context.scene.worldIdI in ["w1r03", "w1r04", "w1r05", "w1r06", "w2r01", "w3r01"]):
+            def streamNotice(self, context):
+                self.layout.label(text=f"Streamed Textures may have been used in this level.") # Sets the popup label
+                self.layout.label(text=f"Please note that streamed textures are currently only supported with internal tools, which can be enabled in settings.")
+            bpy.context.window_manager.popup_menu(streamNotice, title = "Streamed Textures", icon = "WARNING") # Makes the popup appear
+        
         if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 1.0
             bpy.types.Scene.importprogresstext = "DONE"
@@ -796,7 +825,7 @@ class ImportObjects(bpy.types.Operator):
         else:
             def assetError(self, context):
                 self.layout.label(text="No valid Frontiers/Shadow asset pack found - update existing asset packs or install new ones") # Sets the popup label
-            bpy.context.window_manager.popup_menu(saveError, title = "Asset Packs Missing", icon = "ERROR") # Makes the popup appear
+            bpy.context.window_manager.popup_menu(assetError, title = "Asset Packs Missing", icon = "ERROR") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
 
         print(assetPack.name)
@@ -961,7 +990,10 @@ class ImportObjects(bpy.types.Operator):
                         bpy.ops.object.select_all(action='DESELECT')
                         blendObj.select_set(True)
                         bpy.context.view_layer.objects.active = blendObj
-                blendObj.location = (o["position"][0], -o["position"][2], o["position"][1])
+                try:
+                    blendObj.location = (o["position"][0], -o["position"][2], o["position"][1])
+                except KeyError:
+                    print(f"Frontiers_quick_import.py Error 3: {o['name']} {e}")
                 try:
                     blendObj.rotation_mode = "QUATERNION"
                     blendObj.rotation_quaternion = (o["rotation"][3], o["rotation"][0], -o["rotation"][2], o["rotation"][1])
@@ -1618,7 +1650,7 @@ class SettingsImp(bpy.types.Operator):
         bpy.ops.screen.userpref_show()
         bpy.context.preferences.active_section = 'ADDONS'
 
-        bpy.data.window_managers["WinMan"].addon_search = "Frontiers Level Creator"
+        bpy.data.window_managers["WinMan"].addon_search = "Blendhog Level Creator"
 
         bpy.ops.preferences.addon_expand(module = __name__.split(".")[0])
         bpy.ops.preferences.addon_show(module = __name__.split(".")[0])

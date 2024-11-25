@@ -178,6 +178,13 @@ class SharpToolsToggle(Operator):
     def execute(self, context):
         preferences = bpy.context.preferences.addons[__package__.split(".")[0]].preferences 
         if preferences.blendhog_sharptoggle == False:
+
+            def internalWarning(self, context):
+                self.layout.label(text="Ensure that you have .NET 8 installed.") # Sets the popup label
+                self.layout.label(text="This feature is very experimental and may have issues.")
+                self.layout.label(text="If you get any issues, make sure to mention you are using internal tools when reporting the bug.")
+            bpy.context.window_manager.popup_menu(internalWarning, title = "! IMPORTANT !", icon = "HELP") # Makes the popup appear
+            
             csmain.initCS()
             preferences.blendhog_sharptoggle = True
             self.report({"INFO"}, f"Internal tools have been turned on")

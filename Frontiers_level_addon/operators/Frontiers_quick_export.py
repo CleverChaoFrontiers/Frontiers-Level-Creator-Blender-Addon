@@ -328,7 +328,7 @@ class ExportTerrain(bpy.types.Operator):
 
             for rm in ["InstOnly_", "instonly_", "INSTONLY_", "_NoCol", "_NoVis", "_nocol", "_novis", "_NOCOL", "_NOVIS"]:
                 exportname = exportname.replace(rm, "")
-            bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = True, add_leaf_bones=False,mesh_smooth_type='FACE')
+            bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = False, add_leaf_bones=False,mesh_smooth_type='FACE')
             fbxModels.append(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}")
             fbxCollectionNames.append(c.name)
         
@@ -343,7 +343,7 @@ class ExportTerrain(bpy.types.Operator):
         exportname = collection.name.replace(' ', '_')
         for rm in ["InstOnly_", "instonly_", "INSTONLY_", "_NoCol", "_NoVis", "_nocol", "_novis", "_NOCOL", "_NOVIS"]:
             exportname = exportname.replace(rm, "")
-        bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = True, add_leaf_bones=False,mesh_smooth_type='FACE')
+        bpy.ops.export_scene.fbx(filepath=f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}.fbx", use_selection = True, apply_scale_options = 'FBX_SCALE_UNITS', use_visible = False, add_leaf_bones=False,mesh_smooth_type='FACE')
         fbxModels.append(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\{exportname}")
         fbxCollectionNames.append(collection.name)
 
@@ -2182,7 +2182,7 @@ class Settings(bpy.types.Operator):
         bpy.ops.screen.userpref_show()
         bpy.context.preferences.active_section = 'ADDONS'
 
-        bpy.data.window_managers["WinMan"].addon_search = "Frontiers Level Creator"
+        bpy.data.window_managers["WinMan"].addon_search = "Blendhog Level Creator"
 
         bpy.ops.preferences.addon_expand(module = __name__.split(".")[0])
         bpy.ops.preferences.addon_show(module = __name__.split(".")[0])

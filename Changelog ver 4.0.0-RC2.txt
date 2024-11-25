@@ -1,4 +1,9 @@
 4.0.0 Release Candidate 1
+Bugfixes
+Added warnings when enabling internal tools
+More assets
+
+4.0.0 Release Candidate 1
 Renamed everything to Blendhog Level Creator
 Many, many bugfixes
 

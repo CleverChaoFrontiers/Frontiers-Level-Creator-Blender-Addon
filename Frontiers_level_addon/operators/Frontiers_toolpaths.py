@@ -14,7 +14,7 @@ class DownloadHedgeset(bpy.types.Operator):
     bl_label = "Download"
 
     def execute(self, context): 
-        webbrowser.open("https://ci.appveyor.com/project/Radfordhound/hedgelib/build/job/dl3b5w0juqivrr6v/artifacts/", new=0, autoraise=True)
+        webbrowser.open("https://ci.appveyor.com/project/Radfordhound/hedgelib/builds/50922933/job/p547n5rxu3eqs271/artifacts", new=0, autoraise=True)
         return {"FINISHED"}
     
 class DownloadHedgeneedle(bpy.types.Operator):
@@ -22,7 +22,7 @@ class DownloadHedgeneedle(bpy.types.Operator):
     bl_label = "Download"
 
     def execute(self, context): 
-        webbrowser.open("https://ci.appveyor.com/project/Radfordhound/hedgelib/build/job/dl3b5w0juqivrr6v/artifacts/", new=0, autoraise=True)
+        webbrowser.open("https://ci.appveyor.com/project/Radfordhound/hedgelib/builds/50922933/job/p547n5rxu3eqs271/artifacts", new=0, autoraise=True)
         return {"FINISHED"}
     
 

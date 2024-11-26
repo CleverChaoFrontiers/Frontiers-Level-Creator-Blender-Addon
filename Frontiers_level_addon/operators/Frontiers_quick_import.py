@@ -729,7 +729,7 @@ class ImportTerrain(bpy.types.Operator):
             def streamNotice(self, context):
                 self.layout.label(text=f"Streamed Textures may have been used in this level.") # Sets the popup label
                 self.layout.label(text=f"Please note that streamed textures are currently only supported with internal tools, which can be enabled in settings.")
-            bpy.context.window_manager.popup_menu(streamNotice, title = "Streamed Textures", icon = "WARNING") # Makes the popup appear
+            bpy.context.window_manager.popup_menu(streamNotice, title = "Streamed Textures", icon = "ERROR") # Makes the popup appear
         
         if (4, 0, 0) < bpy.app.version:
             bpy.types.Scene.importprogress = 1.0

@@ -210,7 +210,7 @@ class GamechoicePanel(bpy.types.Panel):
     
     def draw(self, context):
         layout = self.layout
-        layout.label(text="version 3.9.9 PLAYTEST")#REMEMBER TO CHANGE THIS
+        layout.label(text="version 4.0.0")#REMEMBER TO CHANGE THIS
         row = layout.row()
         row.prop(context.scene, "hedgegameChoice", text="Choose a game")
 

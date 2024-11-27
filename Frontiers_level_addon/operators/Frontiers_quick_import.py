@@ -1194,7 +1194,7 @@ class ImportHeightmap(bpy.types.Operator):
             def missingFolderError(self, context):
                 self.layout.label(text="No trr_height Directory found") # Sets the popup label
 
-            bpy.context.window_manager.popup_menu(missingProgramError, title = "trr_height missing", icon = "QUESTION") # Makes the popup appear
+            bpy.context.window_manager.popup_menu(missingFolderError, title = "trr_height missing", icon = "QUESTION") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
         
         previoustime = time.time()

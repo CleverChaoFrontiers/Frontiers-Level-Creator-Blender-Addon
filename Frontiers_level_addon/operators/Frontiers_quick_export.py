@@ -205,6 +205,12 @@ class ExportTerrain(bpy.types.Operator):
                 self.layout.label(text="The filepath set leads to a .bat file. Please make sure it leads to the main .exe for ModelConverter.") # Sets the label of the popup
             bpy.context.window_manager.popup_menu(missingProgramError, title = ".bat file selected", icon = "ERROR") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
+                
+        if not os.path.exists(f"{absoluteModDir}\\mod.ini"): # If there is no mod.ini, it must be an invalid mod folder
+            def iniError(self, context):
+                self.layout.label(text="mod.ini not found, check that you have selected a valid mod folder") # Sets the label of the popup
+            bpy.context.window_manager.popup_menu(iniError, title = "mod.ini Not Found", icon = "QUESTION") # Makes the popup appear
+            return{'FINISHED'}
         
         unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00.pac", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc.pac"], directoryHedgearcpack)
 
@@ -452,8 +458,13 @@ class ExportTerrain(bpy.types.Operator):
 
                 os.chdir(os.path.dirname(directoryKnuxtools))
                 os.popen(f'knuxtools "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.hedgehog.pointcloud.json" -e=pcmodel').read()
-                shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.pcmodel", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\terrain.pcmodel")
-                
+                if os.path.exists(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.pcmodel"):
+                    shutil.copy2(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.pcmodel", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\terrain.pcmodel")
+                elif os.path.exists(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrainpcmodel"):
+                    shutil.copy2(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrainpcmodel", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_s00\\terrain.pcmodel")
+                else:
+                    print("PCMODEL NOT CREATED")
+                    open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\terrain.pcmodel")
         if bpy.context.scene.exppcl in ["clear", "write", "add"] and instanced_pccol != []:
             if not (bpy.context.scene.exppcl == "add" and os.path.exists(f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\instance_collision.pccol")):
                 print("add collision instance")
@@ -463,8 +474,13 @@ class ExportTerrain(bpy.types.Operator):
 
                 os.chdir(os.path.dirname(directoryKnuxtools))
                 os.popen(f'knuxtools "{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.hedgehog.pointcloud.json" -e=pccol').read()
-                shutil.move(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.pccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\instance_collision.pccol")
-
+                if os.path.exists(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.pccol"):
+                    shutil.copy2(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.pccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\instance_collision.pccol")
+                elif os.path.exists(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collisionpccol"):
+                    shutil.copy2(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collisionpccol", f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_misc\\instance_collision.pccol")
+                else:
+                    print("PCCOL NOT CREATED")
+                    open(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\instance_collision.pccol")
         if bpy.context.scene.expmat in ["clear", "write"]:
             tempFolderContents = os.listdir(f"{os.path.abspath(bpy.path.abspath(os.path.dirname(bpy.data.filepath)))}\\levelcreator-temp\\")
             for f in range(len(tempFolderContents)): # For every file in the temp folder
@@ -603,6 +619,12 @@ class ExportObjects(bpy.types.Operator):
 
             bpy.context.window_manager.popup_menu(missingProgramError, title = "Mod missing", icon = "QUESTION") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
+        
+        if not os.path.exists(f"{absoluteModDir}\\mod.ini"): # If there is no mod.ini, it must be an invalid mod folder
+            def iniError(self, context):
+                self.layout.label(text="mod.ini not found, check that you have selected a valid mod folder") # Sets the label of the popup
+            bpy.context.window_manager.popup_menu(iniError, title = "mod.ini Not Found", icon = "QUESTION") # Makes the popup appear
+            return{'FINISHED'}
         
         unpack([f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit.pac"], directoryHedgearcpack)
 
@@ -1571,6 +1593,19 @@ class ExportObjects(bpy.types.Operator):
             #ObjectWorld.ToGedit(ObjectWorld.FromHsonString(gedit_text)).SaveToFile(f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.gedit")
 
             os.chdir(os.path.dirname(directoryHedgeset))
+            if not os.path.exists(f"{directoryHedgeset}\\templates\\{hedgeset_game_choice}.json"):
+                templatefound = False
+                for p in ["miller", "shadow", "shadow_generations", "sxsg"]:
+                    if os.path.exists(f"{directoryHedgeset}\\templates\\{p}.json"):
+                        hedgeset_game_choice = p
+                        templatefound = True
+                        break
+                if templatefound == False:
+                    def templateError(self, context):
+                        self.layout.label(text="A Shadow HedgeSet template could not be found") # Sets the label of the popup
+                    bpy.context.window_manager.popup_menu(templateError, title = "HedgeSet Template Not Found", icon = "QUESTION") # Makes the popup appear
+                    return{'FINISHED'}
+            print(f'HedgeSet "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.hson" "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.gedit" -game={hedgeset_game_choice} -platform=pc')
             print(os.popen(f'HedgeSet "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.hson" "{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.gedit" -game={hedgeset_game_choice} -platform=pc').read())
 
             os.remove(f"{absoluteModDir}\\raw\\gedit\\{worldId}_gedit\\{worldId}_{collection.name}.hson")
@@ -1635,6 +1670,12 @@ class ExportHeightmap(bpy.types.Operator):
 
             bpy.context.window_manager.popup_menu(missingFolderError, title = "Folder missing", icon = "QUESTION") # Makes the popup appear
             return {'FINISHED'} # Cancels the operation
+                
+        if not os.path.exists(f"{absoluteModDir}\\mod.ini"): # If there is no mod.ini, it must be an invalid mod folder
+            def iniError(self, context):
+                self.layout.label(text="mod.ini not found, check that you have selected a valid mod folder") # Sets the label of the popup
+            bpy.context.window_manager.popup_menu(iniError, title = "mod.ini Not Found", icon = "QUESTION") # Makes the popup appear
+            return{'FINISHED'}
         
         unpack([f"{absoluteModDir}\\raw\\stage\\{worldId}\\{worldId}_trr_height.pac"], directoryHedgearcpack)
 
@@ -2151,12 +2192,6 @@ class RepackAll(bpy.types.Operator):
             def noModError(self, context):
                 self.layout.label(text="No mod folder is selected") # Sets the label of the popup
             bpy.context.window_manager.popup_menu(noModError, title = "Mod Not Found", icon = "QUESTION") # Makes the popup appear
-            return{'FINISHED'}
-        
-        if not os.path.exists(f"{absoluteModDir}\\mod.ini"): # If there is no mod.ini, it must be an invalid mod folder
-            def iniError(self, context):
-                self.layout.label(text="mod.ini not found, check that you have selected a valid mod folder") # Sets the label of the popup
-            bpy.context.window_manager.popup_menu(iniError, title = "mod.ini Not Found", icon = "QUESTION") # Makes the popup appear
             return{'FINISHED'}
         
         filesToPack = [ # List of files to be packed

@@ -1736,6 +1736,9 @@ class QimportSettings(bpy.types.PropertyGroup): # Other settings
             ("w12b10", "w12b10 (Metal Overlord)", ""),
             ("w13b10", "w13b10 (Mephiles)", ""),
             ("w14b10", "w14b10 (Devil Doom)", "")
+
+            # Tokyo
+            ("w20a10", "w20a10 (Tokyo)", ""),
         ]
         }
         try:

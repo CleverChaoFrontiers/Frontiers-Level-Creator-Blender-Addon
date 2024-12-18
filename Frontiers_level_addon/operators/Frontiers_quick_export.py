@@ -256,22 +256,22 @@ class CompleteExport(bpy.types.Operator):
                 propvector = True
                 PropertyValue = parameter.vector_value
             elif PropertyType == "string":
-                if parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "DataID" in parameter.object_value and parameter.object_value.type != "CURVE":
+                if parameter.object_value != None and parameter.object_value.name in bpy.data.objects and parameter.object_value.type != "CURVE":
+                    #if object, adds Id if missing
+                    if "DataID" not in parameter.object_value:
+
+                        parameter.object_value["DataID"] = self.ID_generator()
                     IDstring = "{"+parameter.object_value["DataID"]+"}"
                     PropertyValue = IDstring
-                elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "UID" in parameter.object_value and parameter.object_value.type == "CURVE":
-                    UIDstring = "SetPath_"+parameter.object_value["UID"]
-                    PropertyValue = UIDstring
-                elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "DataID" not in parameter.object_value and parameter.object_value.type != "CURVE":
-                    parameter.object_value["DataID"] = self.ID_generator()
-                    IDstring = "{"+parameter.object_value["DataID"]+"}"
-                    PropertyValue = IDstring
-                elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and "UID" not in parameter.object_value and parameter.object_value.type == "CURVE":
-                    parameter.object_value["UID"] = str(random.randint(5000, 200000))
-                    UIDstring = "SetPath_"+ parameter.object_value["UID"]
+                elif parameter.object_value != None and parameter.object_value.name in bpy.data.objects and parameter.object_value.type == "CURVE":
+                    #if curve, Adds UID if missing
+                    if "UID" not in parameter.object_value:
+                        parameter.object_value["UID"] = str(random.randint(5000, 200000))
+                    UIDstring = f"SetPath_"+ str(parameter.object_value["UID"])
                     PropertyValue = UIDstring
                 else:
                     PropertyValue = parameter.string_value
+                print(f"PropertyValue is {PropertyValue}")
             elif PropertyType.startswith("list"):
                 if PropertyType == "listINT":
                     PropertyValue = [parameter.list_value[item].listint for item in range(len(parameter.list_value))]

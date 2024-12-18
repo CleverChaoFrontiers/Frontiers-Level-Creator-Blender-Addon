@@ -1,0 +1,50 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GunHelicopterBig",
+  "type": "GunHelicopterBig",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "moveType": "Path",
+    "moveMotionType": "Normal",
+    "orientationForMoveTypeFix": "PathFront",
+    "patrolType": "OneWay",
+    "eventDrivenType": "HideToMove",
+    "moveOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "moveSpeed": 120.0,
+    "keepNearestDistanceDuringBattle": -1.0,
+    "attackCannonSpeed": 15.0,
+    "attackCannonReadyTime": 1.0,
+    "attackCannonCycleTime": 2.0,
+    "attackCannonLifeTime": 2.0,
+    "attackCannonRadius": 2.0,
+    "attackCannonHeight": -1.0,
+    "respawnTime": -1.0,
+    "addLightGaugeNum": -1,
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "isTransparency": true,
+    "isAttackWhileMoving": false
+  }
+}

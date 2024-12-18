@@ -24,6 +24,9 @@
     "common": {
       "distance": 5.5,
       "azimuthSensitivity": 7.5,
+      "isAzimuthLimited": true,
+      "azimuthMax": 25.0,
+      "azimuthFront": -13.0,
       "minElevation": -55.0,
       "maxElevation": 80.0,
       "elevationUpSensitivity": 6.0,

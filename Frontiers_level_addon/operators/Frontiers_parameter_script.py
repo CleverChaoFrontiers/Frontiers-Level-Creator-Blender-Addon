@@ -18,10 +18,16 @@ def isfldigit(stringvalue): #isdigit but for floats instead
 def connect_geo_to_param(obj, param_name, parameter_type,param,param_vector = None,list_type = None):
     # Find the geometry nodes modifier
     modifier = None
-    for mod in obj.modifiers:
-        if mod.type == 'NODES':
-            modifier = mod
-            break
+    if obj.type == "CURVE":
+        for mod in obj.modifiers:
+            if mod.type == 'NODES' and mod.name == "HedgehogPath":
+                modifier = mod
+                break
+    else:
+        for mod in obj.modifiers:
+            if mod.type == 'NODES':
+                modifier = mod
+                break
 
     if not modifier:
         print("No Geometry Nodes modifier found.")
@@ -39,16 +45,21 @@ def find_corresponding_input(node_tree, modifier, param_name, parameter_type, pa
     group_input = find_node_by_type(node_tree, 'GROUP_INPUT') #gets group input node
     if parameter_type == "list_value":
         param_name = param_name + f"[{param_vector}]"
-            
+    if modifier.name == "HedgehogPath" and param_name == "setParameter/pathType":
+        param_name = "Type"
+
     if param_name in group_input.outputs:
         print(f"Found param {param_name}")
         param_input = group_input.outputs[param_name] #gets the specific output
         if parameter_type == "enum_value": #if enumerator
             menu_node = None #enum depends on the new menu switch node in blender 4.1+. Do nothing if this node is not found.
-            for link in param_input.links:
-                if link.to_node.type == "MENU_SWITCH":
-                    menu_node = link.to_node
-                    
+            if modifier.name == "HedgehogPath" and param_name == "Type":
+                menu_node = node_tree.nodes["PATH_TYPE"]
+            else:
+                for link in param_input.links:
+                    if link.to_node.type == "MENU_SWITCH":
+                        menu_node = link.to_node
+              
             if menu_node != None:
                 param_list = [i.name for i in menu_node.inputs] #Creates list of the geonode enumerator items
                 param_dict = {k: v for v, k in enumerate(param_list,-1)} #Creates dictionary of the geonode enumerator items and their index as the value
@@ -59,7 +70,6 @@ def find_corresponding_input(node_tree, modifier, param_name, parameter_type, pa
                         driver_expression_list.append(f'{param_items.value}*{param_dict[param_items.value]}')
                         driver_expression_items[param_items.value] = index
                 driver_expression = "+".join(driver_expression_list)
-                #print(f'json_parameters[{param.name}].enum_items[{driver_expression_items["Laser"]}].selected')
                 #creating enumerator driver
                 driver = modifier.driver_add(f'["{param_input.identifier}"]').driver #add driver to param_inputs menu slot (.identifier finds it)
                 driver.type = 'SCRIPTED'
@@ -126,7 +136,28 @@ def find_node_by_type(node_tree, node_type):
         if node.type == node_type:
             return node
     return None
+def process_structure(struct_name, data, namedata, objName_list, struct_type = ""):
+    #finds all structures related to the struct name. If a parent, do not add structure to the name. Do add if substructure.
+    if struct_name not in data:
+        return  # Exit if the structure is not found in data
+    
+    # Add the current structure to the list
+    objName_list.append((struct_name,struct_type))
 
+    # Check for a parent structure
+    if "parent" in data[struct_name]:
+        parent_struct = data[struct_name]["parent"]
+        if parent_struct not in objName_list:  # Avoid circular references
+            process_structure(parent_struct, data, namedata, objName_list, struct_type)
+    
+    # Process substructures in members
+    if "members" in data[struct_name]:
+        for member in data[struct_name]["members"]:
+            if member.get("type") == "struct":
+                sub_struct = member["struct"]
+                sub_struct_name = member["name"]
+                if sub_struct not in objName_list:  # Avoid circular references
+                    process_structure(sub_struct, data, namedata, objName_list,f"{struct_type}{sub_struct_name}/")
 #-------------------------------------------------------------------------------------------------------
 #parameter import
 #-------------------------------------------------------------------------------------------------------
@@ -169,35 +200,42 @@ def flatten_parameters(parameters, parent_key='', separator='/'): #This is for g
     return dict(items)
 def get_rfl_filepath(obj_name):
     enumerator_list = {}
+    #---------------------------SET GAME FILE PATHS HERE TO RFL TEMPLATES----------------------
+    #If angryzor do not join the next community, this script is cooked since it is using the raw data angryzor extracted, not the hedgeset compatible one
     if bpy.context.scene.hedgegameChoice == "shadow":
-        file_name = "Other\\shadow-rfl.json"
+        file_name = "Other\\shadow-rfl.json" #this contains all object params.
+        objfile_name_path = "Other\\shadow.json" #This contain object names
     else:
         file_name = "Other\\rangers-rfl.json"
+        objfile_name_path = "Other\\frontiers.json"
     script_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # Finds path to the folder this script is in [DO NOT TOUCH]
     blend_file_path = bpy.data.filepath # Finds file path of Blender file
     blend_dir = os.path.dirname(blend_file_path) # Gets the name of the directory the Blender file is in
     path_dir = os.path.join(blend_dir,script_dir) # Joins the paths from the blender file to the script file
+    objfile_name_path = os.path.join(path_dir, objfile_name_path)
     rfl_path = os.path.join(path_dir, file_name)
+
     with open(rfl_path, 'r') as f:
         data = json.load(f)
-    objName_list = [f"Obj{obj_name}Spawner",f"Enemy{obj_name}Spawner",f"Boss{obj_name}Spawner",f"MiniBoss{obj_name}Spawner"]
-    #print(obj_name)
+    with open(objfile_name_path, 'r') as f:
+        namedata = json.load(f)
+    #objName_list = [f"Obj{obj_name}Spawner",f"Enemy{obj_name}Spawner",f"Boss{obj_name}Spawner",f"MiniBoss{obj_name}Spawner"]
+    objName_list = []
+
+    if obj_name in namedata["objects"]: #if the object as it is named, does exist in the code then find it's structures
+        main_struct = namedata["objects"][obj_name]["struct"] #get struct name
+        process_structure(main_struct, data, namedata, objName_list) #traces all substructures and parents and adds them to objName_list
     #-------------------------------------------------------------------------------------------------------
     #Some objects are named differently in the rfl and should be added here
-    #-------------------------------------------------------------------------------------------------------
-    if obj_name == "EventCondition" or obj_name == "EventTrigger":
-        objName_list.append("ObjEventSetterSpawner")
-    elif obj_name == "SoundSourcePoint":
-        objName_list.append("ObjPointSoundSourceSpawner")
+
+    elif obj_name == "EventTrigger":
+         objName_list.append("ObjEventSetterSpawner","main")
     elif obj_name == "CarVan" or obj_name == "CarHatchback" or obj_name == "CarMinivan":
-        objName_list.append("ObjCarSpawner")
-    elif obj_name == "NormalFloor2m" or obj_name == "NormalFloor10m" or obj_name == "ThroughFloor":
-        objName_list.append("ObjNormalFloorSpawner")
-    elif obj_name == "JumpBoard":
-        objName_list.append("ObjJumpBoardPathSpawner")
-    
-    #print(objName_list)
-    for full_obj_name in objName_list:
+        objName_list.append("ObjCarSpawner","main")
+    elif obj_name == "NormalFloor2m" or obj_name == "NormalFloor10m":
+        objName_list.append("ObjNormalFloorSpawner","main")
+    #-------------------------------------------------------------------------------------------------------
+    for full_obj_name, full_obj_struct in objName_list:
         if full_obj_name in data:
             obj = data[full_obj_name]
             # Iterate through the members of the object
@@ -205,7 +243,10 @@ def get_rfl_filepath(obj_name):
                 if member['type'] == 'enum':
                     # Get the name of the enum used by this member
                     enum_name = member['enum']
-                    top_name = member['name']
+                    if full_obj_struct != "": #if substructures exist then makes sure to add the hierarchy to the name
+                        top_name = full_obj_struct + member['name']
+                    else:
+                        top_name = member['name']
                     # Check if the enum is defined in the enums dictionary of the object
                     if enum_name in obj['enums']:
                         # Fetch the enum dictionary
@@ -213,29 +254,6 @@ def get_rfl_filepath(obj_name):
         
                         # Store the keys (names of the enum values) along with their numerical values
                         enumerator_list[top_name] = list(enum_dict.keys())
-                elif member['type'] == 'struct':
-                    # Get the name of the enum used by this member
-                    top_struct_name = member['name']
-                    struct_name = member['struct']
-                    if struct_name in data:
-                        struct_obj = data[struct_name]
-                        # Iterate through the members of the object
-                        for struct_member in struct_obj['members']:
-                            if struct_member['type'] == 'enum':
-                                # Get the name of the enum used by this member
-                                struct_enum_name = struct_member['enum']
-                                struct_name = struct_member['name']
-                                nested_struct_name = f"{top_struct_name}/{struct_name}"
-                                # Check if the enum is defined in the enums dictionary of the object
-                                if struct_enum_name in struct_obj['enums']:
-                                    # Fetch the enum dictionary
-                                    enum_dict = struct_obj['enums'][struct_enum_name]
-                    
-                                    # Store the keys (names of the enum values) along with their numerical values
-                                    enumerator_list[nested_struct_name] = list(enum_dict.keys())
-                    
-                                    # Store the keys (names of the enum values) along with their numerical values
-                                    enumerator_list[nested_struct_name] = list(enum_dict.keys())
     return enumerator_list
 def get_json_filepath(obj_name,obj): #gets the path to the templates
     volume_objects = ["CameraFollow", "CameraPan","CameraFix","CameraRailSideView","CameraRailForwardView"] #Only volumes with double code/ this was for stopping the code if it is any of these... but it will already output an error anyway. leave it for now
@@ -280,7 +298,7 @@ def get_json_filepath(obj_name,obj): #gets the path to the templates
 
 def update_parameters(self, context):
     obj = context.object
-
+    banned_params = []
     if obj.use_display_json_parameters == False:
         if obj.animation_data is not None and obj.animation_data.drivers:
             for driver in obj.animation_data.drivers:
@@ -289,6 +307,16 @@ def update_parameters(self, context):
         return
     obj_name = obj.name.split('.', 1)[0]
     obj.blendhog_name = obj.name
+    if obj.type == "CURVE":
+        obj_name = "Path"
+        banned_params= ["setParameter/pathUID","setParameter/nodeList","setParameter/isLoopPath","setParameter/startLineType"]
+    if obj.type == "LIGHT":
+        if obj.data.type == 'POINT':
+            obj_name = "PointLight"
+            banned_params= ["colorR","colorG","colorB","sourceRadius","enableShadow"]
+        elif obj.data.type == 'SPOT':
+            obj_name = "SpotLight"
+            banned_params= ["colorR","colorG","colorB","outerConeAngle","innerConeAngle","enableShadow","attenuationRadius"]
     json_filepath = get_json_filepath(obj_name,obj)
     rfl_enum = get_rfl_filepath(obj_name)
     if os.path.exists(json_filepath):
@@ -296,6 +324,8 @@ def update_parameters(self, context):
         obj.json_parameters.clear()
         #add the parameter to the objects custom property
         for key, value in parameters.items():
+            if key in banned_params:
+                continue
             sepkey = key
             row = obj.json_parameters.add()
             if "[" in key:
@@ -336,7 +366,6 @@ def update_parameters(self, context):
                 if "[" in value:
                     row.name = f"{key}/list"
                     listfromvalue = value.strip('][').split(', ')
-                    #print(listfromvalue)
                     for item_value in listfromvalue:
                         if item_value.replace("-","",1).isdigit(): #Negative sign removed for check.
                             row.name = f"{key}/listINT"
@@ -437,6 +466,8 @@ class OBJECT_PT_JsonParameters(bpy.types.Panel):
             if obj.use_display_json_parameters:
                 if obj.type == 'LIGHT':
                     layout.label(text="Warning: Blender light settings will take priority. Only options not covered by blender will be changed")
+                elif obj.type == 'CURVE':
+                    layout.label(text="Info: Curve objects have several omitted parameters that are set by the curve itself. nodeList is for example set by the amount of actual nodes in the curve.")
                 else:
                     layout.label(text="Warning: this will override parameters set by Geometry Nodes.")
                 

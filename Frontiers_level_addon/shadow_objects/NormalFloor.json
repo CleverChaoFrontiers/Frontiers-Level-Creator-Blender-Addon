@@ -20,7 +20,8 @@
         "rangeOut": 20.0
       }
     },
-    "sizeType": "SIZE_B",
+    "sizeType": "SIZE_A",
+    "modelScale": 1.0,
     "moveType": "MOVE_NONE",
     "patrolType": "PATROL_RETURN",
     "timeType": "TIME_GLOBAL",

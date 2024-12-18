@@ -21,11 +21,11 @@
       }
     },
     "effectName": "",
-    "scale": 0.0,
-    "colorR": 0,
-    "colorG": 0,
-    "colorB": 0,
-    "colorA": 0,
+    "scale": 1.0,
+    "colorR": 255,
+    "colorG": 255,
+    "colorB": 255,
+    "colorA": 255,
     "shapeType": "SHAPE_SPHERE",
     "extents": [
       0.0,

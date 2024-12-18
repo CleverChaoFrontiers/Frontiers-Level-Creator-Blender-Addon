@@ -22,7 +22,7 @@
     },
     "actionType": "ACT_KEEP",
     "timeType": "TIME_GLOBAL",
-    "laserNum": 3,
+    "laserNum": 2,
     "laserOffsetY": 0.5,
     "laserLength": 14.0,
     "laserHeight": 2.0,
@@ -30,8 +30,9 @@
     "activeTime": 2.0,
     "phase": 0.0,
     "isDamageFence": true,
-    "isEnablePoleCollision": false,
+    "isEnablePoleCollision": true,
     "isEventDriven": false,
-    "isSE": true
+    "isSE": true,
+    "isEffect": true
   }
 }

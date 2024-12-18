@@ -22,7 +22,7 @@
     },
     "stageID": 10,
     "zoneID": "ChaosIsland",
-    "scale": 0.9,
+    "scale": 1.0,
     "halfExtents": [
       0.0,
       0.0,

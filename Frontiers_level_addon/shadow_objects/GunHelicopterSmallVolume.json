@@ -1,7 +1,7 @@
 {
   "id": "{00000000-0000-0000-0000-000000000000}",
-  "name": "CollectionBalloonVolume",
-  "type": "CollectionBalloonVolume",
+  "name": "GunHelicopterSmallVolume",
+  "type": "GunHelicopterSmallVolume",
   "position": [
     0.0,
     0.0,
@@ -20,7 +20,9 @@
         "rangeOut": 20.0
       }
     },
-    "collectionMode": "Sound",
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_ONCE",
+    "isEventDriven": false,
     "volume": {
       "ShapeType": "SHAPE_BOX",
       "basePoint": "BASE_CENTER",
@@ -37,6 +39,26 @@
       "pathDivideNum": 20,
       "pathSetDirection": "PATH_TO_GOAL",
       "pathSetLength": 10.0
-    }
+    },
+    "attackCannonNum": 1,
+    "attackCannonSpeedScale": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "attackCannonPathName0": "",
+    "attackCannonPathName1": "",
+    "attackCannonPathPositionOffsetY": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "attackTargetObjectId": "{00000000-0000-0000-0000-000000000000}",
+    "rotateInAttackTargetObject": true,
+    "waitForAttackAnimToFinish": true
   }
 }

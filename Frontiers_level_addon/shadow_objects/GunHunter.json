@@ -32,6 +32,7 @@
     "doesRespawn": false,
     "respawnTime": 1.0,
     "addLightGaugeNum": -1,
+    "blowCollisionEnable": false,
     "fixWarpAngle": false,
     "warpAngle": 0.0,
     "attackParam": {
@@ -58,6 +59,7 @@
       0.0,
       0.0,
       0.0
-    ]
+    ],
+    "enableBlockCollision": true
   }
 }

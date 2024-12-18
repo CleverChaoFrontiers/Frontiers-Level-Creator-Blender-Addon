@@ -1,7 +1,7 @@
 {
   "id": "{00000000-0000-0000-0000-000000000000}",
-  "name": "Balloon",
-  "type": "Balloon",
+  "name": "Train",
+  "type": "Train",
   "position": [
     0.0,
     0.0,
@@ -20,42 +20,10 @@
         "rangeOut": 20.0
       }
     },
-    "visual": "ISL",
-    "balloonColor": "COLOR_RED",
-    "dimension": "DIM_FV",
-    "scale": 1.0,
-    "upSpeed": 15.0,
-    "speedMin": 0.0,
-    "speedMax": 5.0,
-    "respawnTime": 5.0,
-    "outOfControlTime": 0.1,
-    "keepVelocityTime": 0.1,
-    "ignoreSwingingTime": 1.0,
-    "isDefaultPositionRespawn": true,
-    "eventDriven": false,
-    "isHideUntilEvent": false,
-    "isHorming": true,
-    "isWaitAppear": false,
-    "castShadow": true,
-    "moveType": "MOVE_NONE",
-    "patrolType": "PATROL_RETURN",
-    "timeType": "TIME_LOCAL",
-    "moveVector": [
-      0.0,
-      0.0,
-      0.0
-    ],
-    "pathName": "",
-    "locaterList": [
-      "{00000000-0000-0000-0000-000000000000}",
-      "{00000000-0000-0000-0000-000000000000}",
-      "{00000000-0000-0000-0000-000000000000}",
-      "{00000000-0000-0000-0000-000000000000}",
-      "{00000000-0000-0000-0000-000000000000}"
-    ],
-    "waitTime": 0.0,
-    "phase": 0.0,
-    "speed": 0.0,
+    "modelType": "GREEN",
+    "isTailTrainRump": false,
+    "isFrontTrainRump": true,
+    "trainNum": 1,
     "actions": [
       {
         "action": "On",

@@ -1,7 +1,7 @@
 {
   "id": "{00000000-0000-0000-0000-000000000000}",
-  "name": "CollectionBalloonVolume",
-  "type": "CollectionBalloonVolume",
+  "name": "MultipleConversationVolume",
+  "type": "MultipleConversationVolume",
   "position": [
     0.0,
     0.0,
@@ -20,7 +20,6 @@
         "rangeOut": 20.0
       }
     },
-    "collectionMode": "Sound",
     "volume": {
       "ShapeType": "SHAPE_BOX",
       "basePoint": "BASE_CENTER",
@@ -37,6 +36,20 @@
       "pathDivideNum": 20,
       "pathSetDirection": "PATH_TO_GOAL",
       "pathSetLength": 10.0
-    }
+    },
+    "labelNames": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "endRule": "AUTOBYVOICE",
+    "displayTime": 2.0,
+    "firstWaitTime": 0.0,
+    "delayTime": 0.0,
+    "state": "DEFAULTSTATE_ON",
+    "action": "ACTION_ONCE",
+    "playerActionType": "NONE"
   }
 }

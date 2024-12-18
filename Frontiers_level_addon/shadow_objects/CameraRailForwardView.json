@@ -27,7 +27,7 @@
     "pathName": "",
     "pathOffset": 0.0,
     "reversePathFront": false,
-    "usePathVerticalComponent": false,
+    "usePathVerticalComponent": true,
     "usePathNormal": false,
     "usePosLerp": false,
     "posSensitivity": 1.0,

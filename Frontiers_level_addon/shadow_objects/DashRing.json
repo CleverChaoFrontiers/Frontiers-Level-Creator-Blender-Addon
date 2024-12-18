@@ -23,7 +23,7 @@
     "visual": "DashRing",
     "OutOfControl": 0.25,
     "KeepVelocity": 0.25,
-    "Speed": 40.0,
+    "Speed": 20.0,
     "PosConst": true,
     "VeloConst": true,
     "Spin": false,

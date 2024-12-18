@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Blendhog Level Creator",
     "author": "CleverChao, Ashrindy, LightningWyvern, Piranha Mayhem, Justin113D",
-    "version": (4, 0, 0),#REMEMBER TO CHANGE THIS
+    "version": (4, 0, 2),#REMEMBER TO CHANGE THIS
     "blender": (3, 6, 0),
     "category": "Object",
     "location": "View3D > toolbar > Tool > Blendhog Level Creator",
@@ -210,7 +210,7 @@ class GamechoicePanel(bpy.types.Panel):
     
     def draw(self, context):
         layout = self.layout
-        layout.label(text="version 4.0.0")#REMEMBER TO CHANGE THIS
+        layout.label(text="version 4.0.2")#REMEMBER TO CHANGE THIS
         row = layout.row()
         row.prop(context.scene, "hedgegameChoice", text="Choose a game")
 
@@ -251,9 +251,9 @@ class QuickExport(bpy.types.Panel):
         row.prop(context.scene, "modDir", text="Mod")
         row = layout.row()
         row.prop(context.scene, "worldId", text="World")
-        if (4, 0, 0) < bpy.app.version:
-            row = layout.row()
-            row.progress(text=context.scene.exportprogresstext, factor=context.scene.exportprogress, type = 'BAR')
+        #if (4, 0, 0) < bpy.app.version:
+        #    row = layout.row()
+        #    row.progress(text=context.scene.exportprogresstext, factor=context.scene.exportprogress, type = 'BAR')
 
 class QuickImport(bpy.types.Panel):
     bl_label = "Quick Import"
@@ -294,6 +294,8 @@ class QuickExportAdvanced(bpy.types.Panel):
         layout = self.layout
         layout.prop(context.scene, "noPack", text="Don't Repack")
         layout.operator("qexport.nameshow", text="Toggle Object Names", icon="SYNTAX_OFF")
+        layout.prop(context.scene, "debuglevel", text="Debug Level")
+        layout.prop(context.scene, "debuglog", text="Enable Debug Log")
         layout.label(text="Writing Settings")
         layout.prop(context.scene, "exptrr", text="Terrain")
         layout.prop(context.scene, "expcol", text="Collision")

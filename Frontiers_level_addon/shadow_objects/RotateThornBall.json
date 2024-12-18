@@ -27,7 +27,7 @@
     "timeType": "TIME_GLOBAL",
     "eventDriven": false,
     "showCenterObj": true,
-    "axisNum": 4,
+    "axisNum": 1,
     "axisParam": [
       {
         "radius": 4.0,

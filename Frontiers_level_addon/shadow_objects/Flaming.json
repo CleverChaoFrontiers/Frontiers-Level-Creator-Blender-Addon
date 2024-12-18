@@ -1,7 +1,7 @@
 {
   "id": "{00000000-0000-0000-0000-000000000000}",
-  "name": "TerrainParts",
-  "type": "TerrainParts",
+  "name": "Flaming",
+  "type": "Flaming",
   "position": [
     0.0,
     0.0,
@@ -20,6 +20,13 @@
         "rangeOut": 20.0
       }
     },
-    "scale": 1.0
+    "startExtents": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "flameSize": "SIZE_A",
+    "flamingFromTheStart": false,
+    "targetEffectLifeTime": 2.0
   }
 }

@@ -1,0 +1,54 @@
+{
+  "id": "{00000000-0000-0000-0000-000000000000}",
+  "name": "GunHelicopterSmall",
+  "type": "GunHelicopterSmall",
+  "position": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "parameters": {
+    "tags": {
+      "RangeSpawning": {
+        "rangeIn": 800.0,
+        "rangeOut": 20.0
+      }
+    },
+    "no": -1,
+    "moveType": "Path",
+    "orientationForMoveTypeFix": "PathFront",
+    "patrolType": "OneWay",
+    "eventDrivenType": "HideToMove",
+    "moveOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pathName": "",
+    "moveSpeed": 50.0,
+    "attackCannonSpeed": 50.0,
+    "attackCannonReadyTime": 0.0,
+    "attackCannonCycleTime": 0.0,
+    "attackCannonLifeTime": 2.0,
+    "attackCannonRadius": 2.0,
+    "attackCannonHeight": -1.0,
+    "respawnTime": -1.0,
+    "blowOffVector": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "blowOffTime": 2.0,
+    "addLightGaugeNum": -1,
+    "fixWarpAngle": false,
+    "warpAngle": 0.0,
+    "isTransparency": true,
+    "isAttackWhileMoving": true
+  }
+}

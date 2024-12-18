@@ -1,7 +1,7 @@
 {
   "id": "{00000000-0000-0000-0000-000000000000}",
-  "name": "TerrainParts",
-  "type": "TerrainParts",
+  "name": "Slope",
+  "type": "Slope",
   "position": [
     0.0,
     0.0,
@@ -20,6 +20,7 @@
         "rangeOut": 20.0
       }
     },
-    "scale": 1.0
+    "type": "SLOPE_10M",
+    "modelScale": 1.0
   }
 }

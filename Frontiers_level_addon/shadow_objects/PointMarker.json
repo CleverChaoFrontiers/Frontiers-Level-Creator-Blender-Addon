@@ -20,11 +20,11 @@
         "rangeOut": 20.0
       }
     },
-    "Width": 14.0,
+    "Width": 7.0,
     "StageType": "FORWARDVIEW",
     "modelType": "Normal",
     "passPlane": {
-      "width": 5.0,
+      "width": 14.0,
       "height": 20.0,
       "offset": [
         0.0,

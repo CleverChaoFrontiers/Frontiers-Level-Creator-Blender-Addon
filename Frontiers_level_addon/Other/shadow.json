@@ -418,8 +418,14 @@
             "ja": "手記"
           }
         },
-        "Num": {
+        "Poster": {
           "value": 6,
+          "descriptions": {
+            "ja": "ポスター"
+          }
+        },
+        "Num": {
+          "value": 7,
           "descriptions": {
             "ja": ""
           }
@@ -1695,6 +1701,299 @@
         }
       }
     },
+    "EnemyGunHelicopterBigSpawner::EventDrivenType": {
+      "type": "int8",
+      "values": {
+        "None": {
+          "value": 0,
+          "descriptions": {
+            "ja": "無"
+          }
+        },
+        "HideToAppear": {
+          "value": 1,
+          "descriptions": {
+            "ja": "非表示→出現"
+          }
+        },
+        "IdleToMove": {
+          "value": 2,
+          "descriptions": {
+            "ja": "待機→移動"
+          }
+        },
+        "HideToMove": {
+          "value": 3,
+          "descriptions": {
+            "ja": "非表示→移動"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterBigSpawner::MoveMotionType": {
+      "type": "int8",
+      "values": {
+        "Normal": {
+          "value": 0,
+          "descriptions": {
+            "ja": "通常"
+          }
+        },
+        "Upper": {
+          "value": 1,
+          "descriptions": {
+            "ja": "上昇"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterBigSpawner::MoveType": {
+      "type": "int8",
+      "values": {
+        "Fixed": {
+          "value": 0,
+          "descriptions": {
+            "ja": "固定"
+          }
+        },
+        "Offset": {
+          "value": 1,
+          "descriptions": {
+            "ja": "2点間移動"
+          }
+        },
+        "Path": {
+          "value": 2,
+          "descriptions": {
+            "ja": "パス"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterBigSpawner::OrientationForMoveTypeFix": {
+      "type": "int8",
+      "values": {
+        "Set": {
+          "value": 0,
+          "descriptions": {
+            "ja": "セット時の向き"
+          }
+        },
+        "Player": {
+          "value": 1,
+          "descriptions": {
+            "ja": "プレイヤーの方向"
+          }
+        },
+        "PathFront": {
+          "value": 2,
+          "descriptions": {
+            "ja": "パスの前方向"
+          }
+        },
+        "PathBack": {
+          "value": 3,
+          "descriptions": {
+            "ja": "パスの後方向"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterBigSpawner::PatrolType": {
+      "type": "int8",
+      "values": {
+        "Return": {
+          "value": 0,
+          "descriptions": {
+            "ja": "往復"
+          }
+        },
+        "OneWay": {
+          "value": 1,
+          "descriptions": {
+            "ja": "片道後逃走"
+          }
+        },
+        "OneWayIdling": {
+          "value": 2,
+          "descriptions": {
+            "ja": "片道後待機"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterBigVolumeSpawner::ActionType": {
+      "type": "int8",
+      "values": {
+        "ACTION_EACHTIME": {
+          "value": 0,
+          "descriptions": {
+            "ja": "毎回起動"
+          }
+        },
+        "ACTION_ONCE": {
+          "value": 1,
+          "descriptions": {
+            "ja": "一回起動"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterBigVolumeSpawner::StateType": {
+      "type": "int8",
+      "values": {
+        "DEFAULTSTATE_ON": {
+          "value": 0,
+          "descriptions": {
+            "ja": "ON"
+          }
+        },
+        "DEFAULTSTATE_OFF": {
+          "value": 1,
+          "descriptions": {
+            "ja": "OFF"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterSmallSpawner::EventDrivenType": {
+      "type": "int8",
+      "values": {
+        "None": {
+          "value": 0,
+          "descriptions": {
+            "ja": "無"
+          }
+        },
+        "HideToAppear": {
+          "value": 1,
+          "descriptions": {
+            "ja": "非表示→出現"
+          }
+        },
+        "IdleToMove": {
+          "value": 2,
+          "descriptions": {
+            "ja": "待機→移動"
+          }
+        },
+        "HideToMove": {
+          "value": 3,
+          "descriptions": {
+            "ja": "非表示→移動"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterSmallSpawner::MoveType": {
+      "type": "int8",
+      "values": {
+        "Fixed": {
+          "value": 0,
+          "descriptions": {
+            "ja": "固定"
+          }
+        },
+        "Offset": {
+          "value": 1,
+          "descriptions": {
+            "ja": "2点間移動"
+          }
+        },
+        "Path": {
+          "value": 2,
+          "descriptions": {
+            "ja": "パス"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterSmallSpawner::OrientationForMoveTypeFix": {
+      "type": "int8",
+      "values": {
+        "Set": {
+          "value": 0,
+          "descriptions": {
+            "ja": "セット時の向き"
+          }
+        },
+        "Player": {
+          "value": 1,
+          "descriptions": {
+            "ja": "プレイヤーの方向"
+          }
+        },
+        "PathFront": {
+          "value": 2,
+          "descriptions": {
+            "ja": "パスの前方向"
+          }
+        },
+        "PathBack": {
+          "value": 3,
+          "descriptions": {
+            "ja": "パスの後方向"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterSmallSpawner::PatrolType": {
+      "type": "int8",
+      "values": {
+        "Return": {
+          "value": 0,
+          "descriptions": {
+            "ja": "往復"
+          }
+        },
+        "OneWay": {
+          "value": 1,
+          "descriptions": {
+            "ja": "片道後逃走"
+          }
+        },
+        "OneWayIdling": {
+          "value": 2,
+          "descriptions": {
+            "ja": "片道後待機"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterSmallVolumeSpawner::ActionType": {
+      "type": "int8",
+      "values": {
+        "ACTION_EACHTIME": {
+          "value": 0,
+          "descriptions": {
+            "ja": "毎回起動"
+          }
+        },
+        "ACTION_ONCE": {
+          "value": 1,
+          "descriptions": {
+            "ja": "一回起動"
+          }
+        }
+      }
+    },
+    "EnemyGunHelicopterSmallVolumeSpawner::StateType": {
+      "type": "int8",
+      "values": {
+        "DEFAULTSTATE_ON": {
+          "value": 0,
+          "descriptions": {
+            "ja": "ON"
+          }
+        },
+        "DEFAULTSTATE_OFF": {
+          "value": 1,
+          "descriptions": {
+            "ja": "OFF"
+          }
+        }
+      }
+    },
     "EnemyGunHunterSpawner::AppearType": {
       "type": "int8",
       "values": {
@@ -2455,6 +2754,75 @@
           "descriptions": {
             "ja": "FV"
           }
+        },
+        "DIM_FV_LARGE": {
+          "value": 2,
+          "descriptions": {
+            "ja": "FV大"
+          }
+        }
+      }
+    },
+    "ObjBalloonSpawner::MoveType": {
+      "type": "int8",
+      "values": {
+        "MOVE_NONE": {
+          "value": 0,
+          "descriptions": {
+            "ja": "不動"
+          }
+        },
+        "MOVE_POINT": {
+          "value": 1,
+          "descriptions": {
+            "ja": "二点間移動[セット位置復活をtrueにしてください]"
+          }
+        },
+        "MOVE_PATH": {
+          "value": 2,
+          "descriptions": {
+            "ja": "パス移動[セット位置復活をtrueにしてください]"
+          }
+        }
+      }
+    },
+    "ObjBalloonSpawner::PatrolType": {
+      "type": "int8",
+      "values": {
+        "PATROL_RETURN": {
+          "value": 0,
+          "descriptions": {
+            "ja": "往復"
+          }
+        },
+        "PATROL_LOOP": {
+          "value": 1,
+          "descriptions": {
+            "ja": "ループ"
+          }
+        },
+        "PATROL_ONEWAY": {
+          "value": 2,
+          "descriptions": {
+            "ja": "片道"
+          }
+        }
+      }
+    },
+    "ObjBalloonSpawner::TimeType": {
+      "type": "int8",
+      "values": {
+        "TIME_LOCAL": {
+          "value": 0,
+          "descriptions": {
+            "ja": "ローカル時間"
+          }
+        },
+        "TIME_GLOBAL": {
+          "value": 1,
+          "descriptions": {
+            "ja": "グローバル時間"
+          }
         }
       }
     },
@@ -2796,6 +3164,24 @@
           "descriptions": {
             "ja": "三角柱"
           }
+        },
+        "Sphere": {
+          "value": 2,
+          "descriptions": {
+            "ja": "球体"
+          }
+        },
+        "Capsule": {
+          "value": 3,
+          "descriptions": {
+            "ja": "カプセル"
+          }
+        },
+        "Cylinder": {
+          "value": 4,
+          "descriptions": {
+            "ja": "シリンダー"
+          }
         }
       }
     },
@@ -3018,6 +3404,18 @@
             "ja": ""
           }
         },
+        "MovStageACT1": {
+          "value": 16,
+          "descriptions": {
+            "ja": ""
+          }
+        },
+        "NumAll": {
+          "value": 17,
+          "descriptions": {
+            "ja": ""
+          }
+        },
         "Invalid": {
           "value": -1,
           "descriptions": {
@@ -3029,56 +3427,122 @@
     "ObjBossGateSpawner::Value": {
       "type": "int8",
       "values": {
-        "SpaceColonyARK": {
+        "SpaceColonyARK_ACT1": {
           "value": 0,
           "descriptions": {
-            "ja": "スペースコロニーアーク"
+            "ja": "スペースコロニーアークACT1"
           }
         },
-        "RailCanyon": {
+        "SpaceColonyARK_ACT2": {
           "value": 1,
           "descriptions": {
-            "ja": "レイルキャニオン"
+            "ja": "スペースコロニーアークACT2"
           }
         },
-        "KingdomValley": {
+        "BossBiolizard": {
           "value": 2,
           "descriptions": {
-            "ja": "キングダムバレー"
+            "ja": "BOSSバイオリザード"
           }
         },
-        "City": {
+        "RailCanyon_ACT1": {
           "value": 3,
           "descriptions": {
-            "ja": "シティ"
+            "ja": "レイルキャニオンACT1"
           }
         },
-        "ChaosIsland": {
+        "RailCanyon_ACT2": {
           "value": 4,
           "descriptions": {
-            "ja": "カオス島"
+            "ja": "レイルキャニオンACT2"
           }
         },
-        "RadicalHighway": {
+        "KingdomValley_ACT1": {
           "value": 5,
           "descriptions": {
-            "ja": "ラジカルハイウェイ"
+            "ja": "キングダムバレーACT1"
+          }
+        },
+        "KingdomValley_ACT2": {
+          "value": 6,
+          "descriptions": {
+            "ja": "キングダムバレーACT2"
+          }
+        },
+        "BossMetalOverload": {
+          "value": 7,
+          "descriptions": {
+            "ja": "BOSSメタルオーバーロード"
+          }
+        },
+        "City_ACT1": {
+          "value": 8,
+          "descriptions": {
+            "ja": "シティACT1"
+          }
+        },
+        "City_ACT2": {
+          "value": 9,
+          "descriptions": {
+            "ja": "シティACT2"
+          }
+        },
+        "ChaosIsland_ACT1": {
+          "value": 10,
+          "descriptions": {
+            "ja": "カオス島ACT1"
+          }
+        },
+        "ChaosIsland_ACT2": {
+          "value": 11,
+          "descriptions": {
+            "ja": "カオス島ACT2"
+          }
+        },
+        "BossMephiles": {
+          "value": 12,
+          "descriptions": {
+            "ja": "BOSSメフィレス"
+          }
+        },
+        "RadicalHighway_ACT1": {
+          "value": 13,
+          "descriptions": {
+            "ja": "ラジカルハイウェイACT1"
+          }
+        },
+        "RadicalHighway_ACT2": {
+          "value": 14,
+          "descriptions": {
+            "ja": "ラジカルハイウェイACT2"
+          }
+        },
+        "BossPerfectBlackDoom": {
+          "value": 15,
+          "descriptions": {
+            "ja": "BOSSパーフェクトブラックドゥーム"
           }
         },
         "Num": {
-          "value": 6,
+          "value": 16,
+          "descriptions": {
+            "ja": ""
+          }
+        },
+        "MovStageACT1": {
+          "value": 16,
+          "descriptions": {
+            "ja": ""
+          }
+        },
+        "NumAll": {
+          "value": 17,
           "descriptions": {
             "ja": ""
           }
         },
         "Invalid": {
           "value": -1,
-          "descriptions": {
-            "ja": ""
-          }
-        },
-        "WhiteSpace": {
-          "value": 8,
           "descriptions": {
             "ja": ""
           }
@@ -3631,65 +4095,195 @@
         }
       }
     },
-    "ObjChallengeGateEclipseSpawner::Value": {
+    "ObjCarSpawner::CollisionType": {
       "type": "int8",
       "values": {
-        "Ring1": {
+        "Normal": {
           "value": 0,
           "descriptions": {
-            "ja": ""
+            "ja": "上面＆下面に立てる"
           }
         },
-        "Rings": {
+        "Side": {
           "value": 1,
           "descriptions": {
-            "ja": ""
+            "ja": "側面に立てる"
           }
         },
-        "DashRing": {
+        "NUM_COLLISION_TYPE": {
           "value": 2,
           "descriptions": {
             "ja": ""
           }
+        }
+      }
+    },
+    "ObjCarSpawner::SizeType": {
+      "type": "int8",
+      "values": {
+        "SIZE_A": {
+          "value": 0,
+          "descriptions": {
+            "ja": "サイズ1 SUV、非爆発"
+          }
         },
-        "Enemy": {
+        "SIZE_B": {
+          "value": 1,
+          "descriptions": {
+            "ja": "サイズ2 商用バン、爆発"
+          }
+        },
+        "SIZE_C": {
+          "value": 2,
+          "descriptions": {
+            "ja": "サイズ3 セダン、非爆発"
+          }
+        },
+        "SIZE_D": {
           "value": 3,
           "descriptions": {
-            "ja": ""
+            "ja": "サイズ4 軽ミニバン、非爆発"
           }
         },
-        "TimeStop": {
+        "SIZE_E": {
           "value": 4,
           "descriptions": {
-            "ja": ""
+            "ja": "サイズ5 トラック、非爆発"
           }
         },
-        "Gimmick": {
+        "SIZE_F": {
           "value": 5,
           "descriptions": {
-            "ja": ""
+            "ja": "サイズ6 バス、非爆発"
           }
         },
-        "ChaosSpear": {
+        "SIZE_G": {
           "value": 6,
           "descriptions": {
-            "ja": ""
+            "ja": "サイズ7 車両運搬車、非爆発"
           }
         },
-        "DSurf": {
+        "NUM_SIZE_TYPE": {
           "value": 7,
           "descriptions": {
             "ja": ""
           }
+        }
+      }
+    },
+    "ObjChallengeGateEclipseSpawner::Value": {
+      "type": "int8",
+      "values": {
+        "SpaceColonyARK_ACT1": {
+          "value": 0,
+          "descriptions": {
+            "ja": "スペースコロニーアークACT1"
+          }
         },
-        "DAmoeba": {
+        "SpaceColonyARK_ACT2": {
+          "value": 1,
+          "descriptions": {
+            "ja": "スペースコロニーアークACT2"
+          }
+        },
+        "BossBiolizard": {
+          "value": 2,
+          "descriptions": {
+            "ja": "BOSSバイオリザード"
+          }
+        },
+        "RailCanyon_ACT1": {
+          "value": 3,
+          "descriptions": {
+            "ja": "レイルキャニオンACT1"
+          }
+        },
+        "RailCanyon_ACT2": {
+          "value": 4,
+          "descriptions": {
+            "ja": "レイルキャニオンACT2"
+          }
+        },
+        "KingdomValley_ACT1": {
+          "value": 5,
+          "descriptions": {
+            "ja": "キングダムバレーACT1"
+          }
+        },
+        "KingdomValley_ACT2": {
+          "value": 6,
+          "descriptions": {
+            "ja": "キングダムバレーACT2"
+          }
+        },
+        "BossMetalOverload": {
+          "value": 7,
+          "descriptions": {
+            "ja": "BOSSメタルオーバーロード"
+          }
+        },
+        "City_ACT1": {
           "value": 8,
+          "descriptions": {
+            "ja": "シティACT1"
+          }
+        },
+        "City_ACT2": {
+          "value": 9,
+          "descriptions": {
+            "ja": "シティACT2"
+          }
+        },
+        "ChaosIsland_ACT1": {
+          "value": 10,
+          "descriptions": {
+            "ja": "カオス島ACT1"
+          }
+        },
+        "ChaosIsland_ACT2": {
+          "value": 11,
+          "descriptions": {
+            "ja": "カオス島ACT2"
+          }
+        },
+        "BossMephiles": {
+          "value": 12,
+          "descriptions": {
+            "ja": "BOSSメフィレス"
+          }
+        },
+        "RadicalHighway_ACT1": {
+          "value": 13,
+          "descriptions": {
+            "ja": "ラジカルハイウェイACT1"
+          }
+        },
+        "RadicalHighway_ACT2": {
+          "value": 14,
+          "descriptions": {
+            "ja": "ラジカルハイウェイACT2"
+          }
+        },
+        "BossPerfectBlackDoom": {
+          "value": 15,
+          "descriptions": {
+            "ja": "BOSSパーフェクトブラックドゥーム"
+          }
+        },
+        "Num": {
+          "value": 16,
           "descriptions": {
             "ja": ""
           }
         },
-        "Num": {
-          "value": 9,
+        "MovStageACT1": {
+          "value": 16,
+          "descriptions": {
+            "ja": ""
+          }
+        },
+        "NumAll": {
+          "value": 17,
           "descriptions": {
             "ja": ""
           }
@@ -3751,62 +4345,116 @@
     "ObjChallengeGateSpawner::Value": {
       "type": "int8",
       "values": {
-        "Ring1": {
+        "SpaceColonyARK_ACT1": {
           "value": 0,
           "descriptions": {
-            "ja": ""
+            "ja": "スペースコロニーアークACT1"
           }
         },
-        "Rings": {
+        "SpaceColonyARK_ACT2": {
           "value": 1,
           "descriptions": {
-            "ja": ""
+            "ja": "スペースコロニーアークACT2"
           }
         },
-        "DashRing": {
+        "BossBiolizard": {
           "value": 2,
           "descriptions": {
-            "ja": ""
+            "ja": "BOSSバイオリザード"
           }
         },
-        "Enemy": {
+        "RailCanyon_ACT1": {
           "value": 3,
           "descriptions": {
-            "ja": ""
+            "ja": "レイルキャニオンACT1"
           }
         },
-        "TimeStop": {
+        "RailCanyon_ACT2": {
           "value": 4,
           "descriptions": {
-            "ja": ""
+            "ja": "レイルキャニオンACT2"
           }
         },
-        "Gimmick": {
+        "KingdomValley_ACT1": {
           "value": 5,
           "descriptions": {
-            "ja": ""
+            "ja": "キングダムバレーACT1"
           }
         },
-        "ChaosSpear": {
+        "KingdomValley_ACT2": {
           "value": 6,
           "descriptions": {
-            "ja": ""
+            "ja": "キングダムバレーACT2"
           }
         },
-        "DSurf": {
+        "BossMetalOverload": {
           "value": 7,
           "descriptions": {
-            "ja": ""
+            "ja": "BOSSメタルオーバーロード"
           }
         },
-        "DAmoeba": {
+        "City_ACT1": {
           "value": 8,
           "descriptions": {
-            "ja": ""
+            "ja": "シティACT1"
+          }
+        },
+        "City_ACT2": {
+          "value": 9,
+          "descriptions": {
+            "ja": "シティACT2"
+          }
+        },
+        "ChaosIsland_ACT1": {
+          "value": 10,
+          "descriptions": {
+            "ja": "カオス島ACT1"
+          }
+        },
+        "ChaosIsland_ACT2": {
+          "value": 11,
+          "descriptions": {
+            "ja": "カオス島ACT2"
+          }
+        },
+        "BossMephiles": {
+          "value": 12,
+          "descriptions": {
+            "ja": "BOSSメフィレス"
+          }
+        },
+        "RadicalHighway_ACT1": {
+          "value": 13,
+          "descriptions": {
+            "ja": "ラジカルハイウェイACT1"
+          }
+        },
+        "RadicalHighway_ACT2": {
+          "value": 14,
+          "descriptions": {
+            "ja": "ラジカルハイウェイACT2"
+          }
+        },
+        "BossPerfectBlackDoom": {
+          "value": 15,
+          "descriptions": {
+            "ja": "BOSSパーフェクトブラックドゥーム"
           }
         },
         "Num": {
-          "value": 9,
+          "value": 16,
+          "descriptions": {
+            "ja": ""
+          }
+        },
+        "MovStageACT1": {
+          "value": 16,
+          "descriptions": {
+            "ja": ""
+          }
+        },
+        "NumAll": {
+          "value": 17,
           "descriptions": {
             "ja": ""
           }
@@ -3964,8 +4612,14 @@
             "ja": "手記"
           }
         },
-        "Num": {
+        "Poster": {
           "value": 6,
+          "descriptions": {
+            "ja": "ポスター"
+          }
+        },
+        "Num": {
+          "value": 7,
           "descriptions": {
             "ja": ""
           }
@@ -4151,8 +4805,14 @@
             "ja": "手記"
           }
         },
-        "Num": {
+        "Poster": {
           "value": 6,
+          "descriptions": {
+            "ja": "ポスター"
+          }
+        },
+        "Num": {
+          "value": 7,
           "descriptions": {
             "ja": ""
           }
@@ -5233,6 +5893,18 @@
           "descriptions": {
             "ja": "W04_DeathEggTobotEvent"
           }
+        },
+        "W20_GA2010Event": {
+          "value": 5,
+          "descriptions": {
+            "ja": "W20_GA2010Event"
+          }
+        },
+        "W20_GA2020Event": {
+          "value": 6,
+          "descriptions": {
+            "ja": "W20_GA2020Event"
+          }
         }
       }
     },
@@ -5461,6 +6133,29 @@
           "value": 4,
           "descriptions": {
             "ja": "接触中"
+          }
+        }
+      }
+    },
+    "ObjFlamingSpawner::SizeType": {
+      "type": "int8",
+      "values": {
+        "SIZE_A": {
+          "value": 0,
+          "descriptions": {
+            "ja": "サイズ1_7x1x7m"
+          }
+        },
+        "SIZE_B": {
+          "value": 1,
+          "descriptions": {
+            "ja": "サイズ2_5x1x5m"
+          }
+        },
+        "NUM_SIZE_TYPE": {
+          "value": 2,
+          "descriptions": {
+            "ja": ""
           }
         }
       }
@@ -6567,6 +7262,80 @@
           "value": 1,
           "descriptions": {
             "ja": "グローバル時間"
+          }
+        }
+      }
+    },
+    "ObjMultipleConversationVolumeSpawner::ActionType": {
+      "type": "int8",
+      "values": {
+        "ACTION_EACHTIME": {
+          "value": 0,
+          "descriptions": {
+            "ja": "毎回起動"
+          }
+        },
+        "ACTION_ONCE": {
+          "value": 1,
+          "descriptions": {
+            "ja": "一回起動"
+          }
+        }
+      }
+    },
+    "ObjMultipleConversationVolumeSpawner::EndRule": {
+      "type": "uint8",
+      "values": {
+        "AUTOBYTIME": {
+          "value": 0,
+          "descriptions": {
+            "ja": "指定時間経過後に自動終了"
+          }
+        },
+        "AUTOBYVOICE": {
+          "value": 1,
+          "descriptions": {
+            "ja": "ボイス終了後に自動終了"
+          }
+        },
+        "AUTOBYVOICEANDDELAY": {
+          "value": 2,
+          "descriptions": {
+            "ja": "ボイス終了後に指定した時間を設けてから終了"
+          }
+        }
+      }
+    },
+    "ObjMultipleConversationVolumeSpawner::PlayerActionType": {
+      "type": "int8",
+      "values": {
+        "NONE": {
+          "value": 0,
+          "descriptions": {
+            "ja": "なし"
+          }
+        },
+        "HOMING_OR_SPEAR": {
+          "value": 1,
+          "descriptions": {
+            "ja": "瞬間移動かカオススピア"
+          }
+        }
+      }
+    },
+    "ObjMultipleConversationVolumeSpawner::StateType": {
+      "type": "int8",
+      "values": {
+        "DEFAULTSTATE_ON": {
+          "value": 0,
+          "descriptions": {
+            "ja": "ON"
+          }
+        },
+        "DEFAULTSTATE_OFF": {
+          "value": 1,
+          "descriptions": {
+            "ja": "OFF"
           }
         }
       }
@@ -7726,6 +8495,29 @@
         }
       }
     },
+    "ObjPointLightSpawner::TargetShadingKindMaskType": {
+      "type": "uint8",
+      "values": {
+        "TSKM_NONE": {
+          "value": 0,
+          "descriptions": {
+            "ja": "なし"
+          }
+        },
+        "TSKM_CHARA": {
+          "value": 1,
+          "descriptions": {
+            "ja": "キャラ"
+          }
+        },
+        "TSKM_ENVIRONMENT": {
+          "value": 2,
+          "descriptions": {
+            "ja": "地形"
+          }
+        }
+      }
+    },
     "ObjPointMarkerSpawner::ModelType": {
       "type": "int8",
       "values": {
@@ -8712,6 +9504,29 @@
         }
       }
     },
+    "ObjSlopeSpawner::SlopeModelType": {
+      "type": "int32",
+      "values": {
+        "SLOPE_5M": {
+          "value": 0,
+          "descriptions": {
+            "ja": "横幅 5m"
+          }
+        },
+        "SLOPE_10M": {
+          "value": 1,
+          "descriptions": {
+            "ja": "横幅 10m"
+          }
+        },
+        "NUM_MODELS": {
+          "value": 2,
+          "descriptions": {
+            "ja": ""
+          }
+        }
+      }
+    },
     "ObjSmallBatterySpawner::CollisionSizeType": {
       "type": "int8",
       "values": {
@@ -8950,56 +9765,122 @@
     "ObjStageGateSpawner::Value": {
       "type": "int8",
       "values": {
-        "SpaceColonyARK": {
+        "SpaceColonyARK_ACT1": {
           "value": 0,
           "descriptions": {
-            "ja": "スペースコロニーアーク"
+            "ja": "スペースコロニーアークACT1"
           }
         },
-        "RailCanyon": {
+        "SpaceColonyARK_ACT2": {
           "value": 1,
           "descriptions": {
-            "ja": "レイルキャニオン"
+            "ja": "スペースコロニーアークACT2"
           }
         },
-        "KingdomValley": {
+        "BossBiolizard": {
           "value": 2,
           "descriptions": {
-            "ja": "キングダムバレー"
+            "ja": "BOSSバイオリザード"
           }
         },
-        "City": {
+        "RailCanyon_ACT1": {
           "value": 3,
           "descriptions": {
-            "ja": "シティ"
+            "ja": "レイルキャニオンACT1"
           }
         },
-        "ChaosIsland": {
+        "RailCanyon_ACT2": {
           "value": 4,
           "descriptions": {
-            "ja": "カオス島"
+            "ja": "レイルキャニオンACT2"
           }
         },
-        "RadicalHighway": {
+        "KingdomValley_ACT1": {
           "value": 5,
           "descriptions": {
-            "ja": "ラジカルハイウェイ"
+            "ja": "キングダムバレーACT1"
+          }
+        },
+        "KingdomValley_ACT2": {
+          "value": 6,
+          "descriptions": {
+            "ja": "キングダムバレーACT2"
+          }
+        },
+        "BossMetalOverload": {
+          "value": 7,
+          "descriptions": {
+            "ja": "BOSSメタルオーバーロード"
+          }
+        },
+        "City_ACT1": {
+          "value": 8,
+          "descriptions": {
+            "ja": "シティACT1"
+          }
+        },
+        "City_ACT2": {
+          "value": 9,
+          "descriptions": {
+            "ja": "シティACT2"
+          }
+        },
+        "ChaosIsland_ACT1": {
+          "value": 10,
+          "descriptions": {
+            "ja": "カオス島ACT1"
+          }
+        },
+        "ChaosIsland_ACT2": {
+          "value": 11,
+          "descriptions": {
+            "ja": "カオス島ACT2"
+          }
+        },
+        "BossMephiles": {
+          "value": 12,
+          "descriptions": {
+            "ja": "BOSSメフィレス"
+          }
+        },
+        "RadicalHighway_ACT1": {
+          "value": 13,
+          "descriptions": {
+            "ja": "ラジカルハイウェイACT1"
+          }
+        },
+        "RadicalHighway_ACT2": {
+          "value": 14,
+          "descriptions": {
+            "ja": "ラジカルハイウェイACT2"
+          }
+        },
+        "BossPerfectBlackDoom": {
+          "value": 15,
+          "descriptions": {
+            "ja": "BOSSパーフェクトブラックドゥーム"
           }
         },
         "Num": {
-          "value": 6,
+          "value": 16,
+          "descriptions": {
+            "ja": ""
+          }
+        },
+        "MovStageACT1": {
+          "value": 16,
+          "descriptions": {
+            "ja": ""
+          }
+        },
+        "NumAll": {
+          "value": 17,
           "descriptions": {
             "ja": ""
           }
         },
         "Invalid": {
           "value": -1,
-          "descriptions": {
-            "ja": ""
-          }
-        },
-        "WhiteSpace": {
-          "value": 8,
           "descriptions": {
             "ja": ""
           }
@@ -10419,6 +11300,23 @@
           "value": 4,
           "descriptions": {
             "ja": "接触中"
+          }
+        }
+      }
+    },
+    "ObjTrainSpawner::ModelType": {
+      "type": "int8",
+      "values": {
+        "ORANGE": {
+          "value": 0,
+          "descriptions": {
+            "ja": "橙"
+          }
+        },
+        "GREEN": {
+          "value": 1,
+          "descriptions": {
+            "ja": "緑"
           }
         }
       }
@@ -12365,6 +13263,13 @@
           }
         },
         {
+          "name": "skytree",
+          "type": "bool",
+          "descriptions": {
+            "ja": "スカイツリー用に設定"
+          }
+        },
+        {
           "name": "initialSideSpeed",
           "type": "float32",
           "step": 0.0010000000474974513,
@@ -12595,10 +13500,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -12928,6 +13835,70 @@
           "step": 0.0010000000474974513,
           "descriptions": {
             "ja": "攻撃間隔"
+          }
+        }
+      ]
+    },
+    "CarLaunchInfo": {
+      "fields": [
+        {
+          "name": "threathold",
+          "type": "float32",
+          "min_range": 0.0,
+          "max_range": 1000000.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "このパラメータを適用する最低速度"
+          }
+        },
+        {
+          "name": "firstSpeed",
+          "type": "float32",
+          "min_range": 0.0,
+          "max_range": 1000000.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "初速度"
+          }
+        },
+        {
+          "name": "elevation",
+          "type": "float32",
+          "min_range": 0.10000000149011612,
+          "max_range": 1000.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "仰角"
+          }
+        },
+        {
+          "name": "outOfControl",
+          "type": "float32",
+          "min_range": 0.0,
+          "max_range": 20.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "操作不可時間"
+          }
+        },
+        {
+          "name": "keepVelocityDistance",
+          "type": "float32",
+          "min_range": 0.0,
+          "max_range": 2000.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "この距離は速度が一定"
+          }
+        },
+        {
+          "name": "motionTime",
+          "type": "float32",
+          "min_range": 0.10000000149011612,
+          "max_range": 100.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "モーション再生時間"
           }
         }
       ]
@@ -13413,10 +14384,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -13714,10 +14687,10 @@
           "name": "pad1",
           "type": "array",
           "subtype": "uint8",
+          "array_size": 3,
           "min_range": 0,
           "max_range": 255,
           "step": 1,
-          "array_size": 3,
           "descriptions": {
             "ja": "pad1"
           }
@@ -13748,10 +14721,10 @@
           "name": "pad2",
           "type": "array",
           "subtype": "uint8",
+          "array_size": 2,
           "min_range": 0,
           "max_range": 255,
           "step": 1,
-          "array_size": 2,
           "descriptions": {
             "ja": "pad2"
           }
@@ -13969,10 +14942,12 @@
         {
           "name": "RespawnOffsetPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "再設置位置[設置位置からの相対座標]"
           }
@@ -14037,10 +15012,12 @@
         {
           "name": "collisionPosOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "位置オフセット"
           }
@@ -14595,10 +15572,12 @@
         {
           "name": "damageCollisionPosOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "被ダメージコリジョンの位置オフセット"
           }
@@ -14622,10 +15601,12 @@
         {
           "name": "touchCollisionPosOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "接触与ダメージコリジョンの位置オフセット"
           }
@@ -14702,10 +15683,12 @@
         {
           "name": "barrierGuideRange",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "バリア中アクションナビ表示範囲"
           }
@@ -14713,7 +15696,7 @@
         {
           "name": "startReflectorWaitTime",
           "type": "float32",
-          "min_range": 0.0,
+          "min_range": 9.999999974752427e-7,
           "step": 0.0010000000474974513,
           "descriptions": {
             "ja": "リフレクターシュートを開始するまでの待ち時間"
@@ -15104,10 +16087,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -15195,10 +16180,12 @@
         {
           "name": "windPositionOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "風の吸込位置オフセット"
           }
@@ -15385,10 +16372,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -15493,12 +16482,22 @@
         {
           "name": "rotAxis",
           "type": "vector3",
-          "min_range": [-1.0, -1.0, -1.0],
-          "max_range": [1.0, 1.0, 1.0],
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "min_range": [
+            -1.0,
+            -1.0,
+            -1.0
+          ],
+          "max_range": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "回転軸"
           }
@@ -15506,10 +16505,12 @@
         {
           "name": "attackColliderScale",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "攻撃コライダスケール"
           }
@@ -15593,10 +16594,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -15656,10 +16659,12 @@
         {
           "name": "attackColliderScale",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "攻撃コライダスケール"
           }
@@ -15923,10 +16928,12 @@
         {
           "name": "damageObjectGuideRange",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ダメージオブジェクトアクションナビ表示範囲"
           }
@@ -15934,10 +16941,12 @@
         {
           "name": "damageObjectGuidePositionOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ダメージオブジェクトアクションナビ表示オフセット"
           }
@@ -16022,10 +17031,12 @@
         {
           "name": "moveOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "２点間移動オフセット"
           }
@@ -16218,10 +17229,12 @@
         {
           "name": "guideSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンの範囲"
           }
@@ -16229,10 +17242,12 @@
         {
           "name": "guideColOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンのオフセット値"
           }
@@ -16240,10 +17255,12 @@
         {
           "name": "guideViewOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイド表示のオフセット値"
           }
@@ -16823,10 +17840,12 @@
         {
           "name": "guideSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンの範囲"
           }
@@ -16834,10 +17853,12 @@
         {
           "name": "guideColOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンのオフセット値"
           }
@@ -16845,10 +17866,12 @@
         {
           "name": "guideViewOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイド表示のオフセット値"
           }
@@ -17353,10 +18376,12 @@
         {
           "name": "warpOffsetForFV",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "FV用瞬間移動位置オフセット"
           }
@@ -17364,10 +18389,12 @@
         {
           "name": "warpOffsetForFVWhileBlownUp",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "打ち上げ中FV用瞬間移動位置オフセット"
           }
@@ -17375,10 +18402,12 @@
         {
           "name": "warpOffsetForFVWhileBlownAway",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "吹き飛び中FV用瞬間移動位置オフセット"
           }
@@ -17426,6 +18455,595 @@
           "type": "bool",
           "descriptions": {
             "ja": "スタン｜時間停止時HAアクションナビを表示するか否か"
+          }
+        }
+      ]
+    },
+    "EnemyGunHelicopterBigSpawner": {
+      "fields": [
+        {
+          "name": "no",
+          "type": "int32",
+          "min_range": -2147483648,
+          "max_range": 2147483647,
+          "step": 1,
+          "descriptions": {
+            "ja": "no"
+          }
+        },
+        {
+          "name": "moveType",
+          "type": "EnemyGunHelicopterBigSpawner::MoveType",
+          "descriptions": {
+            "ja": "移動タイプ"
+          }
+        },
+        {
+          "name": "moveMotionType",
+          "type": "EnemyGunHelicopterBigSpawner::MoveMotionType",
+          "descriptions": {
+            "ja": "移動モーションタイプ"
+          }
+        },
+        {
+          "name": "orientationForMoveTypeFix",
+          "type": "EnemyGunHelicopterBigSpawner::OrientationForMoveTypeFix",
+          "descriptions": {
+            "ja": "向きタイプ"
+          }
+        },
+        {
+          "name": "patrolType",
+          "type": "EnemyGunHelicopterBigSpawner::PatrolType",
+          "descriptions": {
+            "ja": "巡回タイプ"
+          }
+        },
+        {
+          "name": "eventDrivenType",
+          "type": "EnemyGunHelicopterBigSpawner::EventDrivenType",
+          "descriptions": {
+            "ja": "イベント駆動タイプ"
+          }
+        },
+        {
+          "name": "moveOffset",
+          "type": "vector3",
+          "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
+          "descriptions": {
+            "ja": "２点間移動オフセット"
+          }
+        },
+        {
+          "name": "pathName",
+          "type": "string",
+          "descriptions": {
+            "ja": "[パス移動]パス名"
+          }
+        },
+        {
+          "name": "moveSpeed",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "移動速度"
+          }
+        },
+        {
+          "name": "keepNearestDistanceDuringBattle",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "戦闘中維持する最近距離"
+          }
+        },
+        {
+          "name": "attackCannonSpeed",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の速度"
+          }
+        },
+        {
+          "name": "attackCannonReadyTime",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の溜め時間"
+          }
+        },
+        {
+          "name": "attackCannonCycleTime",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の間隔"
+          }
+        },
+        {
+          "name": "attackCannonLifeTime",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の寿命"
+          }
+        },
+        {
+          "name": "attackCannonRadius",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の範囲幅"
+          }
+        },
+        {
+          "name": "attackCannonHeight",
+          "type": "float32",
+          "min_range": -1.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の範囲高さ"
+          }
+        },
+        {
+          "name": "respawnTime",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "リスポーン時間"
+          }
+        },
+        {
+          "name": "addLightGaugeNum",
+          "type": "int32",
+          "min_range": -2147483648,
+          "max_range": 2147483647,
+          "step": 1,
+          "descriptions": {
+            "ja": "ライトゲージ回復量の個別設定[0以上で有効]"
+          }
+        },
+        {
+          "name": "fixWarpAngle",
+          "type": "bool",
+          "descriptions": {
+            "ja": "瞬間移動先の角度を指定"
+          }
+        },
+        {
+          "name": "warpAngle",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "瞬間移動角度"
+          }
+        },
+        {
+          "name": "isTransparency",
+          "type": "bool",
+          "descriptions": {
+            "ja": "透過処理するか"
+          }
+        },
+        {
+          "name": "isAttackWhileMoving",
+          "type": "bool",
+          "descriptions": {
+            "ja": "移動しながら攻撃するか"
+          }
+        }
+      ]
+    },
+    "EnemyGunHelicopterBigVolumeSpawner": {
+      "fields": [
+        {
+          "name": "state",
+          "type": "EnemyGunHelicopterBigVolumeSpawner::StateType",
+          "descriptions": {
+            "ja": "初期状態"
+          }
+        },
+        {
+          "name": "action",
+          "type": "EnemyGunHelicopterBigVolumeSpawner::ActionType",
+          "descriptions": {
+            "ja": "動作"
+          }
+        },
+        {
+          "name": "isEventDriven",
+          "type": "bool",
+          "descriptions": {
+            "ja": "イベント起動か"
+          }
+        },
+        {
+          "name": "volume",
+          "type": "VolumeTriggerSpawner",
+          "descriptions": {
+            "ja": "ボリューム"
+          }
+        },
+        {
+          "name": "keepNearestDistanceDuringBattle",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "戦闘中維持する最近距離"
+          }
+        },
+        {
+          "name": "attackCannonNum",
+          "type": "int32",
+          "min_range": -2147483648,
+          "max_range": 2147483647,
+          "step": 1,
+          "descriptions": {
+            "ja": "弾の攻撃回数"
+          }
+        },
+        {
+          "name": "attackCannonSpeedScale",
+          "type": "array",
+          "subtype": "float32",
+          "array_size": 2,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の攻撃速度倍率"
+          }
+        },
+        {
+          "name": "attackCannonPathName0",
+          "type": "string",
+          "descriptions": {
+            "ja": "弾の攻撃パス名1"
+          }
+        },
+        {
+          "name": "attackCannonPathName1",
+          "type": "string",
+          "descriptions": {
+            "ja": "弾の攻撃パス名2"
+          }
+        },
+        {
+          "name": "attackCannonPathPositionOffsetY",
+          "type": "array",
+          "subtype": "float32",
+          "array_size": 2,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の攻撃パス位置オフセットY"
+          }
+        },
+        {
+          "name": "attackTargetObjectId",
+          "type": "object_reference",
+          "descriptions": {
+            "ja": "弾の攻撃対象オブジェクトID"
+          }
+        },
+        {
+          "name": "rotateInAttackTargetObject",
+          "type": "bool",
+          "descriptions": {
+            "ja": "弾の攻撃対象オブジェクトの方向に回転するか"
+          }
+        },
+        {
+          "name": "waitForAttackAnimToFinish",
+          "type": "bool",
+          "descriptions": {
+            "ja": "弾の攻撃アニメ終了待ちするか"
+          }
+        },
+        {
+          "name": "attackReadyCannonEffect",
+          "type": "array",
+          "subtype": "bool",
+          "array_size": 2,
+          "descriptions": {
+            "ja": "弾の攻撃予兆エフェクトを表示するか"
+          }
+        }
+      ]
+    },
+    "EnemyGunHelicopterSmallSpawner": {
+      "fields": [
+        {
+          "name": "no",
+          "type": "int32",
+          "min_range": -2147483648,
+          "max_range": 2147483647,
+          "step": 1,
+          "descriptions": {
+            "ja": "no"
+          }
+        },
+        {
+          "name": "moveType",
+          "type": "EnemyGunHelicopterSmallSpawner::MoveType",
+          "descriptions": {
+            "ja": "移動タイプ"
+          }
+        },
+        {
+          "name": "orientationForMoveTypeFix",
+          "type": "EnemyGunHelicopterSmallSpawner::OrientationForMoveTypeFix",
+          "descriptions": {
+            "ja": "向きタイプ"
+          }
+        },
+        {
+          "name": "patrolType",
+          "type": "EnemyGunHelicopterSmallSpawner::PatrolType",
+          "descriptions": {
+            "ja": "巡回タイプ"
+          }
+        },
+        {
+          "name": "eventDrivenType",
+          "type": "EnemyGunHelicopterSmallSpawner::EventDrivenType",
+          "descriptions": {
+            "ja": "イベント駆動タイプ"
+          }
+        },
+        {
+          "name": "moveOffset",
+          "type": "vector3",
+          "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
+          "descriptions": {
+            "ja": "２点間移動オフセット"
+          }
+        },
+        {
+          "name": "pathName",
+          "type": "string",
+          "descriptions": {
+            "ja": "[パス移動]パス名"
+          }
+        },
+        {
+          "name": "moveSpeed",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "移動速度"
+          }
+        },
+        {
+          "name": "attackCannonSpeed",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の速度"
+          }
+        },
+        {
+          "name": "attackCannonReadyTime",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の溜め時間"
+          }
+        },
+        {
+          "name": "attackCannonCycleTime",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の間隔"
+          }
+        },
+        {
+          "name": "attackCannonLifeTime",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の寿命"
+          }
+        },
+        {
+          "name": "attackCannonRadius",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の範囲幅"
+          }
+        },
+        {
+          "name": "attackCannonHeight",
+          "type": "float32",
+          "min_range": -1.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の範囲高さ"
+          }
+        },
+        {
+          "name": "respawnTime",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "リスポーン時間"
+          }
+        },
+        {
+          "name": "blowOffVector",
+          "type": "vector3",
+          "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
+          "descriptions": {
+            "ja": "吹き飛び方向"
+          }
+        },
+        {
+          "name": "blowOffTime",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "吹き飛び時間"
+          }
+        },
+        {
+          "name": "addLightGaugeNum",
+          "type": "int32",
+          "min_range": -2147483648,
+          "max_range": 2147483647,
+          "step": 1,
+          "descriptions": {
+            "ja": "ライトゲージ回復量の個別設定[0以上で有効]"
+          }
+        },
+        {
+          "name": "fixWarpAngle",
+          "type": "bool",
+          "descriptions": {
+            "ja": "瞬間移動先の角度を指定"
+          }
+        },
+        {
+          "name": "warpAngle",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "瞬間移動角度"
+          }
+        },
+        {
+          "name": "isTransparency",
+          "type": "bool",
+          "descriptions": {
+            "ja": "透過処理するか"
+          }
+        },
+        {
+          "name": "isAttackWhileMoving",
+          "type": "bool",
+          "descriptions": {
+            "ja": "移動しながら攻撃するか"
+          }
+        }
+      ]
+    },
+    "EnemyGunHelicopterSmallVolumeSpawner": {
+      "fields": [
+        {
+          "name": "state",
+          "type": "EnemyGunHelicopterSmallVolumeSpawner::StateType",
+          "descriptions": {
+            "ja": "初期状態"
+          }
+        },
+        {
+          "name": "action",
+          "type": "EnemyGunHelicopterSmallVolumeSpawner::ActionType",
+          "descriptions": {
+            "ja": "動作"
+          }
+        },
+        {
+          "name": "isEventDriven",
+          "type": "bool",
+          "descriptions": {
+            "ja": "イベント起動か"
+          }
+        },
+        {
+          "name": "volume",
+          "type": "VolumeTriggerSpawner",
+          "descriptions": {
+            "ja": "ボリューム"
+          }
+        },
+        {
+          "name": "attackCannonNum",
+          "type": "int32",
+          "min_range": -2147483648,
+          "max_range": 2147483647,
+          "step": 1,
+          "descriptions": {
+            "ja": "弾の攻撃回数"
+          }
+        },
+        {
+          "name": "attackCannonSpeedScale",
+          "type": "array",
+          "subtype": "float32",
+          "array_size": 2,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の攻撃速度倍率"
+          }
+        },
+        {
+          "name": "attackCannonPathName0",
+          "type": "string",
+          "descriptions": {
+            "ja": "弾の攻撃パス名1"
+          }
+        },
+        {
+          "name": "attackCannonPathName1",
+          "type": "string",
+          "descriptions": {
+            "ja": "弾の攻撃パス名2"
+          }
+        },
+        {
+          "name": "attackCannonPathPositionOffsetY",
+          "type": "array",
+          "subtype": "float32",
+          "array_size": 2,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "弾の攻撃パス位置オフセットY"
+          }
+        },
+        {
+          "name": "attackTargetObjectId",
+          "type": "object_reference",
+          "descriptions": {
+            "ja": "弾の攻撃対象オブジェクトID"
+          }
+        },
+        {
+          "name": "rotateInAttackTargetObject",
+          "type": "bool",
+          "descriptions": {
+            "ja": "弾の攻撃対象オブジェクトの方向に回転するか"
+          }
+        },
+        {
+          "name": "waitForAttackAnimToFinish",
+          "type": "bool",
+          "descriptions": {
+            "ja": "弾の攻撃アニメ終了待ちするか"
           }
         }
       ]
@@ -17533,6 +19151,13 @@
           }
         },
         {
+          "name": "blowCollisionEnable",
+          "type": "bool",
+          "descriptions": {
+            "ja": "ブロー時オブジェクト衝突コリジョンは有効か"
+          }
+        },
+        {
           "name": "fixWarpAngle",
           "type": "bool",
           "descriptions": {
@@ -17571,10 +19196,12 @@
         {
           "name": "guideSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンの範囲"
           }
@@ -17582,10 +19209,12 @@
         {
           "name": "guideColOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンのオフセット値"
           }
@@ -17593,12 +19222,21 @@
         {
           "name": "guideViewOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイド表示のオフセット値"
+          }
+        },
+        {
+          "name": "enableBlockCollision",
+          "type": "bool",
+          "descriptions": {
+            "ja": "剛体コリジョンが有効か"
           }
         }
       ]
@@ -17644,10 +19282,12 @@
         {
           "name": "searchRange",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "索敵範囲"
           }
@@ -17662,10 +19302,12 @@
         {
           "name": "moveOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -17682,8 +19324,8 @@
           "name": "actionRate",
           "type": "array",
           "subtype": "float32",
-          "step": 0.0010000000474974513,
           "array_size": 6,
+          "step": 0.0010000000474974513,
           "descriptions": {
             "ja": "行動確率"
           }
@@ -17692,8 +19334,8 @@
           "name": "actionCoolTime",
           "type": "array",
           "subtype": "float32",
-          "step": 0.0010000000474974513,
           "array_size": 6,
+          "step": 0.0010000000474974513,
           "descriptions": {
             "ja": "行動別クールタイム"
           }
@@ -17937,10 +19579,12 @@
         {
           "name": "launch_position_offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ホーミングレーザー射出位置オフセット"
           }
@@ -17948,10 +19592,12 @@
         {
           "name": "launch_direction",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ホーミングレーザー射出方向"
           }
@@ -17959,10 +19605,12 @@
         {
           "name": "target_position_offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ホーミングレーザー目標位置オフセット"
           }
@@ -18564,10 +20212,12 @@
         {
           "name": "warpOffsetForFV",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "FV用瞬間移動位置オフセット"
           }
@@ -18575,10 +20225,12 @@
         {
           "name": "warpOffsetForSV",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "SV用瞬間移動位置オフセット"
           }
@@ -18586,10 +20238,12 @@
         {
           "name": "warpOffsetForFVWhileBlownUp",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "打ち上げ中FV用瞬間移動位置オフセット"
           }
@@ -18597,10 +20251,12 @@
         {
           "name": "warpOffsetForSVWhileBlownUp",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "打ち上げ中SV用瞬間移動位置オフセット"
           }
@@ -18608,10 +20264,12 @@
         {
           "name": "warpOffsetForFVWhileBlownAway",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "吹き飛び中FV用瞬間移動位置オフセット"
           }
@@ -18619,10 +20277,12 @@
         {
           "name": "warpOffsetForSVWhileBlownAway",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "吹き飛び中SV用瞬間移動位置オフセット"
           }
@@ -18717,10 +20377,12 @@
         {
           "name": "twoPointOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "2点間オフセット"
           }
@@ -18851,10 +20513,12 @@
         {
           "name": "cameraLookAt",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "注視点座標"
           }
@@ -18972,6 +20636,55 @@
           "step": 0.0010000000474974513,
           "descriptions": {
             "ja": "奥行"
+          }
+        }
+      ]
+    },
+    "GOCActivatorSpawner": {
+      "fields": [
+        {
+          "name": "m_range",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "レンジ距離"
+          }
+        },
+        {
+          "name": "m_distance",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "レンジ許容範囲"
+          }
+        }
+      ]
+    },
+    "GOCSimpleAnimationSpawner": {
+      "fields": [
+        {
+          "name": "resSkeleton",
+          "type": "string",
+          "descriptions": {
+            "ja": "スケルトンリソース名"
+          }
+        },
+        {
+          "name": "resAnimation",
+          "type": "string",
+          "descriptions": {
+            "ja": "アニメーションリソース名"
+          }
+        }
+      ]
+    },
+    "GOCVisualModelSpawner": {
+      "fields": [
+        {
+          "name": "resModel",
+          "type": "string",
+          "descriptions": {
+            "ja": "モデルリソース名"
           }
         }
       ]
@@ -19785,10 +21498,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -19885,10 +21600,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -20045,10 +21762,12 @@
         {
           "name": "blockSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ブロックサイズ"
           }
@@ -20066,10 +21785,12 @@
         {
           "name": "moveDirection",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "移動方向[ワールド空間]"
           }
@@ -20400,10 +22121,12 @@
         {
           "name": "moveDirection",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "移動方向[ワールド空間]"
           }
@@ -20686,10 +22409,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -20780,10 +22505,12 @@
         {
           "name": "guideSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンの範囲"
           }
@@ -20791,10 +22518,12 @@
         {
           "name": "guideColOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンのオフセット値"
           }
@@ -20802,10 +22531,12 @@
         {
           "name": "guidePosOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドの表示位置オフセット値"
           }
@@ -20948,6 +22679,14 @@
           }
         },
         {
+          "name": "scale",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "スケール"
+          }
+        },
+        {
           "name": "upSpeed",
           "type": "float32",
           "min_range": 0.0,
@@ -20980,11 +22719,11 @@
         {
           "name": "respawnTime",
           "type": "float32",
-          "min_range": 0.0,
+          "min_range": -1.0,
           "max_range": 1000.0,
           "step": 1.0,
           "descriptions": {
-            "ja": "再び現れるまでの時間"
+            "ja": "再び現れるまでの時間[0.0未満の場合は復活しない]"
           }
         },
         {
@@ -21032,6 +22771,13 @@
           }
         },
         {
+          "name": "isHideUntilEvent",
+          "type": "bool",
+          "descriptions": {
+            "ja": "イベント起動まで隠すか"
+          }
+        },
+        {
           "name": "isHorming",
           "type": "bool",
           "descriptions": {
@@ -21050,6 +22796,85 @@
           "type": "bool",
           "descriptions": {
             "ja": "背景に影を落とすか"
+          }
+        },
+        {
+          "name": "moveType",
+          "type": "ObjBalloonSpawner::MoveType",
+          "descriptions": {
+            "ja": "移動"
+          }
+        },
+        {
+          "name": "patrolType",
+          "type": "ObjBalloonSpawner::PatrolType",
+          "descriptions": {
+            "ja": "巡回"
+          }
+        },
+        {
+          "name": "timeType",
+          "type": "ObjBalloonSpawner::TimeType",
+          "descriptions": {
+            "ja": "更新時間"
+          }
+        },
+        {
+          "name": "moveVector",
+          "type": "vector3",
+          "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
+          "descriptions": {
+            "ja": "[二点間移動]移動先"
+          }
+        },
+        {
+          "name": "pathName",
+          "type": "string",
+          "descriptions": {
+            "ja": "[パス移動]パス名"
+          }
+        },
+        {
+          "name": "locaterList",
+          "type": "array",
+          "subtype": "object_reference",
+          "descriptions": {
+            "ja": "[パス移動]停止点リスト"
+          }
+        },
+        {
+          "name": "waitTime",
+          "type": "float32",
+          "min_range": 0.0,
+          "max_range": 100.0,
+          "step": 0.10000000149011612,
+          "descriptions": {
+            "ja": "移動後待機時間"
+          }
+        },
+        {
+          "name": "phase",
+          "type": "float32",
+          "min_range": 0.0,
+          "max_range": 1000.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "位相"
+          }
+        },
+        {
+          "name": "speed",
+          "type": "float32",
+          "min_range": 0.10000000149011612,
+          "max_range": 1000.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "移動速度"
           }
         },
         {
@@ -21164,10 +22989,12 @@
         {
           "name": "big_missile_launch_position_offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "大ミサイル発射位置オフセット"
           }
@@ -21175,10 +23002,12 @@
         {
           "name": "big_missile_qte_root_position",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "大ミサイルQTEルート位置"
           }
@@ -21193,10 +23022,12 @@
         {
           "name": "big_missile_qte_success_position",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "大ミサイルQTE成功位置"
           }
@@ -21211,10 +23042,12 @@
         {
           "name": "big_missile_qte_fail_position",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "大ミサイルQTE失敗位置"
           }
@@ -21318,10 +23151,12 @@
         {
           "name": "offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "オフセット"
           }
@@ -21329,11 +23164,17 @@
         {
           "name": "extents",
           "type": "vector3",
-          "min_range": [1.0, 10.0, 1.0],
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "min_range": [
+            1.0,
+            10.0,
+            1.0
+          ],
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "各辺の長さ（直方体）"
           }
@@ -21370,13 +23211,17 @@
         {
           "name": "size",
           "type": "vector3",
+          "alignment": 16,
           "min_range": [
-            0.10000000149011612, 0.10000000149011612, 0.10000000149011612
+            0.10000000149011612,
+            0.10000000149011612,
+            0.10000000149011612
           ],
           "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
           ],
-          "alignment": 16,
           "descriptions": {
             "ja": "サイズ"
           }
@@ -21384,10 +23229,12 @@
         {
           "name": "collisionOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コリジョンのオフセット"
           }
@@ -21835,10 +23682,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -21876,10 +23735,12 @@
         {
           "name": "sideMoveLocalOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "パスに対する横移動に応じた座標ローカル座標オフセット"
           }
@@ -21903,10 +23764,12 @@
         {
           "name": "widthMoveLocalOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "パスに対する縦移動に応じた座標ローカル座標オフセット"
           }
@@ -21982,10 +23845,12 @@
         {
           "name": "navShortcuthalfExtents",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ショトカ誘導コライダーのサイズ"
           }
@@ -21993,10 +23858,12 @@
         {
           "name": "navShortcutColliderOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ショトカ誘導コライダーのオフセット"
           }
@@ -22004,10 +23871,12 @@
         {
           "name": "halfExtents",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コライダーのサイズ"
           }
@@ -22015,10 +23884,12 @@
         {
           "name": "colliderOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コライダーのオフセット"
           }
@@ -22415,10 +24286,22 @@
         {
           "name": "targetOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "注視点Offset"
           }
@@ -22478,10 +24361,12 @@
         {
           "name": "TargetPosition",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "注視座標"
           }
@@ -22504,10 +24389,12 @@
         {
           "name": "offsetFromObject",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "注視オブジェクトからのオフセット"
           }
@@ -22570,10 +24457,22 @@
         {
           "name": "targetOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "注視点Offset"
           }
@@ -22591,10 +24490,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -22636,10 +24547,12 @@
         {
           "name": "target",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "target"
           }
@@ -22684,10 +24597,22 @@
         {
           "name": "worldOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "ワールド座標Offset"
           }
@@ -22780,10 +24705,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -22791,10 +24728,22 @@
         {
           "name": "worldOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "ワールド座標Offset"
           }
@@ -22874,10 +24823,22 @@
         {
           "name": "targetOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "注視点Offset"
           }
@@ -22895,10 +24856,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -22982,10 +24955,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -22993,10 +24978,22 @@
         {
           "name": "worldOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "ワールド座標Offset"
           }
@@ -23301,10 +25298,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -23400,10 +25409,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -23411,10 +25432,22 @@
         {
           "name": "worldOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "ワールド座標Offset"
           }
@@ -23624,10 +25657,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -23788,6 +25833,31 @@
           "step": 0.0010000000474974513,
           "descriptions": {
             "ja": "方位角の追従感度"
+          }
+        },
+        {
+          "name": "isAzimuthLimited",
+          "type": "bool",
+          "descriptions": {
+            "ja": "方位角の制限を有効にする"
+          }
+        },
+        {
+          "name": "azimuthMax",
+          "type": "float32",
+          "min_range": 0.10000000149011612,
+          "max_range": 179.0,
+          "step": 1.0,
+          "descriptions": {
+            "ja": "方位角の制限角度"
+          }
+        },
+        {
+          "name": "azimuthFront",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "方位角の制限時の正面とする角度"
           }
         },
         {
@@ -24016,10 +26086,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -24099,10 +26181,22 @@
         {
           "name": "playerOffset",
           "type": "vector3",
-          "min_range": [-1000.0, -1000.0, -1000.0],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -1000.0,
+            -1000.0,
+            -1000.0
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "プレイヤー座標Offset"
           }
@@ -24440,10 +26534,12 @@
         {
           "name": "targetPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "移動先座標"
           }
@@ -24497,6 +26593,83 @@
           "array_size": 3,
           "descriptions": {
             "ja": "アクション"
+          }
+        }
+      ]
+    },
+    "ObjCarSpawner": {
+      "fields": [
+        {
+          "name": "sizeType",
+          "type": "ObjCarSpawner::SizeType",
+          "descriptions": {
+            "ja": "サイズ"
+          }
+        },
+        {
+          "name": "collisionType",
+          "type": "ObjCarSpawner::CollisionType",
+          "descriptions": {
+            "ja": "コリジョン"
+          }
+        },
+        {
+          "name": "colorType",
+          "type": "uint8",
+          "min_range": 0,
+          "max_range": 255,
+          "step": 1,
+          "descriptions": {
+            "ja": "色"
+          }
+        },
+        {
+          "name": "launchInfos",
+          "type": "array",
+          "subtype": "CarLaunchInfo",
+          "array_size": 2,
+          "descriptions": {
+            "ja": "プレイヤー速度別射出設定"
+          }
+        },
+        {
+          "name": "actions",
+          "type": "array",
+          "subtype": "ActionNotification",
+          "array_size": 3,
+          "descriptions": {
+            "ja": "action"
+          }
+        },
+        {
+          "name": "lighting",
+          "type": "bool",
+          "descriptions": {
+            "ja": "点灯するか"
+          }
+        },
+        {
+          "name": "lightingOffsetFrame",
+          "type": "float32",
+          "min_range": 0.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "点灯オフセットフレーム"
+          }
+        },
+        {
+          "name": "targetEffectLifeTime",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "ターゲットエフェクト寿命"
+          }
+        },
+        {
+          "name": "backGroundObj",
+          "type": "bool",
+          "descriptions": {
+            "ja": "背景物とするか"
           }
         }
       ]
@@ -24622,10 +26795,12 @@
         {
           "name": "normalGoalPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ノーマルゴール位置"
           }
@@ -24691,10 +26866,12 @@
         {
           "name": "halfExtents",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コライダーのサイズ"
           }
@@ -24702,10 +26879,12 @@
         {
           "name": "colliderOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コライダーのオフセット"
           }
@@ -25079,6 +27258,27 @@
         }
       ]
     },
+    "ObjCollectionPosterSpawner": {
+      "fields": [
+        {
+          "name": "posterID",
+          "type": "int32",
+          "min_range": 0,
+          "max_range": 5,
+          "step": 1,
+          "descriptions": {
+            "ja": "ポスターID"
+          }
+        },
+        {
+          "name": "eventDriven",
+          "type": "bool",
+          "descriptions": {
+            "ja": "イベント起動"
+          }
+        }
+      ]
+    },
     "ObjCollectionRoomLocatorSpawner": {
       "fields": [
         {
@@ -25189,10 +27389,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[2点間移動]移動先オフセット"
           }
@@ -25424,10 +27626,12 @@
         {
           "name": "size",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "大きさ"
           }
@@ -25463,10 +27667,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -25772,12 +27978,22 @@
         {
           "name": "collisionScale",
           "type": "vector3",
-          "min_range": [
-            0.009999999776482582, 0.009999999776482582, 0.009999999776482582
-          ],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "コリジョンスケール"
           }
@@ -25933,12 +28149,22 @@
         {
           "name": "collisionScale",
           "type": "vector3",
-          "min_range": [
-            0.009999999776482582, 0.009999999776482582, 0.009999999776482582
-          ],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "コリジョンスケール"
           }
@@ -25956,7 +28182,7 @@
       "parent": "ObjDashPanelSpawner",
       "fields": [
         {
-          "name": "visual",
+          "name": "ObjDashRollerSpawner::visual",
           "type": "ObjDashRollerSpawner::Visual",
           "descriptions": {
             "ja": "種類"
@@ -26073,10 +28299,22 @@
         {
           "name": "rotateOffsetRandom",
           "type": "vector3",
-          "min_range": [0.0, 0.0, 0.0],
-          "max_range": [360.0, 360.0, 360.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_range": [
+            360.0,
+            360.0,
+            360.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "回転オフセット乱数幅"
           }
@@ -26207,10 +28445,12 @@
         {
           "name": "warpOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "瞬間移動位置オフセット"
           }
@@ -26218,10 +28458,12 @@
         {
           "name": "warpOffsetWhileBlownUp",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "打ち上げ中瞬間移動位置オフセット"
           }
@@ -26229,10 +28471,12 @@
         {
           "name": "warpOffsetWhileBlownAway",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "吹き飛び中瞬間移動位置オフセット"
           }
@@ -26421,10 +28665,12 @@
         {
           "name": "guideSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンの範囲"
           }
@@ -26432,10 +28678,12 @@
         {
           "name": "guideColOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンのオフセット値"
           }
@@ -26443,10 +28691,12 @@
         {
           "name": "guidePosOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドの表示位置オフセット値"
           }
@@ -26506,10 +28756,12 @@
         {
           "name": "scale",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "スケール"
           }
@@ -26980,10 +29232,12 @@
         {
           "name": "openColliderOffsetPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "扉解除用のコライダー座標"
           }
@@ -27077,10 +29331,12 @@
         {
           "name": "openColliderOffsetPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "扉解除用のコライダー座標"
           }
@@ -27746,12 +30002,22 @@
         {
           "name": "hearingRange",
           "type": "vector3",
-          "min_range": [0.0, 0.0, 0.0],
-          "max_range": [1000000.0, 1000000.0, 1000000.0],
-          "step": [
-            0.10000000149011612, 0.10000000149011612, 0.10000000149011612
-          ],
           "alignment": 16,
+          "min_range": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_range": [
+            1000000.0,
+            1000000.0,
+            1000000.0
+          ],
+          "step": [
+            0.10000000149011612,
+            0.10000000149011612,
+            0.10000000149011612
+          ],
           "descriptions": {
             "ja": "聞こえる範囲"
           }
@@ -27759,12 +30025,22 @@
         {
           "name": "undampedRange",
           "type": "vector3",
-          "min_range": [0.0, 0.0, 0.0],
-          "max_range": [1000000.0, 1000000.0, 1000000.0],
-          "step": [
-            0.10000000149011612, 0.10000000149011612, 0.10000000149011612
-          ],
           "alignment": 16,
+          "min_range": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_range": [
+            1000000.0,
+            1000000.0,
+            1000000.0
+          ],
+          "step": [
+            0.10000000149011612,
+            0.10000000149011612,
+            0.10000000149011612
+          ],
           "descriptions": {
             "ja": "減衰しない範囲"
           }
@@ -27811,10 +30087,12 @@
         {
           "name": "fallVelocity",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "初速度"
           }
@@ -28059,6 +30337,45 @@
         }
       ]
     },
+    "ObjFlamingSpawner": {
+      "fields": [
+        {
+          "name": "startExtents",
+          "type": "vector3",
+          "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
+          "descriptions": {
+            "ja": "炎上開始範囲"
+          }
+        },
+        {
+          "name": "flameSize",
+          "type": "ObjFlamingSpawner::SizeType",
+          "descriptions": {
+            "ja": "炎上サイズ"
+          }
+        },
+        {
+          "name": "flamingFromTheStart",
+          "type": "bool",
+          "descriptions": {
+            "ja": "初期から炎上状態か"
+          }
+        },
+        {
+          "name": "targetEffectLifeTime",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "ターゲットエフェクト寿命"
+          }
+        }
+      ]
+    },
     "ObjForcedSlidingVolumeSpawner": {
       "fields": [
         {
@@ -28071,10 +30388,12 @@
         {
           "name": "rigidBodyCollisionSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "剛体コリジョンのサイズ"
           }
@@ -28082,10 +30401,12 @@
         {
           "name": "rigidBodyCollisionOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "剛体コリジョンのオフセット"
           }
@@ -28438,10 +30759,12 @@
         {
           "name": "collisionSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コリジョンのサイズ"
           }
@@ -28662,10 +30985,12 @@
         {
           "name": "collisionSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コリジョンの大きさ"
           }
@@ -28829,7 +31154,7 @@
           "name": "laserNum",
           "type": "int8",
           "min_range": 1,
-          "max_range": 127,
+          "max_range": 10,
           "step": 1,
           "descriptions": {
             "ja": "レーザーの本数"
@@ -28922,6 +31247,13 @@
           "descriptions": {
             "ja": "SE再生フラグ"
           }
+        },
+        {
+          "name": "isEffect",
+          "type": "bool",
+          "descriptions": {
+            "ja": "エフェクト再生フラグ"
+          }
         }
       ]
     },
@@ -28937,10 +31269,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -29063,10 +31397,12 @@
         {
           "name": "box",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "直方体コリジョン"
           }
@@ -29074,10 +31410,12 @@
         {
           "name": "offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コリジョンオフセット"
           }
@@ -29177,9 +31515,18 @@
         {
           "name": "screenPos",
           "type": "vector2",
-          "min_range": [-1.0, -1.0],
-          "max_range": [1.0, 1.0],
-          "step": [0.0010000000474974513, 0.0010000000474974513],
+          "min_range": [
+            -1.0,
+            -1.0
+          ],
+          "max_range": [
+            1.0,
+            1.0
+          ],
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "2D表示位置[左下XY-1/右上XY1]"
           }
@@ -29194,10 +31541,12 @@
         {
           "name": "locatorOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "3D表示位置オフセット"
           }
@@ -29669,10 +32018,12 @@
         {
           "name": "size",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "サイズ"
           }
@@ -29758,10 +32109,12 @@
         {
           "name": "collisionSizeOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コリジョンのサイズオフセット"
           }
@@ -29769,10 +32122,12 @@
         {
           "name": "successShotVelocity",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "成功時の射出ベクトル"
           }
@@ -29780,10 +32135,12 @@
         {
           "name": "failShotVelocity",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "失敗時の射出ベクトル"
           }
@@ -29916,10 +32273,12 @@
         {
           "name": "collisionSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "当たり判定サイズ"
           }
@@ -30121,12 +32480,22 @@
         {
           "name": "collisionScale",
           "type": "vector3",
-          "min_range": [
-            0.009999999776482582, 0.009999999776482582, 0.009999999776482582
-          ],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "コリジョンスケール"
           }
@@ -30288,10 +32657,12 @@
         {
           "name": "guideLocalOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイド表示位置調整"
           }
@@ -30403,12 +32774,22 @@
         {
           "name": "collisionScale",
           "type": "vector3",
-          "min_range": [
-            0.009999999776482582, 0.009999999776482582, 0.009999999776482582
-          ],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "コリジョンスケール"
           }
@@ -30699,6 +33080,20 @@
         }
       ]
     },
+    "ObjManholeSpawner": {
+      "fields": [
+        {
+          "name": "dummy",
+          "type": "int32",
+          "min_range": -2147483648,
+          "max_range": 2147483647,
+          "step": 1,
+          "descriptions": {
+            "ja": "ダミー"
+          }
+        }
+      ]
+    },
     "ObjMariaSpawner": {
       "parent": "ObjNpcBaseSpawner",
       "fields": []
@@ -30848,10 +33243,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -31436,10 +33833,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -31496,6 +33895,78 @@
         }
       ]
     },
+    "ObjMultipleConversationVolumeSpawner": {
+      "fields": [
+        {
+          "name": "volume",
+          "type": "VolumeTriggerSpawner",
+          "descriptions": {
+            "ja": "ボリューム"
+          }
+        },
+        {
+          "name": "labelNames",
+          "type": "array",
+          "subtype": "string",
+          "array_size": 4,
+          "descriptions": {
+            "ja": "ラベル名"
+          }
+        },
+        {
+          "name": "endRule",
+          "type": "ObjMultipleConversationVolumeSpawner::EndRule",
+          "descriptions": {
+            "ja": "終了ルール"
+          }
+        },
+        {
+          "name": "displayTime",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "字幕表示時間"
+          }
+        },
+        {
+          "name": "firstWaitTime",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "開始前待機時間"
+          }
+        },
+        {
+          "name": "delayTime",
+          "type": "float32",
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "遅延時間"
+          }
+        },
+        {
+          "name": "state",
+          "type": "ObjMultipleConversationVolumeSpawner::StateType",
+          "descriptions": {
+            "ja": "初期状態"
+          }
+        },
+        {
+          "name": "action",
+          "type": "ObjMultipleConversationVolumeSpawner::ActionType",
+          "descriptions": {
+            "ja": "動作"
+          }
+        },
+        {
+          "name": "playerActionType",
+          "type": "ObjMultipleConversationVolumeSpawner::PlayerActionType",
+          "descriptions": {
+            "ja": "プレイヤーアクション"
+          }
+        }
+      ]
+    },
     "ObjNoEntryColliderSpawner": {
       "fields": [
         {
@@ -31518,10 +33989,12 @@
         {
           "name": "offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "オフセット"
           }
@@ -31529,11 +34002,17 @@
         {
           "name": "extents",
           "type": "vector3",
-          "min_range": [1.0, 10.0, 1.0],
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "min_range": [
+            1.0,
+            10.0,
+            1.0
+          ],
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "各辺の長さ（直方体）"
           }
@@ -31572,6 +34051,16 @@
           "type": "ObjNormalFloorSpawner::SizeType",
           "descriptions": {
             "ja": "サイズ"
+          }
+        },
+        {
+          "name": "modelScale",
+          "type": "float32",
+          "min_range": 0.10000000149011612,
+          "max_range": 10.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "モデルのスケール"
           }
         },
         {
@@ -31686,10 +34175,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -31806,10 +34297,12 @@
         {
           "name": "offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "会話吹き出しの表示位置オフセット"
           }
@@ -31991,10 +34484,12 @@
         {
           "name": "size",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "サイズ"
           }
@@ -32154,10 +34649,12 @@
         {
           "name": "soundPosition",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "座標指定"
           }
@@ -32355,12 +34852,22 @@
         {
           "name": "collisionScale",
           "type": "vector3",
-          "min_range": [
-            0.009999999776482582, 0.009999999776482582, 0.009999999776482582
-          ],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "コリジョンスケール"
           }
@@ -32628,10 +35135,12 @@
         {
           "name": "appearRadMinPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "出現最小ランダム座標"
           }
@@ -32639,10 +35148,12 @@
         {
           "name": "appearRadMaxPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "出現最大ランダム座標"
           }
@@ -32671,10 +35182,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -32750,12 +35263,22 @@
         {
           "name": "rotAxis",
           "type": "vector3",
-          "min_range": [-1.0, -1.0, -1.0],
-          "max_range": [1.0, 1.0, 1.0],
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "min_range": [
+            -1.0,
+            -1.0,
+            -1.0
+          ],
+          "max_range": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "回転軸"
           }
@@ -32865,10 +35388,12 @@
         {
           "name": "appearOffsetPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "出現位置Offset"
           }
@@ -32876,10 +35401,12 @@
         {
           "name": "appearRadMinPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "出現最小ランダム座標"
           }
@@ -32887,10 +35414,12 @@
         {
           "name": "appearRadMaxPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "出現最大ランダム座標"
           }
@@ -32926,10 +35455,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -33005,12 +35536,22 @@
         {
           "name": "rotAxis",
           "type": "vector3",
-          "min_range": [-1.0, -1.0, -1.0],
-          "max_range": [1.0, 1.0, 1.0],
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "min_range": [
+            -1.0,
+            -1.0,
+            -1.0
+          ],
+          "max_range": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "回転軸"
           }
@@ -33049,10 +35590,12 @@
         {
           "name": "appearRadPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "出現ランダム座標"
           }
@@ -33074,10 +35617,12 @@
         {
           "name": "appearOffsetPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "出現位置Offset"
           }
@@ -33150,10 +35695,12 @@
         {
           "name": "gridSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "1つのグリッドサイズ"
           }
@@ -33161,7 +35708,10 @@
         {
           "name": "notCreateArea",
           "type": "vector2",
-          "step": [0.0010000000474974513, 0.0010000000474974513],
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "生成禁止領域"
           }
@@ -33419,10 +35969,12 @@
         {
           "name": "targetPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ファイヤービームターゲット位置"
           }
@@ -33650,10 +36202,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -33714,10 +36268,12 @@
         {
           "name": "wallSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "隕石ホッケー壁サイズ"
           }
@@ -33829,10 +36385,12 @@
         {
           "name": "startBossFrontVec",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ボスの停止位置のZ方向(0の場合ロケーターから取得)"
           }
@@ -34005,12 +36563,22 @@
         {
           "name": "collisionScale",
           "type": "vector3",
-          "min_range": [
-            0.009999999776482582, 0.009999999776482582, 0.009999999776482582
-          ],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "コリジョンスケール"
           }
@@ -34419,11 +36987,17 @@
         {
           "name": "extents",
           "type": "vector3",
-          "min_range": [
-            0.009999999776482582, 0.009999999776482582, 0.009999999776482582
-          ],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "範囲"
           }
@@ -34741,12 +37315,22 @@
         {
           "name": "collisionScale",
           "type": "vector3",
-          "min_range": [
-            0.009999999776482582, 0.009999999776482582, 0.009999999776482582
-          ],
-          "max_range": [1000.0, 1000.0, 1000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.009999999776482582,
+            0.009999999776482582,
+            0.009999999776482582
+          ],
+          "max_range": [
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "コリジョンスケール"
           }
@@ -34917,6 +37501,13 @@
           "descriptions": {
             "ja": "移動制御"
           }
+        },
+        {
+          "name": "targetShadingKindMaskType",
+          "type": "ObjPointLightSpawner::TargetShadingKindMaskType",
+          "descriptions": {
+            "ja": "対象シェーディング種別マスクタイプ"
+          }
         }
       ]
     },
@@ -35058,10 +37649,12 @@
         {
           "name": "colloffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コリジョンのオフセット"
           }
@@ -35069,10 +37662,12 @@
         {
           "name": "collisionSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コリジョンのサイズ"
           }
@@ -35080,10 +37675,12 @@
         {
           "name": "successShotVelocity",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "成功時の射出ベクトル"
           }
@@ -35091,10 +37688,12 @@
         {
           "name": "failShotVelocity",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "失敗時の射出ベクトル"
           }
@@ -35216,6 +37815,13 @@
           }
         },
         {
+          "name": "isWire",
+          "type": "bool",
+          "descriptions": {
+            "ja": "ワイヤー有り"
+          }
+        },
+        {
           "name": "pathName",
           "type": "string",
           "descriptions": {
@@ -35252,10 +37858,22 @@
         {
           "name": "offset",
           "type": "vector3",
-          "min_range": [-10000.0, -10000.0, -10000.0],
-          "max_range": [10000.0, 10000.0, 10000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -10000.0,
+            -10000.0,
+            -10000.0
+          ],
+          "max_range": [
+            10000.0,
+            10000.0,
+            10000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "オフセット"
           }
@@ -35655,10 +38273,12 @@
         {
           "name": "size",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "サイズ"
           }
@@ -35732,10 +38352,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先"
           }
@@ -36533,6 +39155,27 @@
         }
       ]
     },
+    "ObjSlopeSpawner": {
+      "fields": [
+        {
+          "name": "type",
+          "type": "ObjSlopeSpawner::SlopeModelType",
+          "descriptions": {
+            "ja": "種類"
+          }
+        },
+        {
+          "name": "modelScale",
+          "type": "float32",
+          "min_range": 0.10000000149011612,
+          "max_range": 10.0,
+          "step": 0.0010000000474974513,
+          "descriptions": {
+            "ja": "モデルのスケール"
+          }
+        }
+      ]
+    },
     "ObjSmallBatterySpawner": {
       "fields": [
         {
@@ -36641,10 +39284,12 @@
         {
           "name": "small_missile_launch_position_offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "小ミサイル発射位置オフセット"
           }
@@ -36652,10 +39297,12 @@
         {
           "name": "small_missile_blown_velocity",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "小ミサイル吹飛ベロシティ"
           }
@@ -36735,10 +39382,12 @@
         {
           "name": "pos3D",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "3D再生位置"
           }
@@ -36917,10 +39566,12 @@
         {
           "name": "guideSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンの範囲"
           }
@@ -36928,10 +39579,12 @@
         {
           "name": "guideColOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンのオフセット値"
           }
@@ -36939,10 +39592,12 @@
         {
           "name": "guidePosOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドの表示位置オフセット値"
           }
@@ -36991,10 +39646,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -37058,10 +39715,12 @@
         {
           "name": "guideSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンの範囲"
           }
@@ -37069,10 +39728,12 @@
         {
           "name": "guideColOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンのオフセット値"
           }
@@ -37080,10 +39741,12 @@
         {
           "name": "guideViewOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイド表示のオフセット値"
           }
@@ -37275,10 +39938,12 @@
         {
           "name": "colliPositionOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コライダ位置オフセット"
           }
@@ -37286,10 +39951,12 @@
         {
           "name": "colliPositionOffsetSolid",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "剛体コライダ位置オフセット"
           }
@@ -37395,10 +40062,12 @@
         {
           "name": "halfExtents",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コライダーのサイズ"
           }
@@ -37406,10 +40075,12 @@
         {
           "name": "colliderOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コライダーのオフセット"
           }
@@ -38210,10 +40881,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -38630,10 +41303,12 @@
         {
           "name": "destOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "[二点間移動]移動先オフセット"
           }
@@ -38708,10 +41383,22 @@
         {
           "name": "patrolSize",
           "type": "vector3",
-          "min_range": [0.0, 0.0, 0.0],
-          "max_range": [10000.0, 10000.0, 10000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_range": [
+            10000.0,
+            10000.0,
+            10000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "徘徊エリアサイズ"
           }
@@ -38719,10 +41406,22 @@
         {
           "name": "fightSize",
           "type": "vector3",
-          "min_range": [0.0, 0.0, 0.0],
-          "max_range": [10000.0, 10000.0, 10000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "max_range": [
+            10000.0,
+            10000.0,
+            10000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "戦闘エリアサイズ"
           }
@@ -38730,10 +41429,22 @@
         {
           "name": "patrolOffset",
           "type": "vector3",
-          "min_range": [-10000.0, -10000.0, -10000.0],
-          "max_range": [10000.0, 10000.0, 10000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -10000.0,
+            -10000.0,
+            -10000.0
+          ],
+          "max_range": [
+            10000.0,
+            10000.0,
+            10000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "徘徊エリアオフセット"
           }
@@ -38741,10 +41452,22 @@
         {
           "name": "fightOffset",
           "type": "vector3",
-          "min_range": [-10000.0, -10000.0, -10000.0],
-          "max_range": [10000.0, 10000.0, 10000.0],
-          "step": [1.0, 1.0, 1.0],
           "alignment": 16,
+          "min_range": [
+            -10000.0,
+            -10000.0,
+            -10000.0
+          ],
+          "max_range": [
+            10000.0,
+            10000.0,
+            10000.0
+          ],
+          "step": [
+            1.0,
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "戦闘エリアオフセット"
           }
@@ -38924,9 +41647,18 @@
         {
           "name": "size",
           "type": "vector2",
-          "min_range": [0.5, 0.5],
-          "max_range": [10000.0, 10000.0],
-          "step": [1.0, 1.0],
+          "min_range": [
+            0.5,
+            0.5
+          ],
+          "max_range": [
+            10000.0,
+            10000.0
+          ],
+          "step": [
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "範囲"
           }
@@ -38934,9 +41666,18 @@
         {
           "name": "interval",
           "type": "vector2",
-          "min_range": [0.5, 0.5],
-          "max_range": [10000.0, 10000.0],
-          "step": [1.0, 1.0],
+          "min_range": [
+            0.5,
+            0.5
+          ],
+          "max_range": [
+            10000.0,
+            10000.0
+          ],
+          "step": [
+            1.0,
+            1.0
+          ],
           "descriptions": {
             "ja": "トゲ配置間隔"
           }
@@ -39177,6 +41918,50 @@
         }
       ]
     },
+    "ObjTrainSpawner": {
+      "fields": [
+        {
+          "name": "modelType",
+          "type": "ObjTrainSpawner::ModelType",
+          "descriptions": {
+            "ja": "モデルの見た目"
+          }
+        },
+        {
+          "name": "isTailTrainRump",
+          "type": "bool",
+          "descriptions": {
+            "ja": "後方車両止めの有無"
+          }
+        },
+        {
+          "name": "isFrontTrainRump",
+          "type": "bool",
+          "descriptions": {
+            "ja": "前方車両止めの有無"
+          }
+        },
+        {
+          "name": "trainNum",
+          "type": "int32",
+          "min_range": 1,
+          "max_range": 10,
+          "step": 1,
+          "descriptions": {
+            "ja": "車両の数"
+          }
+        },
+        {
+          "name": "actions",
+          "type": "array",
+          "subtype": "ActionNotification",
+          "array_size": 3,
+          "descriptions": {
+            "ja": "action"
+          }
+        }
+      ]
+    },
     "ObjTrapSpringSpawner": {
       "fields": [
         {
@@ -39304,10 +42089,12 @@
         {
           "name": "guideSize",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンの範囲"
           }
@@ -39315,10 +42102,12 @@
         {
           "name": "guideColOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイドコリジョンのオフセット値"
           }
@@ -39326,10 +42115,12 @@
         {
           "name": "guideViewOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "ガイド表示のオフセット値"
           }
@@ -39350,10 +42141,12 @@
         {
           "name": "moveVector",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "移動先"
           }
@@ -39746,10 +42539,12 @@
         {
           "name": "refObjectPositionOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "参照オブジェクトからの位置オフセット"
           }
@@ -40054,10 +42849,12 @@
         {
           "name": "offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "コリジョンオフセット"
           }
@@ -40357,10 +43154,12 @@
         {
           "name": "offsetPos",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "オフセット座標"
           }
@@ -40412,10 +43211,12 @@
         {
           "name": "frameOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "注視点オフセット"
           }
@@ -40445,10 +43246,12 @@
         {
           "name": "offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "オフセット"
           }
@@ -40513,10 +43316,12 @@
         {
           "name": "distPosition",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "目標地点(オフセット)"
           }
@@ -40703,10 +43508,12 @@
         {
           "name": "twoPointOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "2点間移動オフセット"
           }
@@ -41391,10 +44198,12 @@
         {
           "name": "size",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "サイズ"
           }
@@ -41402,10 +44211,12 @@
         {
           "name": "offset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "位置オフセット"
           }
@@ -41572,10 +44383,12 @@
         {
           "name": "targetOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "オフセット(ワールド座標)"
           }
@@ -41936,10 +44749,12 @@
         {
           "name": "CollisionOffset",
           "type": "vector3",
-          "step": [
-            0.0010000000474974513, 0.0010000000474974513, 0.0010000000474974513
-          ],
           "alignment": 16,
+          "step": [
+            0.0010000000474974513,
+            0.0010000000474974513,
+            0.0010000000474974513
+          ],
           "descriptions": {
             "ja": "offset"
           }
@@ -42051,55 +44866,6 @@
           "step": 1.0,
           "descriptions": {
             "ja": "移動速度"
-          }
-        }
-      ]
-    },
-    "RangeSpawning": {
-      "fields": [
-        {
-          "name": "rangeIn",
-          "type": "float32",
-          "step": 0.0010000000474974513,
-          "descriptions": {
-            "ja": "レンジ距離"
-          }
-        },
-        {
-          "name": "rangeOut",
-          "type": "float32",
-          "step": 0.0010000000474974513,
-          "descriptions": {
-            "ja": "レンジ許容範囲"
-          }
-        }
-      ]
-    },
-    "GOCSimpleAnimationSpawner": {
-      "fields": [
-        {
-          "name": "resSkeleton",
-          "type": "string",
-          "descriptions": {
-            "ja": "スケルトンリソース名"
-          }
-        },
-        {
-          "name": "resAnimation",
-          "type": "string",
-          "descriptions": {
-            "ja": "アニメーションリソース名"
-          }
-        }
-      ]
-    },
-    "GOCVisualModelSpawner": {
-      "fields": [
-        {
-          "name": "resModel",
-          "type": "string",
-          "descriptions": {
-            "ja": "モデルリソース名"
           }
         }
       ]
@@ -42370,6 +45136,10 @@
       "struct": "ObjCannonSpawner",
       "category": "Gimmick/Common"
     },
+    "Car": {
+      "struct": "ObjCarSpawner",
+      "category": "Gimmick/W20"
+    },
     "CaveVolume": {
       "struct": "ObjCaveVolumeSpawner",
       "category": "WhiteSpace/System"
@@ -42441,6 +45211,10 @@
     "CollectionItemBox": {
       "struct": "ObjCollectionItemBoxSpawner",
       "category": "WhiteSpace"
+    },
+    "CollectionPoster": {
+      "struct": "ObjCollectionPosterSpawner",
+      "category": "Gimmick/W20"
     },
     "CollectionRoomLocator": {
       "struct": "ObjCollectionRoomLocatorSpawner",
@@ -42722,6 +45496,10 @@
       "struct": "ObjFlaggedSwitchVolumeSpawner",
       "category": "System"
     },
+    "Flaming": {
+      "struct": "ObjFlamingSpawner",
+      "category": "Gimmick/W20"
+    },
     "Flash": {
       "struct": "EnemyFlashSpawner",
       "category": "Enemy"
@@ -42845,6 +45623,22 @@
     "GuideLaserFence": {
       "struct": "ObjGuideLaserFenceSpawner",
       "category": "Gimmick/Common"
+    },
+    "GunHelicopterBig": {
+      "struct": "EnemyGunHelicopterBigSpawner",
+      "category": "Enemy"
+    },
+    "GunHelicopterBigVolume": {
+      "struct": "EnemyGunHelicopterBigVolumeSpawner",
+      "category": "Enemy"
+    },
+    "GunHelicopterSmall": {
+      "struct": "EnemyGunHelicopterSmallSpawner",
+      "category": "Enemy"
+    },
+    "GunHelicopterSmallVolume": {
+      "struct": "EnemyGunHelicopterSmallVolumeSpawner",
+      "category": "Enemy"
     },
     "GunHunter": {
       "struct": "EnemyGunHunterSpawner",
@@ -42982,6 +45776,7 @@
       "struct": "ObjMPLFakerGeneratorSpawner",
       "category": "Boss/Mephiles/Gimmick"
     },
+    "MPLSoul": {},
     "MPLStage": {
       "struct": "ObjMPLStageSpawner",
       "category": "Boss/Mephiles/Gimmick"
@@ -42990,6 +45785,7 @@
       "struct": "ObjMPLStageWallSpawner",
       "category": "Boss/Mephiles/Gimmick"
     },
+    "MPLWave": {},
     "MagneticVolume": {
       "struct": "ObjMagneticVolumeSpawner",
       "category": "Island/System"
@@ -42997,6 +45793,10 @@
     "Man": {
       "struct": "EnemyManSpawner",
       "category": "Island/Enemy"
+    },
+    "Manhole": {
+      "struct": "ObjManholeSpawner",
+      "category": "Gimmick/W20"
     },
     "Maria": {
       "struct": "ObjMariaSpawner",
@@ -43045,6 +45845,10 @@
     "MovingPillar": {
       "struct": "ObjMovingPillarSpawner",
       "category": "Gimmick/W03"
+    },
+    "MultipleConversationVolume": {
+      "struct": "ObjMultipleConversationVolumeSpawner",
+      "category": "System"
     },
     "NoEntryCollider": {
       "struct": "ObjNoEntryColliderSpawner",
@@ -43394,6 +46198,10 @@
       "struct": "ObjSliderPathVolumeSpawner",
       "category": "System"
     },
+    "Slope": {
+      "struct": "ObjSlopeSpawner",
+      "category": "Gimmick/W20"
+    },
     "SmallBattery": {
       "struct": "ObjSmallBatterySpawner",
       "category": "Gimmick/W01"
@@ -43554,6 +46362,10 @@
       "struct": "ObjTimeStopWatchVolumeSpawner",
       "category": "Cyber/System"
     },
+    "Train": {
+      "struct": "ObjTrainSpawner",
+      "category": "Gimmick/W20"
+    },
     "TrapSpring": {
       "struct": "ObjTrapSpringSpawner",
       "category": "Gimmick/Common"
@@ -43665,17 +46477,6 @@
     "WingTutorialGoalVolume": {
       "struct": "ObjWingTutorialGoalVolumeSpawner",
       "category": "WhiteSpace"
-    }
-  },
-  "tags": {
-    "Model": {
-      "struct": "GOCVisualModelSpawner"
-    },
-    "RangeSpawning": {
-      "struct": "RangeSpawning"
-    },
-    "SimpleAnimation": {
-      "struct": "GOCSimpleAnimationSpawner"
     }
   }
 }

@@ -1,3 +1,16 @@
+4.0.2
+Fixed bug were paths connected through the parameter menu, did not export.
+Fixed bug were _noRot command on paths tried to set the rotation of the first path in the collection
+Added modelScale parameter to NormalFloor in Shadow Gens.
+Changed RotateThornball template in Shadow gens to have one axis by default.
+
+
+4.0.1
+Template fixes for the Tokyo DLC
+Path fixes
+Manual parameters fixes
+Quick Export Terrain Rewrite
+
 4.0.0 Release Candidate 1
 Bugfixes
 Added warnings when enabling internal tools

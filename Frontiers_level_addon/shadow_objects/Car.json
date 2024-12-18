@@ -1,7 +1,7 @@
 {
   "id": "{00000000-0000-0000-0000-000000000000}",
-  "name": "Balloon",
-  "type": "Balloon",
+  "name": "Car",
+  "type": "Car",
   "position": [
     0.0,
     0.0,
@@ -20,42 +20,51 @@
         "rangeOut": 20.0
       }
     },
-    "visual": "ISL",
-    "balloonColor": "COLOR_RED",
-    "dimension": "DIM_FV",
-    "scale": 1.0,
-    "upSpeed": 15.0,
-    "speedMin": 0.0,
-    "speedMax": 5.0,
-    "respawnTime": 5.0,
-    "outOfControlTime": 0.1,
-    "keepVelocityTime": 0.1,
-    "ignoreSwingingTime": 1.0,
-    "isDefaultPositionRespawn": true,
-    "eventDriven": false,
-    "isHideUntilEvent": false,
-    "isHorming": true,
-    "isWaitAppear": false,
-    "castShadow": true,
-    "moveType": "MOVE_NONE",
-    "patrolType": "PATROL_RETURN",
-    "timeType": "TIME_LOCAL",
-    "moveVector": [
-      0.0,
-      0.0,
-      0.0
+    "sizeType": "SIZE_C",
+    "collisionType": "Normal",
+    "colorType": 0,
+    "launchInfos": [
+      {
+        "threathold": 0.0,
+        "firstSpeed": 0.0,
+        "elevation": 30.0,
+        "outOfControl": 0.25,
+        "keepVelocityDistance": 5.0,
+        "motionTime": 2.5
+      },
+      {
+        "threathold": 0.0,
+        "firstSpeed": 0.0,
+        "elevation": 30.0,
+        "outOfControl": 0.25,
+        "keepVelocityDistance": 5.0,
+        "motionTime": 2.5
+      },
+      {
+        "threathold": 0.0,
+        "firstSpeed": 0.0,
+        "elevation": 30.0,
+        "outOfControl": 0.25,
+        "keepVelocityDistance": 5.0,
+        "motionTime": 2.5
+      },
+      {
+        "threathold": 0.0,
+        "firstSpeed": 0.0,
+        "elevation": 30.0,
+        "outOfControl": 0.25,
+        "keepVelocityDistance": 5.0,
+        "motionTime": 2.5
+      },
+      {
+        "threathold": 0.0,
+        "firstSpeed": 0.0,
+        "elevation": 30.0,
+        "outOfControl": 0.25,
+        "keepVelocityDistance": 5.0,
+        "motionTime": 2.5
+      }
     ],
-    "pathName": "",
-    "locaterList": [
-      "{00000000-0000-0000-0000-000000000000}",
-      "{00000000-0000-0000-0000-000000000000}",
-      "{00000000-0000-0000-0000-000000000000}",
-      "{00000000-0000-0000-0000-000000000000}",
-      "{00000000-0000-0000-0000-000000000000}"
-    ],
-    "waitTime": 0.0,
-    "phase": 0.0,
-    "speed": 0.0,
     "actions": [
       {
         "action": "On",
@@ -112,6 +121,10 @@
         ],
         "delayTime": 0.0
       }
-    ]
+    ],
+    "lighting": false,
+    "lightingOffsetFrame": 0.0,
+    "targetEffectLifeTime": 1.0,
+    "backGroundObj": false
   }
 }

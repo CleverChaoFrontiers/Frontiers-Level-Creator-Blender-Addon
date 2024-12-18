@@ -1735,7 +1735,10 @@ class QimportSettings(bpy.types.PropertyGroup): # Other settings
             ("w11b10", "w11b10 (Biolizard)", ""),
             ("w12b10", "w12b10 (Metal Overlord)", ""),
             ("w13b10", "w13b10 (Mephiles)", ""),
-            ("w14b10", "w14b10 (Devil Doom)", "")
+            ("w14b10", "w14b10 (Devil Doom)", ""),
+            
+            # Extras
+            ("w20a10", "w20a10 (Tokyo)", "")
         ]
         }
         try:

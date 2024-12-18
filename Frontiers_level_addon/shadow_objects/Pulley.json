@@ -21,6 +21,7 @@
       }
     },
     "visual": "NORMAL",
+    "isWire": true,
     "pathName": "",
     "startPosition1D": 0.0,
     "endPosition1D": 0.0,
